@@ -1,9 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, CheckCircle, Cpu, Rocket, Scaling } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowRight, Cpu, Rocket, Scaling } from 'lucide-react';
 import Link from 'next/link';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const benefits = [
   {
@@ -51,15 +49,13 @@ const processSteps = [
   }
 ];
 
-const homePageImage = PlaceHolderImages.find(p => p.id === 'business-analysis');
-
 export default function Home() {
   return (
     <div className="flex flex-col">
       <section className="h-[70vh] min-h-[500px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-8">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Transformamos empresas con <br /> soluciones de marketing digital e IA
+            Transformamos Empresas con <br /> Soluciones de Inteligencia Artificial
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
@@ -78,7 +74,7 @@ export default function Home() {
             {benefits.map((benefit) => (
               <Card key={benefit.title} className="bg-card/80 backdrop-blur-sm border-white/10 text-center hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
                 <CardHeader>
-                  <div className="mx-auto bg-secondary p-3 rounded-full mb-4 w-fit">{benefit.icon}</div>
+                  <div className="mx-auto bg-primary/10 p-3 rounded-full mb-4 w-fit">{benefit.icon}</div>
                   <CardTitle className="text-xl">{benefit.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -90,21 +86,9 @@ export default function Home() {
         </div>
       </section>
       
-      <section id="como-lo-hacemos" className="py-16 md:py-24 bg-secondary px-4">
-        <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
-            {homePageImage && (
-              <Image
-                src={homePageImage.imageUrl}
-                alt={homePageImage.description}
-                fill
-                className="object-cover"
-                data-ai-hint={homePageImage.imageHint}
-              />
-            )}
-             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-          </div>
-          <div>
+      <section id="como-lo-hacemos" className="py-16 md:py-24 px-4">
+        <div className="container mx-auto">
+           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Revoluciona tu negocio con IA</h2>
             <p className="mt-4 text-muted-foreground text-lg">
              Implementamos estrategias inteligentes potenciadas por IA y soluciones tecnológicas avanzadas para crear un ecosistema digital que impulsa el crecimiento real y sostenible de tu empresa.
@@ -133,7 +117,7 @@ export default function Home() {
                              </CardContent>
                          </Card>
                     </div>
-                    <div className="absolute left-1/2 -translate-x-1/2 bg-secondary border-4 border-background rounded-full w-12 h-12 flex items-center justify-center font-bold text-primary text-lg group-hover:scale-110 transition-transform">
+                    <div className="absolute left-1/2 -translate-x-1/2 bg-background border-2 border-primary rounded-full w-12 h-12 flex items-center justify-center font-bold text-primary text-lg group-hover:scale-110 transition-transform">
                         {step.step}
                     </div>
                 </div>

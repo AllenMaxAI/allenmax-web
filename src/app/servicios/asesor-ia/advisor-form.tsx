@@ -94,7 +94,7 @@ export function AdvisorForm() {
             </h2>
             <p className="text-muted-foreground mt-2">Basado en tu información, estos son los servicios que más te beneficiarán.</p>
           </div>
-          <Card className="bg-secondary">
+          <Card>
             <CardHeader>
               <CardTitle>Servicios Recomendados</CardTitle>
             </CardHeader>

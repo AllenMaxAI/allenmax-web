@@ -3,7 +3,7 @@ import { AdvisorForm } from './advisor-form';
 export default function AsesorIAPage() {
   return (
     <>
-      <section className="py-20 md:py-32 text-center bg-secondary">
+      <section className="py-20 md:py-32 text-center">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Asesor de Servicios con IA</h1>
           <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">

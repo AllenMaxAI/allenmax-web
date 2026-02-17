@@ -20,7 +20,7 @@ const serviceCategories = [
 export default function ServiciosPage() {
   return (
     <>
-      <section className="py-20 md:py-32 text-center bg-secondary">
+      <section className="py-20 md:py-32 text-center">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Nuestras Soluciones para tu Crecimiento</h1>
           <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
