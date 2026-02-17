@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BarChart3, Filter, LineChart, Megaphone, MousePointerClick, Zap } from 'lucide-react';
 import Link from 'next/link';
+import React from 'react';
 
 const marketingServices = [
   {
@@ -55,7 +56,7 @@ export default function MarketingDigitalPage() {
               <Card key={service.title} className="flex flex-col bg-card/80 backdrop-blur-sm border-white/10">
                 <CardHeader className="flex-row items-center gap-4">
                   <div className="bg-primary/10 p-3 rounded-lg text-primary">
-                    <service.icon className="h-6 w-6" />
+                    {React.cloneElement(service.icon, { className: 'h-6 w-6' })}
                   </div>
                   <CardTitle className="text-lg">{service.title}</CardTitle>
                 </CardHeader>
