@@ -88,7 +88,7 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 px-4">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="flex items-start text-left p-6 rounded-lg bg-card border gap-4">
+              <div key={benefit.title} className="flex items-start text-left gap-4">
                  <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary">
                   {React.cloneElement(benefit.icon, { className: "h-6 w-6" })}
                 </div>
@@ -191,7 +191,7 @@ export default function Home() {
 
                     {/* Desktop layout */}
                     <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
-                      {!isEven ? (
+                      {isEven ? (
                         <>
                           <div className="text-right">
                             <p className="text-lg text-muted-foreground">{step.description}</p>
@@ -205,7 +205,7 @@ export default function Home() {
                         </>
                       ) : (
                         <>
-                          <div className="flex items-center gap-4 justify-end">
+                           <div className="flex items-center gap-4 justify-end">
                             <h3 className="font-bold text-3xl">{step.title}</h3>
                              <div className="bg-primary text-primary-foreground rounded-full h-14 w-14 flex items-center justify-center flex-shrink-0">
                                <span className="text-2xl font-bold">{step.step}</span>
