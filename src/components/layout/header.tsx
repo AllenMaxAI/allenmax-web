@@ -42,7 +42,10 @@ const serviceLinks = [
   },
 ];
 
-const navLinks = [{ href: '/nosotros', label: 'Nosotros' }];
+const navLinks = [
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/contacto', label: 'Contacto' },
+];
 
 export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
