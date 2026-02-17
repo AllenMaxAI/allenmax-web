@@ -181,7 +181,9 @@ export default function Home() {
                     {/* Mobile layout */}
                     <div className="md:hidden">
                       <div className="flex items-center gap-4 mb-4">
-                        <span className="text-5xl font-bold text-primary flex-shrink-0 w-12 text-center">{step.step}</span>
+                        <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
+                           <span className="text-xl font-bold">{step.step}</span>
+                        </div>
                         <h3 className="font-bold text-2xl">{step.title}</h3>
                       </div>
                       <p className="text-lg text-muted-foreground">{step.description}</p>
@@ -194,16 +196,20 @@ export default function Home() {
                           <div className="text-right">
                             <p className="text-lg text-muted-foreground">{step.description}</p>
                           </div>
-                          <div className="text-left">
-                            <span className="text-5xl font-bold text-primary">{step.step}</span>
-                            <h3 className="font-bold text-3xl mt-2">{step.title}</h3>
+                          <div className="flex items-center gap-4">
+                             <div className="bg-primary text-primary-foreground rounded-full h-14 w-14 flex items-center justify-center flex-shrink-0">
+                               <span className="text-2xl font-bold">{step.step}</span>
+                            </div>
+                            <h3 className="font-bold text-3xl">{step.title}</h3>
                           </div>
                         </>
                       ) : (
                         <>
-                          <div className="text-right">
-                            <span className="text-5xl font-bold text-primary">{step.step}</span>
-                            <h3 className="font-bold text-3xl mt-2">{step.title}</h3>
+                          <div className="flex items-center gap-4 justify-end">
+                            <h3 className="font-bold text-3xl">{step.title}</h3>
+                             <div className="bg-primary text-primary-foreground rounded-full h-14 w-14 flex items-center justify-center flex-shrink-0">
+                               <span className="text-2xl font-bold">{step.step}</span>
+                            </div>
                           </div>
                           <div className="text-left">
                             <p className="text-lg text-muted-foreground">{step.description}</p>
