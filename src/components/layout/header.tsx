@@ -20,7 +20,6 @@ import React from 'react';
 
 const navLinks = [
   { href: '/nosotros', label: 'Nosotros' },
-  { href: '/contacto', label: 'Contacto' },
 ];
 
 
@@ -87,10 +86,6 @@ export function AppHeader() {
           </div>
           
           <div className="flex items-center">
-            <Button asChild className="btn-glow hidden md:inline-flex">
-              <Link href="/contacto">Agendar Llamada</Link>
-            </Button>
-
             {/* Mobile Navigation */}
             <div className="md:hidden">
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -127,9 +122,6 @@ export function AppHeader() {
                         ))}
                       </div>
                     </nav>
-                    <Button asChild className="mt-auto btn-glow" size="lg">
-                      <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>Agendar Llamada</Link>
-                    </Button>
                   </div>
                 </SheetContent>
               </Sheet>

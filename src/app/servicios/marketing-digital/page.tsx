@@ -67,21 +67,6 @@ export default function MarketingDigitalPage() {
           </div>
         </div>
       </section>
-
-      <section id="cta-final" className="py-20 text-center bg-gradient-to-r from-blue-900 via-primary to-blue-800 text-white px-4">
-        <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Acelera tu Crecimiento Digital</h2>
-          <p className="max-w-2xl mx-auto mt-4 text-lg text-blue-100">
-            ¿Quieres más clientes y mayores ventas? Solicita una auditoría estratégica y descubre cómo podemos ayudarte.
-          </p>
-          <Button asChild size="lg" className="mt-8 bg-white text-primary hover:bg-gray-200 btn-glow">
-            <Link href="/contacto">
-              Solicitar Auditoría Estratégica
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
-      </section>
     </>
   );
 }

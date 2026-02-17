@@ -224,20 +224,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section id="cta-final" className="py-20 text-center">
-        <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">¿Listo para transformar tu empresa?</h2>
-          <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
-            Agenda una llamada estratégica gratuita y descubre el potencial real de unir la IA y el marketing para tu negocio.
-          </p>
-          <Button asChild size="lg" className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90 btn-glow">
-            <Link href="/contacto">
-              Agendar Reunión
-            </Link>
-          </Button>
-        </div>
-      </section>
     </div>
   );
 }
