@@ -63,9 +63,6 @@ export function AppHeader() {
                       <ListItem href="/servicios/marketing-digital" title="Marketing Digital">
                         Estrategias de crecimiento y conversión.
                       </ListItem>
-                       <ListItem href="/servicios/asesor-ia" title="Asesor IA Gratuito">
-                        Deja que nuestra IA te recomiende el servicio ideal.
-                      </ListItem>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -107,7 +104,6 @@ export function AppHeader() {
                        <Link href="/servicios" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Todos los Servicios</Link>
                        <Link href="/servicios/ia" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Inteligencia Artificial</Link>
                        <Link href="/servicios/marketing-digital" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Marketing Digital</Link>
-                       <Link href="/servicios/asesor-ia" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Asesor IA Gratuito</Link>
                     
                        <div className="mt-4 flex flex-col gap-4">
                         {navLinks.map((link) => (
