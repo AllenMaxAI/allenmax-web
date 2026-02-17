@@ -2,7 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import {
+  Menu,
+  X,
+  LayoutDashboard,
+  TrendingUp,
+  BrainCircuit,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Logo } from '@/components/logo';
@@ -18,10 +24,25 @@ import {
 } from '@/components/ui/navigation-menu';
 import React from 'react';
 
-const navLinks = [
-  { href: '/nosotros', label: 'Nosotros' },
+const serviceLinks = [
+  {
+    href: '/servicios',
+    label: 'Visión General de Servicios',
+    icon: <LayoutDashboard />,
+  },
+  {
+    href: '/servicios/marketing-digital',
+    label: 'Marketing Digital',
+    icon: <TrendingUp />,
+  },
+  {
+    href: '/servicios/ia',
+    label: 'Inteligencia Artificial',
+    icon: <BrainCircuit />,
+  },
 ];
 
+const navLinks = [{ href: '/nosotros', label: 'Nosotros' }];
 
 export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,16 +74,22 @@ export function AppHeader() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Servicios</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                       <ListItem href="/servicios" title="Todos los Servicios">
-                        Explora nuestra oferta completa de soluciones.
-                      </ListItem>
-                      <ListItem href="/servicios/ia" title="Inteligencia Artificial">
-                        Soluciones de IA para la máxima eficiencia.
-                      </ListItem>
-                      <ListItem href="/servicios/marketing-digital" title="Marketing Digital">
-                        Estrategias de crecimiento y conversión.
-                      </ListItem>
+                    <ul className="grid w-[280px] gap-1 p-2 md:w-[300px]">
+                      {serviceLinks.map((service) => (
+                        <li key={service.href}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={service.href}
+                              className="flex items-center gap-3 select-none rounded-md p-3 text-sm no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              {React.cloneElement(service.icon, {
+                                className: 'h-4 w-4',
+                              })}
+                              <span>{service.label}</span>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -81,7 +108,7 @@ export function AppHeader() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          
+
           <div className="flex items-center">
             {/* Mobile Navigation */}
             <div className="md:hidden">
@@ -91,32 +118,46 @@ export function AppHeader() {
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-full sm:w-[320px] bg-background">
+                <SheetContent
+                  side="right"
+                  className="w-full sm:w-[320px] bg-background"
+                >
                   <div className="flex flex-col h-full">
                     <div className="flex justify-between items-center border-b pb-4">
-                       <Logo />
-                       <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                          <X className="h-6 w-6" />
-                       </Button>
+                      <Logo />
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <X className="h-6 w-6" />
+                      </Button>
                     </div>
-                    <nav className="flex flex-col gap-4 mt-8 text-lg">
-                      <span className="font-semibold">Servicios</span>
-                       <Link href="/servicios" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Todos los Servicios</Link>
-                       <Link href="/servicios/ia" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Inteligencia Artificial</Link>
-                       <Link href="/servicios/marketing-digital" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Marketing Digital</Link>
-                    
-                       <div className="mt-4 flex flex-col gap-4">
-                        {navLinks.map((link) => (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            className="text-foreground hover:text-primary transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
+                    <nav className="flex flex-col gap-1 mt-8">
+                      {serviceLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {React.cloneElement(link.icon, {
+                            className: 'h-5 w-5',
+                          })}
+                          <span>{link.label}</span>
+                        </Link>
+                      ))}
+                      <div className="my-2 border-t" />
+                      {navLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="p-3 text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
                     </nav>
                   </div>
                 </SheetContent>
@@ -128,30 +169,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, href, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          href={href!}
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem"
