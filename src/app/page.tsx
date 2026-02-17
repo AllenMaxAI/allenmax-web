@@ -59,7 +59,7 @@ export default function Home() {
       <section className="h-[70vh] min-h-[500px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-8">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Transformamos empresas con soluciones de marketing digital e IA
+            Transformamos empresas con <br /> soluciones de marketing digital e IA
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.

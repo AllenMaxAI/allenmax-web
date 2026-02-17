@@ -39,8 +39,8 @@ export function AppHeader() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-background/80 backdrop-blur-sm border-b border-white/10' : 'bg-transparent'
+        'sticky top-0 z-50 w-full border-b border-border transition-all duration-300',
+        isScrolled ? 'bg-background/80 backdrop-blur-sm' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto px-4">
@@ -48,7 +48,7 @@ export function AppHeader() {
           <Logo />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-2">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -63,6 +63,9 @@ export function AppHeader() {
                       </ListItem>
                       <ListItem href="/servicios/marketing-digital" title="Marketing Digital">
                         Estrategias de crecimiento y conversión.
+                      </ListItem>
+                       <ListItem href="/servicios/asesor-ia" title="Asesor IA Gratuito">
+                        Deja que nuestra IA te recomiende el servicio ideal.
                       </ListItem>
                     </ul>
                   </NavigationMenuContent>
@@ -81,54 +84,56 @@ export function AppHeader() {
                 ))}
               </NavigationMenuList>
             </NavigationMenu>
-
-            <Button asChild className="btn-glow">
-              <Link href="/contacto">Agendar Llamada</Link>
-            </Button>
           </div>
           
+          <div className="flex items-center">
+            <Button asChild className="btn-glow hidden md:inline-flex">
+              <Link href="/contacto">Agendar Llamada</Link>
+            </Button>
 
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-[320px] bg-background">
-                <div className="flex flex-col h-full">
-                  <div className="flex justify-between items-center border-b pb-4">
-                     <Logo />
-                     <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                        <X className="h-6 w-6" />
-                     </Button>
-                  </div>
-                  <nav className="flex flex-col gap-4 mt-8 text-lg">
-                    <span className="font-semibold">Servicios</span>
-                     <Link href="/servicios" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Todos los Servicios</Link>
-                     <Link href="/servicios/ia" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Inteligencia Artificial</Link>
-                     <Link href="/servicios/marketing-digital" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Marketing Digital</Link>
-                  
-                     <div className="mt-4 flex flex-col gap-4">
-                      {navLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="text-foreground hover:text-primary transition-colors"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </nav>
-                  <Button asChild className="mt-auto btn-glow" size="lg">
-                    <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>Agendar Llamada</Link>
+            {/* Mobile Navigation */}
+            <div className="md:hidden">
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-6 w-6" />
                   </Button>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-full sm:w-[320px] bg-background">
+                  <div className="flex flex-col h-full">
+                    <div className="flex justify-between items-center border-b pb-4">
+                       <Logo />
+                       <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                          <X className="h-6 w-6" />
+                       </Button>
+                    </div>
+                    <nav className="flex flex-col gap-4 mt-8 text-lg">
+                      <span className="font-semibold">Servicios</span>
+                       <Link href="/servicios" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Todos los Servicios</Link>
+                       <Link href="/servicios/ia" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Inteligencia Artificial</Link>
+                       <Link href="/servicios/marketing-digital" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Marketing Digital</Link>
+                       <Link href="/servicios/asesor-ia" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Asesor IA Gratuito</Link>
+                    
+                       <div className="mt-4 flex flex-col gap-4">
+                        {navLinks.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="text-foreground hover:text-primary transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </nav>
+                    <Button asChild className="mt-auto btn-glow" size="lg">
+                      <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>Agendar Llamada</Link>
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>
