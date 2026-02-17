@@ -78,7 +78,7 @@ export default function AIServicesPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-5 gap-12 items-center">
             <div className="md:col-span-3 space-y-4">
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Inteligencia Artificial Aplicada al Negocio</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Inteligencia Artificial</h1>
               <p className="max-w-2xl text-lg text-muted-foreground">
                 La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. La integramos en tus procesos para optimizar resultados, automatizar tareas y generar valor real en tu negocio.
               </p>
