@@ -170,42 +170,50 @@ export default function Home() {
           </div>
 
           <div className="relative max-w-5xl mx-auto mt-12">
-            {/* The vertical line */}
-            <div className="absolute left-8 md:left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+            {/* The vertical line for desktop */}
+            <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2 hidden md:block" />
 
-            <div className="relative flex flex-col items-start md:items-stretch gap-y-24">
-              {processSteps.map((step, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "relative flex w-full items-center",
-                    index % 2 !== 0 ? "md:justify-start" : "md:justify-end"
-                  )}
-                >
-                   {/* Mobile Circle - always on left */}
-                  <div className="absolute top-0 left-8 -translate-x-1/2 z-10 md:hidden">
-                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground text-2xl flex-shrink-0">
-                      {step.step}
+            <div className="relative flex flex-col gap-y-12">
+              {processSteps.map((step, index) => {
+                const isEven = index % 2 === 0;
+                return (
+                  <div key={index} className="relative">
+                    {/* Mobile layout */}
+                    <div className="md:hidden">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="text-5xl font-bold text-primary flex-shrink-0 w-12 text-center">{step.step}</span>
+                        <h3 className="font-bold text-2xl">{step.title}</h3>
+                      </div>
+                      <p className="text-lg text-muted-foreground">{step.description}</p>
+                    </div>
+
+                    {/* Desktop layout */}
+                    <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
+                      {isEven ? (
+                        <>
+                          <div className="text-right">
+                            <p className="text-lg text-muted-foreground">{step.description}</p>
+                          </div>
+                          <div className="text-left">
+                            <span className="text-5xl font-bold text-primary">{step.step}</span>
+                            <h3 className="font-bold text-3xl mt-2">{step.title}</h3>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="text-right">
+                            <span className="text-5xl font-bold text-primary">{step.step}</span>
+                            <h3 className="font-bold text-3xl mt-2">{step.title}</h3>
+                          </div>
+                          <div className="text-left">
+                            <p className="text-lg text-muted-foreground">{step.description}</p>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
-                  
-                  {/* Desktop Circle - on the center line */}
-                  <div className="hidden md:block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
-                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground text-2xl flex-shrink-0">
-                      {step.step}
-                    </div>
-                  </div>
-                  
-                  {/* Content Box */}
-                  <div className={cn(
-                    "w-full md:w-[calc(50%-4rem)] pl-24 md:pl-0",
-                     index % 2 !== 0 ? "md:text-right" : "md:text-left"
-                  )}>
-                    <h3 className="font-bold text-3xl mb-2">{step.title}</h3>
-                    <p className="text-lg text-muted-foreground">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
