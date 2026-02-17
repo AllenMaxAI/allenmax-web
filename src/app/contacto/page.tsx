@@ -4,7 +4,7 @@ import { InlineWidget } from 'react-calendly';
 
 export default function ContactoPage() {
   return (
-    <section className="flex items-center h-screen overflow-hidden">
+    <section>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
@@ -31,10 +31,10 @@ export default function ContactoPage() {
               </p>
             </div>
           </div>
-          <div className="rounded-lg h-full">
+          <div className="rounded-lg">
             <InlineWidget
               url="https://calendly.com/agency-allenmax/reunion-allenmax?hide_event_type_details=1&hide_gdpr_banner=1"
-              styles={{ minWidth: '320px', height: '100%' }}
+              styles={{ minWidth: '320px', height: '1050px' }}
             />
           </div>
         </div>
