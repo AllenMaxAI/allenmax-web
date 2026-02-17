@@ -1,21 +1,20 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Cpu, Rocket, Scaling } from 'lucide-react';
+import { ArrowRight, BarChart3, Rocket, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 const benefits = [
   {
-    icon: <Rocket className="h-8 w-8 text-primary" />,
+    icon: <Zap className="h-6 w-6 text-primary" />,
     title: 'Velocidad',
     description: 'Resultados 3 veces más rápidos que los métodos tradicionales.',
   },
   {
-    icon: <Scaling className="h-8 w-8 text-primary" />,
+    icon: <BarChart3 className="h-6 w-6 text-primary" />,
     title: 'Escalabilidad',
     description: 'Soluciones que crecen con tu negocio.',
   },
   {
-    icon: <Cpu className="h-8 w-8 text-primary" />,
+    icon: <Rocket className="h-6 w-6 text-primary" />,
     title: 'Innovación',
     description: 'Tecnología de vanguardia para mantenerte por delante de la competencia.',
   },
@@ -53,9 +52,9 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <section className="h-[70vh] min-h-[500px] flex items-center justify-center text-center px-4">
-        <div className="z-10 flex flex-col items-center gap-8">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Transformamos Empresas con <br /> Soluciones de Inteligencia Artificial
+        <div className="z-10 flex flex-col items-center gap-6">
+           <h1 className="text-4xl md:text-5xl font-bold tracking-tight max-w-4xl">
+            Transformamos Empresas con <br/> Soluciones de Inteligencia Artificial
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
@@ -68,36 +67,33 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="beneficios" className="py-16 md:py-24 px-4">
+      <section id="como-lo-hacemos" className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit) => (
-              <Card key={benefit.title} className="bg-card/80 backdrop-blur-sm border-white/10 text-center hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
-                <CardHeader>
-                  <div className="mx-auto bg-primary/10 p-3 rounded-full mb-4 w-fit">{benefit.icon}</div>
-                  <CardTitle className="text-xl">{benefit.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+           <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="max-w-xl">
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Revoluciona tu negocio con IA</h2>
+                <p className="mt-4 text-muted-foreground text-lg">
+                Implementamos estrategias inteligentes potenciadas por IA y soluciones tecnológicas avanzadas para crear un ecosistema digital que impulsa el crecimiento real y sostenible de tu empresa.
+                </p>
+              </div>
+              <div className="space-y-10">
+                {benefits.map((benefit) => (
+                  <div key={benefit.title} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full">
+                      {benefit.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">{benefit.title}</h3>
+                      <p className="mt-1 text-muted-foreground">{benefit.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+           </div>
         </div>
       </section>
       
-      <section id="como-lo-hacemos" className="py-16 md:py-24 px-4">
-        <div className="container mx-auto">
-           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Revoluciona tu negocio con IA</h2>
-            <p className="mt-4 text-muted-foreground text-lg">
-             Implementamos estrategias inteligentes potenciadas por IA y soluciones tecnológicas avanzadas para crear un ecosistema digital que impulsa el crecimiento real y sostenible de tu empresa.
-            </p>
-          </div>
-        </div>
-      </section>
-
-       <section id="proceso" className="py-16 md:py-24 px-4">
+      <section id="proceso" className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12 md:mb-24">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Cómo lo Hacemos Realidad</h2>
