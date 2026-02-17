@@ -85,24 +85,24 @@ export default function Home() {
 
       <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
-          <div className="bg-card p-8 md:p-12 rounded-lg grid md:grid-cols-5 gap-8 md:gap-12 items-center">
-            <div className="md:col-span-3">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div className="text-left">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
                 El problema: Invertir en marketing sin tener un <span className="text-primary">sistema</span>
               </h2>
               <p className="mt-4 text-muted-foreground text-lg">
                 Muchas empresas generan contactos, pero sin una estructura que los aproveche, el esfuerzo se diluye. El resultado es una pérdida de oportunidades y un crecimiento estancado.
               </p>
-              <p className="mt-6 text-xl font-semibold">
+               <p className="mt-6 text-xl font-semibold">
                 Sin un sistema, <span className="text-primary">no hay crecimiento sostenible.</span>
               </p>
             </div>
-            <div className="md:col-span-2 bg-background/50 p-6 rounded-lg border border-border">
-              <h3 className="font-semibold mb-4 text-lg">La mayoría de estructuras no:</h3>
+            <div>
+              <h3 className="font-semibold mb-4 text-lg text-center md:text-left">La mayoría de estructuras no:</h3>
               <ul className="space-y-4">
                 {problemPoints.map((point, index) => (
                   <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                    <XCircle className="h-5 w-5 text-destructive flex-shrink-0" />
+                    <XCircle className="h-5 w-5 text-primary flex-shrink-0" />
                     <span>{point}</span>
                   </li>
                 ))}
