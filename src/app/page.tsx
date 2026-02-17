@@ -1,23 +1,24 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, CheckCircle2, TrendingUp, Zap, XCircle, Rocket } from 'lucide-react';
+import { CheckCircle2, TrendingUp, Zap, XCircle, Rocket, Target, Scaling, BrainCircuit } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 const benefits = [
   {
     icon: <Zap />,
-    title: "Eficiencia estratégica",
-    description: "Procesos optimizados que aceleran la captación y la gestión comercial."
+    title: "Eficiencia y Velocidad",
+    description: "Implementamos procesos optimizados en tiempo récord para que veas resultados cuanto antes."
   },
   {
     icon: <TrendingUp />,
-    title: "Escalabilidad estructurada",
-    description: "Sistemas preparados para acompañar el crecimiento de tu empresa."
+    title: "Crecimiento Sostenible",
+    description: "Creamos sistemas escalables que se adaptan y crecen junto a tu empresa, sin fricciones."
   },
   {
-    icon: <Rocket />,
-    title: "Ventaja competitiva",
-    description: "Tecnología aplicada con enfoque estratégico para posicionarte por delante del mercado."
+    icon: <Target />,
+    title: "Precisión Estratégica",
+    description: "Aplicamos un enfoque data-driven para asegurar que cada acción esté alineada con tus objetivos."
   }
 ];
 
@@ -68,17 +69,18 @@ export default function Home() {
   
   return (
     <div className="flex flex-col">
-       <section className="h-[60vh] min-h-[500px] flex items-center justify-center text-center px-4">
+       <section className="h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
-           <h1 className="text-4xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
-            Transformamos <span className="text-primary">Empresas</span> con <br/> Soluciones de <span className="text-primary">Inteligencia Artificial</span>
+           <h1 className="text-4xl md:text-6xl font-bold tracking-tight max-w-4xl leading-tight">
+            <span className="block">Transformamos <span className="text-primary">Empresas</span> con</span>
+            <span className="block">Soluciones de <span className="text-primary">Inteligencia Artificial</span></span>
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="btn-glow">
-              <Link href="#proceso">Descubre cómo lo hacemos <ArrowRight className="ml-2 h-5 w-5" /></Link>
+              <Link href="#proceso">Descubre cómo lo hacemos</Link>
             </Button>
           </div>
         </div>
@@ -113,24 +115,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4">
-        <div className="container mx-auto max-w-3xl text-left">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Impulsa el crecimiento de tu empresa
-          </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            Diseñamos e implementamos sistemas que combinan marketing, automatización y tecnología avanzada para crear una estructura digital que genera resultados medibles y crecimiento sostenible.
-          </p>
-          <div className="mt-12 space-y-10">
+       <section className="py-16 md:py-24 px-4">
+        <div className="container mx-auto max-w-5xl">
+           <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Impulsa el <span className="text-primary">crecimiento</span> de tu empresa
+            </h2>
+            <p className="mt-4 text-muted-foreground text-lg max-w-3xl mx-auto">
+             Diseñamos e implementamos sistemas que combinan marketing, automatización y tecnología avanzada para crear una estructura digital que genera resultados medibles y crecimiento sostenible.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="flex items-start gap-6">
-                <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary">
+              <div key={benefit.title} className="flex flex-col items-start text-left p-6 rounded-lg bg-card border">
+                 <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary mb-4">
                   {React.cloneElement(benefit.icon, { className: "h-6 w-6" })}
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold">{benefit.title}</h3>
-                  <p className="mt-1 text-muted-foreground">{benefit.description}</p>
-                </div>
+                <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
+                <p className="text-muted-foreground">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -153,7 +155,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section id="proceso" className="py-16 md:py-24">
+       <section id="proceso" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -162,23 +164,46 @@ export default function Home() {
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.
             </p>
-
           </div>
-          
-          <div className="max-w-4xl mx-auto space-y-12">
+
+          <div className="relative max-w-5xl mx-auto mt-12">
+            {/* The vertical line */}
+            <div className="absolute left-8 md:left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+
+            <div className="relative flex flex-col items-start md:items-stretch gap-y-24">
               {processSteps.map((step, index) => (
-                  <div key={index} className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
-                      <div className="md:col-span-2 text-center md:text-left">
-                        <p className="text-muted-foreground text-lg">{step.description}</p>
-                      </div>
-                      <div className="flex items-center gap-4 justify-center md:justify-end flex-shrink-0">
-                           <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground text-2xl flex-shrink-0">
-                              {step.step}
-                          </div>
-                          <h3 className="font-bold text-2xl">{step.title}</h3>
-                      </div>
+                <div
+                  key={index}
+                  className={cn(
+                    "relative flex w-full items-center",
+                    index % 2 === 0 ? "md:justify-start" : "md:justify-end"
+                  )}
+                >
+                   {/* Mobile Circle - always on left */}
+                  <div className="absolute top-0 left-8 -translate-x-1/2 z-10 md:hidden">
+                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground text-2xl flex-shrink-0">
+                      {step.step}
+                    </div>
                   </div>
+                  
+                  {/* Desktop Circle - on the center line */}
+                  <div className="hidden md:block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
+                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground text-2xl flex-shrink-0">
+                      {step.step}
+                    </div>
+                  </div>
+                  
+                  {/* Content Box */}
+                  <div className={cn(
+                    "w-full md:w-[calc(50%-4rem)] pl-24 md:pl-0",
+                    index % 2 === 0 ? "md:text-right" : "md:text-left"
+                  )}>
+                    <h3 className="font-bold text-3xl mb-2">{step.title}</h3>
+                    <p className="text-lg text-muted-foreground">{step.description}</p>
+                  </div>
+                </div>
               ))}
+            </div>
           </div>
         </div>
       </section>
@@ -192,7 +217,6 @@ export default function Home() {
           <Button asChild size="lg" className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90 btn-glow">
             <Link href="/contacto">
               Agendar Reunión
-              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
