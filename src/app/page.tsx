@@ -142,7 +142,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4 bg-card">
+      <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que <span className="text-primary">cambia</span> cuando implementamos el sistema</h2>
@@ -191,7 +191,7 @@ export default function Home() {
 
                     {/* Desktop layout */}
                     <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
-                      {isEven ? (
+                      {!isEven ? (
                         <>
                           <div className="text-right">
                             <p className="text-lg text-muted-foreground">{step.description}</p>
