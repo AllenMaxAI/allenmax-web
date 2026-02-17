@@ -99,40 +99,79 @@ export default function Home() {
 
        <section id="proceso" className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 md:mb-24">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Cómo lo Hacemos Realidad</h2>
-            <p className="max-w-xl mx-auto mt-4 text-muted-foreground">Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.</p>
+            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
+              Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.
+            </p>
           </div>
-          <div className="relative">
-             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden md:block" />
-             {processSteps.map((step, index) => (
-                <div key={step.step} className={`relative flex items-center md:justify-center mb-12 group`}>
-                    <div className={`md:w-1/2 flex ${index % 2 === 0 ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'} ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
-                         <Card className="w-full md:max-w-sm bg-card/80 backdrop-blur-sm border-white/10 hover:border-primary/50 transition-all duration-300">
-                             <CardHeader>
-                                 <CardTitle>{step.title}</CardTitle>
-                             </CardHeader>
-                             <CardContent>
-                                 <p className="text-muted-foreground">{step.description}</p>
-                             </CardContent>
-                         </Card>
+
+          {/* Desktop Timeline */}
+          <div className="hidden md:block">
+            <div className="relative">
+              {/* Horizontal Line */}
+              <div className="absolute top-1/2 left-0 w-full h-px bg-border -translate-y-1/2"></div>
+              
+              <div className="grid grid-cols-5 gap-x-4">
+                {processSteps.map((step, index) => (
+                  <div key={step.step} className="relative h-48 flex items-center justify-center">
+                    
+                    {/* Content above the line */}
+                    <div className="text-center absolute bottom-1/2 translate-y-[-1rem] w-full px-2">
+                      {index % 2 !== 0 ? (
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="w-10 h-10 bg-primary rounded-full border-4 border-background flex items-center justify-center font-bold text-primary-foreground z-10">
+                            {step.step}
+                          </div>
+                          <h3 className="font-bold text-xl">{step.title}</h3>
+                        </div>
+                      ) : <p className="text-sm text-muted-foreground">{step.description}</p>}
                     </div>
-                    <div className="absolute left-1/2 -translate-x-1/2 bg-background border-2 border-primary rounded-full w-12 h-12 flex items-center justify-center font-bold text-primary text-lg group-hover:scale-110 transition-transform">
-                        {step.step}
+
+                    {/* Dot on the line */}
+                    <div className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full z-5"></div>
+                    
+                    {/* Content below the line */}
+                    <div className="text-center absolute top-1/2 translate-y-[1rem] w-full px-2">
+                      {index % 2 === 0 ? (
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="w-10 h-10 bg-primary rounded-full border-4 border-background flex items-center justify-center font-bold text-primary-foreground z-10">
+                            {step.step}
+                          </div>
+                          <h3 className="font-bold text-xl">{step.title}</h3>
+                        </div>
+                      ) : <p className="text-sm text-muted-foreground">{step.description}</p>}
                     </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Timeline */}
+          <div className="md:hidden space-y-10">
+            {processSteps.map((step) => (
+              <div key={step.step} className="flex items-center text-center flex-col">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground shrink-0">
+                    {step.step}
+                  </div>
+                  <h3 className="font-bold text-2xl">{step.title}</h3>
                 </div>
-             ))}
+                <p className="text-muted-foreground max-w-xs">{step.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="cta-final" className="py-20 text-center bg-gradient-to-r from-blue-900 via-primary to-blue-800 text-white px-4">
+      <section id="cta-final" className="py-20 text-center">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">¿Listo para transformar tu empresa?</h2>
-          <p className="max-w-2xl mx-auto mt-4 text-lg text-blue-100">
+          <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
             Agenda una llamada estratégica gratuita y descubre el potencial real de unir la IA y el marketing para tu negocio.
           </p>
-          <Button asChild size="lg" className="mt-8 bg-white text-primary hover:bg-gray-200 btn-glow">
+          <Button asChild size="lg" className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90 btn-glow">
             <Link href="/contacto">
               Agendar Reunión
               <ArrowRight className="ml-2 h-5 w-5" />
