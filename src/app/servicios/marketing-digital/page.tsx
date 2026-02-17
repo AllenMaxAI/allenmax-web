@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LayoutTemplate, Share2, Megaphone, Search, Mail, CheckCircle2, Target } from 'lucide-react';
 import React from 'react';
+import { cn } from '@/lib/utils';
+import { Separator } from '@/components/ui/separator';
 
 const services = [
     {
@@ -86,45 +88,47 @@ export default function MarketingDigitalPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
              <span className="text-primary font-bold">🔹 SERVICIOS ESTRATÉGICOS</span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-2">
               Un Sistema Completo para tu Crecimiento
             </h2>
-            <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
+            <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
               Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {services.map((service) => (
-              <Card key={service.title} className="flex flex-col h-full bg-card/90 backdrop-blur-sm border-white/10 hover:border-primary transition-colors duration-300 transform hover:-translate-y-1">
-                <CardHeader>
-                    <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
-                            {React.cloneElement(service.icon, { className: 'h-6 w-6' })}
-                        </div>
-                        <CardTitle className="text-xl font-bold pt-1">{service.title}</CardTitle>
+          <div className="space-y-24">
+            {services.map((service, index) => (
+              <div key={service.title} className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div className={cn("space-y-4", index % 2 !== 0 && "md:order-2")}>
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 bg-primary/10 p-3 rounded-xl text-primary">
+                      {React.cloneElement(service.icon, { className: 'h-6 w-6' })}
                     </div>
-                </CardHeader>
-                <CardContent className="flex flex-col flex-grow">
-                    <p className="text-muted-foreground mb-6">{service.description}</p>
-                    
-                    <div className="mt-auto space-y-4">
-                        <h4 className="font-semibold text-foreground text-sm">Incluye:</h4>
-                        <ul className="space-y-2">
-                            {service.points.map((point) => (
-                            <li key={point} className="flex items-start gap-2.5">
-                                <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
-                                <span className="text-muted-foreground text-sm">{point}</span>
-                            </li>
-                            ))}
-                        </ul>
-                    </div>
-                </CardContent>
-              </Card>
+                    <h3 className="text-2xl font-bold">{service.title}</h3>
+                  </div>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+
+                <div className={cn("space-y-4", index % 2 !== 0 && "md:order-1")}>
+                  <div className="bg-card/50 border rounded-lg p-6">
+                    <h4 className="font-semibold text-foreground mb-4">Incluye:</h4>
+                    <ul className="space-y-3">
+                      {service.points.map((point) => (
+                        <li key={point} className="flex items-start gap-3">
+                          <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
+                          <span className="text-muted-foreground text-sm">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
