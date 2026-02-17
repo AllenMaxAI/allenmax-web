@@ -30,7 +30,7 @@ export default function ContactoPage() {
             </p>
           </div>
         </div>
-        <div className="overflow-hidden rounded-lg">
+        <div className="rounded-lg">
           <InlineWidget
             url="https://calendly.com/agency-allenmax/reunion-allenmax"
             styles={{ height: '700px' }}
