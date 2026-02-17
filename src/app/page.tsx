@@ -74,7 +74,7 @@ export default function Home() {
         <div className="z-10 flex flex-col items-center gap-6">
            <h1 className="text-4xl md:text-6xl font-bold tracking-tight max-w-4xl leading-tight">
             <span className="block">Transformamos empresas con</span>
-            <span className="block"><span className="text-primary">Marketing</span> e <span className="text-primary">Inteligencia Artificial</span></span>
+            <span className="block">Marketing e Inteligencia Artificial</span>
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
@@ -90,15 +90,15 @@ export default function Home() {
       <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div>
+            <div className="max-w-xl">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                El problema: Invertir en marketing sin tener un <span className="text-primary">sistema</span>
+                El problema: Invertir en marketing sin tener un sistema
               </h2>
               <p className="mt-4 text-muted-foreground text-lg">
                 Muchas empresas generan contactos, pero sin una estructura que los aproveche, el esfuerzo se diluye. El resultado es una pérdida de oportunidades y un crecimiento estancado.
               </p>
                <p className="mt-6 text-xl font-semibold">
-                Sin un sistema, <span className="text-primary">no hay crecimiento sostenible.</span>
+                Sin un sistema, no hay crecimiento sostenible.
               </p>
             </div>
             <div>
@@ -120,7 +120,7 @@ export default function Home() {
         <div className="container mx-auto max-w-5xl">
            <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Impulsa el <span className="text-primary">crecimiento</span> de tu empresa
+              Impulsa el crecimiento de tu empresa
             </h2>
             <p className="mt-4 text-muted-foreground text-lg max-w-3xl mx-auto">
              Diseñamos e implementamos sistemas que combinan marketing, automatización y tecnología avanzada para crear una estructura digital que genera resultados medibles y crecimiento sostenible.
@@ -145,7 +145,7 @@ export default function Home() {
       <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que <span className="text-primary">cambia</span> cuando implementamos el sistema</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que cambia cuando implementamos el sistema</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 max-w-4xl mx-auto text-left mt-12">
               {systemChanges.map((change, index) => (
@@ -162,7 +162,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Cómo lo Hacemos <span className="text-primary">Realidad</span>
+              Cómo lo Hacemos Realidad
             </h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.
@@ -227,7 +227,7 @@ export default function Home() {
 
       <section id="cta-final" className="py-20 text-center">
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">¿Listo para <span className="text-primary">transformar</span> tu empresa?</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">¿Listo para transformar tu empresa?</h2>
           <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
             Agenda una llamada estratégica gratuita y descubre el potencial real de unir la IA y el marketing para tu negocio.
           </p>
