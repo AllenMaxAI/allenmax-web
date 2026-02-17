@@ -60,7 +60,7 @@ export function AppHeader() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full border-b border-border transition-all duration-300',
-        isScrolled ? 'bg-background/80 backdrop-blur-sm' : 'bg-transparent'
+        isScrolled ? 'bg-header/90 backdrop-blur-sm' : 'bg-header'
       )}
     >
       <div className="container mx-auto px-4">
