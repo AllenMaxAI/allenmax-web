@@ -1,19 +1,20 @@
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Cpu, Target } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { BrainCircuit, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 const serviceCategories = [
   {
-    icon: <Cpu className="h-10 w-10 text-primary" />,
-    title: 'Servicios de Inteligencia Artificial',
-    description: 'Automatiza, optimiza y revoluciona tu negocio con el poder de la IA.',
-    href: '/servicios/ia',
+    icon: <TrendingUp className="h-10 w-10 text-primary" />,
+    title: 'Marketing Digital',
+    description: 'Estrategias probadas para construir tu presencia online, atraer a tu audiencia y convertir visitantes en clientes.',
+    href: '/servicios/marketing-digital',
   },
   {
-    icon: <Target className="h-10 w-10 text-primary" />,
-    title: 'Servicios de Marketing Digital',
-    description: 'Atrae, convierte y fideliza clientes con estrategias digitales de alto impacto.',
-    href: '/servicios/marketing-digital',
+    icon: <BrainCircuit className="h-10 w-10 text-primary" />,
+    title: 'Inteligencia Artificial',
+    description: 'Soluciones de IA a medida para automatizar procesos, potenciar la toma de decisiones y desbloquear un rendimiento superior.',
+    href: '/servicios/ia',
   },
 ];
 
@@ -22,30 +23,31 @@ export default function ServiciosPage() {
     <>
       <section className="py-20 md:py-32 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Nuestras Soluciones para tu Crecimiento</h1>
-          <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
-            Combinamos tecnología de vanguardia y estrategias probadas para ofrecerte resultados excepcionales.
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter max-w-4xl mx-auto">
+            La Sinergia Perfecta: Marketing Digital e Inteligencia Artificial
+          </h1>
+          <p className="max-w-3xl mx-auto mt-6 text-lg text-muted-foreground">
+            En AllenMax, no solo aplicamos técnicas de marketing digital; las reinventamos con el poder de la Inteligencia Artificial. Esta combinación única nos permite crear estrategias hiper-personalizadas, optimizar cada campaña en tiempo real y descubrir oportunidades que otros no pueden ver. El resultado es un crecimiento exponencial para tu negocio, con una eficiencia y precisión sin precedentes.
           </p>
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="pb-16 md:pb-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {serviceCategories.map((category) => (
-              <Link href={category.href} key={category.title} className="group block">
-                <Card className="h-full bg-card/80 backdrop-blur-sm border-white/10 text-left hover:border-primary transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10">
-                  <CardHeader className="p-8">
-                    <div className="mb-4">{category.icon}</div>
-                    <CardTitle className="text-2xl mb-2">{category.title}</CardTitle>
-                    <CardDescription className="text-base">{category.description}</CardDescription>
-                     <div className="mt-6 flex items-center text-primary font-semibold">
-                      Ver servicios
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </CardHeader>
-                </Card>
-              </Link>
+              <Card key={category.title} className="text-center flex flex-col justify-between p-8">
+                  <div>
+                    <div className="flex justify-center mb-6">{category.icon}</div>
+                    <h2 className="text-2xl font-bold mb-2">{category.title}</h2>
+                    <p className="text-muted-foreground">{category.description}</p>
+                  </div>
+                  <div className="mt-8">
+                    <Button asChild className="w-full btn-glow">
+                        <Link href={category.href}>Saber más</Link>
+                    </Button>
+                </div>
+              </Card>
             ))}
           </div>
         </div>
