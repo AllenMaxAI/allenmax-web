@@ -1,22 +1,22 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Rocket, CheckCircle2, BarChart, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Rocket, Zap, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 
 const benefits = [
   {
-    icon: <Zap className="h-6 w-6 text-primary" />,
-    title: 'Eficiencia estratégica',
-    description: 'Procesos optimizados que aceleran la captación y la gestión comercial.',
+    icon: <Zap className="h-8 w-8 text-primary" />,
+    title: 'Velocidad',
+    description: 'Implementación ágil para resultados rápidos y eficientes.',
   },
   {
-    icon: <BarChart className="h-6 w-6 text-primary" />,
-    title: 'Escalabilidad estructurada',
-    description: 'Sistemas preparados para acompañar el crecimiento de tu empresa.',
+    icon: <Rocket className="h-8 w-8 text-primary" />,
+    title: 'Escalabilidad',
+    description: 'Soluciones que crecen y se adaptan a tu negocio.',
   },
   {
-    icon: <Rocket className="h-6 w-6 text-primary" />,
-    title: 'Ventaja competitiva',
-    description: 'Tecnología aplicada con enfoque estratégico para posicionarte por delante del mercado.',
+    icon: <Briefcase className="h-8 w-8 text-primary" />,
+    title: 'Innovación',
+    description: 'Tecnología de vanguardia para darte una ventaja competitiva.',
   },
 ];
 
@@ -60,9 +60,9 @@ export default function Home() {
   
   return (
     <div className="flex flex-col">
-       <section className="h-[60vh] min-h-[450px] flex items-center justify-center text-center px-4">
+       <section className="h-[60vh] min-h-[500px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
-           <h1 className="text-4xl md:text-6xl font-bold tracking-tight max-w-4xl leading-tight">
+           <h1 className="text-4xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
             Transformamos <span className="text-primary">Empresas</span> con <br/> Soluciones de <span className="text-primary">Inteligencia Artificial</span>
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
@@ -75,24 +75,24 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
-      <section id="growth" className="py-16 md:py-24 px-4">
+
+      <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Impulsa el <span className="text-primary">crecimiento</span> de tu empresa</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Revoluciona tu negocio con <span className="text-primary">IA</span></h2>
             <p className="max-w-3xl mx-auto mt-4 text-muted-foreground text-lg">
-              Diseñamos e implementamos sistemas que combinan marketing, automatización y tecnología avanzada para crear una estructura digital que genera resultados medibles y crecimiento sostenible.
+              Implementamos estrategias inteligentes potenciadas por IA y soluciones tecnológicas avanzadas para crear un ecosistema digital que impulsa el crecimiento real y sostenible de tu empresa.
             </p>
           </div>
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="flex items-start gap-6 text-left p-6 rounded-lg border-transparent max-w-3xl mx-auto">
+              <div key={benefit.title} className="flex flex-col items-center text-center gap-4 p-8 border border-border/20 rounded-lg bg-card/50">
                 <div className="flex-shrink-0 bg-primary/10 p-4 rounded-full">
                   {benefit.icon}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">{benefit.title}</h3>
-                  <p className="mt-1 text-muted-foreground">{benefit.description}</p>
+                  <p className="mt-2 text-muted-foreground">{benefit.description}</p>
                 </div>
               </div>
             ))}
@@ -115,28 +115,30 @@ export default function Home() {
             </div>
         </div>
       </section>
-
+      
       <section id="proceso" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Cómo lo Hacemos <span className="text-primary">Realidad</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Cómo lo Hacemos <span className="text-primary">Realidad</span>
+            </h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
               Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-y-12 md:gap-x-8">
-            {processSteps.map((step, index) => (
-              <div key={step.step} className="relative flex flex-col items-center text-center">
-                {index < processSteps.length -1 && (
-                  <div className="hidden md:block absolute top-6 left-1/2 w-full h-px bg-border -translate-x-0"></div>
-                )}
-                <div className="relative w-12 h-12 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground z-10 text-xl mb-4">
-                  {step.step}
-                </div>
-                <h3 className="font-bold text-lg mt-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{step.description}</p>
-              </div>
-            ))}
+          
+          <div className="max-w-3xl mx-auto space-y-12">
+              {processSteps.map((step, index) => (
+                  <div key={index} className="flex flex-col md:flex-row items-center justify-between gap-4">
+                      <p className="text-muted-foreground text-lg text-center md:text-left">{step.description}</p>
+                      <div className="flex items-center gap-4 flex-shrink-0">
+                           <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center font-bold text-primary-foreground text-xl flex-shrink-0">
+                              {step.step}
+                          </div>
+                          <h3 className="font-bold text-2xl">{step.title}</h3>
+                      </div>
+                  </div>
+              ))}
           </div>
         </div>
       </section>
