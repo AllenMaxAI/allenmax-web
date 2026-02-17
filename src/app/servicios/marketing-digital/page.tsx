@@ -115,18 +115,16 @@ export default function MarketingDigitalPage() {
                   </p>
                 </div>
 
-                <div className={cn("space-y-4", index % 2 !== 0 && "md:order-1")}>
-                  <div className="bg-card/50 border rounded-lg p-6">
-                    <h4 className="font-semibold text-foreground mb-4">Incluye:</h4>
-                    <ul className="space-y-3">
-                      {service.points.map((point) => (
-                        <li key={point} className="flex items-start gap-3">
-                          <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
-                          <span className="text-muted-foreground text-sm">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className={cn(index % 2 !== 0 && "md:order-1")}>
+                  <h4 className="font-semibold text-foreground mb-4">Incluye:</h4>
+                  <ul className="space-y-3">
+                    {service.points.map((point) => (
+                      <li key={point} className="flex items-start gap-3">
+                        <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
+                        <span className="text-muted-foreground text-sm">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
