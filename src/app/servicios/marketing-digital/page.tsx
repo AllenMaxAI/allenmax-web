@@ -76,26 +76,26 @@ const services = [
 export default function MarketingDigitalPage() {
   return (
     <>
-      <section className="py-20 md:py-28 text-center bg-grid-pattern">
+      <section className="py-20 md:py-28 text-center">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Marketing Digital</h1>
           <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
             Diseñamos ecosistemas digitales donde estrategia, captación y tecnología trabajan de forma integrada para generar crecimiento real.
           </p>
-          <div className="mt-8">
-            <p className="text-lg font-semibold text-primary">No implementamos acciones aisladas. Construimos sistemas orientados a resultados.</p>
-          </div>
+           <p className="max-w-3xl mx-auto mt-6 text-xl font-semibold text-primary tracking-tight">
+            No implementamos acciones aisladas. Construimos sistemas orientados a resultados.
+          </p>
         </div>
       </section>
 
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-             <span className="text-primary font-bold">🔹 SERVICIOS ESTRATÉGICOS</span>
+             <span className="text-sm font-bold uppercase tracking-wider text-primary">Servicios Estratégicos</span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-2">
               Un Sistema Completo para tu Crecimiento
             </h2>
-            <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
+            <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
               Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible.
             </p>
           </div>
