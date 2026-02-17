@@ -19,23 +19,10 @@ import {
 import React from 'react';
 
 const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/servicios/asesor-ia', label: 'Asesor IA' },
+  { href: '/nosotros', label: 'Nosotros' },
   { href: '/contacto', label: 'Contacto' },
 ];
 
-const serviceLinks = {
-  ia: [
-    { title: 'Servicios de IA', href: '/servicios/ia', description: 'Automatización e inteligencia para tu negocio.' },
-    { title: 'Desarrollo de Chatbots', href: '/servicios/ia', description: 'Asistentes virtuales personalizados.' },
-    { title: 'Automatización de Procesos', href: '/servicios/ia', description: 'Optimiza tareas y reduce costes.' },
-  ],
-  marketing: [
-    { title: 'Servicios de Marketing', href: '/servicios/marketing-digital', description: 'Estrategias para crecer y convertir.' },
-    { title: 'Generación de Leads', href: '/servicios/marketing-digital', description: 'Atrae clientes potenciales calificados.' },
-    { title: 'Embudos de Conversión', href: '/servicios/marketing-digital', description: 'Convierte visitantes en clientes.' },
-  ],
-};
 
 export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,19 +51,7 @@ export function AppHeader() {
           <div className="hidden md:flex items-center gap-6">
             <NavigationMenu>
               <NavigationMenuList>
-                {navLinks.map((link) => (
-                  <NavigationMenuItem key={link.href}>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        href={link.href}
-                        className={navigationMenuTriggerStyle()}
-                      >
-                        {link.label}
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-                 <NavigationMenuItem>
+                <NavigationMenuItem>
                   <NavigationMenuTrigger>Servicios</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -92,6 +67,18 @@ export function AppHeader() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+                {navLinks.map((link) => (
+                  <NavigationMenuItem key={link.href}>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={link.href}
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        {link.label}
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -118,20 +105,23 @@ export function AppHeader() {
                      </Button>
                   </div>
                   <nav className="flex flex-col gap-4 mt-8 text-lg">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="text-foreground hover:text-primary transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                    <span className="font-semibold mt-2">Servicios</span>
-                     <Link href="/servicios" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Todos los Servicios</Link>
+                    <span className="font-semibold">Servicios</span>
+                     <Link href="/servicios" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Todos los Servicios</Link>
                      <Link href="/servicios/ia" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Inteligencia Artificial</Link>
                      <Link href="/servicios/marketing-digital" className="text-muted-foreground hover:text-primary transition-colors pl-4" onClick={() => setIsMobileMenuOpen(false)}>Marketing Digital</Link>
+                  
+                     <div className="mt-4 flex flex-col gap-4">
+                      {navLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="text-foreground hover:text-primary transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
                   </nav>
                   <Button asChild className="mt-auto btn-glow" size="lg">
                     <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>Agendar Llamada</Link>
@@ -147,29 +137,28 @@ export function AppHeader() {
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ElementRef<'a'>,
+  React.ComponentPropsWithoutRef<'a'>
+>(({ className, title, children, href, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <Link href={props.href!} legacyBehavior passHref>
-          <a
-            ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-              className
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-              {children}
-            </p>
-          </a>
+        <Link
+          href={href!}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          className={cn(
+            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
         </Link>
       </NavigationMenuLink>
     </li>
-  )
-})
+  );
+});
 ListItem.displayName = "ListItem"

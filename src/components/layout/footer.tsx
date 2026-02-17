@@ -25,9 +25,8 @@ export function AppFooter() {
              <div>
               <h4 className="font-semibold mb-3">Navegación</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/" className="text-muted-foreground hover:text-primary">Inicio</Link></li>
                 <li><Link href="/servicios" className="text-muted-foreground hover:text-primary">Servicios</Link></li>
-                <li><Link href="/servicios/asesor-ia" className="text-muted-foreground hover:text-primary">Asesor IA</Link></li>
+                <li><Link href="/nosotros" className="text-muted-foreground hover:text-primary">Nosotros</Link></li>
                 <li><Link href="/contacto" className="text-muted-foreground hover:text-primary">Contacto</Link></li>
               </ul>
             </div>
@@ -48,7 +47,7 @@ export function AppFooter() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>&copy; {currentYear} Synapse Growth. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} AllenMax. Todos los derechos reservados.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
             {socialLinks.map((link, index) => (
               <Link key={index} href={link.href} className="hover:text-primary transition-colors">

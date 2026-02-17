@@ -9,45 +9,45 @@ const benefits = [
   {
     icon: <Rocket className="h-8 w-8 text-primary" />,
     title: 'Velocidad',
-    description: 'Resultados hasta 3 veces más rápidos que con métodos tradicionales, permitiéndote ver el impacto en tiempo récord.',
+    description: 'Resultados 3 veces más rápidos que los métodos tradicionales.',
   },
   {
     icon: <Scaling className="h-8 w-8 text-primary" />,
     title: 'Escalabilidad',
-    description: 'Soluciones diseñadas para crecer contigo, perfectas para pymes, clínicas y negocios en expansión.',
+    description: 'Soluciones que crecen con tu negocio.',
   },
   {
     icon: <Cpu className="h-8 w-8 text-primary" />,
     title: 'Innovación',
-    description: 'Aplicamos tecnología de vanguardia para que siempre estés un paso por delante de tu competencia.',
+    description: 'Tecnología de vanguardia para mantenerte por delante de la competencia.',
   },
 ];
 
 const processSteps = [
   {
     step: "1",
-    title: "Contacto Inicial",
-    description: "Agenda una llamada. Queremos escuchar sobre tu proyecto, tus metas y tus desafíos actuales."
+    title: "Contacto",
+    description: "Agenda una llamada y cuéntanos tu proyecto."
   },
   {
     step: "2",
-    title: "Propuesta Estratégica",
-    description: "Recibirás un plan de acción detallado, con tiempos, costes y resultados esperados. Sin sorpresas."
+    title: "Propuesta",
+    description: "Recibe un plan detallado con tiempos y costes."
   },
   {
     step: "3",
-    title: "Desarrollo Ágil",
-    description: "Creamos y personalizamos tu solución de forma rápida, manteniéndote informado en cada paso."
+    title: "Desarrollo",
+    description: "Creamos soluciones personalizadas de forma ágil."
   },
   {
     step: "4",
-    title: "Refinamiento y Optimización",
-    description: "Iteramos constantemente sobre la solución, usando datos reales para maximizar los resultados."
+    title: "Refinamiento",
+    description: "Iteración constante enfocada en resultados."
   },
   {
     step: "5",
-    title: "Lidera tu Sector",
-    description: "Con la nueva ventaja competitiva, estarás listo para dominar tu mercado."
+    title: "Lidera tu sector",
+    description: "Aplica IA para obtener ventaja competitiva."
   }
 ];
 
@@ -56,22 +56,17 @@ const homePageImage = PlaceHolderImages.find(p => p.id === 'business-analysis');
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center text-center px-4">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background"></div>
-        <div className="z-10 flex flex-col items-center gap-6 animate-fade-in-up">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
-            Potenciamos tu Negocio con IA y Marketing Digital
+      <section className="h-[70vh] min-h-[500px] flex items-center justify-center text-center px-4">
+        <div className="z-10 flex flex-col items-center gap-8">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Transformamos empresas con soluciones de marketing digital e IA
           </h1>
-          <p className="max-w-3xl text-lg text-muted-foreground">
-            Combinamos estrategias de marketing probadas y tecnología de inteligencia artificial para atraer más clientes, optimizar tus operaciones y superar a la competencia.
+          <p className="max-w-2xl text-lg text-muted-foreground">
+            Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="btn-glow">
-              <Link href="/contacto">Descubre Cómo</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/servicios">Ver Servicios</Link>
+              <Link href="#como-lo-hacemos">Descubre cómo lo hacemos <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
           </div>
         </div>
@@ -79,12 +74,6 @@ export default function Home() {
 
       <section id="beneficios" className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Crecimiento Inteligente para tu Empresa</h2>
-            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              Nuestra fusión de IA y marketing está diseñada para darte una ventaja competitiva real.
-            </p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit) => (
               <Card key={benefit.title} className="bg-card/80 backdrop-blur-sm border-white/10 text-center hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
@@ -116,24 +105,10 @@ export default function Home() {
              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
           </div>
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Revoluciona tu Negocio con Estrategias Inteligentes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Revoluciona tu negocio con IA</h2>
             <p className="mt-4 text-muted-foreground text-lg">
-              Implementamos un ecosistema digital que une lo mejor del marketing y la IA. Creamos soluciones avanzadas para impulsar un crecimiento real y sostenible, pensado para empresas como la tuya.
+             Implementamos estrategias inteligentes potenciadas por IA y soluciones tecnológicas avanzadas para crear un ecosistema digital que impulsa el crecimiento real y sostenible de tu empresa.
             </p>
-            <ul className="mt-6 space-y-4">
-                <li className="flex items-start gap-3">
-                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
-                    <span>Atrae clientes cualificados de forma automática.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
-                    <span>Optimiza tus operaciones y reduce costes operativos.</span>
-                </li>
-                 <li className="flex items-start gap-3">
-                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
-                    <span>Ofrece una experiencia de cliente excepcional y personalizada.</span>
-                </li>
-            </ul>
           </div>
         </div>
       </section>
@@ -141,7 +116,7 @@ export default function Home() {
        <section id="proceso" className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">De la Idea al Liderazgo en 5 Pasos</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Cómo lo Hacemos Realidad</h2>
             <p className="max-w-xl mx-auto mt-4 text-muted-foreground">Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.</p>
           </div>
           <div className="relative">

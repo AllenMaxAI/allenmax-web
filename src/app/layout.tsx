@@ -6,8 +6,8 @@ import { AppFooter } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Synapse Growth | IA & Marketing Digital',
-  description: 'Transforma tu empresa con Inteligencia Artificial y Marketing Digital de alto impacto.',
+  title: 'AllenMax | Marketing Digital & IA',
+  description: 'Transformamos tu empresa con Inteligencia Artificial y Marketing Digital de alto impacto.',
 };
 
 export default function RootLayout({
