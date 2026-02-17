@@ -1,10 +1,19 @@
 import { CheckCircle2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const valuePropositions = [
   'Asegurar que cada oportunidad sea gestionada correctamente',
   'Optimizar procesos comerciales y operativos',
   'Mejorar la conversión y el seguimiento',
   'Consolidar un crecimiento sólido y sostenible',
+];
+
+const targetAudience = [
+  'Dueños de negocios que quieren romper su techo de crecimiento',
+  'Empresas que buscan una máquina de crecimiento rentable funcionando 24/7',
+  'Negocios que quieren escalar rápidamente con Inteligencia Artificial',
+  'Empresas que buscan potenciar a su equipo con herramientas de IA',
 ];
 
 export default function NosotrosPage() {
@@ -44,6 +53,29 @@ export default function NosotrosPage() {
                 </p>
             </div>
         </section>
+
+        <section className="mt-24 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            ¿Es esta solución para ti?
+            </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+            Ayudamos a empresas ambiciosas a alcanzar su máximo potencial. Esto es para ti si eres...
+            </p>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 max-w-4xl mx-auto text-left">
+            {targetAudience.map((item, index) => (
+                <div key={index} className="flex items-start gap-3">
+                <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                <p className="text-lg">{item}</p>
+                </div>
+            ))}
+            </div>
+            <div className="mt-12">
+            <Button asChild size="lg" className="btn-glow">
+                <Link href="/contacto">Agenda una Demo Gratis</Link>
+            </Button>
+            </div>
+        </section>
+
       </div>
     </div>
   );
