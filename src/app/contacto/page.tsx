@@ -1,61 +1,57 @@
-import { ContactForm } from './contact-form';
-import { Mail, Phone } from 'lucide-react';
+import { Check } from 'lucide-react';
+import { CalendlyWidget } from './calendly-widget';
 
 export default function ContactoPage() {
   return (
-    <>
-      <section className="py-20 md:py-32 text-center">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Hablemos de tu Crecimiento</h1>
-          <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
-            Estamos listos para escuchar tus desafíos y diseñar una solución que impulse tu negocio.
-          </p>
-        </div>
-      </section>
+    <div className="min-h-[calc(100vh-4rem)] lg:grid lg:grid-cols-2">
+      {/* Left Column: Information */}
+      <div className="bg-card text-card-foreground p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+        <div className="max-w-md mx-auto">
+          <h2 className="font-bold text-2xl mb-6">En esta sesión estratégica:</h2>
+          <ul className="space-y-4 mb-10">
+            <li className="flex items-start">
+              <Check className="h-5 w-5 text-primary flex-shrink-0 mr-3 mt-1" />
+              <span>Analizaremos tu situación actual</span>
+            </li>
+            <li className="flex items-start">
+              <Check className="h-5 w-5 text-primary flex-shrink-0 mr-3 mt-1" />
+              <span>Detectaremos oportunidades de mejora</span>
+            </li>
+            <li className="flex items-start">
+              <Check className="h-5 w-5 text-primary flex-shrink-0 mr-3 mt-1" />
+              <span>Evaluaremos cómo estructurar tu sistema de crecimiento</span>
+            </li>
+            <li className="flex items-start">
+              <Check className="h-5 w-5 text-primary flex-shrink-0 mr-3 mt-1" />
+              <span>Resolveremos tus dudas con total claridad</span>
+            </li>
+          </ul>
 
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-            <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold mb-2">Envíanos un Mensaje</h2>
-              <p className="text-muted-foreground mb-8">Completa el formulario y nuestro equipo se pondrá en contacto contigo a la brevedad.</p>
-              <ContactForm />
-            </div>
-            <div className="bg-card p-8 rounded-lg">
-              <h2 className="text-3xl font-bold mb-6">Información de Contacto</h2>
-              <p className="text-muted-foreground mb-8">
-                Prefieres otro método? Aquí tienes nuestras vías de contacto directo.
-              </p>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full text-primary">
-                    <Mail className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-muted-foreground">Envíanos tu consulta</p>
-                    <a href="mailto:hola@synapsegrowth.com" className="text-primary hover:underline">
-                      hola@synapsegrowth.com
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full text-primary">
-                    <Phone className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Agendar Llamada</h3>
-                    <p className="text-muted-foreground">Elige el mejor momento para ti</p>
-                    <a href="/contacto" className="text-primary hover:underline">
-                      Calendario de reuniones
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="border-t border-border/50 my-10"></div>
+
+          <h2 className="font-bold text-2xl mb-4">Construyamos algo que tenga sentido a largo plazo</h2>
+          <p className="text-muted-foreground mb-4">
+            Las decisiones estratégicas marcan la diferencia entre crecer de forma puntual y consolidar una posición competitiva real.
+          </p>
+          <p className="text-muted-foreground mb-6">
+            Este espacio no está diseñado para vender promesas rápidas, sino para iniciar conversaciones con enfoque, criterio y visión empresarial.
+          </p>
+          <p className="text-muted-foreground mb-10">
+            Si has llegado hasta aquí, probablemente no buscas "probar algo nuevo". Buscas hacerlo bien.
+          </p>
+          
+          <div className="border-l-4 border-primary pl-6">
+            <p className="text-lg font-medium text-foreground">
+              Cuando estés listo para estructurar tu crecimiento con claridad y dirección, el siguiente movimiento es simple.
+            </p>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* Right Column: Calendly Widget */}
+      <div className="bg-white flex items-center justify-center p-4 lg:p-8">
+        <CalendlyWidget />
+      </div>
+    </div>
   );
 }
