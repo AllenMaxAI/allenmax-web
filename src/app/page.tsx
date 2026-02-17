@@ -6,19 +6,19 @@ import { cn } from '@/lib/utils';
 
 const benefits = [
   {
-    icon: <Zap />,
-    title: "Eficiencia y Velocidad",
-    description: "Implementamos procesos optimizados en tiempo récord para que veas resultados cuanto antes."
+    icon: <Rocket />,
+    title: "Velocidad",
+    description: "Resultados 3 veces más rápidos que los métodos tradicionales."
   },
   {
-    icon: <TrendingUp />,
-    title: "Crecimiento Sostenible",
-    description: "Creamos sistemas escalables que se adaptan y crecen junto a tu empresa, sin fricciones."
+    icon: <Scaling />,
+    title: "Escalabilidad",
+    description: "Soluciones que crecen con tu negocio."
   },
   {
-    icon: <Target />,
-    title: "Precisión Estratégica",
-    description: "Aplicamos un enfoque data-driven para asegurar que cada acción esté alineada con tus objetivos."
+    icon: <BrainCircuit />,
+    title: "Innovación",
+    description: "Tecnología de vanguardia para mantenerte por delante de la competencia."
   }
 ];
 
@@ -72,8 +72,8 @@ export default function Home() {
        <section className="h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
            <h1 className="text-4xl md:text-6xl font-bold tracking-tight max-w-4xl leading-tight">
-            <span className="block">Transformamos <span className="text-primary">Empresas</span> con</span>
-            <span className="block">Soluciones de <span className="text-primary">Inteligencia Artificial</span></span>
+            <span className="block">Transformamos empresas con</span>
+            <span className="block"><span className="text-primary">Marketing</span> e <span className="text-primary">Inteligencia Artificial</span></span>
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
