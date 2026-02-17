@@ -1,60 +1,57 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, BarChart, Cpu, Rocket, Scaling, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle, Cpu, Rocket, Scaling } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-
-const features = [
-  {
-    icon: <Cpu className="h-8 w-8 text-primary" />,
-    title: 'Automatización con IA',
-    description: 'Optimizamos tus procesos internos y externos para una eficiencia sin precedentes.',
-  },
-  {
-    icon: <Zap className="h-8 w-8 text-primary" />,
-    title: 'Chatbots y Asistentes Virtuales',
-    description: 'Mejora la atención al cliente 24/7 con asistentes inteligentes y personalizados.',
-  },
-  {
-    icon: <BarChart className="h-8 w-8 text-primary" />,
-    title: 'Estrategias de Marketing Digital',
-    description: 'Diseñamos planes de marketing a medida para alcanzar tus objetivos de negocio.',
-  },
-  {
-    icon: <Rocket className="h-8 w-8 text-primary" />,
-    title: 'Sistemas de Captación y Conversión',
-    description: 'Construimos embudos de venta que convierten visitantes en clientes leales.',
-  },
-];
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const benefits = [
   {
-    icon: <Scaling className="h-8 w-8 text-primary" />,
-    title: 'Aumento de Ventas',
-    description: 'Sistemas inteligentes que identifican y nutren oportunidades de venta, maximizando tu facturación.',
-  },
-  {
-    icon: <ShieldCheck className="h-8 w-8 text-primary" />,
-    title: 'Reducción de Costes',
-    description: 'La automatización de tareas repetitivas libera a tu equipo y reduce gastos operativos.',
-  },
-  {
-    icon: <Zap className="h-8 w-8 text-primary" />,
-    title: 'Automatización de Procesos',
-    description: 'Desde la atención al cliente hasta la gestión interna, opera de forma más ágil y sin errores.',
-  },
-  {
     icon: <Rocket className="h-8 w-8 text-primary" />,
-    title: 'Escalabilidad del Negocio',
-    description: 'Infraestructura tecnológica que crece contigo, permitiéndote expandir sin límites.',
+    title: 'Velocidad',
+    description: 'Resultados hasta 3 veces más rápidos que con métodos tradicionales, permitiéndote ver el impacto en tiempo récord.',
+  },
+  {
+    icon: <Scaling className="h-8 w-8 text-primary" />,
+    title: 'Escalabilidad',
+    description: 'Soluciones diseñadas para crecer contigo, perfectas para pymes, clínicas y negocios en expansión.',
+  },
+  {
+    icon: <Cpu className="h-8 w-8 text-primary" />,
+    title: 'Innovación',
+    description: 'Aplicamos tecnología de vanguardia para que siempre estés un paso por delante de tu competencia.',
   },
 ];
 
-const pillars = [
-  { title: 'Innovación', description: 'Aplicamos la última tecnología en IA para darte una ventaja competitiva.' },
-  { title: 'Estrategia', description: 'Cada solución se basa en un análisis profundo de tu negocio y tus metas.' },
-  { title: 'Resultados', description: 'Nos enfocamos en métricas claras que demuestran el retorno de tu inversión.' },
-  { title: 'Implementación', description: 'Integramos nuestras soluciones de forma rápida y eficiente en tus sistemas.' },
-]
+const processSteps = [
+  {
+    step: "1",
+    title: "Contacto Inicial",
+    description: "Agenda una llamada. Queremos escuchar sobre tu proyecto, tus metas y tus desafíos actuales."
+  },
+  {
+    step: "2",
+    title: "Propuesta Estratégica",
+    description: "Recibirás un plan de acción detallado, con tiempos, costes y resultados esperados. Sin sorpresas."
+  },
+  {
+    step: "3",
+    title: "Desarrollo Ágil",
+    description: "Creamos y personalizamos tu solución de forma rápida, manteniéndote informado en cada paso."
+  },
+  {
+    step: "4",
+    title: "Refinamiento y Optimización",
+    description: "Iteramos constantemente sobre la solución, usando datos reales para maximizar los resultados."
+  },
+  {
+    step: "5",
+    title: "Lidera tu Sector",
+    description: "Con la nueva ventaja competitiva, estarás listo para dominar tu mercado."
+  }
+];
+
+const homePageImage = PlaceHolderImages.find(p => p.id === 'business-analysis');
 
 export default function Home() {
   return (
@@ -64,14 +61,14 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background"></div>
         <div className="z-10 flex flex-col items-center gap-6 animate-fade-in-up">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
-            Transforma tu Empresa con IA y Marketing Inteligente
+            Potenciamos tu Negocio con IA y Marketing Digital
           </h1>
-          <p className="max-w-2xl text-lg text-muted-foreground">
-            Llevamos tu negocio al siguiente nivel con soluciones de automatización y estrategias digitales que generan resultados medibles.
+          <p className="max-w-3xl text-lg text-muted-foreground">
+            Combinamos estrategias de marketing probadas y tecnología de inteligencia artificial para atraer más clientes, optimizar tus operaciones y superar a la competencia.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="btn-glow">
-              <Link href="/contacto">Agendar Llamada</Link>
+              <Link href="/contacto">Descubre Cómo</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
               <Link href="/servicios">Ver Servicios</Link>
@@ -80,65 +77,92 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="que-hacemos" className="py-16 md:py-24 px-4">
+      <section id="beneficios" className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Qué Hacemos</h2>
-            <p className="max-w-xl mx-auto mt-4 text-muted-foreground">Soluciones integrales para la nueva era digital.</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Crecimiento Inteligente para tu Empresa</h2>
+            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
+              Nuestra fusión de IA y marketing está diseñada para darte una ventaja competitiva real.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature) => (
-              <Card key={feature.title} className="bg-card/80 backdrop-blur-sm border-white/10 text-center hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
-                <CardHeader>
-                  <div className="mx-auto bg-secondary p-3 rounded-full mb-4 w-fit">{feature.icon}</div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="beneficios" className="py-16 md:py-24 bg-secondary px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Beneficios Directos Para Tu Negocio</h2>
-            <p className="max-w-xl mx-auto mt-4 text-muted-foreground">Impacto real donde más importa.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit) => (
-               <div key={benefit.title} className="flex items-start gap-6">
-                <div className="bg-background p-3 rounded-full">{benefit.icon}</div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+              <Card key={benefit.title} className="bg-card/80 backdrop-blur-sm border-white/10 text-center hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
+                <CardHeader>
+                  <div className="mx-auto bg-secondary p-3 rounded-full mb-4 w-fit">{benefit.icon}</div>
+                  <CardTitle className="text-xl">{benefit.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
                   <p className="text-muted-foreground">{benefit.description}</p>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
+      
+      <section id="como-lo-hacemos" className="py-16 md:py-24 bg-secondary px-4">
+        <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
+            {homePageImage && (
+              <Image
+                src={homePageImage.imageUrl}
+                alt={homePageImage.description}
+                fill
+                className="object-cover"
+                data-ai-hint={homePageImage.imageHint}
+              />
+            )}
+             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Revoluciona tu Negocio con Estrategias Inteligentes</h2>
+            <p className="mt-4 text-muted-foreground text-lg">
+              Implementamos un ecosistema digital que une lo mejor del marketing y la IA. Creamos soluciones avanzadas para impulsar un crecimiento real y sostenible, pensado para empresas como la tuya.
+            </p>
+            <ul className="mt-6 space-y-4">
+                <li className="flex items-start gap-3">
+                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
+                    <span>Atrae clientes cualificados de forma automática.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
+                    <span>Optimiza tus operaciones y reduce costes operativos.</span>
+                </li>
+                 <li className="flex items-start gap-3">
+                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
+                    <span>Ofrece una experiencia de cliente excepcional y personalizada.</span>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-       <section id="porque-elegirnos" className="py-16 md:py-24 px-4">
+       <section id="proceso" className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Por Qué Elegir Synapse Growth</h2>
-            <p className="max-w-xl mx-auto mt-4 text-muted-foreground">Nuestros pilares para tu éxito.</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">De la Idea al Liderazgo en 5 Pasos</h2>
+            <p className="max-w-xl mx-auto mt-4 text-muted-foreground">Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((pillar) => (
-              <Card key={pillar.title} className="bg-card/80 backdrop-blur-sm border-white/10">
-                <CardHeader>
-                  <CardTitle>{pillar.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{pillar.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="relative">
+             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden md:block" />
+             {processSteps.map((step, index) => (
+                <div key={step.step} className={`relative flex items-center md:justify-center mb-12 group`}>
+                    <div className={`md:w-1/2 flex ${index % 2 === 0 ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'} ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
+                         <Card className="w-full md:max-w-sm bg-card/80 backdrop-blur-sm border-white/10 hover:border-primary/50 transition-all duration-300">
+                             <CardHeader>
+                                 <CardTitle>{step.title}</CardTitle>
+                             </CardHeader>
+                             <CardContent>
+                                 <p className="text-muted-foreground">{step.description}</p>
+                             </CardContent>
+                         </Card>
+                    </div>
+                    <div className="absolute left-1/2 -translate-x-1/2 bg-secondary border-4 border-background rounded-full w-12 h-12 flex items-center justify-center font-bold text-primary text-lg group-hover:scale-110 transition-transform">
+                        {step.step}
+                    </div>
+                </div>
+             ))}
           </div>
         </div>
       </section>
@@ -147,7 +171,7 @@ export default function Home() {
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">¿Listo para transformar tu empresa?</h2>
           <p className="max-w-2xl mx-auto mt-4 text-lg text-blue-100">
-            Agenda una llamada estratégica gratuita y descubre el potencial de la IA y el marketing inteligente para tu negocio.
+            Agenda una llamada estratégica gratuita y descubre el potencial real de unir la IA y el marketing para tu negocio.
           </p>
           <Button asChild size="lg" className="mt-8 bg-white text-primary hover:bg-gray-200 btn-glow">
             <Link href="/contacto">
