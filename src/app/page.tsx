@@ -1,24 +1,25 @@
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, TrendingUp, Zap, XCircle, Rocket, Target, Scaling, BrainCircuit } from 'lucide-react';
+import { CheckCircle2, TrendingUp, Zap, XCircle, Rocket, Target, Scaling, BrainCircuit, Bot, Workflow, PlugZap, GanttChartSquare, Milestone } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const benefits = [
   {
     icon: <Rocket />,
     title: "Velocidad",
-    description: "Resultados 3 veces más rápidos que los métodos tradicionales."
+    description: "Implementamos soluciones de IA y marketing en semanas, no meses. Así ves resultados tangibles mucho antes, superando a tu competencia."
   },
   {
-    icon: <Scaling />,
-    title: "Escalabilidad",
-    description: "Soluciones que crecen con tu negocio."
+    icon: <GanttChartSquare />,
+    title: "Estrategia",
+    description: "Cada solución que creamos está alineada con tus objetivos. No solo implementamos herramientas, construimos sistemas que impulsan tu crecimiento."
   },
   {
-    icon: <BrainCircuit />,
-    title: "Innovación",
-    description: "Tecnología de vanguardia para mantenerte por delante de la competencia."
+    icon: <Milestone />,
+    title: "Resultados",
+    description: "Nos enfocamos en métricas que importan: aumento de ventas, reducción de costes y mejora de la eficiencia. Tu éxito es nuestro éxito."
   }
 ];
 
@@ -89,7 +90,7 @@ export default function Home() {
       <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div className="text-left">
+            <div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
                 El problema: Invertir en marketing sin tener un <span className="text-primary">sistema</span>
               </h2>
@@ -127,19 +128,21 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="flex flex-col items-start text-left p-6 rounded-lg bg-card border">
-                 <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary mb-4">
+              <div key={benefit.title} className="flex items-start text-left p-6 rounded-lg bg-card border gap-4">
+                 <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary">
                   {React.cloneElement(benefit.icon, { className: "h-6 w-6" })}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
+                  <p className="text-muted-foreground">{benefit.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4 bg-background">
+      <section className="py-16 md:py-24 px-4 bg-card">
         <div className="container mx-auto">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que <span className="text-primary">cambia</span> cuando implementamos el sistema</h2>
@@ -176,7 +179,7 @@ export default function Home() {
                   key={index}
                   className={cn(
                     "relative flex w-full items-center",
-                    index % 2 === 0 ? "md:justify-start" : "md:justify-end"
+                    index % 2 !== 0 ? "md:justify-start" : "md:justify-end"
                   )}
                 >
                    {/* Mobile Circle - always on left */}
@@ -196,7 +199,7 @@ export default function Home() {
                   {/* Content Box */}
                   <div className={cn(
                     "w-full md:w-[calc(50%-4rem)] pl-24 md:pl-0",
-                    index % 2 === 0 ? "md:text-right" : "md:text-left"
+                     index % 2 !== 0 ? "md:text-right" : "md:text-left"
                   )}>
                     <h3 className="font-bold text-3xl mb-2">{step.title}</h3>
                     <p className="text-lg text-muted-foreground">{step.description}</p>
