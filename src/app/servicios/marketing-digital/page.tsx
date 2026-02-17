@@ -78,7 +78,7 @@ export default function MarketingDigitalPage() {
     <>
       <section className="py-20 md:py-28 text-center bg-grid-pattern">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Marketing Digital & Automatización Inteligente</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Marketing Digital</h1>
           <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
             Diseñamos ecosistemas digitales donde estrategia, captación y tecnología trabajan de forma integrada para generar crecimiento real.
           </p>
