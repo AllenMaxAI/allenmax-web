@@ -1,23 +1,24 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, CheckCircle2, TrendingUp, Zap, Target, Lightbulb, XCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, TrendingUp, Zap, XCircle, Rocket } from 'lucide-react';
 import Link from 'next/link';
+import React from 'react';
 
 const benefits = [
   {
-    icon: <Zap className="h-8 w-8 text-primary" />,
-    title: 'Agilidad',
-    description: 'Implementamos con rapidez para que veas resultados en semanas, no meses.',
+    icon: <Zap />,
+    title: "Eficiencia estratégica",
+    description: "Procesos optimizados que aceleran la captación y la gestión comercial."
   },
   {
-    icon: <TrendingUp className="h-8 w-8 text-primary" />,
-    title: 'Datos',
-    description: 'Cada decisión se basa en datos para maximizar tu retorno de inversión.',
+    icon: <TrendingUp />,
+    title: "Escalabilidad estructurada",
+    description: "Sistemas preparados para acompañar el crecimiento de tu empresa."
   },
   {
-    icon: <Target className="h-8 w-8 text-primary" />,
-    title: 'Crecimiento',
-    description: 'No solo atraemos clientes, construimos un sistema para un crecimiento predecible.',
-  },
+    icon: <Rocket />,
+    title: "Ventaja competitiva",
+    description: "Tecnología aplicada con enfoque estratégico para posicionarte por delante del mercado."
+  }
 ];
 
 const systemChanges = [
@@ -113,22 +114,22 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">El <span className="text-primary">potencial</span> de unir Marketing e IA</h2>
-            <p className="max-w-3xl mx-auto mt-4 text-muted-foreground text-lg">
-              No se trata de usar IA, se trata de integrarla en una estrategia de marketing sólida para crear un sistema de crecimiento predecible y escalable.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="container mx-auto max-w-3xl text-left">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            Impulsa el crecimiento de tu empresa
+          </h2>
+          <p className="mt-4 text-muted-foreground text-lg">
+            Diseñamos e implementamos sistemas que combinan marketing, automatización y tecnología avanzada para crear una estructura digital que genera resultados medibles y crecimiento sostenible.
+          </p>
+          <div className="mt-12 space-y-10">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="flex flex-col items-start text-left gap-4 p-8 border border-border/20 rounded-lg bg-card/50">
-                <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full">
-                  {benefit.icon}
+              <div key={benefit.title} className="flex items-start gap-6">
+                <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary">
+                  {React.cloneElement(benefit.icon, { className: "h-6 w-6" })}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">{benefit.title}</h3>
-                  <p className="mt-2 text-muted-foreground">{benefit.description}</p>
+                  <p className="mt-1 text-muted-foreground">{benefit.description}</p>
                 </div>
               </div>
             ))}
