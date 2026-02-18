@@ -6,22 +6,22 @@ import React from 'react';
 
 const philosophyItems = [
   {
-    icon: <ShieldCheck className="h-6 w-6 text-primary" />,
+    icon: <ShieldCheck className="h-6 w-6" />,
     title: "Estructura antes que volumen",
     description: "Priorizamos la base sólida antes de intentar escalar el caos."
   },
   {
-    icon: <Zap className="h-6 w-6 text-primary" />,
+    icon: <Zap className="h-6 w-6" />,
     title: "Sistemas antes que improvisación",
     description: "Cada proceso está documentado y automatizado para ser predecible."
   },
   {
-    icon: <BarChart3 className="h-6 w-6 text-primary" />,
+    icon: <BarChart3 className="h-6 w-6" />,
     title: "Datos antes que intuición",
     description: "Tomamos decisiones basadas en métricas reales, no en suposiciones."
   },
   {
-    icon: <Target className="h-6 w-6 text-primary" />,
+    icon: <Target className="h-6 w-6" />,
     title: "Tecnología aplicada con criterio",
     description: "No implementamos herramientas por moda, sino por su utilidad estratégica."
   }
@@ -62,60 +62,68 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* UNIFIED IDENTITY SECTION (Diferenciadores + Filosofía) */}
+      {/* SECTION: IDENTIDAD (Diferenciadores + Filosofía) */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-3 gap-12 xl:gap-20">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-20">
+            
+            {/* Qué nos diferencia */}
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold tracking-tight">Qué nos diferencia</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  No somos una agencia convencional. Somos arquitectos de tu infraestructura digital.
+                </p>
+              </div>
               
-              {/* Bloque: Diferenciadores (1/3) */}
-              <div className="lg:col-span-1 space-y-8">
-                <div className="space-y-4">
-                  <h2 className="text-3xl font-bold tracking-tight">Qué nos diferencia</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    No somos una agencia de marketing convencional ni una consultora tecnológica aislada. Somos arquitectos de tu infraestructura digital.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="p-8 rounded-2xl bg-primary/5 border border-primary/10">
-                    <h3 className="text-xl font-bold mb-3">No solo marketing</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+              <div className="space-y-10">
+                <div className="flex gap-6">
+                  <div className="flex-shrink-0 mt-1">
+                    <Zap className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">No solo marketing</h3>
+                    <p className="text-muted-foreground leading-relaxed">
                       Transformamos tráfico en activos reales mediante sistemas de conversión diseñados para durar.
                     </p>
                   </div>
-                  <div className="p-8 rounded-2xl bg-primary/5 border border-primary/10">
-                    <h3 className="text-xl font-bold mb-3">No solo tecnología</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                </div>
+                <div className="flex gap-6">
+                  <div className="flex-shrink-0 mt-1">
+                    <BarChart3 className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">No solo tecnología</h3>
+                    <p className="text-muted-foreground leading-relaxed">
                       Diseñamos la arquitectura estratégica sobre la que tu empresa escala de forma sólida y predecible.
                     </p>
                   </div>
                 </div>
               </div>
-
-              {/* Bloque: Nuestra Filosofía Grid (2/3) */}
-              <div className="lg:col-span-2">
-                <div className="mb-10">
-                  <h2 className="text-3xl font-bold tracking-tight mb-4">Nuestra Filosofía</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Creemos en el crecimiento ordenado y en la tecnología aplicada con un propósito claro.
-                  </p>
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {philosophyItems.map((item, index) => (
-                    <div key={index} className="bg-card border border-border/50 p-8 rounded-2xl hover:border-primary/30 transition-all group">
-                      <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                        {React.cloneElement(item.icon as React.ReactElement, { className: 'h-6 w-6 text-primary' })}
-                      </div>
-                      <h4 className="text-lg font-bold mb-3">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
             </div>
+
+            {/* Nuestra Filosofía */}
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold tracking-tight">Nuestra Filosofía</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Creemos en el crecimiento ordenado y en la tecnología aplicada con un propósito claro.
+                </p>
+              </div>
+              
+              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
+                {philosophyItems.map((item, index) => (
+                  <div key={index} className="space-y-3">
+                    <div className="text-primary mb-2">
+                      {React.cloneElement(item.icon as React.ReactElement, { className: 'h-6 w-6' })}
+                    </div>
+                    <h4 className="text-lg font-bold">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
