@@ -37,7 +37,18 @@ export default function ContactoPage() {
   return (
     <section className="pt-24 md:pt-32 pb-24 md:pb-32 min-h-screen bg-background">
       <style jsx global>{`
-        /* Ocultar scrollbars de Calendly en todos los niveles */
+        /* Ocultar scrollbars de Calendly de forma absoluta */
+        html, body {
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+        }
+        
+        ::-webkit-scrollbar {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+        }
+
         .calendly-inline-widget, 
         .calendly-inline-widget *,
         [data-url*="calendly.com"],
@@ -45,17 +56,16 @@ export default function ContactoPage() {
           scrollbar-width: none !important;
           -ms-overflow-style: none !important;
           overflow: hidden !important;
+          border: none !important;
         }
         
-        .calendly-inline-widget::-webkit-scrollbar,
-        .calendly-inline-widget *::-webkit-scrollbar,
         iframe[src*="calendly.com"]::-webkit-scrollbar {
           display: none !important;
           width: 0 !important;
           height: 0 !important;
         }
 
-        /* Forzar ocultación en contenedores de Calendly */
+        /* Asegurar que el contenedor interno de Calendly no genere scroll */
         .calendly-inline-widget > div {
           height: 100% !important;
           overflow: hidden !important;
@@ -121,14 +131,14 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* DERECHA: CALENDLY SIN SCROLLBAR */}
+          {/* DERECHA: CALENDLY SIN SCROLLBAR Y FONDO UNIFICADO */}
           <div className="relative">
             <div
               ref={hostRef}
-              className="rounded-2xl overflow-hidden bg-background/5 border border-border shadow-2xl"
+              className="rounded-2xl overflow-hidden bg-white border border-border shadow-2xl"
               style={{
                 width: '100%',
-                height: 1050, // Altura suficiente para evitar scroll interno
+                height: 1050, 
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
                 overflow: 'hidden'
@@ -142,7 +152,8 @@ export default function ContactoPage() {
                   height: '100%', 
                   overflow: 'hidden',
                   scrollbarWidth: 'none',
-                  msOverflowStyle: 'none'
+                  msOverflowStyle: 'none',
+                  background: '#ffffff'
                 }}
               />
             </div>
