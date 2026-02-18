@@ -40,15 +40,25 @@ export default function ContactoPage() {
         /* Ocultar scrollbars de Calendly en todos los niveles */
         .calendly-inline-widget, 
         .calendly-inline-widget *,
-        [data-url*="calendly.com"] {
+        [data-url*="calendly.com"],
+        iframe[src*="calendly.com"] {
           scrollbar-width: none !important;
           -ms-overflow-style: none !important;
+          overflow: hidden !important;
         }
+        
         .calendly-inline-widget::-webkit-scrollbar,
-        .calendly-inline-widget *::-webkit-scrollbar {
+        .calendly-inline-widget *::-webkit-scrollbar,
+        iframe[src*="calendly.com"]::-webkit-scrollbar {
           display: none !important;
           width: 0 !important;
           height: 0 !important;
+        }
+
+        /* Forzar ocultación en contenedores de Calendly */
+        .calendly-inline-widget > div {
+          height: 100% !important;
+          overflow: hidden !important;
         }
       `}</style>
 
@@ -111,16 +121,17 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* DERECHA: CALENDLY CON REGLAS DE OCULTACIÓN DE SCROLL */}
+          {/* DERECHA: CALENDLY SIN SCROLLBAR */}
           <div className="relative">
             <div
               ref={hostRef}
               className="rounded-2xl overflow-hidden bg-background/5 border border-border shadow-2xl"
               style={{
                 width: '100%',
-                height: 1000, // Altura extra para seguridad
+                height: 1050, // Altura suficiente para evitar scroll interno
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
+                overflow: 'hidden'
               }}
             >
               <div
