@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4 border-t">
+      <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
             <div className="max-w-xl">
@@ -116,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="py-16 md:py-24 px-4 bg-background border-t">
+       <section className="py-16 md:py-24 px-4 bg-background">
         <div className="container mx-auto max-w-5xl">
            <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -142,7 +142,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4 border-t">
+      <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que cambia cuando implementamos el sistema</h2>
@@ -158,7 +158,7 @@ export default function Home() {
         </div>
       </section>
       
-       <section id="proceso" className="py-16 md:py-24 border-t bg-background">
+       <section id="proceso" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
