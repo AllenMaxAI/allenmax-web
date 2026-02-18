@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Bot, BrainCircuit, Terminal, AppWindow, Workflow, Share2, CheckCircle2 } from 'lucide-react';
@@ -78,16 +80,16 @@ export default function AIServicesPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-5 gap-12 items-center">
             <div className="md:col-span-3 space-y-4">
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Inteligencia Artificial</h1>
-              <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Inteligencia Artificial</h1>
+              <p className="max-w-2xl text-lg text-muted-foreground">
                 La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. La integramos en tus procesos para optimizar resultados y generar valor real.
               </p>
             </div>
             <div className="md:col-span-2 space-y-4 border-l-2 border-primary pl-8">
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+              <h2 className="text-2xl font-bold tracking-tight">
                 No implementamos acciones aisladas. <span className="text-primary">Construimos sistemas.</span>
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground">
                 Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible.
               </p>
             </div>
@@ -105,9 +107,9 @@ export default function AIServicesPage() {
                     <div className="flex-shrink-0 bg-primary/10 p-3 rounded-xl text-primary">
                       {React.cloneElement(service.icon, { className: 'h-6 w-6' })}
                     </div>
-                    <h3 className="text-2xl font-bold tracking-tight">{service.title}</h3>
+                    <h3 className="text-2xl font-bold">{service.title}</h3>
                   </div>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-base leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -117,8 +119,8 @@ export default function AIServicesPage() {
                   <ul className="space-y-3">
                     {service.points.map((point) => (
                       <li key={point} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                        <span className="text-muted-foreground text-base">{point}</span>
+                        <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
+                        <span className="text-muted-foreground text-sm">{point}</span>
                       </li>
                     ))}
                   </ul>
