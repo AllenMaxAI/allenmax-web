@@ -1,5 +1,5 @@
 import { Logo } from '@/components/logo';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 const socialLinks = [
@@ -14,43 +14,51 @@ export function AppFooter() {
   return (
     <footer className="border-t border-white/10 py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex flex-col gap-4 items-start">
+        <div className="flex flex-col md:flex-row justify-between gap-12">
+          {/* Bloque Marca */}
+          <div className="flex flex-col gap-4 items-start max-w-sm">
             <Logo />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Inteligencia Artificial y Marketing Digital para empresas que buscan crecer.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 col-span-2 gap-8">
-             <div>
-              <h4 className="font-semibold mb-3">Navegación</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/servicios" className="text-muted-foreground hover:text-primary">Servicios</Link></li>
-                <li><Link href="/nosotros" className="text-muted-foreground hover:text-primary">Nosotros</Link></li>
-                 <li><Link href="/contacto" className="text-muted-foreground hover:text-primary">Contacto</Link></li>
-              </ul>
-            </div>
-             <div>
-              <h4 className="font-semibold mb-3">Servicios</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/servicios/ia" className="text-muted-foreground hover:text-primary">Inteligencia Artificial</Link></li>
-                <li><Link href="/servicios/marketing-digital" className="text-muted-foreground hover:text-primary">Marketing Digital</Link></li>
-              </ul>
-            </div>
-             <div>
-              <h4 className="font-semibold mb-3">Legal</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="#" className="text-muted-foreground hover:text-primary">Política de Privacidad</Link></li>
-                <li><Link href="#" className="text-muted-foreground hover:text-primary">Términos de Servicio</Link></li>
-              </ul>
-            </div>
+
+          {/* Bloque Contacto */}
+          <div className="flex flex-col gap-4 min-w-[200px]">
+            <h4 className="font-semibold text-foreground">Contacto</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-3 text-muted-foreground">
+                <Mail className="h-4 w-4 text-primary" />
+                <a 
+                  href="mailto:agency@allenmax.com" 
+                  className="hover:text-primary transition-colors"
+                >
+                  agency@allenmax.com
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-muted-foreground">
+                <Phone className="h-4 w-4 text-primary" />
+                <a 
+                  href="tel:+34654487378" 
+                  className="hover:text-primary transition-colors"
+                >
+                  654 48 73 78
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+
+        {/* Barra Inferior */}
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground/60">
           <p>&copy; {currentYear} AllenMax. Todos los derechos reservados.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
+          <div className="flex gap-5 mt-4 md:mt-0">
             {socialLinks.map((link, index) => (
-              <Link key={index} href={link.href} className="hover:text-primary transition-colors">
+              <Link 
+                key={index} 
+                href={link.href} 
+                className="hover:text-primary transition-colors"
+              >
                 {link.icon}
               </Link>
             ))}
