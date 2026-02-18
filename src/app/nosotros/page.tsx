@@ -47,7 +47,7 @@ export default function NosotrosPage() {
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
               Sobre Nosotros
             </h1>
-            <p className="text-lg md:text-xl text-primary font-medium mb-12 leading-relaxed">
+            <p className="text-lg text-primary font-medium mb-12 leading-relaxed">
               Construimos sistemas de crecimiento para empresas que quieren evolucionar.
             </p>
             
