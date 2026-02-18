@@ -62,7 +62,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* PHILOSOPHY SECTION */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold tracking-tight mb-12 text-center">Nuestra Filosofía</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -105,7 +105,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* IS IT FOR YOU? */}
-      <section className="py-20 bg-background border-y border-border">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-8">
