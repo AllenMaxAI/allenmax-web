@@ -77,7 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN PROBLEMA REDISEÑADA */}
+      {/* SECCIÓN PROBLEMA */}
       <section className="py-20 md:py-32 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
@@ -95,8 +95,8 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="bg-card/10 p-8 md:p-10 rounded-2xl border border-white/5">
-              <h3 className="font-bold mb-8 text-xl">La mayoría de estructuras no:</h3>
+            <div className="bg-card/20 p-8 md:p-10 rounded-2xl border border-white/5 shadow-sm">
+              <h3 className="font-bold mb-8 text-xl">La mayoría de estructuras no logran:</h3>
               <ul className="space-y-6">
                 {problemPoints.map((point, index) => (
                   <li key={index} className="flex items-center gap-4">
@@ -124,7 +124,7 @@ export default function Home() {
             {benefits.map((benefit) => (
               <div key={benefit.title} className="flex flex-col items-center text-center gap-4">
                  <div className="flex-shrink-0 bg-primary/10 p-4 rounded-full text-primary">
-                  {React.cloneElement(benefit.icon, { className: "h-8 w-8" })}
+                  {React.cloneElement(benefit.icon as React.ReactElement, { className: "h-8 w-8" })}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
@@ -136,8 +136,8 @@ export default function Home() {
         </div>
       </section>
       
-       <section id="proceso" className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
+       <section id="proceso" className="pt-16 pb-32 md:pt-24 md:pb-48 px-4">
+        <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Cómo lo Hacemos Realidad
