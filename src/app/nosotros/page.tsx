@@ -11,17 +11,17 @@ const valuePropositions = [
 
 const experienceItems = [
   {
-    icon: <Award className="h-8 w-8" />,
+    icon: <Award className="h-7 w-7" />,
     title: 'Años de Excelencia',
     description: 'Líderes en soluciones de IA y automatización',
   },
   {
-    icon: <Lightbulb className="h-8 w-8" />,
+    icon: <Lightbulb className="h-7 w-7" />,
     title: 'Impulsados por la Innovación',
     description: 'Tecnología de alto impacto',
   },
   {
-    icon: <Users className="h-8 w-8" />,
+    icon: <Users className="h-7 w-7" />,
     title: 'Equipo Profesional',
     description: 'Expertos en desarrollo y automatización',
   },
@@ -64,22 +64,22 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        {/* EXPERIENCE CARDS SECTION */}
+        {/* EXPERIENCE CARDS SECTION - PROFESSIONAL REDESIGN */}
         <section className="mt-32 space-y-16">
-          <h2 className="text-center text-xl md:text-2xl font-medium text-foreground/80">
+          <h2 className="text-center text-xl md:text-2xl font-bold tracking-tight text-foreground">
             Más de 5 años de excelencia en IA y desarrollo de software
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {experienceItems.map((item, index) => (
               <div 
                 key={index} 
-                className="bg-card border border-border/50 p-10 rounded-2xl flex flex-col items-center text-center transition-all hover:border-primary/30"
+                className="bg-card/40 border border-border/40 p-10 rounded-2xl flex flex-col items-center text-center transition-all duration-300 hover:border-primary/30 hover:bg-card/60"
               >
-                <div className="bg-primary/10 p-4 rounded-xl text-primary mb-8">
+                <div className="bg-secondary/50 p-5 rounded-2xl text-primary mb-10 shadow-inner">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-xl font-bold mb-4 text-foreground">{item.title}</h3>
+                <p className="text-muted-foreground/80 leading-relaxed text-sm md:text-base">
                   {item.description}
                 </p>
               </div>
