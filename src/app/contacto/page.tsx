@@ -22,8 +22,10 @@ export default function ContactoPage() {
       document.body.appendChild(s);
     }
 
-    const kill = () =>
+    // Limpieza agresiva de elementos de carga de Calendly
+    const kill = () => {
       document.querySelectorAll('.calendly-spinner').forEach((n) => n.remove());
+    };
 
     kill();
     const obs = new MutationObserver(kill);
@@ -33,10 +35,26 @@ export default function ContactoPage() {
   }, []);
 
   return (
-    <section className="pt-24 md:pt-32 pb-24 md:pb-32 min-h-screen">
+    <section className="pt-24 md:pt-32 pb-24 md:pb-32 min-h-screen bg-background">
+      <style jsx global>{`
+        /* Ocultar scrollbars de Calendly en todos los niveles */
+        .calendly-inline-widget, 
+        .calendly-inline-widget *,
+        [data-url*="calendly.com"] {
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+        }
+        .calendly-inline-widget::-webkit-scrollbar,
+        .calendly-inline-widget *::-webkit-scrollbar {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+        }
+      `}</style>
+
       <div className="mx-auto max-w-6xl px-4">
         
-        {/* TÍTULO HERO CENTRADO (Consistente con Home/Servicios) */}
+        {/* TÍTULO HERO CENTRADO */}
         <div className="mb-20 text-center max-w-3xl mx-auto space-y-4">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
             Hablemos de tu crecimiento
@@ -93,20 +111,28 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* DERECHA: CALENDLY SIN SCROLLBAR */}
+          {/* DERECHA: CALENDLY CON REGLAS DE OCULTACIÓN DE SCROLL */}
           <div className="relative">
             <div
               ref={hostRef}
               className="rounded-2xl overflow-hidden bg-background/5 border border-border shadow-2xl"
               style={{
                 width: '100%',
-                height: 950, // Altura incrementada para evitar scroll interno
+                height: 1000, // Altura extra para seguridad
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
               }}
             >
               <div
                 className="calendly-inline-widget"
                 data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
-                style={{ width: '100%', height: '100%', overflow: 'hidden' }}
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  overflow: 'hidden',
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none'
+                }}
               />
             </div>
           </div>
