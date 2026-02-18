@@ -33,11 +33,11 @@ export default function ContactoPage() {
   }, []);
 
   return (
-    <section className="pt-24 md:pt-32 pb-24 md:pb-32">
+    <section className="pt-24 md:pt-32 pb-24 md:pb-32 min-h-screen">
       <div className="mx-auto max-w-6xl px-4">
         
-        {/* TÍTULO HERO CENTRADO */}
-        <div className="mb-20 text-center max-w-3xl mx-auto space-y-6">
+        {/* TÍTULO HERO CENTRADO (Consistente con Home/Servicios) */}
+        <div className="mb-20 text-center max-w-3xl mx-auto space-y-4">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
             Hablemos de tu crecimiento
           </h1>
@@ -72,45 +72,41 @@ export default function ContactoPage() {
               </h3>
 
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p className="text-lg">
+                <p className="text-base md:text-lg">
                   Las decisiones estratégicas marcan la diferencia entre crecer
                   de forma puntual y consolidar una posición competitiva real.
                 </p>
-                <p className="text-lg">
+                <p className="text-base md:text-lg">
                   Este espacio no está diseñado para vender promesas rápidas,
-                  sino para iniciar conversaciones con enfoque, criterio y visión empresarial.
-                </p>
-                <p className="text-lg">
-                  Si has llegado hasta aquí, probablemente no buscas "probar algo nuevo".
-                  Buscas hacerlo bien.
+                  sino para iniciar conversaciones con enfoque y visión empresarial.
                 </p>
               </div>
 
               <div className="pt-8">
                 <div className="border-l-4 border-primary pl-6 py-1">
                   <p className="text-lg font-medium italic text-foreground/80">
-                    Cuando estés listo para estructurar tu crecimiento con claridad y
-                    dirección, el siguiente movimiento es simple.
+                    Cuando estés listo para estructurar tu crecimiento con claridad,
+                    el siguiente movimiento es simple.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* DERECHA: CALENDLY */}
+          {/* DERECHA: CALENDLY SIN SCROLLBAR */}
           <div className="relative">
             <div
               ref={hostRef}
               className="rounded-2xl overflow-hidden bg-background/5 border border-border shadow-2xl"
               style={{
                 width: '100%',
-                height: 850,
+                height: 950, // Altura incrementada para evitar scroll interno
               }}
             >
               <div
                 className="calendly-inline-widget"
                 data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: '100%', height: '100%', overflow: 'hidden' }}
               />
             </div>
           </div>
