@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, TrendingUp, Zap, XCircle, Rocket, Target, Scaling, BrainCircuit, Bot, Workflow, PlugZap, GanttChartSquare, Milestone } from 'lucide-react';
+import { CheckCircle2, TrendingUp, Zap, XCircle, Rocket, Target, Scaling, BrainCircuit, Bot, Workflow, PlugZap, GanttChartSquare, Milestone, Check } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -149,16 +149,16 @@ export default function Home() {
               Lo que cambia cuando implementamos el sistema
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {systemChanges.map((change, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center gap-4 p-5 rounded-xl bg-card/20 border border-white/5 hover:border-primary/30 hover:bg-card/40 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-6 rounded-lg bg-card/20 border border-white/5"
                   >
-                      <div className="flex-shrink-0 bg-primary/10 p-2.5 rounded-full text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                        <CheckCircle2 className="h-5 w-5" />
+                      <div className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full border border-primary text-primary">
+                        <Check className="h-3 w-3" strokeWidth={3} />
                       </div>
-                      <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">{change}</p>
+                      <p className="text-lg text-muted-foreground">{change}</p>
                   </div>
               ))}
           </div>
