@@ -139,38 +139,55 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* IS IT FOR YOU? */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* IS IT FOR YOU? (Rediseñado creativo) */}
+      <section className="py-20 md:py-32 bg-background border-t border-white/5">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">¿Es para ti?</h2>
-              <p className="text-lg text-muted-foreground">Trabajamos con empresas que:</p>
-              <ul className="space-y-4">
+          <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-start">
+            
+            {/* LADO IZQUIERDO: PERFIL IDEAL */}
+            <div className="lg:col-span-7 space-y-12">
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">¿Es para ti?</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Trabajamos con empresas que buscan profesionalizar su operación y dar un salto cualitativo real.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-8">
                 {[
                   "Ya tienen base y quieren dar el siguiente salto.",
                   "Buscan estructura, no solo campañas.",
                   "Entienden que el crecimiento requiere sistema.",
                   "Están dispuestas a profesionalizar su operación."
                 ].map((text, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  <div key={i} className="flex items-start gap-4">
                     <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-lg">{text}</span>
-                  </li>
+                    <span className="text-lg font-medium text-foreground/80 leading-snug">{text}</span>
+                  </div>
                 ))}
-              </ul>
-            </div>
-            <div className="space-y-8 flex flex-col justify-center">
-              <div className="bg-destructive/5 border border-destructive/10 p-8 rounded-3xl">
-                <div className="flex items-center gap-4 mb-4">
-                  <XCircle className="h-8 w-8 text-destructive" />
-                  <h3 className="text-xl font-bold">No es para todos</h3>
-                </div>
-                <p className="text-lg text-muted-foreground leading-relaxed italic">
-                  No es para negocios que buscan soluciones rápidas sin estrategia o que no están dispuestos a cambiar sus procesos internos por eficiencia real.
-                </p>
               </div>
             </div>
+
+            {/* LADO DERECHO: EXCLUSIVIDAD / NO ES PARA TI */}
+            <div className="lg:col-span-5">
+              <div className="relative p-8 md:p-12">
+                {/* Decoración sutil de fondo para marcar exclusividad */}
+                <div className="absolute inset-0 bg-destructive/5 rounded-3xl -rotate-1" />
+                <div className="relative space-y-6">
+                  <div className="flex items-center gap-4 text-destructive">
+                    <XCircle className="h-8 w-8" />
+                    <h3 className="text-xl font-bold uppercase tracking-wider">No es para todos</h3>
+                  </div>
+                  <p className="text-lg text-muted-foreground/90 leading-relaxed italic">
+                    "No acompañamos a negocios que buscan soluciones rápidas sin compromiso estratégico, ni a quienes no están dispuestos a evolucionar sus procesos internos para alcanzar una eficiencia real."
+                  </p>
+                  <div className="pt-4">
+                    <div className="h-px w-12 bg-destructive/30" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
