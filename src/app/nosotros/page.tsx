@@ -9,24 +9,6 @@ const valuePropositions = [
   'Consolidar un crecimiento sólido y sostenible',
 ];
 
-const experienceItems = [
-  {
-    icon: <Award className="h-7 w-7" />,
-    title: 'Años de Excelencia',
-    description: 'Líderes en soluciones de IA y automatización',
-  },
-  {
-    icon: <Lightbulb className="h-7 w-7" />,
-    title: 'Impulsados por la Innovación',
-    description: 'Tecnología de alto impacto',
-  },
-  {
-    icon: <Users className="h-7 w-7" />,
-    title: 'Equipo Profesional',
-    description: 'Expertos en desarrollo y automatización',
-  },
-];
-
 const targetAudience = [
   'Dueños de negocios que quieren romper su techo de crecimiento',
   'Empresas que buscan una máquina de crecimiento rentable funcionando 24/7',
@@ -59,29 +41,6 @@ export default function NosotrosPage() {
               <div key={index} className="flex items-start gap-4">
                 <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">{item}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* EXPERIENCE CARDS SECTION - PROFESSIONAL REDESIGN */}
-        <section className="mt-32 space-y-16">
-          <h2 className="text-center text-xl md:text-2xl font-bold tracking-tight text-foreground">
-            Más de 5 años de excelencia en IA y desarrollo de software
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {experienceItems.map((item, index) => (
-              <div 
-                key={index} 
-                className="bg-card/40 border border-border/40 p-10 rounded-2xl flex flex-col items-center text-center transition-all duration-300 hover:border-primary/30 hover:bg-card/60"
-              >
-                <div className="bg-secondary/50 p-5 rounded-2xl text-primary mb-10 shadow-inner">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground/80 leading-relaxed text-sm md:text-base">
-                  {item.description}
-                </p>
               </div>
             ))}
           </div>
