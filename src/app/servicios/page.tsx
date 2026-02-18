@@ -21,7 +21,7 @@ const serviceCategories = [
 export default function ServiciosPage() {
   return (
     <>
-      <section className="py-20 md:py-32 text-center">
+      <section className="pt-24 md:pt-32 pb-20 md:pb-32 text-center">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl mx-auto">
             La Sinergia Perfecta: Marketing Digital e Inteligencia Artificial
@@ -32,7 +32,7 @@ export default function ServiciosPage() {
         </div>
       </section>
 
-      <section className="pb-16 md:pb-24">
+      <section className="pt-20 md:pt-32 pb-24 md:pb-32">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {serviceCategories.map((category) => (

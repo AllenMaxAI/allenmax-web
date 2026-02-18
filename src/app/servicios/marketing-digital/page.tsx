@@ -76,7 +76,7 @@ const services = [
 export default function MarketingDigitalPage() {
   return (
     <>
-      <section className="py-20 md:py-32">
+      <section className="pt-24 md:pt-32 pb-20 md:pb-32">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-5 gap-12 items-center">
             <div className="md:col-span-3 space-y-4">
@@ -97,7 +97,7 @@ export default function MarketingDigitalPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="pt-20 md:pt-32 pb-24 md:pb-32 bg-background">
         <div className="container mx-auto px-4">
           <div className="space-y-24">
             {services.map((service, index) => (

@@ -60,7 +60,7 @@ export default function Home() {
   
   return (
     <div className="flex flex-col">
-       <section className="h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
+       <section className="pt-24 md:pt-32 h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
            <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
             <span className="block">Transformamos empresas con</span>
@@ -110,7 +110,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="py-16 md:py-24 px-4">
+       <section className="py-20 md:py-32 px-4">
         <div className="container mx-auto max-w-5xl">
            <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -136,7 +136,7 @@ export default function Home() {
         </div>
       </section>
       
-       <section id="proceso" className="pt-16 pb-32 md:pt-24 md:pb-48 px-4">
+       <section id="proceso" className="pt-20 pb-24 md:pt-32 md:pb-32 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">

@@ -33,7 +33,7 @@ export default function ContactoPage() {
   }, []);
 
   return (
-    <section className="pt-24 md:pt-36 pb-20">
+    <section className="pt-24 md:pt-32 pb-24 md:pb-32">
       <div className="mx-auto max-w-6xl px-4">
         
         {/* TÍTULO HERO CENTRADO */}

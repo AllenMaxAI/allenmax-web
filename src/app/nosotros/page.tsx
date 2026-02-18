@@ -39,9 +39,9 @@ const differentiatorItems = [
 
 export default function NosotrosPage() {
   return (
-    <div className="flex flex-col pb-24">
+    <div className="flex flex-col">
       {/* HERO SECTION */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-20 md:pb-32 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
@@ -159,7 +159,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-24 text-center">
+      <section className="pt-20 md:pt-32 pb-24 md:pb-32 text-center">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto space-y-8">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
