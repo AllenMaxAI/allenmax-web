@@ -26,23 +26,12 @@ const philosophyItems = [
   }
 ];
 
-const differentiatorItems = [
-  {
-    title: "No somos solo una agencia de marketing",
-    description: "Transformamos tráfico en activos reales mediante sistemas de conversión diseñados para durar."
-  },
-  {
-    title: "No somos solo una empresa tecnológica",
-    description: "Diseñamos la arquitectura estratégica sobre la que tu empresa escala de forma sólida y predecible."
-  }
-];
-
 export default function NosotrosPage() {
   return (
     <div className="flex flex-col">
       {/* HERO SECTION */}
-      <section className="relative pt-24 md:pt-32 pb-20 md:pb-32 overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="pt-24 md:pt-32 pb-20 md:pb-32">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
               Sobre Nosotros
@@ -72,49 +61,77 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* IDENTIDAD ESTRATÉGICA (Diferenciadores + Filosofía) */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* SECCIÓN CREATIVA: IDENTIDAD ESTRATÉGICA */}
+      <section className="py-20 md:py-32 bg-background border-t border-white/5">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 md:gap-24">
+          <div className="grid lg:grid-cols-12 gap-16 md:gap-24">
             
-            {/* Qué nos diferencia */}
-            <div className="space-y-12">
-              <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Qué nos diferencia</h2>
+            {/* LADO IZQUIERDO: QUÉ NOS DIFERENCIA (Arquitectura de marca) */}
+            <div className="lg:col-span-5 space-y-16">
+              <div className="space-y-6">
+                <div className="inline-block bg-primary/10 px-3 py-1 rounded-full">
+                  <span className="text-xs font-bold uppercase tracking-widest text-primary">Diferenciación</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+                  No somos una agencia convencional.
+                </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  No somos una agencia convencional. Somos arquitectos de tu infraestructura digital.
+                  Somos arquitectos de tu infraestructura digital, diseñando sistemas que otros solo intentan publicitar.
                 </p>
               </div>
-              
-              <div className="space-y-10">
-                {differentiatorItems.map((item, index) => (
-                  <div key={index} className="space-y-3">
-                    <h3 className="text-xl font-bold">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                  </div>
-                ))}
+
+              <div className="relative space-y-12">
+                <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/20 to-transparent ml-[-1rem] hidden md:block" />
+                
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold flex items-center gap-3">
+                    <span className="text-primary text-sm font-mono">01.</span>
+                    Más que marketing
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Transformamos tráfico en activos reales mediante sistemas de conversión diseñados para durar. No buscamos clics, buscamos estructuras.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold flex items-center gap-3">
+                    <span className="text-primary text-sm font-mono">02.</span>
+                    Más que tecnología
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Diseñamos la arquitectura estratégica sobre la que tu empresa escala de forma sólida y predecible. La tecnología es el medio, el sistema es el fin.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Nuestra Filosofía */}
-            <div className="space-y-12">
+            {/* LADO DERECHO: NUESTRA FILOSOFÍA (Grid de pilares) */}
+            <div className="lg:col-span-7 space-y-12">
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Nuestra Filosofía</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Creemos en el crecimiento ordenado y en la tecnología aplicada con un propósito claro.
                 </p>
               </div>
-              
-              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+
+              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-16">
                 {philosophyItems.map((item, index) => (
-                  <div key={index} className="space-y-4">
-                    <div className="text-primary">
+                  <div key={index} className="group space-y-5">
+                    <div className="text-primary transition-transform duration-300 group-hover:scale-110 origin-left">
                       {React.cloneElement(item.icon as React.ReactElement, { className: 'h-8 w-8' })}
                     </div>
-                    <h4 className="text-xl font-bold">{item.title}</h4>
-                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                    <div className="space-y-3">
+                      <h4 className="text-xl font-bold">{item.title}</h4>
+                      <p className="text-muted-foreground text-base leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
                 ))}
+              </div>
+              
+              <div className="pt-8">
+                <p className="text-sm font-medium text-primary/60 italic border-l-2 border-primary/20 pl-4">
+                  "No implementamos herramientas por moda, sino por su utilidad estratégica."
+                </p>
               </div>
             </div>
 
