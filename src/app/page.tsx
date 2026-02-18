@@ -50,10 +50,10 @@ const processSteps = [
 ];
 
 const problemPoints = [
-  'Los gestione correctamente.',
-  'Automatice seguimientos.',
-  'Optimice conversiones.',
-  'Permita escalar con control.',
+  'Gestión correcta de oportunidades.',
+  'Automatización de seguimientos.',
+  'Optimización de conversiones.',
+  'Escalado con control real.',
 ];
 
 export default function Home() {
@@ -64,7 +64,7 @@ export default function Home() {
         <div className="z-10 flex flex-col items-center gap-6">
            <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
             <span className="block">Transformamos empresas con</span>
-            <span className="block">Marketing e Inteligencia Artificial</span>
+            <span className="block text-primary">Marketing e Inteligencia Artificial</span>
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
@@ -77,27 +77,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4">
+      {/* SECCIÓN PROBLEMA REDISEÑADA */}
+      <section className="py-20 md:py-32 px-4">
         <div className="container mx-auto max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
-            <div className="max-w-xl">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                El problema: Invertir en marketing sin tener un sistema
+          <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+                El problema: Invertir en marketing sin tener un <span className="text-primary">sistema</span>
               </h2>
-              <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 Muchas empresas generan contactos, pero sin una estructura que los aproveche, el esfuerzo se diluye. El resultado es una pérdida de oportunidades y un crecimiento estancado.
               </p>
-               <p className="mt-6 text-lg font-semibold">
-                Sin un sistema, no hay crecimiento sostenible.
-              </p>
+              <div className="pt-4 border-l-2 border-primary pl-6">
+                 <p className="text-lg font-semibold italic">
+                  Sin un sistema, no hay crecimiento sostenible.
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-bold mb-6 text-xl">La mayoría de estructuras no:</h3>
-              <ul className="space-y-4">
+            
+            <div className="bg-card/10 p-8 md:p-10 rounded-2xl border border-white/5">
+              <h3 className="font-bold mb-8 text-xl">La mayoría de estructuras no:</h3>
+              <ul className="space-y-6">
                 {problemPoints.map((point, index) => (
-                  <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                    <XCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span className="text-lg">{point}</span>
+                  <li key={index} className="flex items-center gap-4">
+                    <XCircle className="h-6 w-6 text-primary flex-shrink-0" />
+                    <span className="text-lg text-muted-foreground leading-snug">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -144,7 +148,6 @@ export default function Home() {
           </div>
 
           <div className="relative max-w-5xl mx-auto mt-12">
-            {/* The vertical line for desktop */}
             <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2 hidden md:block" />
 
             <div className="relative flex flex-col gap-y-16">
@@ -152,7 +155,6 @@ export default function Home() {
                 const isEven = index % 2 === 0;
                 return (
                   <div key={index} className="relative">
-                    {/* Mobile layout */}
                     <div className="md:hidden">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="bg-primary text-primary-foreground rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0">
@@ -163,7 +165,6 @@ export default function Home() {
                       <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
                     </div>
 
-                    {/* Desktop layout */}
                     <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
                       {isEven ? (
                         <>
