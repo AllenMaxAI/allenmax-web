@@ -116,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="py-16 md:py-24 px-4 bg-background">
+       <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
            <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -145,20 +145,27 @@ export default function Home() {
       <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que cambia cuando implementamos el sistema</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Lo que cambia cuando implementamos el sistema
+            </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 max-w-4xl mx-auto text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {systemChanges.map((change, index) => (
-                  <div key={index} className="flex items-start gap-4">
-                      <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                      <p className="text-lg text-muted-foreground leading-relaxed">{change}</p>
+                  <div 
+                    key={index} 
+                    className="flex items-center gap-4 p-5 rounded-xl bg-card/20 border border-white/5 hover:border-primary/30 hover:bg-card/40 transition-all duration-300 group"
+                  >
+                      <div className="flex-shrink-0 bg-primary/10 p-2.5 rounded-full text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                        <CheckCircle2 className="h-5 w-5" />
+                      </div>
+                      <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">{change}</p>
                   </div>
               ))}
           </div>
         </div>
       </section>
       
-       <section id="proceso" className="py-16 md:py-24 bg-background">
+       <section id="proceso" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
