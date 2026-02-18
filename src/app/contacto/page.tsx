@@ -33,12 +33,23 @@ export default function ContactoPage() {
   }, []);
 
   return (
-    <section>
-      <div className="mx-auto max-w-5xl px-3 py-6">
-        <div className="grid gap-30 items-start md:grid-cols-[480px_1fr]">
+    <section className="pt-24 md:pt-32 pb-20">
+      <div className="mx-auto max-w-5xl px-4">
+        
+        {/* TÍTULO HERO */}
+        <div className="mb-16">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4">
+            Hablemos de tu crecimiento
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl">
+            Agenda una sesión estratégica para estructurar tu sistema de captación y escalado.
+          </p>
+        </div>
+
+        <div className="grid gap-12 items-start md:grid-cols-[480px_1fr]">
           
           {/* IZQUIERDA ESCALADA */}
-          <div className="py-60 md:py-24">
+          <div className="py-12 md:py-0">
             <div className="md:origin-top md:scale-[0.9]">
               <div className="flex flex-col space-y-10">
 
