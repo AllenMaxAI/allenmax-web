@@ -1,9 +1,7 @@
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, TrendingUp, Zap, XCircle, Rocket, Target, Scaling, BrainCircuit, Bot, Workflow, PlugZap, GanttChartSquare, Milestone, Check } from 'lucide-react';
+import { XCircle, Rocket, GanttChartSquare, Milestone } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 const benefits = [
   {
@@ -21,14 +19,6 @@ const benefits = [
     title: "Resultados",
     description: "Nos enfocamos en métricas que importan: aumento de ventas, reducción de costes y mejora de la eficiencia. Tu éxito es nuestro éxito."
   }
-];
-
-const systemChanges = [
-  'Mayor volumen de oportunidades cualificadas',
-  'Procesos comerciales más eficientes',
-  'Mejor organización interna',
-  'Mayor previsibilidad en ingresos',
-  'Crecimiento estructurado',
 ];
 
 const processSteps = [
@@ -138,29 +128,6 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 px-4">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Lo que cambia cuando implementamos el sistema
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-              {systemChanges.map((change, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-center gap-4 p-6 rounded-lg bg-card/20 border border-white/5"
-                  >
-                      <div className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full border border-primary text-primary">
-                        <Check className="h-3 w-3" strokeWidth={3} />
-                      </div>
-                      <p className="text-lg text-muted-foreground">{change}</p>
-                  </div>
-              ))}
           </div>
         </div>
       </section>
