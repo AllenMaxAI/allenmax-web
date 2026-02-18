@@ -2,6 +2,7 @@ import { CheckCircle2, XCircle, ArrowRight, ShieldCheck, Target, Zap, BarChart3 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import React from 'react';
 
 const philosophyItems = [
   {
