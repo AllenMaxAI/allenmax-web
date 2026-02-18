@@ -1,4 +1,4 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Award, Lightbulb, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -7,6 +7,24 @@ const valuePropositions = [
   'Optimizar procesos comerciales y operativos',
   'Mejorar la conversión y el seguimiento',
   'Consolidar un crecimiento sólido y sostenible',
+];
+
+const experienceItems = [
+  {
+    icon: <Award className="h-8 w-8" />,
+    title: 'Años de Excelencia',
+    description: 'Líderes en soluciones de IA y automatización',
+  },
+  {
+    icon: <Lightbulb className="h-8 w-8" />,
+    title: 'Impulsados por la Innovación',
+    description: 'Tecnología de alto impacto',
+  },
+  {
+    icon: <Users className="h-8 w-8" />,
+    title: 'Equipo Profesional',
+    description: 'Expertos en desarrollo y automatización',
+  },
 ];
 
 const targetAudience = [
@@ -20,6 +38,7 @@ export default function NosotrosPage() {
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-5xl">
+        {/* HERO SECTION */}
         <section className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -45,7 +64,31 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <section className="mt-24 flex justify-center">
+        {/* EXPERIENCE CARDS SECTION */}
+        <section className="mt-32 space-y-16">
+          <h2 className="text-center text-xl md:text-2xl font-medium text-foreground/80">
+            Más de 5 años de excelencia en IA y desarrollo de software
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {experienceItems.map((item, index) => (
+              <div 
+                key={index} 
+                className="bg-card border border-border/50 p-10 rounded-2xl flex flex-col items-center text-center transition-all hover:border-primary/30"
+              >
+                <div className="bg-primary/10 p-4 rounded-xl text-primary mb-8">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CITA SECTION */}
+        <section className="mt-32 flex justify-center">
             <div className="flex items-center gap-6 border-l-4 border-primary pl-8">
                  <p className="text-xl md:text-2xl font-medium">
                     No implementamos herramientas por separado. <br />
@@ -54,7 +97,8 @@ export default function NosotrosPage() {
             </div>
         </section>
 
-        <section className="mt-24 text-center">
+        {/* TARGET AUDIENCE SECTION */}
+        <section className="mt-32 text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             ¿Es esta solución para ti?
             </h2>
@@ -69,8 +113,8 @@ export default function NosotrosPage() {
                 </div>
             ))}
             </div>
-            <div className="mt-12">
-            <Button asChild size="lg" className="btn-glow">
+            <div className="mt-16">
+            <Button asChild size="lg" className="btn-glow px-12 py-6 text-lg">
                 <Link href="/contacto">Agenda una Demo Gratis</Link>
             </Button>
             </div>
