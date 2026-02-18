@@ -75,13 +75,13 @@ const services = [
 
 export default function MarketingDigitalPage() {
   return (
-    <>
+    <div className="flex flex-col">
       <section className="pt-24 md:pt-32 pb-20 md:pb-32">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-5 gap-12 items-center">
             <div className="md:col-span-3 space-y-4">
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Marketing Digital</h1>
-              <p className="max-w-2xl text-lg text-muted-foreground">
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Marketing Digital</h1>
+              <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
                 Diseñamos ecosistemas digitales donde estrategia, captación y tecnología trabajan de forma integrada para generar crecimiento real.
               </p>
             </div>
@@ -105,7 +105,7 @@ export default function MarketingDigitalPage() {
                 <div className={cn("space-y-4", index % 2 !== 0 && "md:order-2")}>
                   <div className="flex items-center gap-4">
                     <div className="flex-shrink-0 bg-primary/10 p-3 rounded-xl text-primary">
-                      {React.cloneElement(service.icon, { className: 'h-6 w-6' })}
+                      {React.cloneElement(service.icon as React.ReactElement, { className: 'h-6 w-6' })}
                     </div>
                     <h3 className="text-2xl font-bold">{service.title}</h3>
                   </div>
@@ -130,6 +130,6 @@ export default function MarketingDigitalPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
