@@ -72,11 +72,11 @@ export default function Home() {
     <div className="flex flex-col">
        <section className="h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
-           <h1 className="text-4xl md:text-6xl font-bold tracking-tight max-w-4xl leading-tight">
+           <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
             <span className="block">Transformamos empresas con</span>
             <span className="block">Marketing e Inteligencia Artificial</span>
           </h1>
-          <p className="max-w-2xl text-lg text-muted-foreground">
+          <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
             Combinamos marketing y tecnología con inteligencia artificial para atraer más clientes, optimizar operaciones y superar a la competencia.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -87,27 +87,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4">
+      <section className="py-16 md:py-24 px-4 border-t">
         <div className="container mx-auto max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
             <div className="max-w-xl">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
                 El problema: Invertir en marketing sin tener un sistema
               </h2>
-              <p className="mt-4 text-muted-foreground text-lg">
+              <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
                 Muchas empresas generan contactos, pero sin una estructura que los aproveche, el esfuerzo se diluye. El resultado es una pérdida de oportunidades y un crecimiento estancado.
               </p>
-               <p className="mt-6 text-xl font-semibold">
+               <p className="mt-6 text-lg font-semibold">
                 Sin un sistema, no hay crecimiento sostenible.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-4 text-lg text-center md:text-left">La mayoría de estructuras no:</h3>
+              <h3 className="font-bold mb-6 text-xl">La mayoría de estructuras no:</h3>
               <ul className="space-y-4">
                 {problemPoints.map((point, index) => (
                   <li key={index} className="flex items-center gap-3 text-muted-foreground">
                     <XCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span>{point}</span>
+                    <span className="text-lg">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -116,25 +116,25 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="py-16 md:py-24 px-4">
+       <section className="py-16 md:py-24 px-4 bg-accent/5">
         <div className="container mx-auto max-w-5xl">
-           <div className="text-center mb-12">
+           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Impulsa el crecimiento de tu empresa
             </h2>
-            <p className="mt-4 text-muted-foreground text-lg max-w-3xl mx-auto">
+            <p className="mt-4 text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
              Diseñamos e implementamos sistemas que combinan marketing, automatización y tecnología avanzada para crear una estructura digital que genera resultados medibles y crecimiento sostenible.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="flex items-start text-left gap-4">
-                 <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary">
-                  {React.cloneElement(benefit.icon, { className: "h-6 w-6" })}
+              <div key={benefit.title} className="flex flex-col items-center text-center gap-4">
+                 <div className="flex-shrink-0 bg-primary/10 p-4 rounded-full text-primary">
+                  {React.cloneElement(benefit.icon, { className: "h-8 w-8" })}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground">{benefit.description}</p>
+                  <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
                 </div>
               </div>
             ))}
@@ -143,28 +143,28 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 px-4">
-        <div className="container mx-auto">
-          <div className="text-center">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que cambia cuando implementamos el sistema</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 max-w-4xl mx-auto text-left mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 max-w-4xl mx-auto text-left">
               {systemChanges.map((change, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                  <div key={index} className="flex items-start gap-4">
                       <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                      <p className="text-lg text-muted-foreground">{change}</p>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{change}</p>
                   </div>
               ))}
           </div>
         </div>
       </section>
       
-       <section id="proceso" className="py-16 md:py-24">
+       <section id="proceso" className="py-16 md:py-24 border-t bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Cómo lo Hacemos Realidad
             </h2>
-            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg">
+            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground text-lg leading-relaxed">
               Nuestro proceso probado garantiza resultados excepcionales y una implementación sin fricciones.
             </p>
           </div>
@@ -173,7 +173,7 @@ export default function Home() {
             {/* The vertical line for desktop */}
             <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2 hidden md:block" />
 
-            <div className="relative flex flex-col gap-y-12">
+            <div className="relative flex flex-col gap-y-16">
               {processSteps.map((step, index) => {
                 const isEven = index % 2 === 0;
                 return (
@@ -181,12 +181,12 @@ export default function Home() {
                     {/* Mobile layout */}
                     <div className="md:hidden">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
-                           <span className="text-xl font-bold">{step.step}</span>
+                        <div className="bg-primary text-primary-foreground rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0">
+                           <span className="text-lg font-bold">{step.step}</span>
                         </div>
-                        <h3 className="font-bold text-2xl">{step.title}</h3>
+                        <h3 className="font-bold text-xl">{step.title}</h3>
                       </div>
-                      <p className="text-lg text-muted-foreground">{step.description}</p>
+                      <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
                     </div>
 
                     {/* Desktop layout */}
@@ -194,25 +194,25 @@ export default function Home() {
                       {isEven ? (
                         <>
                           <div className="text-right">
-                            <p className="text-lg text-muted-foreground">{step.description}</p>
+                            <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
                           </div>
                           <div className="flex items-center gap-4">
-                             <div className="bg-primary text-primary-foreground rounded-full h-14 w-14 flex items-center justify-center flex-shrink-0">
-                               <span className="text-2xl font-bold">{step.step}</span>
+                             <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
+                               <span className="text-xl font-bold">{step.step}</span>
                             </div>
-                            <h3 className="font-bold text-3xl">{step.title}</h3>
+                            <h3 className="font-bold text-xl">{step.title}</h3>
                           </div>
                         </>
                       ) : (
                         <>
                            <div className="flex items-center gap-4 justify-end">
-                            <h3 className="font-bold text-3xl">{step.title}</h3>
-                             <div className="bg-primary text-primary-foreground rounded-full h-14 w-14 flex items-center justify-center flex-shrink-0">
-                               <span className="text-2xl font-bold">{step.step}</span>
+                            <h3 className="font-bold text-xl">{step.title}</h3>
+                             <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
+                               <span className="text-xl font-bold">{step.step}</span>
                             </div>
                           </div>
                           <div className="text-left">
-                            <p className="text-lg text-muted-foreground">{step.description}</p>
+                            <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
                           </div>
                         </>
                       )}
