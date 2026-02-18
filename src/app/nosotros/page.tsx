@@ -1,29 +1,39 @@
 import { CheckCircle2, XCircle, ArrowRight, ShieldCheck, Target, Zap, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 import React from 'react';
 
 const philosophyItems = [
   {
-    icon: <ShieldCheck className="h-6 w-6" />,
+    icon: <ShieldCheck />,
     title: "Estructura antes que volumen",
     description: "Priorizamos la base sólida antes de intentar escalar el caos."
   },
   {
-    icon: <Zap className="h-6 w-6" />,
+    icon: <Zap />,
     title: "Sistemas antes que improvisación",
     description: "Cada proceso está documentado y automatizado para ser predecible."
   },
   {
-    icon: <BarChart3 className="h-6 w-6" />,
+    icon: <BarChart3 />,
     title: "Datos antes que intuición",
     description: "Tomamos decisiones basadas en métricas reales, no en suposiciones."
   },
   {
-    icon: <Target className="h-6 w-6" />,
+    icon: <Target />,
     title: "Tecnología aplicada con criterio",
     description: "No implementamos herramientas por moda, sino por su utilidad estratégica."
+  }
+];
+
+const differentiatorItems = [
+  {
+    title: "No somos solo una agencia de marketing",
+    description: "Transformamos tráfico en activos reales mediante sistemas de conversión diseñados para durar."
+  },
+  {
+    title: "No somos solo una empresa tecnológica",
+    description: "Diseñamos la arquitectura estratégica sobre la que tu empresa escala de forma sólida y predecible."
   }
 ];
 
@@ -34,10 +44,10 @@ export default function NosotrosPage() {
       <section className="relative py-20 md:py-32 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
               Sobre Nosotros
             </h1>
-            <p className="text-xl md:text-2xl text-primary font-medium mb-12 leading-tight">
+            <p className="text-lg md:text-xl text-primary font-medium mb-12 leading-relaxed">
               Construimos sistemas de crecimiento para empresas que quieren evolucionar.
             </p>
             
@@ -53,7 +63,7 @@ export default function NosotrosPage() {
               </div>
               <div className="border-l-2 border-primary pl-8 py-2">
                 <p className="text-xl font-bold mb-4">Nosotros hacemos lo contrario.</p>
-                <p className="text-muted-foreground">
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   Diseñamos sistemas donde marketing, automatización y tecnología trabajan como una única estructura orientada a resultados.
                 </p>
               </div>
@@ -62,63 +72,47 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* SECTION: IDENTIDAD (Diferenciadores + Filosofía) */}
-      <section className="py-24 bg-background">
+      {/* IDENTIDAD ESTRATÉGICA (Diferenciadores + Filosofía) */}
+      <section className="py-20 md:py-32 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-20">
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 md:gap-24">
             
             {/* Qué nos diferencia */}
             <div className="space-y-12">
               <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tight">Qué nos diferencia</h2>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Qué nos diferencia</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   No somos una agencia convencional. Somos arquitectos de tu infraestructura digital.
                 </p>
               </div>
               
               <div className="space-y-10">
-                <div className="flex gap-6">
-                  <div className="flex-shrink-0 mt-1">
-                    <Zap className="h-6 w-6 text-primary" />
+                {differentiatorItems.map((item, index) => (
+                  <div key={index} className="space-y-3">
+                    <h3 className="text-xl font-bold">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">No solo marketing</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Transformamos tráfico en activos reales mediante sistemas de conversión diseñados para durar.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <div className="flex-shrink-0 mt-1">
-                    <BarChart3 className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">No solo tecnología</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Diseñamos la arquitectura estratégica sobre la que tu empresa escala de forma sólida y predecible.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Nuestra Filosofía */}
             <div className="space-y-12">
               <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tight">Nuestra Filosofía</h2>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Nuestra Filosofía</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Creemos en el crecimiento ordenado y en la tecnología aplicada con un propósito claro.
                 </p>
               </div>
               
-              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
+              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
                 {philosophyItems.map((item, index) => (
-                  <div key={index} className="space-y-3">
-                    <div className="text-primary mb-2">
-                      {React.cloneElement(item.icon as React.ReactElement, { className: 'h-6 w-6' })}
+                  <div key={index} className="space-y-4">
+                    <div className="text-primary">
+                      {React.cloneElement(item.icon as React.ReactElement, { className: 'h-8 w-8' })}
                     </div>
-                    <h4 className="text-lg font-bold">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                    <h4 className="text-xl font-bold">{item.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -129,11 +123,11 @@ export default function NosotrosPage() {
       </section>
 
       {/* IS IT FOR YOU? */}
-      <section className="py-20 bg-background">
+      <section className="py-20 md:py-32 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-8">
-              <h2 className="text-3xl font-bold tracking-tight">¿Es para ti?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">¿Es para ti?</h2>
               <p className="text-lg text-muted-foreground">Trabajamos con empresas que:</p>
               <ul className="space-y-4">
                 {[
@@ -155,7 +149,7 @@ export default function NosotrosPage() {
                   <XCircle className="h-8 w-8 text-destructive" />
                   <h3 className="text-xl font-bold">No es para todos</h3>
                 </div>
-                <p className="text-muted-foreground leading-relaxed italic">
+                <p className="text-lg text-muted-foreground leading-relaxed italic">
                   No es para negocios que buscan soluciones rápidas sin estrategia o que no están dispuestos a cambiar sus procesos internos por eficiencia real.
                 </p>
               </div>

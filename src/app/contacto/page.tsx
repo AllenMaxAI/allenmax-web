@@ -38,10 +38,10 @@ export default function ContactoPage() {
         
         {/* TÍTULO HERO CENTRADO */}
         <div className="mb-20 text-center max-w-3xl mx-auto space-y-6">
-          <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
             Hablemos de tu crecimiento
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             Agenda una sesión estratégica para estructurar tu sistema de captación y escalado.
           </p>
         </div>
@@ -72,15 +72,15 @@ export default function ContactoPage() {
               </h3>
 
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
+                <p className="text-lg">
                   Las decisiones estratégicas marcan la diferencia entre crecer
                   de forma puntual y consolidar una posición competitiva real.
                 </p>
-                <p>
+                <p className="text-lg">
                   Este espacio no está diseñado para vender promesas rápidas,
                   sino para iniciar conversaciones con enfoque, criterio y visión empresarial.
                 </p>
-                <p>
+                <p className="text-lg">
                   Si has llegado hasta aquí, probablemente no buscas "probar algo nuevo".
                   Buscas hacerlo bien.
                 </p>

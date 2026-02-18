@@ -23,11 +23,11 @@ export default function ServiciosPage() {
     <>
       <section className="py-20 md:py-32 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl mx-auto">
             La Sinergia Perfecta: Marketing Digital e Inteligencia Artificial
           </h1>
-          <p className="max-w-3xl mx-auto mt-6 text-lg text-muted-foreground">
-            En AllenMax, no solo aplicamos técnicas de marketing digital; las reinventamos con el poder de la Inteligencia Artificial. Esta combinación única nos permite crear estrategias hiper-personalizadas, optimizar cada campaña en tiempo real y descubrir oportunidades que otros no pueden ver. El resultado es un crecimiento exponencial para tu negocio, con una eficiencia y precisión sin precedentes.
+          <p className="max-w-3xl mx-auto mt-6 text-lg text-muted-foreground leading-relaxed">
+            En AllenMax, no solo aplicamos técnicas de marketing digital; las reinventamos con el poder de la Inteligencia Artificial. Esta combinación única nos permite crear estrategias hiper-personalizadas, optimizar cada campaña en tiempo real y descubrir oportunidades que otros no pueden ver. El resultado es un crecimiento exponencial para tu negocio.
           </p>
         </div>
       </section>
@@ -40,7 +40,7 @@ export default function ServiciosPage() {
                   <div>
                     <div className="flex justify-center mb-6">{category.icon}</div>
                     <h2 className="text-2xl font-bold mb-2">{category.title}</h2>
-                    <p className="text-muted-foreground">{category.description}</p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">{category.description}</p>
                   </div>
                   <div className="mt-8">
                     <Button asChild className="w-full btn-glow">
