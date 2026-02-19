@@ -83,7 +83,7 @@ export function AppHeader() {
                           <NavigationMenuLink asChild>
                             <Link
                               href={service.href}
-                              className="flex items-center gap-3 select-none rounded-md p-3 text-sm no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              className="flex items-center gap-3 select-none rounded-md p-3 text-sm no-underline outline-none transition-colors hover:bg-primary/90 focus:bg-primary/90"
                             >
                               {React.cloneElement(service.icon, {
                                 className: 'h-4 w-4',
@@ -141,7 +141,7 @@ export function AppHeader() {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {React.cloneElement(link.icon, {
@@ -155,7 +155,7 @@ export function AppHeader() {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="p-3 text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          className="p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {link.label}
