@@ -84,7 +84,7 @@ export default function ContactoPage() {
           </p>
         </div>
 
-        <div className="grid gap-16 items-start md:grid-cols-[1fr_1.2fr]">
+        <div className="grid gap-60 items-start md:grid-cols-[1fr_1.2fr]">
           
           {/* IZQUIERDA: CONTENIDO ESTRATÉGICO */}
           <div className="space-y-12">
@@ -131,31 +131,32 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* DERECHA: CALENDLY SIN SCROLLBAR Y FONDO UNIFICADO */}
+          {/* DERECHA: MÁS PEQUEÑO SIN SCROLL (NÍTIDO) */}
           <div className="relative">
-            <div
-              ref={hostRef}
-              className="rounded-2xl overflow-hidden bg-white border border-border shadow-2xl"
-              style={{
-                width: '100%',
-                height: 1050, 
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                overflow: 'hidden'
-              }}
-            >
+            {/* escala visual */}
+            <div className="origin-top md:scale-[0.sssssssssssssssssss]">
+              {/* render size grande para evitar blur */}
               <div
-                className="calendly-inline-widget"
-                data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  overflow: 'hidden',
-                  scrollbarWidth: 'none',
-                  msOverflowStyle: 'none',
-                  background: '#ffffff'
+                ref={hostRef}
+                className="rounded-2xl overflow-hidden bg-white border border-border shadow-2xl"
+                style={{
+                  width: '100%',
+                  height: 900, // = 1050 / 0.85
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
+                  willChange: 'transform',
                 }}
-              />
+              >
+                <div
+                  className="calendly-inline-widget"
+                  data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
+                  style={{
+                    width: '100%',
+                    height: '1235px',
+                    background: '#ffffff',
+                  }}
+                />
+              </div>
             </div>
           </div>
 
