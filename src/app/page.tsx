@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { XCircle, Rocket, GanttChartSquare, Milestone } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { CtaSection } from '@/components/layout/CtaSection';
 
 const benefits = [
   {
@@ -199,6 +200,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <CtaSection />
     </div>
   );
 }
