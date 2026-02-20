@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckCircle2, XCircle, ArrowRight, ShieldCheck, Target, Zap, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -5,25 +7,25 @@ import React from 'react';
 
 const philosophyItems = [
   {
-    icon: <ShieldCheck />,
-    title: "Estructura antes que volumen",
-    description: "Priorizamos la base sólida antes de intentar escalar el caos."
+    icon: <ShieldCheck className="text-primary" />,
+    title: 'Estructura antes que volumen',
+    description: 'Priorizamos la base sólida antes de intentar escalar el caos.',
   },
   {
-    icon: <Zap />,
-    title: "Sistemas antes que improvisación",
-    description: "Cada proceso está documentado y automatizado para ser predecible."
+    icon: <Zap className="text-primary" />,
+    title: 'Sistemas antes que improvisación',
+    description: 'Cada proceso está documentado y automatizado para ser predecible.',
   },
   {
-    icon: <BarChart3 />,
-    title: "Datos antes que intuición",
-    description: "Tomamos decisiones basadas en métricas reales, no en suposiciones."
+    icon: <BarChart3 className="text-primary" />,
+    title: 'Datos antes que intuición',
+    description: 'Tomamos decisiones basadas en métricas reales, no en suposiciones.',
   },
   {
-    icon: <Target />,
-    title: "Tecnología aplicada con criterio",
-    description: "No implementamos herramientas por moda, sino por su utilidad estratégica."
-  }
+    icon: <Target className="text-primary" />,
+    title: 'Tecnología con criterio',
+    description: 'No implementamos herramientas por moda, sino por su utilidad estratégica.',
+  },
 ];
 
 const forYouItems = [
@@ -45,7 +47,7 @@ export default function NosotrosPage() {
   return (
     <div className="flex flex-col">
       {/* HERO SECTION */}
-      <section className="pt-24 md:pt-32 pb-20 md:pb-32">
+      <section className="pt-24 md:pt-32 pb-20 md:pb-28">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
@@ -59,7 +61,7 @@ export default function NosotrosPage() {
               <div className="space-y-6">
                 <p className="text-base text-muted-foreground leading-relaxed">
                   AllenMax nace con una idea clara: 
-                  <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. El problema es la falta de estructura.</span>
+                  <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. Es la falta de estructura.</span>
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed">
                   Muchas empresas invierten en marketing o implementan tecnología sin una estrategia integrada. El resultado es dispersión y crecimiento inestable.
@@ -76,57 +78,51 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* SECCIÓN CREATIVA: IDENTIDAD ESTRATÉGICA */}
-      <section className="py-20 md:py-32 bg-background border-t border-white/5">
+      {/* SECCIÓN CREATIVA: ARQUITECTURA ESTRATÉGICA */}
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Arquitectura Estratégica
             </h2>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Nuestra identidad se define por la estructura que construimos. No somos una agencia convencional; somos los arquitectos de tu ecosistema digital.
+              Nuestra identidad se define por la estructura que construimos. No somos una agencia convencional, somos los arquitectos de tu ecosistema digital.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-x-20 gap-y-16 items-start">
             
-            <div className="lg:col-span-5 space-y-12">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold tracking-tight text-primary">
-                  Qué nos diferencia
-                </h3>
-                <p className="text-base text-muted-foreground">
-                  No solo creamos campañas, construimos sistemas. No solo implementamos tecnología, diseñamos la arquitectura sobre la que tu empresa escala.
-                </p>
-              </div>
-              <div className="space-y-10 relative pl-8">
-                <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/30 to-transparent" />
+            {/* IZQUIERDA: DIFERENCIACIÓN */}
+            <div className="space-y-10">
+              <h3 className="text-2xl font-bold text-primary tracking-tight">
+                Qué nos diferencia
+              </h3>
+              <div className="relative pl-8 space-y-10">
+                <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
                 <div className="space-y-2">
-                  <h4 className="text-lg font-semibold">Más que Marketing</h4>
-                  <p className="text-muted-foreground leading-relaxed">Transformamos tráfico en activos mediante sistemas de conversión que perduran.</p>
+                  <h4 className="text-lg font-semibold text-foreground">No somos solo una agencia de marketing</h4>
+                  <p className="text-base text-muted-foreground leading-relaxed">Transformamos tráfico en activos reales mediante sistemas de conversión diseñados para durar.</p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-lg font-semibold">Más que Tecnología</h4>
-                  <p className="text-muted-foreground leading-relaxed">Diseñamos la estructura que permite un crecimiento sólido y predecible.</p>
+                  <h4 className="text-lg font-semibold text-foreground">No somos solo una empresa tecnológica</h4>
+                  <p className="text-base text-muted-foreground leading-relaxed">Diseñamos la arquitectura estratégica sobre la que tu empresa escala de forma sólida y predecible.</p>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-7 space-y-12">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold tracking-tight text-primary">Nuestra Filosofía</h3>
-                <p className="text-base text-muted-foreground">
-                  Son los principios que guían cada decisión que tomamos.
-                </p>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
+            {/* DERECHA: FILOSOFÍA */}
+            <div className="space-y-10">
+              <h3 className="text-2xl font-bold tracking-tight">
+                Nuestra Filosofía
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-8">
                 {philosophyItems.map((item, index) => (
                   <div key={index} className="space-y-3">
-                    <div className="flex items-center gap-4">
-                      <span className="text-primary font-mono text-sm">0{index + 1}</span>
-                      <h4 className="text-lg font-bold">{item.title}</h4>
+                    <div className="flex items-center gap-3">
+                       {React.cloneElement(item.icon as React.ReactElement, { className: "h-5 w-5 flex-shrink-0" })}
+                      <h4 className="font-bold text-base">{item.title}</h4>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed pl-8">{item.description}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -137,44 +133,52 @@ export default function NosotrosPage() {
       </section>
 
       {/* SECCIÓN DE ALINEACIÓN */}
-      <section className="py-20 md:py-32 border-y border-white/5 bg-card/5">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="py-20 md:py-32">
+        <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               ¿Conectamos?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              La sinergia es clave. Construimos relaciones a largo plazo con empresas que comparten nuestra filosofía de crecimiento estructurado.
+              La sinergia es clave. Para que funcione, la alineación debe ser total.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-x-16 gap-y-12 items-start">
-            {/* Columna Principal "SÍ" */}
-            <div className="lg:col-span-3 bg-card p-8 md:p-10 rounded-2xl border border-primary/20 shadow-lg">
-              <h3 className="text-2xl font-bold mb-8 text-primary">La colaboración es ideal si tu empresa:</h3>
-              <ul className="space-y-6">
-                {forYouItems.map((item, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                    <span className="text-base font-medium text-foreground/90">{item}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="space-y-12">
+            <h3 className="text-center text-2xl font-bold text-primary">La colaboración es ideal si tu empresa:</h3>
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl mx-auto">
+              {forYouItems.map((item) => (
+                <li key={item} className="flex items-start gap-4">
+                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <span className="text-base font-medium text-foreground/90">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="relative text-center my-24">
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+              <div className="w-full border-t border-border" />
             </div>
-
-            {/* Columna Secundaria "NO" */}
-            <div className="lg:col-span-2 space-y-6 pt-4">
-              <h3 className="text-xl font-bold text-muted-foreground">Quizás no sea el momento si:</h3>
-              <ul className="space-y-4">
-                {notForYouItems.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-muted-foreground/60 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground/80">{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative flex justify-center">
+              <span className="bg-background px-4 text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                Y por el contrario
+              </span>
             </div>
           </div>
+
+          <div className="space-y-12">
+            <h3 className="text-center text-2xl font-bold text-muted-foreground">Quizás no sea el momento si:</h3>
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl mx-auto">
+              {notForYouItems.map((item) => (
+                <li key={item} className="flex items-start gap-4">
+                  <XCircle className="h-6 w-6 text-muted-foreground/60 flex-shrink-0 mt-1" />
+                  <span className="text-base font-medium text-muted-foreground/80">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </section>
 
