@@ -54,7 +54,7 @@ export default function NosotrosPage() {
           <div className="max-w-4xl">
             <div className="space-y-4 mb-16">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
                 Arquitectos de <br />
                 <span className="text-primary">Evolución.</span>
               </h1>

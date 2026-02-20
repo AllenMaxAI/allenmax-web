@@ -80,7 +80,7 @@ export default function ContactoPage() {
           <div className="max-w-4xl mb-20 md:mb-28">
             <div className="space-y-4">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
                 Hablemos de tu <br />
                 <span className="text-primary">crecimiento.</span>
               </h1>
