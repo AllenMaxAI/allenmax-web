@@ -74,7 +74,7 @@ export default function ContactoPage() {
         }
       `}</style>
 
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto w-full px-6 md:px-12 lg:px-24">
           
           {/* TÍTULO HERO REDISEÑADO */}
           <div className="mb-20 md:mb-28">
