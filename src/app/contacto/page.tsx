@@ -74,10 +74,10 @@ export default function ContactoPage() {
         }
       `}</style>
 
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-4xl px-4">
           
           {/* TÍTULO HERO REDISEÑADO */}
-          <div className="max-w-4xl mb-20 md:mb-28">
+          <div className="mb-20 md:mb-28">
             <div className="space-y-4">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
               <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
