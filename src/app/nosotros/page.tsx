@@ -172,7 +172,7 @@ export default function NosotrosPage() {
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl mx-auto">
               {notForYouItems.map((item) => (
                 <li key={item} className="flex items-start gap-4">
-                  <XCircle className="h-6 w-6 text-muted-foreground/60 flex-shrink-0 mt-1" />
+                  <XCircle className="h-6 w-6 text-destructive flex-shrink-0 mt-1" />
                   <span className="text-base font-medium text-muted-foreground/80">{item}</span>
                 </li>
               ))}
