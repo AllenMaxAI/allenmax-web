@@ -31,7 +31,7 @@ export default function ServiciosPage() {
           <div className="max-w-5xl">
             <div className="space-y-4 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestros Servicios</span>
-              <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter leading-[1.1]">
+              <h1 className="text-3xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
                 La Sinergia <span className="text-primary">Perfecta.</span>
               </h1>
             </div>
