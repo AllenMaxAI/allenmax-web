@@ -48,30 +48,36 @@ const notForYouItems = [
 export default function NosotrosPage() {
   return (
     <div className="flex flex-col">
-      {/* HERO SECTION */}
+      {/* HERO SECTION REDISEÑADA */}
       <section className="pt-24 md:pt-32 pb-20 md:pb-28">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-              Sobre Nosotros
-            </h1>
-            <p className="text-lg text-primary font-medium mb-12 leading-relaxed">
+            <div className="space-y-4 mb-16">
+              <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+                Arquitectos de <br />
+                <span className="text-primary">Evolución.</span>
+              </h1>
+              <div className="h-1.5 w-20 bg-primary rounded-full mt-8" />
+            </div>
+
+            <p className="text-xl md:text-2xl text-primary font-medium mb-12 leading-relaxed">
               Construimos sistemas de crecimiento para empresas que quieren evolucionar.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="grid md:grid-cols-2 gap-12 items-start pt-8">
               <div className="space-y-6">
-                <p className="text-base text-muted-foreground leading-relaxed">
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   AllenMax nace con una idea clara: 
                   <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. Es la falta de estructura.</span>
                 </p>
-                <p className="text-base text-muted-foreground leading-relaxed">
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   Muchas empresas invierten en marketing o implementan tecnología sin una estrategia integrada. El resultado es dispersión y crecimiento inestable.
                 </p>
               </div>
               <div className="border-l-2 border-primary pl-8 py-2">
-                <p className="text-lg font-bold mb-4">Nosotros hacemos lo contrario.</p>
-                <p className="text-base text-muted-foreground leading-relaxed">
+                <p className="text-xl font-bold mb-4">Nosotros hacemos lo contrario.</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   Diseñamos sistemas donde marketing, automatización y tecnología trabajan como una única estructura orientada a resultados.
                 </p>
               </div>
@@ -81,7 +87,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* SECCIÓN CREATIVA: ARQUITECTURA ESTRATÉGICA */}
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 bg-card/20 border-y border-border">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
