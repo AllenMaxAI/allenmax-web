@@ -1,28 +1,29 @@
 'use client';
 
-import { CheckCircle2, XCircle, ArrowRight, ShieldCheck, Target, Zap, BarChart3 } from 'lucide-react';
+import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import React from 'react';
+import { ShieldCheck, Zap, BarChart3, Target } from 'lucide-react';
 
 const philosophyItems = [
   {
-    icon: <ShieldCheck className="text-primary" />,
+    icon: <ShieldCheck />,
     title: 'Estructura antes que volumen',
     description: 'Priorizamos la base sólida antes de intentar escalar el caos.',
   },
   {
-    icon: <Zap className="text-primary" />,
+    icon: <Zap />,
     title: 'Sistemas antes que improvisación',
     description: 'Cada proceso está documentado y automatizado para ser predecible.',
   },
   {
-    icon: <BarChart3 className="text-primary" />,
+    icon: <BarChart3 />,
     title: 'Datos antes que intuición',
     description: 'Tomamos decisiones basadas en métricas reales, no en suposiciones.',
   },
   {
-    icon: <Target className="text-primary" />,
+    icon: <Target />,
     title: 'Tecnología con criterio',
     description: 'No implementamos herramientas por moda, sino por su utilidad estratégica.',
   },
@@ -119,7 +120,7 @@ export default function NosotrosPage() {
                 {philosophyItems.map((item, index) => (
                   <div key={index} className="space-y-3">
                     <div className="flex items-center gap-3">
-                       {React.cloneElement(item.icon as React.ReactElement, { className: "h-5 w-5 flex-shrink-0" })}
+                       {React.cloneElement(item.icon as React.ReactElement, { className: "h-5 w-5 flex-shrink-0 text-primary" })}
                       <h4 className="font-bold text-base">{item.title}</h4>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
@@ -172,7 +173,7 @@ export default function NosotrosPage() {
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl mx-auto">
               {notForYouItems.map((item) => (
                 <li key={item} className="flex items-start gap-4">
-                  <XCircle className="h-6 w-6 text-destructive flex-shrink-0 mt-1" />
+                  <XCircle className="h-6 w-6 text-red-400 flex-shrink-0 mt-1" />
                   <span className="text-base font-medium text-muted-foreground/80">{item}</span>
                 </li>
               ))}
