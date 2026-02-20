@@ -3,6 +3,7 @@
 import React from 'react';
 import { Bot, BrainCircuit, Terminal, AppWindow, Workflow, Share2 } from 'lucide-react';
 import { ServicesSection } from '@/components/services/ServicesSection';
+import { CtaSection } from '@/components/layout/CtaSection';
 
 const aiServices = [
   {
@@ -98,6 +99,7 @@ export default function AIServicesPage() {
       </section>
 
       <ServicesSection services={aiServices} />
+      <CtaSection />
     </div>
   );
 }

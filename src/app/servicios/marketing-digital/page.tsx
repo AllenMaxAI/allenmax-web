@@ -3,6 +3,7 @@
 import { LayoutTemplate, Share2, Megaphone, Search, Mail, Target } from 'lucide-react';
 import React from 'react';
 import { ServicesSection } from '@/components/services/ServicesSection';
+import { CtaSection } from '@/components/layout/CtaSection';
 
 const services = [
     {
@@ -98,6 +99,7 @@ export default function MarketingDigitalPage() {
       </section>
 
       <ServicesSection services={services} />
+      <CtaSection />
     </div>
   );
 }

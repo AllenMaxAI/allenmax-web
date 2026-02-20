@@ -1,10 +1,11 @@
 'use client';
 
-import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import React from 'react';
 import { ShieldCheck, Zap, BarChart3, Target } from 'lucide-react';
+import { CtaSection } from '@/components/layout/CtaSection';
 
 const philosophyItems = [
   {
@@ -183,26 +184,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="pt-20 md:pt-32 pb-24 md:pb-32 text-center">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-              Si tu empresa está lista para evolucionar hacia un modelo más estructurado...
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Podemos ayudarte a construirlo. El siguiente paso es una conversación estratégica.
-            </p>
-            <div className="pt-6">
-              <Button asChild size="lg" className="btn-glow h-14 px-10 text-lg">
-                <Link href="/contacto" className="flex items-center gap-2">
-                  Agendar llamada estratégica <ArrowRight className="h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaSection />
     </div>
   );
 }

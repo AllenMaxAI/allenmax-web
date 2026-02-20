@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { BrainCircuit, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import { CtaSection } from '@/components/layout/CtaSection';
 
 const serviceCategories = [
   {
@@ -52,6 +53,7 @@ export default function ServiciosPage() {
           </div>
         </div>
       </section>
+      <CtaSection />
     </>
   );
 }
