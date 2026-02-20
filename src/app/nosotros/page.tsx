@@ -87,7 +87,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* SECCIÓN CREATIVA: ARQUITECTURA ESTRATÉGICA */}
-      <section className="py-24 md:py-32 bg-card/20 border-y border-border">
+      <section className="py-24 md:py-32 bg-card/20">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -106,7 +106,6 @@ export default function NosotrosPage() {
                 Qué nos diferencia
               </h3>
               <div className="relative pl-8 space-y-10">
-                <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
                 <div className="space-y-2">
                   <h4 className="text-lg font-semibold text-foreground">No somos solo una agencia de marketing</h4>
                   <p className="text-base text-muted-foreground leading-relaxed">Transformamos tráfico en activos reales mediante sistemas de conversión diseñados para durar.</p>
@@ -165,9 +164,6 @@ export default function NosotrosPage() {
           </div>
           
           <div className="relative text-center my-24">
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="w-full border-t border-border" />
-            </div>
             <div className="relative flex justify-center">
               <span className="bg-background px-4 text-sm font-medium text-muted-foreground uppercase tracking-wider">
                 Y por el contrario
