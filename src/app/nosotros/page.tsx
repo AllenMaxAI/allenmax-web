@@ -169,7 +169,7 @@ export default function NosotrosPage() {
           </div>
 
           <div className="space-y-12">
-            <h3 className="text-center text-2xl font-bold text-muted-foreground">Quizás no sea el momento si:</h3>
+            <h3 className="text-center text-2xl font-bold text-[#c20000]">Quizás no sea el momento si:</h3>
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl mx-auto">
               {notForYouItems.map((item) => (
                 <li key={item} className="flex items-start gap-4">
