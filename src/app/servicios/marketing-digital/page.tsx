@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { LayoutTemplate, Share2, Megaphone, Search, Mail, CheckCircle2, Target } from 'lucide-react';
+'use client';
+
+import { LayoutTemplate, Share2, Megaphone, Search, Mail, Target } from 'lucide-react';
 import React from 'react';
-import { cn } from '@/lib/utils';
-import { Separator } from '@/components/ui/separator';
+import { ServicesSection } from '@/components/services/ServicesSection';
 
 const services = [
     {
@@ -97,39 +97,7 @@ export default function MarketingDigitalPage() {
         </div>
       </section>
 
-      <section className="pt-20 md:pt-32 pb-24 md:pb-32 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="space-y-24">
-            {services.map((service, index) => (
-              <div key={service.title} className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-                <div className={cn("space-y-4", index % 2 !== 0 && "md:order-2")}>
-                  <div className="flex items-center gap-4">
-                    <div className="flex-shrink-0 bg-primary/10 p-3 rounded-xl text-primary">
-                      {React.cloneElement(service.icon as React.ReactElement, { className: 'h-6 w-6' })}
-                    </div>
-                    <h3 className="text-2xl font-bold">{service.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground text-base leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-
-                <div className={cn(index % 2 !== 0 && "md:order-1")}>
-                  <h4 className="font-semibold text-foreground mb-4">Incluye:</h4>
-                  <ul className="space-y-3">
-                    {service.points.map((point) => (
-                      <li key={point} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
-                        <span className="text-muted-foreground text-sm">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesSection services={services} />
     </div>
   );
 }
