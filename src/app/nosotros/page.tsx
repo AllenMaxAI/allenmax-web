@@ -87,7 +87,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* SECCIÓN CREATIVA: ARQUITECTURA ESTRATÉGICA */}
-      <section className="py-24 md:py-32 bg-card/20">
+      <section className="py-24 md:py-32 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
