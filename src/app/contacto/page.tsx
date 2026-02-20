@@ -76,17 +76,22 @@ export default function ContactoPage() {
 
         <div className="mx-auto max-w-6xl px-4">
           
-          {/* TÍTULO HERO CENTRADO */}
-          <div className="mb-20 text-center max-w-3xl mx-auto space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-              Hablemos de tu crecimiento
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Agenda una sesión estratégica para estructurar tu sistema de captación y escalado.
-            </p>
+          {/* TÍTULO HERO REDISEÑADO */}
+          <div className="max-w-4xl mb-20 md:mb-28">
+            <div className="space-y-4">
+              <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+                Hablemos de tu <br />
+                <span className="text-primary">crecimiento.</span>
+              </h1>
+              <div className="h-1.5 w-20 bg-primary rounded-full mt-8" />
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl pt-6">
+                Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
+              </p>
+            </div>
           </div>
 
-          <div className="grid gap-60 items-start md:grid-cols-[1fr_1.2fr]">
+          <div className="grid gap-20 md:gap-40 items-start md:grid-cols-[1fr_1.2fr]">
             
             {/* IZQUIERDA: CONTENIDO ESTRATÉGICO */}
             <div className="space-y-12">
@@ -133,11 +138,9 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            {/* DERECHA: MÁS PEQUEÑO SIN SCROLL (NÍTIDO) */}
+            {/* DERECHA: CALENDLY */}
             <div className="relative">
-              {/* escala visual */}
-              <div className="origin-top md:scale-[0.sssssssssssssssssss]">
-                {/* render size grande para evitar blur */}
+              <div className="origin-top">
                 <div
                   ref={hostRef}
                   className="rounded-2xl overflow-hidden bg-white border border-border shadow-2xl"
