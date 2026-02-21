@@ -208,7 +208,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl -mt-20">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl -mt-10">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -216,7 +216,7 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-3xl md:text-[2.6rem] font-extrabold tracking-tight leading-tight px-4 max-w-4xl mx-auto">
+            <h1 className="text-3xl md:text-[2.6rem] font-extrabold tracking-tight leading-[1.15] px-4 max-w-4xl mx-auto">
               <span className="block">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
@@ -248,7 +248,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN PROBLEMA - APARECE AL HACER SCROLL */}
-      <section className="px-4 py-24 md:py-32 relative z-10 bg-[#020817]">
+      <section className="px-4 pt-12 pb-24 md:pt-16 md:pb-32 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
