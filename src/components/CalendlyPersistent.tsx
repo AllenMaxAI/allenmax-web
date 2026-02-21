@@ -25,7 +25,7 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
-  // Lógica de detección de eventos de Calendly mejorada
+  // Lógica de detección de eventos de Calendly refinada
   useEffect(() => {
     if (!mounted) return;
 
@@ -34,14 +34,15 @@ export function CalendlyPersistent() {
       if (e.data.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
         const event = e.data.event;
         
-        // La línea SOLO se muestra en la vista inicial del calendario
-        if (event === 'calendly.event_type_viewed') {
+        // Mostramos la línea en la pantalla inicial de calendario o en la final de éxito
+        if (event === 'calendly.event_type_viewed' || event === 'calendly.event_scheduled') {
           setShowLine(true);
         } 
-        // Para CUALQUIER otra interacción (selección de fecha, hora, reserva), la ocultamos
-        else {
+        // Ocultamos la línea específicamente cuando se selecciona día/hora para ver el panel interno
+        else if (event === 'calendly.date_and_time_selected') {
           setShowLine(false);
         }
+        // Nota: No usamos un 'else' genérico para evitar que mensajes internos de Calendly oculten la línea por error
       }
     };
 
