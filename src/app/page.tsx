@@ -78,7 +78,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN PROBLEMA - Padding eliminado */}
+      {/* SECCIÓN PROBLEMA */}
       <section className="px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="px-4 py-20">
+       <section className="px-4 py-12">
         <div className="container mx-auto max-w-5xl">
            <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -137,7 +137,7 @@ export default function Home() {
         </div>
       </section>
       
-       <section id="proceso" className="pt-20 px-4">
+       <section id="proceso" className="px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">

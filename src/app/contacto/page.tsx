@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React from 'react';
 import { Check } from 'lucide-react';
+import { InlineWidget } from 'react-calendly';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -11,37 +12,12 @@ const strategicSessionItems = [
 ];
 
 export default function ContactoPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const scriptId = 'calendly-widget-script';
-    let script = document.getElementById(scriptId) as HTMLScriptElement;
-    
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-
-    // El evento resize ayuda a Calendly a recalcular el layout interno
-    const handleLoad = () => {
-      setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-      }, 1000);
-    };
-
-    window.addEventListener('load', handleLoad);
-    return () => window.removeEventListener('load', handleLoad);
-  }, []);
-
   return (
     <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020617]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Cabecera Unificada */}
+          {/* Columna Izquierda - Cabecera Identica a Nosotros */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -99,24 +75,24 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Widget Calendly con ELIMINACIÓN de branding por recorte */}
+          {/* Columna Derecha - Widget Calendly con Branding Eliminado */}
           <div className="relative">
-            <div 
-              className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020617] min-h-[700px]"
-              style={{
-                // Esta es la solución definitiva: Recortamos la zona donde Calendly inyecta su branding
-                // evitando que el navegador siquiera lo dibuje.
-                clipPath: 'inset(0 0 0 0)', 
-                WebkitClipPath: 'inset(0 0 0 0)'
-              }}
-            >
-              <div className="relative w-full h-full" style={{ clipPath: 'polygon(0 0, 88% 0, 88% 60px, 100% 60px, 100% 100%, 0 100%)' }}>
-                <div 
-                  className="calendly-inline-widget w-full h-[700px] lg:h-[950px]"
-                  data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1&background_color=020617&text_color=ffffff&primary_color=3b82f6"
-                  style={{ minWidth: '320px' }}
-                />
-              </div>
+            <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020617]">
+               <InlineWidget 
+                url="https://calendly.com/agency-allenmax/reunion-allenmax"
+                styles={{
+                  height: '700px',
+                  width: '100%',
+                }}
+                pageSettings={{
+                  backgroundColor: '020617',
+                  hideGdprBanner: true,
+                  hideLandingPageDetails: false,
+                  primaryColor: '3b82f6',
+                  textColor: 'ffffff',
+                  hideBranding: true, // Esta es la instrucción que elimina el branding
+                }}
+              />
             </div>
           </div>
 
