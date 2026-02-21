@@ -40,7 +40,7 @@ export default function ContactoPage() {
         const timer = setTimeout(() => {
           setIsLoaded(true);
           window.dispatchEvent(new Event('resize'));
-        }, 4000);
+        }, 3500);
 
         return () => clearTimeout(timer);
       }
@@ -139,10 +139,10 @@ export default function ContactoPage() {
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
                 </div>
 
-                <div className="flex flex-col p-6 md:p-10 blur-[10px] opacity-40">
-                  {/* Logo rectangular oscuro superior (Jake Allen Rosas PFP/Logo) */}
-                  <div className="w-28 h-20 bg-[#020817] rounded-md mx-auto mb-10 flex items-center justify-center">
-                    <div className="w-14 h-2 bg-white/10 rounded-full" />
+                <div className="flex flex-col p-6 md:p-10 blur-[12px] opacity-40">
+                  {/* Foto de perfil CUADRADA oscura superior */}
+                  <div className="w-24 h-24 bg-[#020817] rounded-lg mx-auto mb-10 flex items-center justify-center">
+                    <div className="w-12 h-1 bg-white/10 rounded-full" />
                   </div>
                   
                   {/* Jake Allen Rosas Name Line */}
@@ -184,7 +184,7 @@ export default function ContactoPage() {
                     <div className="w-4 h-4 bg-gray-100 rounded-full" />
                   </div>
 
-                  {/* Rejilla de días (7 columnas x 5 filas aprox) */}
+                  {/* Rejilla de días (7 columnas x 5 filas) */}
                   <div className="grid grid-cols-7 gap-x-6 gap-y-8 max-w-[320px] mx-auto mb-12">
                     {Array.from({ length: 31 }).map((_, i) => (
                       <div key={i} className="aspect-square bg-gray-100 rounded-full flex items-center justify-center">
