@@ -4,11 +4,12 @@
 
 @layer base {
   :root {
-    --background: 222.9 84% 4.9%;
+    /* Exactamente #020817: HSL(228, 80%, 5%) */
+    --background: 228 80% 5%;
     --foreground: 0 0% 98%;
-    --card: 222.9 84% 7%;
+    --card: 228 80% 7%;
     --card-foreground: 0 0% 98%;
-    --popover: 222.9 84% 7%;
+    --popover: 228 80% 7%;
     --popover-foreground: 0 0% 98%;
     --primary: 220 90% 60%;
     --primary-foreground: 217 49% 10%;

@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
-import Script from 'next/script';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -11,25 +10,70 @@ const strategicSessionItems = [
   "Resolveremos tus dudas con total claridad",
 ];
 
+declare global {
+  interface Window {
+    Calendly: any;
+  }
+}
+
 export default function ContactoPage() {
+  const calendlyRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Forzamos un resize cuando el widget se carga para evitar problemas de layout
-    const timer = setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 1500);
-    return () => clearTimeout(timer);
+    const initCalendly = () => {
+      if (window.Calendly && calendlyRef.current) {
+        // Limpiamos el contenedor antes de reinicializar para evitar duplicados o errores
+        calendlyRef.current.innerHTML = '';
+        window.Calendly.initInlineWidget({
+          url: 'https://calendly.com/agency-allenmax/reunion-allenmax?hide_gdpr_banner=1&primary_color=3b82f6&text_color=ffffff&background_color=020817',
+          parentElement: calendlyRef.current,
+          prefill: {},
+          utm: {}
+        });
+        console.log('[Calendly Debug] Widget inicializado correctamente.');
+      }
+    };
+
+    // Intentamos inicializar si el script ya está cargado
+    if (window.Calendly) {
+      initCalendly();
+    } else {
+      // Si no, esperamos un poco (el script está en layout con lazyOnload)
+      const timer = setInterval(() => {
+        if (window.Calendly) {
+          initCalendly();
+          clearInterval(timer);
+        }
+      }, 500);
+      return () => clearInterval(timer);
+    }
+
+    // MutationObserver para intentar detectar el branding si se inyecta fuera del iframe
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) {
+            const branding = node.querySelector('[data-id="branding"]');
+            if (branding) {
+              console.log('[Calendly Debug] Branding detectado y eliminado.');
+              branding.remove();
+            }
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020817]">
-      <Script 
-        src="https://assets.calendly.com/assets/external/widget.js" 
-        strategy="afterInteractive"
-      />
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Cabecera idéntica a Nosotros */}
+          {/* Columna Izquierda - Estilo Idéntico a Nosotros */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -87,16 +131,17 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Widget Calendly Optimizado */}
+          {/* Columna Derecha - Contenedor Calendly Robusto */}
           <div className="relative">
             <div 
-              className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020817] min-h-[700px] md:min-h-[1100px]"
+              className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020817] min-h-[700px] md:min-h-[900px]"
               style={{ position: 'relative' }}
             >
+              {/* Contenedor donde se inyectará el widget mediante JS */}
               <div 
-                className="calendly-inline-widget" 
-                data-url="https://calendly.com/agency-allenmax/reunion-allenmax?hide_gdpr_banner=1&primary_color=3b82f6&text_color=ffffff&background_color=020817"
-                style={{ minWidth: '320px', height: '1100px' }}
+                ref={calendlyRef}
+                className="w-full h-[900px]"
+                id="calendly-container"
               />
             </div>
           </div>

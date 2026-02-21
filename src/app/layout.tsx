@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { AppHeader } from '@/components/layout/header';
 import { AppFooter } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'AllenMax | Marketing Digital & IA',
@@ -35,6 +36,10 @@ export default function RootLayout({
           <AppFooter />
         </div>
         <Toaster />
+        <Script 
+          src="https://assets.calendly.com/assets/external/widget.js" 
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
