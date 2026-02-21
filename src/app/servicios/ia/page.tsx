@@ -77,7 +77,7 @@ const aiServices = [
 export default function AIServicesPage() {
   return (
     <div className="flex flex-col">
-      <section className="pt-24 md:pt-32 pb-20 md:pb-32">
+      <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-5 gap-12 items-center">
             <div className="md:col-span-3 space-y-4">

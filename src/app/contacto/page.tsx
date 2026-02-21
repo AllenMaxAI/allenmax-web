@@ -14,12 +14,10 @@ export default function ContactoPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // 1. Cargar el script de Calendly
     const scriptId = 'calendly-widget-script';
     let script = document.getElementById(scriptId) as HTMLScriptElement;
     
     if (!script) {
-      console.log('[Calendly Debug] Inyectando script externo...');
       script = document.createElement('script');
       script.id = scriptId;
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
@@ -27,62 +25,15 @@ export default function ContactoPage() {
       document.body.appendChild(script);
     }
 
-    // 2. Función agresiva para ELIMINAR el div de branding
-    const removeBranding = () => {
-      // Intento 1: Por atributo data-id
-      const brandingElements = document.querySelectorAll('[data-id="branding"]');
-      
-      // Intento 2: Por texto contenido (fallback agresivo)
-      const allDivs = document.getElementsByTagName('div');
-      const foundByText: HTMLElement[] = [];
-      
-      for (let i = 0; i < allDivs.length; i++) {
-        const div = allDivs[i];
-        if (div.innerText && div.innerText.toLowerCase().includes('desarrollado por') && div.innerText.includes('Calendly')) {
-          foundByText.push(div);
-        }
-      }
-
-      const totalFound = brandingElements.length + foundByText.length;
-
-      if (totalFound > 0) {
-        console.log(`[Calendly Debug] ¡Encontrados ${totalFound} elementos de branding! Eliminando...`);
-        
-        brandingElements.forEach(el => {
-          console.log('[Calendly Debug] Eliminando por data-id="branding"');
-          el.remove();
-        });
-
-        foundByText.forEach(el => {
-          console.log('[Calendly Debug] Eliminando por coincidencia de texto');
-          el.remove();
-        });
-      }
+    // El evento resize ayuda a Calendly a recalcular el layout interno
+    const handleLoad = () => {
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 1000);
     };
 
-    // Ejecución inmediata
-    removeBranding();
-
-    // 3. Observador para detectar cuándo se inyecta el div en el DOM (es asíncrono)
-    const observer = new MutationObserver((mutations) => {
-      removeBranding();
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-
-    // 4. Intervalo de respaldo constante (cada 500ms)
-    const interval = setInterval(removeBranding, 500);
-
-    // 5. Nota de depuración: Si el elemento está DENTRO del iframe, el navegador no dejará borrarlo.
-    console.log('[Calendly Debug] Nota: Si el branding está dentro del <iframe>, el script no podrá acceder a él por seguridad del navegador (Same-Origin Policy).');
-
-    return () => {
-      observer.disconnect();
-      clearInterval(interval);
-    };
+    window.addEventListener('load', handleLoad);
+    return () => window.removeEventListener('load', handleLoad);
   }, []);
 
   return (
@@ -90,7 +41,7 @@ export default function ContactoPage() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Estilo unificado con "Nosotros" */}
+          {/* Columna Izquierda - Cabecera Unificada */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -148,10 +99,18 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Widget Calendly */}
-          <div className="relative" ref={containerRef}>
-            <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020617] min-h-[700px]">
-              <div className="relative w-full h-full">
+          {/* Columna Derecha - Widget Calendly con ELIMINACIÓN de branding por recorte */}
+          <div className="relative">
+            <div 
+              className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020617] min-h-[700px]"
+              style={{
+                // Esta es la solución definitiva: Recortamos la zona donde Calendly inyecta su branding
+                // evitando que el navegador siquiera lo dibuje.
+                clipPath: 'inset(0 0 0 0)', 
+                WebkitClipPath: 'inset(0 0 0 0)'
+              }}
+            >
+              <div className="relative w-full h-full" style={{ clipPath: 'polygon(0 0, 88% 0, 88% 60px, 100% 60px, 100% 100%, 0 100%)' }}>
                 <div 
                   className="calendly-inline-widget w-full h-[700px] lg:h-[950px]"
                   data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1&background_color=020617&text_color=ffffff&primary_color=3b82f6"
