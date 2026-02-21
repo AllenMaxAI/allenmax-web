@@ -19,15 +19,15 @@ export default function ContactoPage() {
             
             {/* Columna Izquierda */}
             <div className="space-y-12">
-              <div className="space-y-2 mb-12">
-                <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
-                <div className="space-y-6">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
                   <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
                     Hablemos de tu <br />
                     <span className="text-primary">crecimiento.</span>
                   </h1>
-                  <div className="h-1.5 w-20 bg-primary rounded-full" />
                 </div>
+                <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
 
               <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed">
