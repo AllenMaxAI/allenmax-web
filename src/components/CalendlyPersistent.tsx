@@ -85,7 +85,7 @@ export function CalendlyPersistent() {
               <div className="absolute top-0 left-0 w-full z-30 h-1">
                 {/* Glow / Blur de 25px más intenso */}
                 <div 
-                  className="absolute top-0 left-0 h-8 bg-primary/60 blur-[80px] transition-all duration-300 ease-out"
+                  className="absolute top-0 left-0 h-8 bg-primary/60 blur-[25px] transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
                 />
                 {/* Línea nítida core */}
@@ -99,7 +99,7 @@ export function CalendlyPersistent() {
               <div className="flex flex-col p-6 md:p-10 blur-[18px] opacity-40 mt-8">
                 
                 {/* Logo Cuadrado Pequeño (Simulando la PFP del widget) */}
-                <div className="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center relative overflow-hidden">
+                <div className="w-10 h-10 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center relative overflow-hidden">
                    <div className="flex gap-1 scale-50">
                     <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
                     <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
@@ -166,6 +166,15 @@ export function CalendlyPersistent() {
                 "w-full h-[1050px] transition-opacity duration-700 bg-white",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
+            />
+
+            {/* Capa para ocultar el branding de Calendly */}
+            <div 
+              className={cn(
+                "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-30 pointer-events-none transition-opacity duration-700",
+                isLoaded ? "opacity-100" : "opacity-0"
+              )}
+              aria-hidden="true"
             />
           </div>
         </div>
