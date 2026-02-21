@@ -2,6 +2,7 @@
 
 import { CheckCircle2, XCircle, ShieldCheck, Zap, BarChart3, Target } from 'lucide-react';
 import React from 'react';
+import { CtaSection } from '@/components/layout/CtaSection';
 
 const philosophyItems = [
   {
@@ -182,6 +183,8 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
+
+      <CtaSection />
     </div>
   );
 }

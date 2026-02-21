@@ -25,7 +25,7 @@ export default function ServiciosPage() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="pt-24 md:pt-32 pb-12">
+      <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
@@ -47,7 +47,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* CATEGORÍAS DE SERVICIOS */}
-      <section className="py-20">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {serviceCategories.map((category) => (
