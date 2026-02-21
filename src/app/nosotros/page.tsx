@@ -2,7 +2,6 @@
 
 import { CheckCircle2, XCircle, ShieldCheck, Zap, BarChart3, Target } from 'lucide-react';
 import React from 'react';
-import { CtaSection } from '@/components/layout/CtaSection';
 
 const philosophyItems = [
   {
@@ -50,11 +49,13 @@ export default function NosotrosPage() {
           <div className="max-w-4xl">
             <div className="space-y-4 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
-              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] mb-6">
-                Arquitectos de <br />
-                <span className="text-primary">Evolución.</span>
-              </h1>
-              <div className="h-1.5 w-20 bg-primary rounded-full" />
+              <div className="space-y-6">
+                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                  Arquitectos de <br />
+                  <span className="text-primary">Evolución.</span>
+                </h1>
+                <div className="h-1.5 w-20 bg-primary rounded-full" />
+              </div>
             </div>
 
             <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed">
@@ -83,7 +84,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* ARQUITECTURA ESTRATÉGICA */}
-      <section className="pt-20 md:pt-28">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -134,7 +135,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* ALINEACIÓN */}
-      <section className="pt-20 md:pt-28">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -181,8 +182,6 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </div>
   );
 }

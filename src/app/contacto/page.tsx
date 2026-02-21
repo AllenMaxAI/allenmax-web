@@ -68,13 +68,16 @@ export default function ContactoPage() {
           <div className="grid gap-20 items-start md:grid-cols-[1fr_1.2fr]">
             
             {/* Columna Izquierda */}
-            <div className="space-y-16">
+            <div className="space-y-12">
               <div className="space-y-6">
                 <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
-                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
-                  Hablemos de tu <br />
-                  <span className="text-primary">crecimiento.</span>
-                </h1>
+                <div className="space-y-6">
+                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                    Hablemos de tu <br />
+                    <span className="text-primary">crecimiento.</span>
+                  </h1>
+                  <div className="h-1.5 w-20 bg-primary rounded-full" />
+                </div>
                 <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed pt-2">
                   Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
                 </p>

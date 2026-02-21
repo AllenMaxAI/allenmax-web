@@ -60,10 +60,10 @@ const problemPoints = [
 export default function Home() {
   
   return (
-    <div className="flex flex-col bg-[#020617] bg-[radial-gradient(circle_at_50%_0%,_rgba(59,130,246,0.18),_transparent_60%)]">
+    <div className="flex flex-col bg-[#020617] bg-[radial-gradient(ellipse_at_top,_rgba(37,99,235,0.15),_transparent_70%)]">
        <section className="pt-24 md:pt-32 h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
-           <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl leading-tight">
+           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter max-w-4xl leading-[1.1]">
             <span className="block">Transformamos empresas con</span>
             <span className="block text-primary">Marketing e Inteligencia Artificial</span>
           </h1>
