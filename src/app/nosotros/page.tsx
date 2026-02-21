@@ -44,8 +44,8 @@ const notForYouItems = [
 export default function NosotrosPage() {
   return (
     <div className="flex flex-col">
-      {/* HERO SECTION */}
-      <section className="pt-24 md:pt-32 pb-20 md:pb-28">
+      {/* HERO SECTION - Responsable de su espaciado superior y cuerpo */}
+      <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <div className="space-y-4 mb-12">
@@ -82,8 +82,8 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* ARQUITECTURA ESTRATÉGICA */}
-      <section className="py-20 md:py-28 bg-background">
+      {/* ARQUITECTURA ESTRATÉGICA - Solo padding-top para evitar duplicar espacio con la anterior */}
+      <section className="pt-20 md:pt-28">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -95,7 +95,6 @@ export default function NosotrosPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-x-20 gap-y-20 items-start">
-            {/* IZQUIERDA: QUÉ NOS DIFERENCIA */}
             <div className="space-y-12">
               <h3 className="text-2xl font-bold text-primary tracking-tight">
                 Qué nos diferencia
@@ -112,7 +111,6 @@ export default function NosotrosPage() {
               </div>
             </div>
 
-            {/* DERECHA: FILOSOFÍA */}
             <div className="space-y-12">
               <h3 className="text-2xl font-bold tracking-tight">
                 Nuestra Filosofía
@@ -135,8 +133,8 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* ALINEACIÓN (CONECTAMOS) */}
-      <section className="py-20 md:py-28">
+      {/* ALINEACIÓN - Solo padding-top */}
+      <section className="pt-20 md:pt-28">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -184,6 +182,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
+      {/* CtaSection al final es el único que aporta padding-bottom final */}
       <CtaSection />
     </div>
   );

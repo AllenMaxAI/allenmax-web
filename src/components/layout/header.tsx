@@ -67,13 +67,13 @@ export function AppHeader() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+        <div className="relative flex h-16 items-center justify-between">
           {/* Logo a la izquierda */}
           <div className="flex shrink-0">
             <Logo />
           </div>
 
-          {/* Desktop Navigation Centrada */}
+          {/* Desktop Navigation Centrada Absolutamente */}
           <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <NavigationMenu>
               <NavigationMenuList>

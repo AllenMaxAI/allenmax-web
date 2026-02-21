@@ -21,18 +21,14 @@ export default function ContactoPage() {
       if (containerRef.current && (window as any).Calendly) {
         const calendly = (window as any).Calendly;
         
-        // Limpiar para evitar duplicados y errores de hidratación
+        // Limpiar para evitar duplicados y errores
         containerRef.current.innerHTML = '';
-        
-        const url = "https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1";
         
         if (calendly.initInlineWidget) {
           calendly.initInlineWidget({
-            url: url,
+            url: "https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1",
             parentElement: containerRef.current,
           });
-        } else if (calendly.initInlineWidgets) {
-          calendly.initInlineWidgets();
         }
       }
     };
@@ -51,10 +47,6 @@ export default function ContactoPage() {
         script.onload = initCalendly;
       }
     }
-
-    return () => {
-      // Limpieza opcional
-    };
   }, []);
 
   return (
@@ -68,16 +60,14 @@ export default function ContactoPage() {
         .calendly-inline-widget::-webkit-scrollbar,
         .calendly-inline-widget iframe::-webkit-scrollbar {
           display: none !important;
-          width: 0 !important;
-          height: 0 !important;
         }
       `}</style>
 
-      <section className="pt-24 md:pt-32 pb-16 bg-background">
+      <section className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4">
           <div className="grid gap-20 items-start md:grid-cols-[1fr_1.2fr]">
             
-            {/* Columna Izquierda: Contenido y Títulos */}
+            {/* Columna Izquierda */}
             <div className="space-y-16">
               <div className="space-y-6">
                 <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
@@ -127,7 +117,7 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            {/* Columna Derecha: Widget de Calendly (Alineado arriba) */}
+            {/* Columna Derecha - Calendly arriba del todo */}
             <div className="relative">
               <div
                 ref={containerRef}
@@ -137,7 +127,6 @@ export default function ContactoPage() {
                   height: '1100px',
                   minWidth: '320px',
                 }}
-                data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
               />
             </div>
 
