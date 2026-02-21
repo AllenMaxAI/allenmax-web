@@ -208,7 +208,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl -mt-16">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl -mt-20">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -259,10 +259,10 @@ export default function Home() {
                 Muchas empresas generan contactos, pero sin una estructura que los aproveche, el esfuerzo se diluye. El resultado es una pérdida constante de oportunidades y un crecimiento estancado.
               </p>
               <div className="pt-4 space-y-2">
-                 <p className="text-xl font-bold italic text-white/90">
+                 <p className="text-xl font-bold italic text-white/90 border-l-2 border-primary pl-4">
                   "Sin un sistema predecible, no hay crecimiento sostenible."
                 </p>
-                <p className="text-sm text-muted-foreground">AllenMax, Estrategia & Evolución.</p>
+                <p className="text-sm text-muted-foreground ml-4">AllenMax, Estrategia & Evolución.</p>
               </div>
             </div>
             
@@ -288,13 +288,16 @@ export default function Home() {
       {/* BENEFICIOS */}
       <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
-          <FadeInSection className="text-center mb-24">
+          <FadeInSection className="text-center mb-24 flex flex-col items-center">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
               Impulsa el crecimiento de tu empresa
             </h2>
-            <p className="text-muted-foreground text-xl leading-relaxed max-w-3xl mx-auto">
-             Diseñamos e implementamos sistemas que combinan <span className="text-primary font-semibold">marketing</span>, <span className="text-primary font-semibold">automatización</span> y <span className="text-primary font-semibold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
-            </p>
+            <div className="h-1.5 w-20 bg-primary/30 rounded-full mb-10" />
+            <div className="max-w-4xl mx-auto px-4 py-8 rounded-3xl border border-white/5 bg-white/[0.02]">
+              <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed">
+               Diseñamos e implementamos sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> y <span className="text-primary font-bold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
+              </p>
+            </div>
           </FadeInSection>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -316,12 +319,16 @@ export default function Home() {
       {/* PROCESO ANIMADO */}
       <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto">
-          <FadeInSection className="text-center mb-24">
+          <FadeInSection className="text-center mb-24 flex flex-col items-center">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
-              Cómo lo Hacemos <span className="text-primary">Realidad</span>
+              Cómo lo Hacemos <span className="relative inline-block">
+                <span className="relative z-10 text-primary">Realidad</span>
+                <span className="absolute -bottom-1 left-0 w-full h-3 bg-primary/10 -rotate-1" />
+              </span>
             </h2>
+            <div className="h-1 w-24 bg-white/10 rounded-full mb-10" />
             <p className="max-w-2xl mx-auto text-muted-foreground text-xl leading-relaxed">
-              Nuestro proceso probado garantiza resultados excepcionales y una <span className="text-white/90 font-medium">implementación sin fricciones.</span>
+              Nuestro proceso probado garantiza resultados excepcionales y una <span className="text-white/90 font-medium underline decoration-primary/40 underline-offset-8">implementación sin fricciones.</span>
             </p>
           </FadeInSection>
 
