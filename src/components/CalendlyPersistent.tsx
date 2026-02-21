@@ -47,7 +47,7 @@ export function CalendlyPersistent() {
     const handleCalendlyEvents = (e: MessageEvent) => {
       if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
         
-        // Logging detallado para depuración
+        // Manejo de altura para clasificar vistas
         if (e.data.event === 'calendly.page_height') {
           const raw = e.data.payload?.height ?? e.data.payload;
           const h = parseInt(String(raw), 10);
@@ -57,8 +57,9 @@ export function CalendlyPersistent() {
             const view = classifyView(h);
             lastViewRef.current = view;
             
-            // Actualizar estados visuales
-            setShowLine(view === 'calendar' || view === 'details');
+            // Actualizar estados visuales de forma coordinada
+            const isCalendarOrDetails = view === 'calendar' || view === 'details';
+            setShowLine(isCalendarOrDetails);
             setIsTimesView(view === 'times');
           }
         }
@@ -76,7 +77,7 @@ export function CalendlyPersistent() {
     return () => window.removeEventListener('message', handleCalendlyEvents);
   }, [mounted]);
 
-  // Simulación de progreso de carga
+  // Simulación de progreso de carga para el esqueleto
   useEffect(() => {
     if (mounted && !isLoaded) {
       const interval = setInterval(() => {
@@ -92,7 +93,7 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isLoaded]);
 
-  // Inicialización del widget
+  // Inicialización del widget de Calendly
   useEffect(() => {
     if (!mounted) return;
 
@@ -126,12 +127,13 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isInitialized]);
 
-  // Restaurar estado al volver a /contacto
+  // Restaurar estado visual inmediatamente al volver a /contacto para evitar parpadeos (flash)
   useEffect(() => {
     if (isVisible) {
       if (lastHeightRef.current !== null) {
         const view = classifyView(lastHeightRef.current);
-        setShowLine(view === 'calendar' || view === 'details');
+        const isCalendarOrDetails = view === 'calendar' || view === 'details' || lastViewRef.current === 'success';
+        setShowLine(isCalendarOrDetails);
         setIsTimesView(view === 'times');
       } else {
         setShowLine(true);
@@ -157,7 +159,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* BARRA DE PROGRESO */}
+            {/* BARRA DE PROGRESO DE CARGA */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -170,7 +172,7 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* PARCHES DE SEGURIDAD (OCULTAR BRANDING) */}
+            {/* PARCHES PARA OCULTAR BRANDING NATIVO */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -187,15 +189,15 @@ export function CalendlyPersistent() {
               />
             )}
 
-            {/* PARCHE PARA OCULTAR ZONA HORARIA EN VISTA DE HORAS */}
+            {/* PARCHE PARA OCULTAR ZONA HORARIA EN VISTA DE HORAS (MÁS DELGADO) */}
             {isTimesView && (
               <div 
-                className="absolute top-[82px] left-0 w-full h-[40px] bg-white z-[90] pointer-events-none"
+                className="absolute top-[82px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none transition-opacity duration-300"
                 aria-hidden="true"
               />
             )}
 
-            {/* ESQUELETO DE CARGA */}
+            {/* ESQUELETO DE CARGA PERSONALIZADO */}
             <div 
               className={cn(
                 "absolute inset-0 z-[60] bg-white pointer-events-none flex flex-col transition-opacity duration-700",
