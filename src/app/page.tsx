@@ -198,7 +198,7 @@ export default function Home() {
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
-          <div className="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <div className="space-y-4 opacity-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
@@ -208,11 +208,11 @@ export default function Home() {
             </h1>
           </div>
           
-          <p className="max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+          <p className="max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed opacity-0 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 fill-mode-both">
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500">
+          <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500 fill-mode-both">
             <Button asChild size="lg" className="btn-glow h-14 px-10 text-lg font-bold">
               <Link href="#proceso">Descubre cómo lo hacemos</Link>
             </Button>
@@ -243,7 +243,6 @@ export default function Home() {
             </div>
             
             <div className="relative group">
-              {/* Glow extremadamente sutil */}
               <div className="absolute -inset-1 bg-primary/2 blur-lg rounded-3xl transition-all duration-700 group-hover:bg-primary/5 group-hover:blur-xl" />
               <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10 shadow-2xl">
                 <h3 className="font-bold mb-10 text-2xl text-white/90">La mayoría de estructuras fallan en:</h3>
@@ -277,7 +276,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {benefits.map((benefit, idx) => (
-              <FadeInSection key={benefit.title} className={cn("flex flex-col items-center text-center gap-6 group", `delay-[${idx * 200}ms]`)}>
+              <FadeInSection key={benefit.title} className={cn("flex flex-col items-center text-center gap-6 group")}>
                 <div className="flex-shrink-0 bg-primary/10 p-6 rounded-2xl text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
                   {React.cloneElement(benefit.icon as React.ReactElement, { className: "h-10 w-10" })}
                 </div>
