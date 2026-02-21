@@ -14,7 +14,7 @@ export function AppFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 py-6 bg-background">
+    <footer className="border-t border-white/5 py-6 bg-[#020817]">
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Bloque Superior: Marca y Contacto */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-y-6 mb-8">
@@ -29,13 +29,13 @@ export function AppFooter() {
 
           {/* Lado Derecho: Contacto */}
           <div className="flex flex-col gap-3 min-w-[200px]">
-            <h4 className="text-lg font-bold text-foreground">Contacto</h4>
+            <h4 className="text-lg font-bold text-white">Contacto</h4>
             <ul className="space-y-2">
               <li className="flex items-center gap-3 text-sm text-muted-foreground/80 group">
                 <Mail className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
                 <a 
                   href="mailto:agency@allenmax.com" 
-                  className="hover:text-primary transition-colors font-medium"
+                  className="hover:text-primary transition-colors font-medium text-white/80"
                 >
                   agency@allenmax.com
                 </a>
@@ -44,7 +44,7 @@ export function AppFooter() {
                 <Phone className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
                 <a 
                   href="tel:+34654487378" 
-                  className="hover:text-primary transition-colors font-medium"
+                  className="hover:text-primary transition-colors font-medium text-white/80"
                 >
                   654 48 73 78
                 </a>

@@ -62,8 +62,8 @@ export function AppHeader() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full border-b border-border transition-all duration-300',
-        isScrolled ? 'bg-background/90 backdrop-blur-sm' : 'bg-background'
+        'sticky top-0 z-50 w-full border-b border-white/5 transition-all duration-300',
+        isScrolled ? 'bg-[#020817]/90 backdrop-blur-sm' : 'bg-[#020817]'
       )}
     >
       <div className="container mx-auto px-4">
@@ -78,9 +78,9 @@ export function AppHeader() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Servicios</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="bg-transparent hover:bg-white/5">Servicios</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[280px] gap-1 p-2 md:w-[300px]">
+                    <ul className="grid w-[280px] gap-1 p-2 md:w-[300px] bg-[#020817] border border-white/5">
                       {serviceLinks.map((service) => (
                         <li key={service.href}>
                           <NavigationMenuLink asChild>
@@ -104,7 +104,7 @@ export function AppHeader() {
                     <NavigationMenuLink asChild>
                       <Link
                         href={link.href}
-                        className={navigationMenuTriggerStyle()}
+                        className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-white/5")}
                       >
                         {link.label}
                       </Link>
@@ -125,10 +125,10 @@ export function AppHeader() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-full sm:w-[320px] bg-background"
+                className="w-full sm:w-[320px] bg-[#020817] border-white/5"
               >
                 <div className="flex flex-col h-full">
-                  <div className="flex justify-between items-center border-b pb-4">
+                  <div className="flex justify-between items-center border-b border-white/5 pb-4">
                     <Logo />
                     <Button
                       variant="ghost"
@@ -143,7 +143,7 @@ export function AppHeader() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 hover:text-primary-foreground transition-colors"
+                        className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-white hover:bg-primary/90 transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {React.cloneElement(link.icon as React.ReactElement, {
@@ -152,12 +152,12 @@ export function AppHeader() {
                         <span>{link.label}</span>
                       </Link>
                     ))}
-                    <div className="my-2 border-t" />
+                    <div className="my-2 border-t border-white/5" />
                     {navLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 hover:text-primary-foreground transition-colors"
+                        className="p-3 rounded-md text-lg font-medium text-white hover:bg-primary/90 transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.label}

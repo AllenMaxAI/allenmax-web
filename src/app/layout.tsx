@@ -5,6 +5,7 @@ import { AppHeader } from '@/components/layout/header';
 import { AppFooter } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
+import { CalendlyPersistent } from '@/components/CalendlyPersistent';
 
 export const metadata: Metadata = {
   title: 'AllenMax | Marketing Digital & IA',
@@ -37,6 +38,10 @@ export default function RootLayout({
           <main className="flex-1 bg-[#020817]">{children}</main>
           <AppFooter />
         </div>
+        
+        {/* Widget persistente para evitar recargas en navegación */}
+        <CalendlyPersistent />
+        
         <Toaster />
         <Script 
           src="https://assets.calendly.com/assets/external/widget.js" 

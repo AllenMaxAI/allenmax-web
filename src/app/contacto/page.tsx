@@ -1,9 +1,7 @@
-
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Check } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -12,59 +10,14 @@ const strategicSessionItems = [
   "Resolveremos tus dudas con total claridad",
 ];
 
-declare global {
-  interface Window {
-    Calendly: any;
-  }
-}
-
 export default function ContactoPage() {
-  const calendlyRef = useRef<HTMLDivElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const initCalendly = () => {
-      if (window.Calendly && calendlyRef.current) {
-        // Limpiamos contenido previo si lo hubiera
-        calendlyRef.current.innerHTML = '';
-        
-        window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/agency-allenmax/reunion-allenmax?hide_gdpr_banner=1&primary_color=3b82f6&text_color=ffffff&background_color=020817&hide_branding=1',
-          parentElement: calendlyRef.current,
-          prefill: {},
-          utm: {}
-        });
-
-        // Esperamos un tiempo para que Calendly renderice internamente
-        const timer = setTimeout(() => {
-          setIsLoaded(true);
-          window.dispatchEvent(new Event('resize'));
-        }, 3000);
-
-        return () => clearTimeout(timer);
-      }
-    };
-
-    if (window.Calendly) {
-      initCalendly();
-    } else {
-      const interval = setInterval(() => {
-        if (window.Calendly) {
-          initCalendly();
-          clearInterval(interval);
-        }
-      }, 300);
-      return () => clearInterval(interval);
-    }
-  }, []);
-
   return (
     <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020817]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda */}
-          <div className="max-w-4xl">
+          {/* Columna Izquierda: Contenido Informativo */}
+          <div className="max-w-4xl z-10">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
                 Sesión Estratégica
@@ -119,99 +72,9 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Calendly con Skeleton Realista */}
-          <div className="relative">
-            <div 
-              className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[700px] md:min-h-[900px] relative"
-            >
-              {/* Placeholder Mockup con Blur y Estructura Real */}
-              <div 
-                className={cn(
-                  "absolute inset-0 z-20 bg-white transition-opacity duration-1000 pointer-events-none flex flex-col",
-                  isLoaded ? "opacity-0" : "opacity-100"
-                )}
-              >
-                {/* Puntos de carga centrados */}
-                <div className="absolute inset-x-0 top-12 flex justify-center gap-1.5 z-30">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                </div>
-
-                <div className="flex flex-col p-6 md:p-10 blur-[15px] opacity-40">
-                  {/* Logo CUADRADO pequeño superior (simulando AllenMax logo) */}
-                  <div className="w-16 h-16 bg-[#020817] rounded-md mx-auto mb-10" />
-                  
-                  {/* Jake Allen Rosas Name Line */}
-                  <div className="w-32 h-3 bg-gray-300 mx-auto mb-3 rounded-full" />
-                  
-                  {/* Título de la llamada */}
-                  <div className="w-80 h-8 bg-gray-400 mx-auto mb-8 rounded-full" />
-                  
-                  {/* Detalles de la reunión (Duración, Ubicación) */}
-                  <div className="space-y-4 mb-10 max-w-[300px] mx-auto">
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-gray-300 rounded-full" />
-                      <div className="w-20 h-3 bg-gray-200 rounded-full" />
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-gray-300 rounded-full" />
-                      <div className="w-60 h-3 bg-gray-200 rounded-full" />
-                    </div>
-                  </div>
-                  
-                  {/* Bloques de texto informativo central (Párrafos) */}
-                  <div className="space-y-4 mb-10 text-center">
-                    <div className="w-72 h-3 bg-gray-200 mx-auto rounded-full" />
-                    <div className="w-80 h-3 bg-gray-200 mx-auto rounded-full mt-6" />
-                    <div className="w-64 h-3 bg-gray-200 mx-auto rounded-full" />
-                  </div>
-                  
-                  {/* Divisor horizontal */}
-                  <div className="h-px bg-gray-200 w-full mb-10" />
-
-                  {/* SECCIÓN CALENDARIO (PARTE INFERIOR) */}
-                  {/* "Seleccione un día" */}
-                  <div className="w-48 h-6 bg-gray-300 mx-auto mb-10 rounded-full" />
-                  
-                  {/* Selector de Mes y Navegación (Flechas + Mes) */}
-                  <div className="flex justify-center items-center gap-10 mb-10">
-                    <div className="w-4 h-4 bg-gray-200 rounded-full" />
-                    <div className="w-40 h-5 bg-gray-300 rounded-full" />
-                    <div className="w-4 h-4 bg-gray-200 rounded-full" />
-                  </div>
-
-                  {/* Cabecera de días de la semana (LUN MAR...) */}
-                  <div className="grid grid-cols-7 gap-6 max-w-[350px] mx-auto mb-8">
-                    {Array.from({ length: 7 }).map((_, i) => (
-                      <div key={i} className="w-8 h-2 bg-gray-200 rounded-full mx-auto" />
-                    ))}
-                  </div>
-
-                  {/* Rejilla de días (7 columnas x 5 filas) */}
-                  <div className="grid grid-cols-7 gap-x-6 gap-y-8 max-w-[350px] mx-auto mb-10">
-                    {Array.from({ length: 31 }).map((_, i) => (
-                      <div key={i} className="aspect-square bg-gray-100 rounded-full flex items-center justify-center">
-                        <div className="w-4 h-4 bg-gray-200/50 rounded-full" />
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Bloque de zona horaria inferior */}
-                  <div className="w-56 h-4 bg-gray-200 mx-auto rounded-full mt-4" />
-                </div>
-              </div>
-
-              {/* Contenedor Real del Widget */}
-              <div 
-                ref={calendlyRef}
-                className={cn(
-                  "w-full h-[700px] md:h-[1015px] transition-opacity duration-700",
-                  isLoaded ? "opacity-100" : "opacity-0"
-                )}
-                id="calendly-container"
-              />
-            </div>
+          {/* Columna Derecha: Hueco reservado para el widget persistente */}
+          <div className="relative min-h-[700px] md:min-h-[900px] pointer-events-none">
+            {/* Este espacio se mantiene vacío porque el widget global se posiciona aquí */}
           </div>
 
         </div>
