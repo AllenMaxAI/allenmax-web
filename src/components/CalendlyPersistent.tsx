@@ -90,7 +90,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Capas de Seguridad (Escudos) - Siempre visibles para tapar el branding desde el inicio */}
+            {/* Capas de Seguridad (Escudos) - Siempre visibles para tapar el branding y clics desde el inicio */}
             <div 
               className="absolute top-0 right-0 w-[275px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -99,6 +99,7 @@ export function CalendlyPersistent() {
               className="absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[45] pointer-events-auto"
               aria-hidden="true"
             />
+            {/* Línea de separación persistente sincronizada a 86px */}
             <div 
               className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
             />
@@ -110,23 +111,23 @@ export function CalendlyPersistent() {
                 isLoaded ? "opacity-0 invisible" : "opacity-100"
               )}
             >
-              {/* Barra de Progreso Superior */}
-              <div className="absolute top-0 left-0 w-full z-50 h-1">
+              {/* Barra de Progreso Superior - Con blur ligero */}
+              <div className="absolute top-0 left-0 w-full z-50 h-1 blur-[0.5px]">
                 <div 
                   className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
                 />
               </div>
 
-              {/* Contenido del esqueleto */}
-              <div className="flex flex-col mt-4">
-                {/* Logo AllenMax Negro - Ajustado para no tocar la línea de 86px */}
-                <div className="w-14 h-14 bg-[#020817] rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden">
-                   <span className="text-[7px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
+              {/* Contenido del esqueleto - Desenfoque general para disimular */}
+              <div className="flex flex-col mt-4 blur-[1px]">
+                {/* Logo AllenMax Negro - Más pequeño (w-11) y centrado */}
+                <div className="w-11 h-11 bg-[#020817] rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2">
+                   <span className="text-[6px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
                 {/* Espacio del header antes de la línea de 86px */}
-                <div className="h-4" />
+                <div className="h-6" />
                 
                 <div className="px-10 space-y-8 blur-[18px] opacity-40 mt-10">
                   <div className="w-48 h-5 bg-gray-300 mx-auto mb-6 rounded-full" />
