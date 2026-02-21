@@ -7,6 +7,9 @@ import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import { motion, useAnimation } from 'framer-motion';
 
+// Importamos la imagen directamente desde la nueva ubicación
+import BMOImage from '@/img/BMO.png';
+
 const philosophyItems = [
   {
     icon: <ShieldCheck />,
@@ -126,7 +129,7 @@ function RobotHeroAnimation({ isMounted }: { isMounted: boolean }) {
       className="w-[220px] lg:w-[260px] h-auto select-none pointer-events-none"
     >
       <img 
-        src="/robot.png" 
+        src={BMOImage.src} 
         alt="Robot AllenMax" 
         className="w-full h-auto"
       />
@@ -203,7 +206,7 @@ export default function NosotrosPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <FadeInSection className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Arquitectura Estratégica
+              Arquitecta Estratégica
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Nuestra identidad se define por la estructura que construimos. No somos una agencia convencional, somos los arquitectos de tu ecosistema digital.
