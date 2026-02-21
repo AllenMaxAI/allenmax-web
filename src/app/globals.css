@@ -31,6 +31,32 @@
   * {
     @apply border-border;
   }
+  
+  /* Personalización de Scrollbar para Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+  }
+
+  /* Personalización de Scrollbar para Chrome, Edge y Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary));
+    border-radius: 20px;
+    border: 3px solid hsl(var(--background));
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary) / 0.8);
+  }
+
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
