@@ -19,7 +19,7 @@ export default function ContactoPage() {
             
             {/* Columna Izquierda */}
             <div className="space-y-12">
-              <div className="space-y-1 mb-12">
+              <div className="space-y-2 mb-12">
                 <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
                 <div className="space-y-6">
                   <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
@@ -77,8 +77,8 @@ export default function ContactoPage() {
                 <InlineWidget 
                   url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
                   styles={{
-                    height: '1050px',
-                    width: '80%',
+                    height: '700px',
+                    width: '100%',
                   }}
                   pageSettings={{
                     backgroundColor: 'ffffff',

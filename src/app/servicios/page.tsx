@@ -39,7 +39,7 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed max-w-2xl">
+            <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed">
               Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
             </p>
           </div>
