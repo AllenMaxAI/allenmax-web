@@ -192,20 +192,13 @@ export default function Home() {
     <div className="flex flex-col bg-[#030a1c] overflow-hidden">
       {/* HERO SECTION */}
       <section className="relative pt-24 md:pt-32 h-[80vh] min-h-[700px] flex items-center justify-center text-center px-4">
-        {/* Background Animation with Dithering to prevent TN Banding */}
-        <div className="absolute inset-0 z-0">
+        {/* Background Animation sin ruido para evitar líneas horizontales */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_80%)]" />
           
-          {/* Static Dithering Layer */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.035]" 
-            style={{ 
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
-            }} 
-          />
-
-          {/* Animated Glows - Clearer Blue and smoother transitions */}
-          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/50 blur-[150px] rounded-full animate-pulse will-change-[transform,opacity]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-400/40 blur-[150px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
+          {/* Animated Glows - Azul más claro y vibrante sin ruido visible */}
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/40 blur-[140px] rounded-full animate-pulse will-change-[transform,opacity]" />
+          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-500/30 blur-[140px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
