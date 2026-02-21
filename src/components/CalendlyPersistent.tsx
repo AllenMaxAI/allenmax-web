@@ -24,12 +24,10 @@ export function CalendlyPersistent() {
   const [showLine, setShowLine] = useState(true);
   const [isTimesView, setIsTimesView] = useState(false);
   const [isCalendarView, setIsCalendarView] = useState(true);
-  const [calendarTZTop, setCalendarTZTop] = useState<number>(810);
   
   // Refs para persistencia entre navegaciones
   const lastHeightRef = useRef<number | null>(null);
   const lastViewRef = useRef<CalendlyView>('calendar');
-  const calendarHeightBaselineRef = useRef<number | null>(null);
   
   useEffect(() => {
     setMounted(true);
@@ -64,15 +62,6 @@ export function CalendlyPersistent() {
             setShowLine(view === 'calendar' || view === 'details');
             setIsTimesView(view === 'times');
             setIsCalendarView(view === 'calendar');
-
-            // Calcular top dinámico para el parche de zona horaria en calendario
-            if (view === 'calendar') {
-              if (calendarHeightBaselineRef.current === null) {
-                calendarHeightBaselineRef.current = h;
-              }
-              const delta = h - calendarHeightBaselineRef.current;
-              setCalendarTZTop(810 + delta);
-            }
           }
         }
 
@@ -151,13 +140,6 @@ export function CalendlyPersistent() {
         setShowLine(view === 'calendar' || view === 'details' || isSuccess);
         setIsTimesView(view === 'times' && !isSuccess);
         setIsCalendarView(view === 'calendar' && !isSuccess);
-
-        // Recalcular top dinámico inmediatamente al volver
-        if (view === 'calendar') {
-          const baseline = calendarHeightBaselineRef.current ?? h;
-          const delta = h - baseline;
-          setCalendarTZTop(810 + delta);
-        }
       } else {
         // Estado inicial por defecto
         setShowLine(true);
@@ -225,8 +207,7 @@ export function CalendlyPersistent() {
             {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
             {isCalendarView && (
               <div 
-                className="absolute left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
-                style={{ top: calendarTZTop }}
+                className="absolute left-0 w-full bg-white z-[90] pointer-events-none bottom-[180px] h-[60px]"
                 aria-hidden="true"
               />
             )}
