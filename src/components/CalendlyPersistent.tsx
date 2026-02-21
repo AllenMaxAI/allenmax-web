@@ -29,21 +29,29 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
-  // Lógica determinista basada en eventos y clicks
+  // Reset del estado al volver a la ruta de contacto
+  useEffect(() => {
+    if (pathname === '/contacto') {
+      setCurrentView('calendar');
+    }
+  }, [pathname]);
+
+  // Manejo de eventos de Calendly
   useEffect(() => {
     if (!mounted) return;
 
     const handleCalendlyEvents = (e: MessageEvent) => {
-      // 1. Logging para depuración
+      // Logging temporal para depuración
       if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
         console.log('[Calendly]', e.data.event, e.data);
         
         const event = e.data.event;
         
-        // 2. Restaurar estado al volver al inicio o finalizar
+        // Restaurar estado al volver al inicio (back button interno)
         if (event === 'calendly.event_type_viewed') {
           setCurrentView('calendar');
         } 
+        // Mostrar línea en pantalla de éxito
         else if (event === 'calendly.event_scheduled') {
           setCurrentView('success');
         }
@@ -70,6 +78,7 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isLoaded]);
 
+  // Inicialización de Calendly
   useEffect(() => {
     if (!mounted) return;
 
@@ -83,6 +92,7 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
+        // Tiempo de cortesía para asegurar carga visual del iframe
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -105,7 +115,7 @@ export function CalendlyPersistent() {
 
   if (!mounted) return null;
 
-  // Derivamos la visibilidad de la línea del estado de la vista
+  // Lógica derivada para mostrar la línea custom
   const showCustomLine = currentView === 'calendar' || currentView === 'success';
 
   return (
@@ -137,15 +147,16 @@ export function CalendlyPersistent() {
             </div>
 
             {/* OVERLAY DETERMINISTA PARA CAPTURAR CLICK EN DÍAS */}
+            {/* Cubre solo la rejilla de días para un cambio de estado instantáneo */}
             <div 
               className={cn(
-                "absolute left-0 right-0 top-[290px] h-[480px] z-[46] transition-all",
+                "absolute left-0 right-0 top-[360px] h-[320px] z-[46] transition-all",
                 currentView === 'calendar' ? "pointer-events-auto cursor-pointer" : "pointer-events-none"
               )}
               onPointerDown={() => {
                 if (currentView === 'calendar') {
                   setCurrentView('times');
-                  console.log('[Calendly Overlay] Instant transition to times');
+                  console.log('[Calendly Overlay] Instant transition to times by hit-box click');
                 }
               }}
               aria-hidden="true"
@@ -169,7 +180,7 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* ESQUELETO DE CARGA (LIMPIO Y VAPOROSO) */}
+            {/* ESQUELETO DE CARGA */}
             <div 
               className={cn(
                 "absolute inset-0 z-[60] bg-white pointer-events-none flex flex-col transition-opacity duration-700",
