@@ -34,22 +34,20 @@ export default function ContactoPage() {
           utm: {}
         });
 
-        // Forzamos un pequeño retraso para asegurar que el iframe empiece a renderizar
+        // Aumentamos el tiempo a 3 segundos para asegurar que el iframe interno 
+        // haya pasado la fase de los tres puntos antes de mostrarlo
         const timer = setTimeout(() => {
           setIsLoaded(true);
-          // Disparamos un evento de resize para que Calendly recalcule el layout
           window.dispatchEvent(new Event('resize'));
-        }, 1500);
+        }, 3000);
 
         return () => clearTimeout(timer);
       }
     };
 
-    // Intentamos inicializar si el script ya está cargado (via layout)
     if (window.Calendly) {
       initCalendly();
     } else {
-      // Si no, esperamos a que aparezca
       const interval = setInterval(() => {
         if (window.Calendly) {
           initCalendly();
@@ -65,7 +63,7 @@ export default function ContactoPage() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Estilo Nosotros */}
+          {/* Columna Izquierda */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -121,42 +119,50 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Calendly con Placeholder Blur Refinado */}
+          {/* Columna Derecha - Calendly con Blur y Puntos Centrados */}
           <div className="relative">
             <div 
               className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[700px] md:min-h-[900px] relative"
-              style={{ position: 'relative' }}
             >
-              {/* Placeholder Mockup con Blur Refinado (Parecido al real) */}
+              {/* Placeholder Mockup con Blur y Puntos de Carga Propios */}
               <div 
                 className={cn(
-                  "absolute inset-0 z-10 bg-white transition-opacity duration-700 pointer-events-none flex flex-col p-8 md:p-12",
+                  "absolute inset-0 z-20 bg-white transition-opacity duration-1000 pointer-events-none flex flex-col",
                   isLoaded ? "opacity-0" : "opacity-100"
                 )}
               >
-                {/* Avatar superior */}
-                <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-8 blur-[2px]" />
-                
-                {/* Líneas de texto */}
-                <div className="w-48 h-6 bg-gray-100 mx-auto mb-4 rounded-full blur-[2px]" />
-                <div className="w-32 h-4 bg-gray-50 mx-auto mb-12 rounded-full blur-[2px]" />
-                
-                {/* Rejilla de días (7 columnas) */}
-                <div className="grid grid-cols-7 gap-4 mb-8 max-w-xs mx-auto">
-                  {Array.from({ length: 31 }).map((_, i) => (
-                    <div key={i} className="aspect-square bg-gray-50/80 rounded-full blur-[4px]" />
-                  ))}
+                {/* Puntos de carga centrados (Simulando carga elegante) */}
+                <div className="absolute inset-x-0 top-8 flex justify-center gap-1.5 z-30">
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce" />
                 </div>
-                
-                {/* Bloque inferior */}
-                <div className="w-full h-32 bg-gray-50 rounded-xl mt-auto blur-[5px]" />
+
+                <div className="flex flex-col p-8 md:p-12 blur-[6px] opacity-40">
+                  {/* Avatar superior */}
+                  <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-8" />
+                  
+                  {/* Líneas de texto */}
+                  <div className="w-48 h-6 bg-gray-200 mx-auto mb-4 rounded-full" />
+                  <div className="w-32 h-4 bg-gray-100 mx-auto mb-12 rounded-full" />
+                  
+                  {/* Rejilla de días (Más fiel a Calendly) */}
+                  <div className="grid grid-cols-7 gap-4 mb-8 max-w-xs mx-auto">
+                    {Array.from({ length: 31 }).map((_, i) => (
+                      <div key={i} className="aspect-square bg-gray-100 rounded-full" />
+                    ))}
+                  </div>
+                  
+                  {/* Bloque inferior */}
+                  <div className="w-full h-32 bg-gray-50 rounded-xl mt-auto" />
+                </div>
               </div>
 
               {/* Contenedor Real del Widget */}
               <div 
                 ref={calendlyRef}
                 className={cn(
-                  "w-full h-[700px] md:h-[1015px] transition-opacity duration-500",
+                  "w-full h-[700px] md:h-[1015px] transition-opacity duration-700",
                   isLoaded ? "opacity-100" : "opacity-0"
                 )}
                 id="calendly-container"
