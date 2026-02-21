@@ -90,7 +90,20 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Capas de Seguridad (Escudos) - Siempre visibles y bloquean eventos */}
+            {/* 1. BARRA DE PROGRESO SUPREMA (Fuera de todo para evitar solapamientos) */}
+            <div 
+              className={cn(
+                "absolute top-0 left-0 w-full z-[70] h-1 blur-[0.5px] transition-opacity duration-700",
+                isLoaded ? "opacity-0 invisible" : "opacity-100"
+              )}
+            >
+              <div 
+                className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out shadow-[0_0_8px_rgba(59,130,246,0.5)]"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+
+            {/* 2. CAPAS DE SEGURIDAD (ESCUDOS) - Ocultan branding de Calendly */}
             <div 
               className="absolute top-0 right-0 w-[275px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -104,32 +117,23 @@ export function CalendlyPersistent() {
               className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
             />
 
-            {/* Esqueleto de Carga con Animación de Desvanecimiento */}
+            {/* 3. ESQUELETO DE CARGA (Neblina visual) */}
             <div 
               className={cn(
                 "absolute inset-0 z-40 bg-white pointer-events-none flex flex-col transition-opacity duration-700",
                 isLoaded ? "opacity-0 invisible" : "opacity-100"
               )}
             >
-              {/* Barra de Progreso Superior - Capa suprema para estar siempre por encima */}
-              <div className="absolute top-0 left-0 w-full z-[60] h-1 blur-[0.5px]">
-                <div 
-                  className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out shadow-[0_0_8px_rgba(59,130,246,0.5)]"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-
-              {/* Contenido del esqueleto - Desenfoque EXTREMO para efecto "nube" */}
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax con MUCHO BLUR y baja opacidad para no destacar sobre la línea azul */}
-                <div className="w-11 h-11 bg-[#020817]/10 rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2 z-50 blur-[14px]">
-                   <span className="text-[6px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
+                {/* Logo AllenMax con MUCHO BLUR y baja opacidad */}
+                <div className="w-11 h-11 bg-[#020817]/5 rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2 z-50 blur-[14px]">
+                   <span className="text-[6px] text-white font-extrabold uppercase tracking-tighter opacity-0">allenmax</span>
                 </div>
                 
                 {/* Espacio del header antes de la línea de 86px */}
                 <div className="h-6" />
                 
-                {/* Elementos con desenfoque de 40px y baja opacidad para efecto "nube" */}
+                {/* Elementos con desenfoque extremo para efecto "nube" */}
                 <div className="px-10 space-y-12 blur-[40px] opacity-[0.15] mt-10">
                   <div className="w-48 h-10 bg-gray-400 mx-auto mb-6 rounded-full" />
                   <div className="flex items-center justify-center gap-6 mb-8">
@@ -145,7 +149,7 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Widget real de Calendly */}
+            {/* 4. WIDGET REAL DE CALENDLY */}
             <div 
               ref={calendlyRef}
               className={cn(
