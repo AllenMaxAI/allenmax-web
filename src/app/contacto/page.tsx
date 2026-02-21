@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Check } from 'lucide-react';
-import { InlineWidget } from 'react-calendly';
+import Script from 'next/script';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -12,12 +12,24 @@ const strategicSessionItems = [
 ];
 
 export default function ContactoPage() {
+  useEffect(() => {
+    // Forzamos un resize cuando el widget se carga para evitar problemas de layout
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020817]">
+      <Script 
+        src="https://assets.calendly.com/assets/external/widget.js" 
+        strategy="afterInteractive"
+      />
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Cabecera Identica a Nosotros */}
+          {/* Columna Izquierda - Cabecera idéntica a Nosotros */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -75,23 +87,16 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Widget Calendly */}
+          {/* Columna Derecha - Widget Calendly Optimizado */}
           <div className="relative">
-            <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white">
-               <InlineWidget 
-                url="https://calendly.com/agency-allenmax/reunion-allenmax"
-                styles={{
-                  height: '1100px',
-                  width: '100%',
-                }}
-                pageSettings={{
-                  backgroundColor: '020817',
-                  hideGdprBanner: true,
-                  hideLandingPageDetails: false,
-                  primaryColor: '3b82f6',
-                  textColor: 'ffffff',
-                  hideBranding: true,
-                }}
+            <div 
+              className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020817] min-h-[700px] md:min-h-[1100px]"
+              style={{ position: 'relative' }}
+            >
+              <div 
+                className="calendly-inline-widget" 
+                data-url="https://calendly.com/agency-allenmax/reunion-allenmax?hide_gdpr_banner=1&primary_color=3b82f6&text_color=ffffff&background_color=020817"
+                style={{ minWidth: '320px', height: '1100px' }}
               />
             </div>
           </div>
