@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="py-20 md:py-32 px-4">
+       <section className="px-4">
         <div className="container mx-auto max-w-5xl">
            <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
