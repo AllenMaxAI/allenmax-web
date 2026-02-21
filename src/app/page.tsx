@@ -60,7 +60,7 @@ const problemPoints = [
 export default function Home() {
   
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-[#020617]">
        <section className="pt-24 md:pt-32 h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter max-w-4xl leading-[1.1]">
@@ -78,8 +78,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN PROBLEMA */}
-      <section className="py-20 md:py-32 px-4">
+      {/* SECCIÓN PROBLEMA - Padding eliminado */}
+      <section className="px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-6">
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="px-4">
+       <section className="px-4 py-20">
         <div className="container mx-auto max-w-5xl">
            <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">

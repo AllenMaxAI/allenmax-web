@@ -29,12 +29,32 @@ export default function ContactoPage() {
 
     // 2. Función agresiva para ELIMINAR el div de branding
     const removeBranding = () => {
-      // Buscamos específicamente por data-id="branding"
+      // Intento 1: Por atributo data-id
       const brandingElements = document.querySelectorAll('[data-id="branding"]');
       
-      if (brandingElements.length > 0) {
-        console.log(`[Calendly Debug] ¡Encontrados ${brandingElements.length} elementos de branding! Eliminando...`);
+      // Intento 2: Por texto contenido (fallback agresivo)
+      const allDivs = document.getElementsByTagName('div');
+      const foundByText: HTMLElement[] = [];
+      
+      for (let i = 0; i < allDivs.length; i++) {
+        const div = allDivs[i];
+        if (div.innerText && div.innerText.toLowerCase().includes('desarrollado por') && div.innerText.includes('Calendly')) {
+          foundByText.push(div);
+        }
+      }
+
+      const totalFound = brandingElements.length + foundByText.length;
+
+      if (totalFound > 0) {
+        console.log(`[Calendly Debug] ¡Encontrados ${totalFound} elementos de branding! Eliminando...`);
+        
         brandingElements.forEach(el => {
+          console.log('[Calendly Debug] Eliminando por data-id="branding"');
+          el.remove();
+        });
+
+        foundByText.forEach(el => {
+          console.log('[Calendly Debug] Eliminando por coincidencia de texto');
           el.remove();
         });
       }
@@ -53,8 +73,11 @@ export default function ContactoPage() {
       subtree: true
     });
 
-    // 4. Intervalo de respaldo por si el script de Calendly lo reinyecta tras interacciones
+    // 4. Intervalo de respaldo constante (cada 500ms)
     const interval = setInterval(removeBranding, 500);
+
+    // 5. Nota de depuración: Si el elemento está DENTRO del iframe, el navegador no dejará borrarlo.
+    console.log('[Calendly Debug] Nota: Si el branding está dentro del <iframe>, el script no podrá acceder a él por seguridad del navegador (Same-Origin Policy).');
 
     return () => {
       observer.disconnect();
