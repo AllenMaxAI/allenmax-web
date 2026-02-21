@@ -29,7 +29,7 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
-  // Reset del estado al volver a la ruta de contacto
+  // Reset del estado al volver a la ruta de contacto o al navegar a ella
   useEffect(() => {
     if (pathname === '/contacto') {
       setCurrentView('calendar');
@@ -47,7 +47,7 @@ export function CalendlyPersistent() {
         
         const event = e.data.event;
         
-        // Restaurar estado al volver al inicio (back button interno)
+        // Restaurar estado al volver al inicio (evento emitido por Calendly)
         if (event === 'calendly.event_type_viewed') {
           setCurrentView('calendar');
         } 
@@ -146,8 +146,7 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* OVERLAY DETERMINISTA PARA CAPTURAR CLICK EN DÍAS */}
-            {/* Cubre solo la rejilla de días para un cambio de estado instantáneo */}
+            {/* OVERLAY DETERMINISTA PARA CAPTURAR CLICK EN DÍAS (GRID) */}
             <div 
               className={cn(
                 "absolute left-0 right-0 top-[360px] h-[320px] z-[46] transition-all",
@@ -156,7 +155,22 @@ export function CalendlyPersistent() {
               onPointerDown={() => {
                 if (currentView === 'calendar') {
                   setCurrentView('times');
-                  console.log('[Calendly Overlay] Instant transition to times by hit-box click');
+                  console.log('[Calendly Overlay] Grid clicked -> View: times');
+                }
+              }}
+              aria-hidden="true"
+            />
+
+            {/* OVERLAY DETERMINISTA PARA CAPTURAR CLICK EN BOTÓN BACK */}
+            <div 
+              className={cn(
+                "absolute top-[20px] left-[15px] w-[60px] h-[60px] z-[46] transition-all",
+                currentView === 'times' ? "pointer-events-auto cursor-pointer" : "pointer-events-none"
+              )}
+              onPointerDown={() => {
+                if (currentView === 'times') {
+                  setCurrentView('calendar');
+                  console.log('[Calendly Overlay] Back button clicked -> View: calendar');
                 }
               }}
               aria-hidden="true"
