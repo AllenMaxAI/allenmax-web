@@ -10,6 +10,8 @@ declare global {
   }
 }
 
+type CalendlyView = 'calendar' | 'times' | 'success';
+
 export function CalendlyPersistent() {
   const pathname = usePathname();
   const calendlyRef = useRef<HTMLDivElement>(null);
@@ -17,7 +19,9 @@ export function CalendlyPersistent() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [showLine, setShowLine] = useState(true);
+  
+  // Nuevo estado para la gestión robusta de la vista
+  const [currentView, setCurrentView] = useState<CalendlyView>('calendar');
   
   useEffect(() => {
     setMounted(true);
@@ -30,25 +34,40 @@ export function CalendlyPersistent() {
     if (!mounted) return;
 
     const handleCalendlyEvents = (e: MessageEvent) => {
-      // Verificamos que el mensaje provenga de Calendly
-      if (e.data.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
+      // 1. Logging temporal de todos los eventos de Calendly
+      if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
+        console.log('[Calendly Event Log]:', e.data.event, e.data);
+        
         const event = e.data.event;
         
-        // Mostramos la línea en la pantalla inicial de calendario o en la final de éxito
-        if (event === 'calendly.event_type_viewed' || event === 'calendly.event_scheduled') {
-          setShowLine(true);
+        // 2. Transiciones de estado explícitas
+        if (event === 'calendly.event_type_viewed') {
+          setCurrentView('calendar');
         } 
-        // Ocultamos la línea específicamente cuando se selecciona día/hora para ver el panel interno
-        else if (event === 'calendly.date_and_time_selected') {
-          setShowLine(false);
+        else if (event === 'calendly.event_scheduled') {
+          setCurrentView('success');
         }
-        // Nota: No usamos un 'else' genérico para evitar que mensajes internos de Calendly oculten la línea por error
+        // Intentamos detectar la transición a "times" lo antes posible
+        else if (event === 'calendly.date_and_time_selected') {
+          setCurrentView('times');
+        }
+        // Heurística de altura: Si la altura cambia drásticamente al interactuar, 
+        // probablemente estamos cambiando de vista. Ajustar umbral según logs.
+        else if (event === 'calendly.page_height') {
+          const height = e.data.payload?.height;
+          // Si el calendario inicial suele medir ~800 y el de horas ~1000, 
+          // esto nos sirve de trigger temprano.
+          if (height > 950 && currentView === 'calendar') {
+            // Descomentar si los logs confirman este cambio de altura consistente
+            // setCurrentView('times');
+          }
+        }
       }
     };
 
     window.addEventListener('message', handleCalendlyEvents);
     return () => window.removeEventListener('message', handleCalendlyEvents);
-  }, [mounted]);
+  }, [mounted, currentView]);
 
   // Simulación de progreso de carga
   useEffect(() => {
@@ -79,7 +98,6 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Tiempo estimado para que el iframe esté renderizado
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -102,6 +120,9 @@ export function CalendlyPersistent() {
 
   if (!mounted) return null;
 
+  // La línea solo se renderiza en las vistas permitidas
+  const showCustomLine = currentView === 'calendar' || currentView === 'success';
+
   return (
     <div 
       className={cn(
@@ -117,7 +138,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* 1. BARRA DE PROGRESO SUPREMA - Capa más alta fuera de filtros */}
+            {/* BARRA DE PROGRESO */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -130,27 +151,25 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* 2. CAPAS DE SEGURIDAD - Ocultan branding de Calendly */}
-            {/* Parche superior derecho estrecho: 140px para no tapar navegación */}
+            {/* PARCHES DE SEGURIDAD */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
             />
-            {/* Parche inferior para ocultar branding inferior */}
             <div 
               className="absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[45] pointer-events-auto"
               aria-hidden="true"
             />
             
-            {/* LÍNEA DE CABECERA DINÁMICA: Responde a la navegación de Calendly */}
+            {/* LÍNEA DE CABECERA DINÁMICA */}
             <div 
               className={cn(
-                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-500",
-                showLine ? "opacity-100" : "opacity-0"
+                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-300",
+                showCustomLine ? "opacity-100" : "opacity-0"
               )}
             />
 
-            {/* 3. ESQUELETO DE CARGA CON DESENFOQUE SUTIL */}
+            {/* ESQUELETO DE CARGA */}
             <div 
               className={cn(
                 "absolute inset-0 z-[60] bg-white pointer-events-none flex flex-col transition-opacity duration-700",
@@ -158,27 +177,19 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax con toque sutil de blur */}
-                <div className="w-11 h-11 bg-gray-100/50 rounded-full mx-auto mt-4 z-50 blur-[8px]" />
-                
+                <div className="w-11 h-11 bg-gray-100/80 rounded-full mx-auto mt-4 z-50 blur-[8px]" />
                 <div className="h-10" />
-                
-                <div className="px-10 space-y-8 mt-10 blur-[8px] opacity-20">
-                  <div className="w-40 h-8 bg-gray-400 mx-auto mb-6 rounded-full" />
+                <div className="px-10 space-y-8 mt-10 blur-[8px] opacity-30">
+                  <div className="w-40 h-8 bg-gray-300 mx-auto mb-6 rounded-full" />
                   <div className="flex items-center justify-center gap-4 mb-8">
-                    <div className="w-10 h-10 bg-gray-300 rounded-full" />
-                    <div className="w-28 h-3 bg-gray-300 rounded-full" />
-                  </div>
-                  <div className="space-y-4 mb-12 max-w-[280px] mx-auto text-center">
-                    <div className="w-full h-2 bg-gray-200 rounded-full" />
-                    <div className="w-5/6 h-2 bg-gray-200 rounded-full mx-auto" />
-                    <div className="w-4/6 h-2 bg-gray-200 rounded-full mx-auto" />
+                    <div className="w-10 h-10 bg-gray-200 rounded-full" />
+                    <div className="w-28 h-3 bg-gray-200 rounded-full" />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 4. WIDGET REAL DE CALENDLY */}
+            {/* WIDGET CALENDLY */}
             <div 
               ref={calendlyRef}
               className={cn(
