@@ -27,27 +27,26 @@ export default function ServiciosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32 pb-20 md:pb-28">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl">
-            <div className="space-y-4 mb-12">
+          <div className="max-w-4xl">
+            <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestros Servicios</span>
-              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
-                La Sinergia <span className="text-primary">Perfecta.</span>
-              </h1>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-start">
               <div className="space-y-6">
-                <h2 className="text-2xl md:text-4xl font-bold tracking-tight">
-                  Marketing Digital e <br className="hidden md:block" /> Inteligencia Artificial
-                </h2>
-                <div className="h-2 w-20 bg-primary rounded-full" />
+                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                  La Sinergia <br />
+                  <span className="text-primary">Perfecta.</span>
+                </h1>
+                <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
             </div>
+
+            <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed max-w-2xl">
+              Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* CATEGORÍAS DE SERVICIOS - Eliminado pb-24 md:pb-32 para evitar espacio excesivo */}
+      {/* CATEGORÍAS DE SERVICIOS */}
       <section className="">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
