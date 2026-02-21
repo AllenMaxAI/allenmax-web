@@ -227,12 +227,12 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative pt-20 md:pt-32 min-h-screen flex flex-col items-center justify-start text-center px-4">
+      <section className="relative pt-10 md:pt-16 min-h-screen flex flex-col items-center justify-start text-center px-4">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl mt-12 md:mt-24">
+        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl mt-6 md:mt-12">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -240,7 +240,7 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-3xl md:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight leading-[1.15] px-4">
+            <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-extrabold tracking-tight leading-[1.1] px-4">
               <span className="block">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
