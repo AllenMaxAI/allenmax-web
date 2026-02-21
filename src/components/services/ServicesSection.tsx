@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -15,13 +15,48 @@ type ServicesSectionProps = {
   services: Service[];
 };
 
+function FadeInSection({ children, className }: { children: React.ReactNode; className?: string }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const current = domRef.current;
+    if (current) observer.observe(current);
+    return () => {
+      if (current) observer.unobserve(current);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={domRef}
+      className={cn(
+        "transition-all duration-1000 ease-out",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <section className="pt-24 md:pt-32">
       <div className="container mx-auto px-4">
         <div className="space-y-24">
           {services.map((service, index) => (
-            <div
+            <FadeInSection
               key={service.title}
               className="grid md:grid-cols-2 gap-16 items-start"
             >
@@ -59,7 +94,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                   ))}
                 </ul>
               </div>
-            </div>
+            </FadeInSection>
           ))}
         </div>
       </div>

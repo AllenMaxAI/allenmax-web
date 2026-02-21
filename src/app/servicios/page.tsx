@@ -1,10 +1,13 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BrainCircuit, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { CtaSection } from '@/components/layout/CtaSection';
+import { cn } from '@/lib/utils';
+import React from 'react';
 
 const serviceCategories = [
   {
@@ -21,14 +24,59 @@ const serviceCategories = [
   },
 ];
 
+function FadeInSection({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const current = domRef.current;
+    if (current) observer.observe(current);
+    return () => {
+      if (current) observer.unobserve(current);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={domRef}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={cn(
+        "transition-all duration-1000 ease-out",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function ServiciosPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
-            <div className="space-y-2 mb-12">
+            <div className={cn(
+              "space-y-2 mb-12 transition-all duration-1000 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestros Servicios</span>
               <div className="space-y-6">
                 <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
@@ -39,7 +87,10 @@ export default function ServiciosPage() {
               </div>
             </div>
             
-            <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed">
+            <p className={cn(
+              "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed transition-all duration-1000 delay-300 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
             </p>
           </div>
@@ -50,21 +101,23 @@ export default function ServiciosPage() {
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
-            {serviceCategories.map((category) => (
-              <Card key={category.title} className="text-center flex flex-col justify-between p-10 border border-white/5 bg-card/40 backdrop-blur-sm shadow-none hover:bg-card/60 transition-all duration-300 group">
-                  <div>
-                    <div className="flex justify-center mb-8 bg-primary/10 w-20 h-20 rounded-2xl items-center mx-auto text-primary transition-transform duration-300 group-hover:scale-110">
-                      {category.icon}
+            {serviceCategories.map((category, index) => (
+              <FadeInSection key={category.title} delay={index * 200}>
+                <Card className="text-center flex flex-col justify-between p-10 border border-white/5 bg-card/40 backdrop-blur-sm shadow-none hover:bg-card/60 transition-all duration-300 group h-full">
+                    <div>
+                      <div className="flex justify-center mb-8 bg-primary/10 w-20 h-20 rounded-2xl items-center mx-auto text-primary transition-transform duration-300 group-hover:scale-110">
+                        {category.icon}
+                      </div>
+                      <h2 className="text-3xl font-bold mb-4">{category.title}</h2>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{category.description}</p>
                     </div>
-                    <h2 className="text-3xl font-bold mb-4">{category.title}</h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed">{category.description}</p>
+                    <div className="mt-10">
+                      <Button asChild className="w-full btn-glow h-14 text-lg font-bold">
+                          <Link href={category.href}>Saber más</Link>
+                      </Button>
                   </div>
-                  <div className="mt-10">
-                    <Button asChild className="w-full btn-glow h-14 text-lg font-bold">
-                        <Link href={category.href}>Saber más</Link>
-                    </Button>
-                </div>
-              </Card>
+                </Card>
+              </FadeInSection>
             ))}
           </div>
         </div>

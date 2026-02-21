@@ -1,9 +1,11 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { LayoutTemplate, Share2, Megaphone, Search, Mail, Target } from 'lucide-react';
 import React from 'react';
 import { ServicesSection } from '@/components/services/ServicesSection';
 import { CtaSection } from '@/components/layout/CtaSection';
+import { cn } from '@/lib/utils';
 
 const services = [
     {
@@ -75,18 +77,30 @@ const services = [
 ];
 
 export default function MarketingDigitalPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="flex flex-col">
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-5 gap-12 items-center">
-            <div className="md:col-span-3 space-y-4">
+            <div className={cn(
+              "md:col-span-3 space-y-4 transition-all duration-1000 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Marketing Digital</h1>
               <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
                 Diseñamos ecosistemas digitales donde estrategia, captación y tecnología trabajan de forma integrada para generar crecimiento real.
               </p>
             </div>
-            <div className="md:col-span-2 space-y-4 border-l-2 border-primary pl-8">
+            <div className={cn(
+              "md:col-span-2 space-y-4 border-l-2 border-primary pl-8 transition-all duration-1000 delay-300 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <h2 className="text-2xl font-bold tracking-tight">
                 No implementamos acciones aisladas. <span className="text-primary">Construimos sistemas.</span>
               </h2>

@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bot, BrainCircuit, Terminal, AppWindow, Workflow, Share2 } from 'lucide-react';
 import { ServicesSection } from '@/components/services/ServicesSection';
 import { CtaSection } from '@/components/layout/CtaSection';
+import { cn } from '@/lib/utils';
 
 const aiServices = [
   {
@@ -75,18 +76,30 @@ const aiServices = [
 ];
 
 export default function AIServicesPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="flex flex-col">
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-5 gap-12 items-center">
-            <div className="md:col-span-3 space-y-4">
+            <div className={cn(
+              "md:col-span-3 space-y-4 transition-all duration-1000 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Inteligencia Artificial</h1>
               <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
                 La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. La integramos en tus procesos para optimizar resultados.
               </p>
             </div>
-            <div className="md:col-span-2 space-y-4 border-l-2 border-primary pl-8">
+            <div className={cn(
+              "md:col-span-2 space-y-4 border-l-2 border-primary pl-8 transition-all duration-1000 delay-300 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <h2 className="text-2xl font-bold tracking-tight">
                 No implementamos acciones aisladas. <span className="text-primary">Construimos sistemas.</span>
               </h2>
