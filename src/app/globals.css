@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --background: 228 80% 5%;
+    --background: 228 80% 7%;
     --foreground: 0 0% 98%;
-    --card: 228 80% 7%;
+    --card: 228 80% 9%;
     --card-foreground: 0 0% 98%;
-    --popover: 228 80% 7%;
+    --popover: 228 80% 9%;
     --popover-foreground: 0 0% 98%;
     --primary: 220 90% 60%;
     --primary-foreground: 217 49% 10%;
@@ -34,11 +34,11 @@
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
-    background-color: #020817;
+    background-color: #030a1c;
   }
   body {
-    @apply bg-[#020817] text-foreground antialiased;
-    background-color: #020817;
+    @apply bg-[#030a1c] text-foreground antialiased;
+    background-color: #030a1c;
   }
 }
 

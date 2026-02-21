@@ -191,19 +191,19 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-[#020817] overflow-hidden">
+    <div className="flex flex-col bg-[#030a1c] overflow-hidden">
       {/* HERO SECTION */}
       <section className="relative pt-24 md:pt-32 h-[80vh] min-h-[700px] flex items-center justify-center text-center px-4">
         {/* Background Animation */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-grid-pattern opacity-[0.07] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_80%)]" />
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 blur-[120px] rounded-full animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full animate-pulse [animation-delay:2s]" />
+          <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_80%)]" />
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/30 blur-[140px] rounded-full animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-400/20 blur-[140px] rounded-full animate-pulse [animation-delay:2s]" />
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+            <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
             <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter leading-[1.05]">
