@@ -141,10 +141,10 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Parche superior derecho para ocultar el ribbon (limpio, sin bordes grises) */}
+            {/* Parche superior derecho para ocultar el ribbon (Ampliado para cobertura total) */}
             <div 
               className={cn(
-                "absolute top-0 right-0 w-[160px] h-[50px] bg-white z-30 pointer-events-none transition-opacity duration-700",
+                "absolute top-0 right-0 w-[280px] h-[100px] bg-white z-30 pointer-events-none transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
               aria-hidden="true"
