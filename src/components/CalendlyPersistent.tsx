@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -32,7 +31,7 @@ export function CalendlyPersistent() {
 
     const handleCalendlyEvents = (e: MessageEvent) => {
       // Calendly envía mensajes como objetos con una propiedad 'event'
-      if (e.data.event && e.data.event.startsWith('calendly.')) {
+      if (e.data.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
         const event = e.data.event;
         
         // Vista principal del calendario: mostramos la línea
@@ -158,12 +157,12 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax con toque difuso */}
+                {/* Logo AllenMax con toque sutil de blur */}
                 <div className="w-11 h-11 bg-gray-100/50 rounded-full mx-auto mt-4 z-50 blur-[8px]" />
                 
                 <div className="h-10" />
                 
-                <div className="px-10 space-y-8 mt-10 blur-[6px] opacity-10">
+                <div className="px-10 space-y-8 mt-10 blur-[8px] opacity-20">
                   <div className="w-40 h-8 bg-gray-400 mx-auto mb-6 rounded-full" />
                   <div className="flex items-center justify-center gap-4 mb-8">
                     <div className="w-10 h-10 bg-gray-300 rounded-full" />
