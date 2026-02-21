@@ -67,11 +67,14 @@ export function AppHeader() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Logo />
+        <div className="relative flex h-16 items-center justify-between">
+          {/* Logo a la izquierda */}
+          <div className="flex items-center">
+            <Logo />
+          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* Desktop Navigation Centrada */}
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -112,8 +115,8 @@ export function AppHeader() {
             </NavigationMenu>
           </div>
 
+          {/* Acciones derecha / Mobile Menu */}
           <div className="flex items-center">
-            {/* Mobile Navigation */}
             <div className="md:hidden">
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>

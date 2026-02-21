@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Check } from 'lucide-react';
 import { CtaSection } from '@/components/layout/CtaSection';
 
@@ -12,88 +12,87 @@ const strategicSessionItems = [
 ];
 
 export default function ContactoPage() {
-  const hostRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const src = 'https://assets.calendly.com/assets/external/widget.js';
-    if (!document.querySelector(`script[src="${src}"]`)) {
-      const s = document.createElement('script');
-      s.src = src;
-      s.async = true;
-      document.body.appendChild(s);
-    }
+    const scriptId = 'calendly-script';
+    let script = document.getElementById(scriptId) as HTMLScriptElement;
 
-    // Limpieza agresiva de elementos de carga de Calendly
-    const kill = () => {
-      document.querySelectorAll('.calendly-spinner').forEach((n) => n.remove());
+    const initCalendly = () => {
+      if (containerRef.current && (window as any).Calendly) {
+        const calendly = (window as any).Calendly;
+        
+        // Limpiar para evitar duplicados en reinicializaciones
+        containerRef.current.innerHTML = '';
+        
+        const url = "https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1";
+        
+        if (calendly.initInlineWidget) {
+          calendly.initInlineWidget({
+            url: url,
+            parentElement: containerRef.current,
+          });
+        }
+      }
     };
 
-    kill();
-    const obs = new MutationObserver(kill);
-    obs.observe(document.body, { childList: true, subtree: true });
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      script.onload = () => {
+        setIsLoaded(true);
+        initCalendly();
+      };
+      document.body.appendChild(script);
+    } else {
+      setIsLoaded(true);
+      if ((window as any).Calendly) {
+        initCalendly();
+      }
+    }
 
-    return () => obs.disconnect();
+    return () => {
+      // Opcional: limpieza si fuera necesario
+    };
   }, []);
 
   return (
     <>
-      <section className="pt-24 md:pt-32 pb-16 bg-background">
-        <style jsx global>{`
-        /* Ocultar scrollbars de Calendly de forma absoluta */
-        html, body {
-          scrollbar-width: none !important;
-          -ms-overflow-style: none !important;
-        }
-        
-        ::-webkit-scrollbar {
-          display: none !important;
-          width: 0 !important;
-          height: 0 !important;
-        }
-
+      <style jsx global>{`
         .calendly-inline-widget, 
-        .calendly-inline-widget *,
-        [data-url*="calendly.com"],
-        iframe[src*="calendly.com"] {
+        .calendly-inline-widget iframe {
           scrollbar-width: none !important;
           -ms-overflow-style: none !important;
-          overflow: hidden !important;
-          border: none !important;
         }
-        
-        iframe[src*="calendly.com"]::-webkit-scrollbar {
+        .calendly-inline-widget::-webkit-scrollbar,
+        .calendly-inline-widget iframe::-webkit-scrollbar {
           display: none !important;
           width: 0 !important;
           height: 0 !important;
-        }
-
-        /* Asegurar que el contenedor interno de Calendly no genere scroll */
-        .calendly-inline-widget > div {
-          height: 100% !important;
-          overflow: hidden !important;
         }
       `}</style>
 
-        <div className="mx-auto w-full px-6 md:px-12 lg:px-24">
+      <section className="pt-24 md:pt-32 pb-16 bg-background">
+        <div className="container mx-auto px-4">
           
-          {/* TÍTULO HERO REDISEÑADO */}
-          <div className="mb-20 md:mb-28">
+          <div className="mb-20">
             <div className="space-y-4">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
               <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
                 Hablemos de tu <br />
                 <span className="text-primary">crecimiento.</span>
               </h1>
-              <div className="h-1.5 w-20 bg-primary rounded-full mt-8" />
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl pt-6">
+              <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed max-w-2xl pt-6">
                 Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
               </p>
             </div>
           </div>
 
-          <div className="grid gap-20 md:gap-40 items-start md:grid-cols-[1fr_1.2fr]">
+          <div className="grid gap-20 items-start md:grid-cols-[1fr_1.2fr]">
             
-            {/* IZQUIERDA: CONTENIDO ESTRATÉGICO */}
             <div className="space-y-12">
               <div className="space-y-8">
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
@@ -112,20 +111,14 @@ export default function ContactoPage() {
               </div>
 
               <div className="space-y-6 border-t border-border pt-12">
-                <h3 className="text-xl md:text-2xl font-bold tracking-tight leading-tight">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight leading-tight">
                   Construyamos algo que tenga sentido a largo plazo
                 </h3>
 
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p className="text-base md:text-lg">
-                    Las decisiones estratégicas marcan la diferencia entre crecer
-                    de forma puntual y consolidar una posición competitiva real.
-                  </p>
-                  <p className="text-base md:text-lg">
-                    Este espacio no está diseñado para vender promesas rápidas,
-                    sino para iniciar conversaciones con enfoque y visión empresarial.
-                  </p>
-                </div>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Las decisiones estratégicas marcan la diferencia entre crecer
+                  de forma puntual y consolidar una posición competitiva real.
+                </p>
 
                 <div className="pt-8">
                   <div className="border-l-4 border-primary pl-6 py-1">
@@ -138,31 +131,16 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            {/* DERECHA: CALENDLY */}
             <div className="relative">
-              <div className="origin-top">
-                <div
-                  ref={hostRef}
-                  className="rounded-2xl overflow-hidden bg-white border border-border shadow-2xl"
-                  style={{
-                    width: '100%',
-                    height: 1050, 
-                    transform: 'translateZ(0)',
-                    backfaceVisibility: 'hidden',
-                    willChange: 'transform',
-                  }}
-                >
-                  <div
-                    className="calendly-inline-widget"
-                    data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
-                    style={{
-                      width: '100%',
-                      height: '1235px',
-                      background: '#ffffff',
-                    }}
-                  />
-                </div>
-              </div>
+              <div
+                ref={containerRef}
+                className="calendly-inline-widget rounded-2xl overflow-hidden bg-white border border-border shadow-2xl"
+                style={{
+                  width: '100%',
+                  height: '1100px',
+                  minWidth: '320px',
+                }}
+              />
             </div>
 
           </div>
