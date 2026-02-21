@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
+import { InlineWidget } from 'react-calendly';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -11,65 +11,15 @@ const strategicSessionItems = [
 ];
 
 export default function ContactoPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const scriptId = 'calendly-script';
-    let script = document.getElementById(scriptId) as HTMLScriptElement;
-
-    const initCalendly = () => {
-      if (containerRef.current && (window as any).Calendly) {
-        const calendly = (window as any).Calendly;
-        
-        // Limpiar para evitar duplicados y errores
-        containerRef.current.innerHTML = '';
-        
-        if (calendly.initInlineWidget) {
-          calendly.initInlineWidget({
-            url: "https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1",
-            parentElement: containerRef.current,
-          });
-        }
-      }
-    };
-
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      script.onload = initCalendly;
-      document.body.appendChild(script);
-    } else {
-      if ((window as any).Calendly) {
-        initCalendly();
-      } else {
-        script.onload = initCalendly;
-      }
-    }
-  }, []);
-
   return (
     <>
-      <style jsx global>{`
-        .calendly-inline-widget, 
-        .calendly-inline-widget iframe {
-          scrollbar-width: none !important;
-          -ms-overflow-style: none !important;
-        }
-        .calendly-inline-widget::-webkit-scrollbar,
-        .calendly-inline-widget iframe::-webkit-scrollbar {
-          display: none !important;
-        }
-      `}</style>
-
       <section className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4">
           <div className="grid gap-20 items-start md:grid-cols-[1fr_1.2fr]">
             
             {/* Columna Izquierda */}
             <div className="space-y-12">
-              <div className="space-y-2 mb-12">
+              <div className="space-y-1 mb-12">
                 <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
                 <div className="space-y-6">
                   <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
@@ -123,15 +73,22 @@ export default function ContactoPage() {
 
             {/* Columna Derecha - Calendly */}
             <div className="relative">
-              <div
-                ref={containerRef}
-                className="calendly-inline-widget rounded-2xl overflow-hidden bg-white border border-border shadow-2xl"
-                style={{
-                  width: '100%',
-                  height: '1100px',
-                  minWidth: '320px',
-                }}
-              />
+              <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-2xl min-h-[700px]">
+                <InlineWidget 
+                  url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
+                  styles={{
+                    height: '1100px',
+                    width: '100%',
+                  }}
+                  pageSettings={{
+                    backgroundColor: 'ffffff',
+                    hideEventTypeDetails: false,
+                    hideLandingPageDetails: false,
+                    primaryColor: '2563eb',
+                    textColor: '000000',
+                  }}
+                />
+              </div>
             </div>
 
           </div>
