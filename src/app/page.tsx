@@ -236,7 +236,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl">
           <div className={cn(
             "space-y-4 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -244,9 +244,9 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter leading-[1.05]">
-              <span className="block">Transformamos empresas con</span>
-              <span className="block text-primary">Marketing e Inteligencia Artificial</span>
+            <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight leading-[1.15] px-4">
+              <span className="block whitespace-nowrap">Transformamos empresas con</span>
+              <span className="block text-primary whitespace-nowrap">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
           
