@@ -74,6 +74,14 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
+            {/* Línea de separación persistente (para que no desaparezca al cargar) */}
+            <div 
+              className={cn(
+                "absolute top-[148px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
+                isLoaded ? "opacity-100" : "opacity-0"
+              )}
+            />
+
             {/* Esqueleto de Carga con Blur */}
             <div 
               className={cn(
@@ -94,13 +102,13 @@ export function CalendlyPersistent() {
               </div>
 
               {/* Contenido blureado del esqueleto */}
-              <div className="flex flex-col blur-[18px] opacity-40 mt-12">
-                {/* Logo AllenMax Negro en bloque */}
-                <div className="w-12 h-12 bg-[#020817] rounded-lg mx-auto mb-10 flex items-center justify-center relative overflow-hidden">
-                   <span className="text-[7px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
+              <div className="flex flex-col blur-[18px] opacity-40 mt-14">
+                {/* Logo AllenMax Negro en bloque más grande */}
+                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-8 flex items-center justify-center relative overflow-hidden">
+                   <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
-                {/* Línea horizontal de separación real */}
+                {/* Línea horizontal de separación en el esqueleto */}
                 <div className="h-px bg-gray-200 w-full mb-10" />
                 
                 <div className="px-10 space-y-8">
@@ -141,7 +149,7 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Parche superior derecho para ocultar el ribbon (Ampliado para cobertura total) */}
+            {/* Parche superior derecho para ocultar el ribbon */}
             <div 
               className={cn(
                 "absolute top-0 right-0 w-[280px] h-[100px] bg-white z-30 pointer-events-none transition-opacity duration-700",
@@ -159,10 +167,10 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* Parche inferior para ocultar el branding de Calendly con línea de separación */}
+            {/* Parche inferior para ocultar el branding de Calendly */}
             <div 
               className={cn(
-                "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-30 pointer-events-none transition-opacity duration-700",
+                "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
               aria-hidden="true"
