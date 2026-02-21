@@ -111,17 +111,17 @@ export function CalendlyPersistent() {
                 isLoaded ? "opacity-0 invisible" : "opacity-100"
               )}
             >
-              {/* Barra de Progreso Superior - Con blur ligero */}
-              <div className="absolute top-0 left-0 w-full z-50 h-1 blur-[0.5px]">
+              {/* Barra de Progreso Superior - Capa suprema para estar siempre por encima */}
+              <div className="absolute top-0 left-0 w-full z-[60] h-1 blur-[0.5px]">
                 <div 
-                  className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out"
+                  className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out shadow-[0_0_8px_rgba(59,130,246,0.5)]"
                   style={{ width: `${progress}%` }}
                 />
               </div>
 
-              {/* Contenido del esqueleto - Desenfoque EXTREMO para disimular como en la referencia */}
+              {/* Contenido del esqueleto - Desenfoque EXTREMO para efecto "nube" */}
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax con MUCHO BLUR y opacidad reducida para no destacar */}
+                {/* Logo AllenMax con MUCHO BLUR y baja opacidad para no destacar sobre la línea azul */}
                 <div className="w-11 h-11 bg-[#020817]/10 rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2 z-50 blur-[14px]">
                    <span className="text-[6px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
