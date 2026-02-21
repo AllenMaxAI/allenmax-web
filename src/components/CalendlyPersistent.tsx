@@ -77,7 +77,7 @@ export function CalendlyPersistent() {
             {/* Línea de separación persistente (para que no desaparezca al cargar) */}
             <div 
               className={cn(
-                "absolute top-[148px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
+                "absolute top-[132px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
@@ -102,9 +102,9 @@ export function CalendlyPersistent() {
               </div>
 
               {/* Contenido blureado del esqueleto */}
-              <div className="flex flex-col blur-[18px] opacity-40 mt-14">
+              <div className="flex flex-col blur-[18px] opacity-40 mt-12">
                 {/* Logo AllenMax Negro en bloque más grande */}
-                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-8 flex items-center justify-center relative overflow-hidden">
+                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-5 flex items-center justify-center relative overflow-hidden">
                    <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
