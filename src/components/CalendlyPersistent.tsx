@@ -24,6 +24,7 @@ export function CalendlyPersistent() {
   const [showLine, setShowLine] = useState(true);
   const [isTimesView, setIsTimesView] = useState(false);
   const [isCalendarView, setIsCalendarView] = useState(true);
+  const [calendarZoneOffset, setCalendarZoneOffset] = useState<number | null>(null);
   
   // Refs para persistencia entre navegaciones
   const lastHeightRef = useRef<number | null>(null);
@@ -62,6 +63,11 @@ export function CalendlyPersistent() {
             setShowLine(view === 'calendar' || view === 'details');
             setIsTimesView(view === 'times');
             setIsCalendarView(view === 'calendar');
+
+            // Calcular offset dinámico para el parche de zona horaria en calendario
+            if (view === 'calendar') {
+              setCalendarZoneOffset(h - 120);
+            }
           }
         }
 
@@ -140,6 +146,11 @@ export function CalendlyPersistent() {
         setShowLine(view === 'calendar' || view === 'details' || isSuccess);
         setIsTimesView(view === 'times' && !isSuccess);
         setIsCalendarView(view === 'calendar' && !isSuccess);
+
+        // Recalcular offset dinámico inmediatamente al volver
+        if (view === 'calendar') {
+          setCalendarZoneOffset(h - 120);
+        }
       } else {
         // Estado inicial por defecto
         setShowLine(true);
@@ -205,9 +216,10 @@ export function CalendlyPersistent() {
             )}
 
             {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
-            {isCalendarView && (
+            {isCalendarView && calendarZoneOffset !== null && (
               <div 
-                className="absolute bottom-[105px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
+                className="absolute left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
+                style={{ top: calendarZoneOffset }}
                 aria-hidden="true"
               />
             )}
