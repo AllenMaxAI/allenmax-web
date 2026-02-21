@@ -37,10 +37,11 @@ export default function ServiciosPage() {
                 </h1>
                 <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
-              <p className="text-xl md:text-2xl text-primary font-medium mt-12 leading-relaxed">
-                Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
-              </p>
             </div>
+            
+            <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed">
+              Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
+            </p>
           </div>
         </div>
       </section>
