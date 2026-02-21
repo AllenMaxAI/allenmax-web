@@ -35,12 +35,11 @@ export function CalendlyPersistent() {
       if (e.data.event && e.data.event.startsWith('calendly.')) {
         const event = e.data.event;
         
-        // Si el usuario vuelve al calendario (botón atrás) o carga la vista inicial
+        // Vista principal del calendario: mostramos la línea
         if (event === 'calendly.event_type_viewed') {
           setShowLine(true);
         } 
-        // Solo ocultamos la línea cuando el usuario avanza a la selección de hora o completa la reserva
-        // así evitamos que mensajes internos de carga oculten la línea en la pantalla de inicio
+        // Navegación interna (selección de hora o reserva completada): ocultamos la línea
         else if (event === 'calendly.date_and_time_selected' || event === 'calendly.event_scheduled') {
           setShowLine(false);
         }
@@ -51,6 +50,7 @@ export function CalendlyPersistent() {
     return () => window.removeEventListener('message', handleCalendlyEvents);
   }, [mounted]);
 
+  // Simulación de progreso de carga
   useEffect(() => {
     if (mounted && !isLoaded) {
       const interval = setInterval(() => {
@@ -79,6 +79,7 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
+        // Tiempo estimado para que el iframe esté renderizado
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -116,7 +117,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* 1. BARRA DE PROGRESO SUPREMA - Posicionada por encima de todo */}
+            {/* 1. BARRA DE PROGRESO SUPREMA - Por encima de todo */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -149,20 +150,20 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* 3. ESQUELETO DE CARGA CON BLUR SUAVE */}
+            {/* 3. ESQUELETO DE CARGA CON DESENFOQUE SUTIL */}
             <div 
               className={cn(
-                "absolute inset-0 z-40 bg-white pointer-events-none flex flex-col transition-opacity duration-700",
+                "absolute inset-0 z-[60] bg-white pointer-events-none flex flex-col transition-opacity duration-700",
                 isLoaded ? "opacity-0 invisible" : "opacity-100"
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax con un toque de blur sutil */}
-                <div className="w-11 h-11 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-5 blur-[8px]" />
+                {/* Logo AllenMax con toque difuso */}
+                <div className="w-11 h-11 bg-gray-100/50 rounded-full mx-auto mt-4 z-50 blur-[8px]" />
                 
                 <div className="h-10" />
                 
-                <div className="px-10 space-y-8 mt-10 opacity-[0.05] blur-[8px]">
+                <div className="px-10 space-y-8 mt-10 blur-[6px] opacity-10">
                   <div className="w-40 h-8 bg-gray-400 mx-auto mb-6 rounded-full" />
                   <div className="flex items-center justify-center gap-4 mb-8">
                     <div className="w-10 h-10 bg-gray-300 rounded-full" />
