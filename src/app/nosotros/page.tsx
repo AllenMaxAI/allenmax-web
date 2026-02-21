@@ -1,8 +1,10 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, XCircle, ShieldCheck, Zap, BarChart3, Target } from 'lucide-react';
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
+import { cn } from '@/lib/utils';
 
 const philosophyItems = [
   {
@@ -41,14 +43,59 @@ const notForYouItems = [
   "Considera la tecnología y el marketing como un gasto, no una inversión.",
 ];
 
-export default function NosotrosPage() {
+function FadeInSection({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const current = domRef.current;
+    if (current) observer.observe(current);
+    return () => {
+      if (current) observer.unobserve(current);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col">
+    <div
+      ref={domRef}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={cn(
+        "transition-all duration-1000 ease-out",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+export default function NosotrosPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  return (
+    <div className="flex flex-col overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
-            <div className="space-y-2 mb-12">
+            <div className={cn(
+              "space-y-2 mb-12 transition-all duration-1000 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
               <div className="space-y-6">
                 <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
@@ -59,11 +106,17 @@ export default function NosotrosPage() {
               </div>
             </div>
 
-            <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed">
+            <p className={cn(
+              "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed transition-all duration-1000 delay-300 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               Construimos sistemas de crecimiento para empresas que quieren evolucionar.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className={cn(
+              "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <div className="space-y-6">
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   AllenMax nace con una idea clara: 
@@ -87,17 +140,17 @@ export default function NosotrosPage() {
       {/* ARQUITECTURA ESTRATÉGICA */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
+          <FadeInSection className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
               Arquitectura Estratégica
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Nuestra identidad se define por la estructura que construimos. No somos una agencia convencional, somos los arquitectos de tu ecosistema digital.
             </p>
-          </div>
+          </FadeInSection>
 
           <div className="grid lg:grid-cols-2 gap-x-20 gap-y-20 items-start">
-            <div className="space-y-12">
+            <FadeInSection className="space-y-12">
               <h3 className="text-2xl font-bold text-primary tracking-tight">
                 Qué nos diferencia
               </h3>
@@ -111,9 +164,9 @@ export default function NosotrosPage() {
                   <p className="text-base text-muted-foreground leading-relaxed">Diseñamos la arquitectura estratégica sobre la que tu empresa escala de forma sólida y predecible.</p>
                 </div>
               </div>
-            </div>
+            </FadeInSection>
 
-            <div className="space-y-12">
+            <FadeInSection className="space-y-12" delay={200}>
               <h3 className="text-2xl font-bold tracking-tight">
                 Nuestra Filosofía
               </h3>
@@ -130,7 +183,7 @@ export default function NosotrosPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </FadeInSection>
           </div>
         </div>
       </section>
@@ -138,28 +191,28 @@ export default function NosotrosPage() {
       {/* ALINEACIÓN */}
       <section>
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
+          <FadeInSection className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
               ¿Conectamos?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               La sinergia es clave. Para que funcione, la alineación debe ser total.
             </p>
-          </div>
+          </FadeInSection>
 
-          <div className="space-y-16">
+          <FadeInSection className="space-y-16">
             <h3 className="text-center text-2xl font-bold text-primary">La colaboración es ideal si tu empresa:</h3>
             <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
-              {forYouItems.map((item) => (
+              {forYouItems.map((item, idx) => (
                 <li key={item} className="flex items-start gap-4">
                   <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
                   <span className="text-base font-medium text-foreground/90">{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeInSection>
           
-          <div className="relative text-center my-28">
+          <FadeInSection className="relative text-center my-28">
             <div className="absolute inset-0 flex items-center" aria-hidden="true">
               <div className="w-full border-t border-border/50"></div>
             </div>
@@ -168,9 +221,9 @@ export default function NosotrosPage() {
                 Y por el contrario
               </span>
             </div>
-          </div>
+          </FadeInSection>
 
-          <div className="space-y-16">
+          <FadeInSection className="space-y-16 pb-12">
             <h3 className="text-center text-2xl font-bold text-[#c20000]">Quizás no sea el momento si:</h3>
             <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
               {notForYouItems.map((item) => (
@@ -180,7 +233,7 @@ export default function NosotrosPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeInSection>
         </div>
       </section>
 
