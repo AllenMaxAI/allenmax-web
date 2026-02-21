@@ -73,7 +73,7 @@ function FadeInSection({ children, className }: { children: React.ReactNode; cla
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.05 }); // Umbral más bajo para asegurar que se active antes
+    }, { threshold: 0.05 });
     
     const current = domRef.current;
     if (current) observer.observe(current);
@@ -205,8 +205,8 @@ export default function Home() {
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
           <div className={cn(
-            "space-y-4 fill-mode-both transition-opacity duration-700",
-            isMounted ? "animate-in fade-in slide-in-from-bottom-8 duration-1000" : "opacity-0"
+            "space-y-4 transition-all duration-1000 ease-out",
+            isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
@@ -218,15 +218,15 @@ export default function Home() {
           </div>
           
           <p className={cn(
-            "max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed fill-mode-both transition-opacity duration-700",
-            isMounted ? "animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200" : "opacity-0"
+            "max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out",
+            isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
           </p>
           
           <div className={cn(
-            "flex flex-col sm:flex-row gap-4 fill-mode-both transition-opacity duration-700",
-            isMounted ? "animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500" : "opacity-0"
+            "flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-500 ease-out",
+            isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             <Button asChild size="lg" className="btn-glow h-14 px-10 text-lg font-bold">
               <Link href="#proceso">Descubre cómo lo hacemos</Link>
@@ -306,7 +306,7 @@ export default function Home() {
       </section>
       
       {/* PROCESO ANIMADO */}
-      <section id="proceso" className="px-4 py-32 bg-card/5 relative z-10">
+      <section id="proceso" className="px-4 py-32 relative z-10">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
