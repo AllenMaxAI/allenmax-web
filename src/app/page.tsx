@@ -198,16 +198,9 @@ export default function Home() {
     e.preventDefault();
     const element = document.getElementById('proceso');
     if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      requestAnimationFrame(() => {
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      });
+      // Al usar scrollIntoView con behavior: 'smooth', el navegador gestiona
+      // el desplazamiento fluido de forma nativa y robusta.
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
