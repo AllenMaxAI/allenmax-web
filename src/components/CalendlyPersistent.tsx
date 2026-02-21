@@ -174,7 +174,7 @@ export function CalendlyPersistent() {
             {/* PARCHE PARA OCULTAR ZONA HORARIA EN VISTA DE HORAS */}
             {isTimesView && (
               <div 
-                className="absolute top-[92px] left-0 w-full h-[32px] bg-white z-[90] pointer-events-none"
+                className="absolute top-[82px] left-0 w-full h-[48px] bg-white z-[90] pointer-events-none"
                 aria-hidden="true"
               />
             )}
