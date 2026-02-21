@@ -7,13 +7,20 @@ import { cn } from '@/lib/utils';
 export function CalendlyPersistent() {
   const pathname = usePathname();
   const calendlyRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
+  
+  // Evitar errores de hidratación asegurando que el contenido dinámico solo se renderice en el cliente
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const isVisible = pathname === '/contacto';
 
   useEffect(() => {
-    if (!isLoaded) {
+    if (mounted && !isLoaded) {
       const interval = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 100) {
@@ -25,9 +32,11 @@ export function CalendlyPersistent() {
       }, 30);
       return () => clearInterval(interval);
     }
-  }, [isLoaded]);
+  }, [mounted, isLoaded]);
 
   useEffect(() => {
+    if (!mounted) return;
+
     const initCalendly = () => {
       if (window.Calendly && calendlyRef.current && !isInitialized) {
         window.Calendly.initInlineWidget({
@@ -38,7 +47,6 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Tiempo de espera para asegurar que el iframe real ha renderizado antes de quitar el blur
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -57,7 +65,10 @@ export function CalendlyPersistent() {
       }, 50);
       return () => clearInterval(interval);
     }
-  }, [isInitialized]);
+  }, [mounted, isInitialized]);
+
+  // Durante SSR o antes de montar, no renderizamos nada para evitar desajustes de hidratación
+  if (!mounted) return null;
 
   return (
     <div 
@@ -74,10 +85,10 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Línea de separación persistente (sincronizada con el header del widget real a 112px) */}
+            {/* Línea de separación persistente (sincronizada con el header del widget real a 86px) */}
             <div 
               className={cn(
-                "absolute top-[112px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
+                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
@@ -108,7 +119,7 @@ export function CalendlyPersistent() {
                    <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
-                {/* Línea horizontal de separación en el esqueleto (coincidiendo con top-112px) */}
+                {/* Línea horizontal de separación en el esqueleto */}
                 <div className="h-px bg-gray-200 w-full mb-10" />
                 
                 <div className="px-10 space-y-8">
