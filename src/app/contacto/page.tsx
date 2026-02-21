@@ -25,25 +25,26 @@ export default function ContactoPage() {
       document.body.appendChild(script);
     }
 
+    // Función agresiva para ELIMINAR el div de branding
     const removeBranding = () => {
-      // Intentar borrarlo si el script lo inyecta en el DOM principal
-      const branding = document.querySelector('[data-id="branding"]');
-      if (branding) {
-        branding.remove();
-      }
-      window.dispatchEvent(new Event('resize'));
+      const brandingElements = document.querySelectorAll('[data-id="branding"]');
+      brandingElements.forEach(el => {
+        el.remove();
+      });
     };
 
-    const observer = new MutationObserver(removeBranding);
+    // Observador para detectar cuándo se inyecta el div en el DOM
+    const observer = new MutationObserver((mutations) => {
+      removeBranding();
+    });
 
-    if (containerRef.current) {
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
-    }
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
 
-    const interval = setInterval(removeBranding, 500);
+    // Intervalo de respaldo por si el script lo reinyecta
+    const interval = setInterval(removeBranding, 100);
 
     return () => {
       observer.disconnect();
@@ -52,11 +53,11 @@ export default function ContactoPage() {
   }, []);
 
   return (
-    <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-background">
+    <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020617]">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Estilo exacto de Nosotros */}
+          {/* Columna Izquierda - Unificada con estilo "Nosotros" */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -114,15 +115,12 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Widget Calendly con Máscara */}
+          {/* Columna Derecha - Widget Calendly */}
           <div className="relative" ref={containerRef}>
             <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020617] min-h-[700px]">
-              <div className="relative w-full h-full overflow-hidden">
-                {/* Máscara para tapar el branding ribbon de la esquina superior derecha */}
-                <div className="absolute top-0 right-0 w-32 h-14 bg-[#020617] z-20 pointer-events-none" />
-                
+              <div className="relative w-full h-full">
                 <div 
-                  className="calendly-inline-widget w-full h-[700px] lg:h-[950px] relative z-10"
+                  className="calendly-inline-widget w-full h-[700px] lg:h-[950px]"
                   data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1&background_color=020617&text_color=ffffff&primary_color=3b82f6"
                   style={{ minWidth: '320px' }}
                 />
