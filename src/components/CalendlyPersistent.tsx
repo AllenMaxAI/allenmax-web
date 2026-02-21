@@ -18,6 +18,7 @@ export function CalendlyPersistent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showLine, setShowLine] = useState(true);
+  const [isTimesView, setIsTimesView] = useState(false);
   
   useEffect(() => {
     setMounted(true);
@@ -41,11 +42,14 @@ export function CalendlyPersistent() {
             // Calendario (Alta), Detalles/Formulario (Media), Horas (Baja)
             if (h >= 980) {
               setShowLine(true);
+              setIsTimesView(false);
             } else if (h <= 960) {
               setShowLine(false);
+              setIsTimesView(true);
             } else {
               // 960 < h < 980 - Asumimos vista de detalles (formulario)
               setShowLine(true);
+              setIsTimesView(false);
             }
           }
         }
@@ -53,6 +57,7 @@ export function CalendlyPersistent() {
         // Pantalla final de éxito
         if (e.data.event === 'calendly.event_scheduled') {
           setShowLine(true);
+          setIsTimesView(false);
         }
       }
     };
@@ -115,6 +120,7 @@ export function CalendlyPersistent() {
   useEffect(() => {
     if (isVisible) {
       setShowLine(true);
+      setIsTimesView(false);
     }
   }, [isVisible]);
 
@@ -162,6 +168,14 @@ export function CalendlyPersistent() {
             {showLine && (
               <div 
                 className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
+              />
+            )}
+
+            {/* PARCHE PARA OCULTAR ZONA HORARIA EN VISTA DE HORAS */}
+            {isTimesView && (
+              <div 
+                className="absolute top-[92px] left-0 w-full h-[32px] bg-white z-[90] pointer-events-none"
+                aria-hidden="true"
               />
             )}
 
