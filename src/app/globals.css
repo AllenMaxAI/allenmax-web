@@ -44,9 +44,12 @@
 
 @layer components {
   .btn-glow {
-    @apply transition-all duration-500 ease-in-out;
+    /* Forzamos la transición de box-shadow para que no sea brusca */
+    transition-property: box-shadow, background-color, color, border-color, transform !important;
+    transition-duration: 500ms !important;
+    transition-timing-function: ease-in-out !important;
   }
   .btn-glow:hover {
-    box-shadow: 0 0 25px 5px hsl(var(--primary) / 0.4);
+    box-shadow: 0 0 25px 5px hsl(var(--primary) / 0.4) !important;
   }
 }

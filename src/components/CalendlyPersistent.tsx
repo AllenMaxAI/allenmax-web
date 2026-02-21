@@ -143,7 +143,7 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Parche superior derecho para ocultar el ribbon y bloquear clics */}
+            {/* Parche superior derecho para ocultar el ribbon y bloquear clics (275px de ancho) */}
             <div 
               className={cn(
                 "absolute top-0 right-0 w-[275px] h-[100px] bg-white z-30 pointer-events-auto transition-opacity duration-700",

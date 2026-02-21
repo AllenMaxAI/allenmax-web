@@ -243,8 +243,8 @@ export default function Home() {
             </div>
             
             <div className="relative group">
-              {/* Glow mucho más sutil */}
-              <div className="absolute -inset-1 bg-primary/5 blur-md rounded-3xl transition-colors group-hover:bg-primary/10" />
+              {/* Glow extremadamente sutil */}
+              <div className="absolute -inset-1 bg-primary/2 blur-lg rounded-3xl transition-all duration-700 group-hover:bg-primary/5 group-hover:blur-xl" />
               <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10 shadow-2xl">
                 <h3 className="font-bold mb-10 text-2xl text-white/90">La mayoría de estructuras fallan en:</h3>
                 <ul className="space-y-8">
