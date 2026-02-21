@@ -82,11 +82,11 @@ export function CalendlyPersistent() {
                 isLoaded ? "opacity-0" : "opacity-100"
               )}
             >
-              {/* Barra de progreso superior con blur de 10px */}
+              {/* Barra de progreso superior con blur de 25px */}
               <div className="absolute top-0 left-0 w-full z-30 overflow-hidden">
                 <Progress 
                   value={progress} 
-                  className="h-1 rounded-none bg-transparent blur-[10px] transition-all duration-300" 
+                  className="h-1 rounded-none bg-transparent blur-[25px] transition-all duration-300" 
                 />
               </div>
 
