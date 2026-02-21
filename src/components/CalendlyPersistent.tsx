@@ -74,10 +74,10 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Línea de separación persistente (sincronizada con el header del widget real) */}
+            {/* Línea de separación persistente (sincronizada con el header del widget real a 112px) */}
             <div 
               className={cn(
-                "absolute top-[112px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
+                "absolute top-[112px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
@@ -102,9 +102,9 @@ export function CalendlyPersistent() {
               </div>
 
               {/* Contenido blureado del esqueleto */}
-              <div className="flex flex-col blur-[18px] opacity-40 mt-12">
+              <div className="flex flex-col blur-[18px] opacity-40 mt-10">
                 {/* Logo AllenMax Negro */}
-                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden">
+                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-2 flex items-center justify-center relative overflow-hidden">
                    <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
@@ -149,10 +149,10 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Parche superior derecho para ocultar el ribbon */}
+            {/* Parche superior derecho para ocultar el ribbon y bloquear clics */}
             <div 
               className={cn(
-                "absolute top-0 right-0 w-[280px] h-[100px] bg-white z-30 pointer-events-none transition-opacity duration-700",
+                "absolute top-0 right-0 w-[280px] h-[100px] bg-white z-30 pointer-events-auto transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
               aria-hidden="true"
@@ -167,10 +167,10 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* Parche inferior para ocultar el branding de Calendly */}
+            {/* Parche inferior para ocultar el branding de Calendly y bloquear clics */}
             <div 
               className={cn(
-                "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
+                "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
               aria-hidden="true"
