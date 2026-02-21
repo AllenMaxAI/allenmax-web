@@ -24,45 +24,40 @@ export default function ContactoPage() {
   useEffect(() => {
     const initCalendly = () => {
       if (window.Calendly && calendlyRef.current) {
+        // Limpiamos contenido previo si lo hubiera
         calendlyRef.current.innerHTML = '';
+        
         window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/agency-allenmax/reunion-allenmax?hide_gdpr_banner=1&primary_color=3b82f6&text_color=ffffff&background_color=020817',
+          url: 'https://calendly.com/agency-allenmax/reunion-allenmax?hide_gdpr_banner=1&primary_color=3b82f6&text_color=ffffff&background_color=020817&hide_branding=1',
           parentElement: calendlyRef.current,
           prefill: {},
           utm: {}
         });
-        
-        // Simulamos la detección de carga del iframe para suavizar la transición
-        const timer = setTimeout(() => setIsLoaded(true), 1500);
+
+        // Forzamos un pequeño retraso para asegurar que el iframe empiece a renderizar
+        const timer = setTimeout(() => {
+          setIsLoaded(true);
+          // Disparamos un evento de resize para que Calendly recalcule el layout
+          window.dispatchEvent(new Event('resize'));
+        }, 1500);
+
         return () => clearTimeout(timer);
       }
     };
 
+    // Intentamos inicializar si el script ya está cargado (via layout)
     if (window.Calendly) {
       initCalendly();
     } else {
-      const timer = setInterval(() => {
+      // Si no, esperamos a que aparezca
+      const interval = setInterval(() => {
         if (window.Calendly) {
           initCalendly();
-          clearInterval(timer);
+          clearInterval(interval);
         }
-      }, 500);
-      return () => clearInterval(timer);
+      }, 300);
+      return () => clearInterval(interval);
     }
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (node instanceof HTMLElement) {
-            const branding = node.querySelector('[data-id="branding"]');
-            if (branding) branding.remove();
-          }
-        });
-      });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -70,7 +65,7 @@ export default function ContactoPage() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda */}
+          {/* Columna Izquierda - Estilo Nosotros */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -126,38 +121,42 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Calendly con Placeholder Blur */}
-          <div className="relative group">
+          {/* Columna Derecha - Calendly con Placeholder Blur Refinado */}
+          <div className="relative">
             <div 
               className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[700px] md:min-h-[900px] relative"
               style={{ position: 'relative' }}
             >
-              {/* Placeholder Mockup con Blur */}
+              {/* Placeholder Mockup con Blur Refinado (Parecido al real) */}
               <div 
                 className={cn(
                   "absolute inset-0 z-10 bg-white transition-opacity duration-700 pointer-events-none flex flex-col p-8 md:p-12",
                   isLoaded ? "opacity-0" : "opacity-100"
                 )}
               >
+                {/* Avatar superior */}
                 <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-8 blur-[2px]" />
-                <div className="w-3/4 h-8 bg-gray-100 mx-auto mb-4 rounded blur-[2px]" />
-                <div className="w-1/2 h-6 bg-gray-100 mx-auto mb-12 rounded blur-[2px]" />
-                <div className="grid grid-cols-7 gap-4 mb-8">
+                
+                {/* Líneas de texto */}
+                <div className="w-48 h-6 bg-gray-100 mx-auto mb-4 rounded-full blur-[2px]" />
+                <div className="w-32 h-4 bg-gray-50 mx-auto mb-12 rounded-full blur-[2px]" />
+                
+                {/* Rejilla de días (7 columnas) */}
+                <div className="grid grid-cols-7 gap-4 mb-8 max-w-xs mx-auto">
                   {Array.from({ length: 31 }).map((_, i) => (
-                    <div key={i} className="aspect-square bg-gray-50 rounded-full blur-[3px]" />
+                    <div key={i} className="aspect-square bg-gray-50/80 rounded-full blur-[4px]" />
                   ))}
                 </div>
-                <div className="w-full h-40 bg-gray-50 rounded-xl mt-auto blur-[4px]" />
                 
-                {/* Branding tapado preventivamente */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white z-20" />
+                {/* Bloque inferior */}
+                <div className="w-full h-32 bg-gray-50 rounded-xl mt-auto blur-[5px]" />
               </div>
 
-              {/* Contenedor Real */}
+              {/* Contenedor Real del Widget */}
               <div 
                 ref={calendlyRef}
                 className={cn(
-                  "w-full h-[1015px] transition-opacity duration-500",
+                  "w-full h-[700px] md:h-[1015px] transition-opacity duration-500",
                   isLoaded ? "opacity-100" : "opacity-0"
                 )}
                 id="calendly-container"
