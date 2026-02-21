@@ -24,6 +24,7 @@ export function CalendlyPersistent() {
   const [showLine, setShowLine] = useState(true);
   const [isTimesView, setIsTimesView] = useState(false);
   const [isCalendarView, setIsCalendarView] = useState(true);
+  const [calendarH, setCalendarH] = useState<number | null>(null);
   
   // Refs para persistencia entre navegaciones
   const lastHeightRef = useRef<number | null>(null);
@@ -62,6 +63,10 @@ export function CalendlyPersistent() {
             setShowLine(view === 'calendar' || view === 'details');
             setIsTimesView(view === 'times');
             setIsCalendarView(view === 'calendar');
+
+            if (view === 'calendar') {
+              setCalendarH(h);
+            }
           }
         }
 
@@ -140,6 +145,10 @@ export function CalendlyPersistent() {
         setShowLine(view === 'calendar' || view === 'details' || isSuccess);
         setIsTimesView(view === 'times' && !isSuccess);
         setIsCalendarView(view === 'calendar' && !isSuccess);
+
+        if (view === 'calendar') {
+          setCalendarH(h);
+        }
       } else {
         // Estado inicial por defecto
         setShowLine(true);
@@ -150,6 +159,9 @@ export function CalendlyPersistent() {
   }, [isVisible]);
 
   if (!mounted) return null;
+
+  // Cálculo dinámico del bottom para el parche de calendario
+  const calendarTZBottom = calendarH !== null && calendarH >= 1005 ? 185 : 220;
 
   return (
     <div 
@@ -207,7 +219,8 @@ export function CalendlyPersistent() {
             {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
             {isCalendarView && (
               <div 
-                className="absolute left-0 w-full bg-white z-[90] pointer-events-none bottom-[180px] h-[60px]"
+                className="absolute left-0 w-full bg-white z-[90] pointer-events-none h-[20px]"
+                style={{ bottom: calendarTZBottom }}
                 aria-hidden="true"
               />
             )}
