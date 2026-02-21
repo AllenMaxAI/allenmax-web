@@ -207,7 +207,7 @@ export function CalendlyPersistent() {
             {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
             {isCalendarView && (
               <div 
-                className="absolute top-[648px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
+                className="absolute top-[820px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
                 aria-hidden="true"
               />
             )}
