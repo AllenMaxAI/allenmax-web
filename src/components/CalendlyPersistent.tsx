@@ -39,15 +39,13 @@ export function CalendlyPersistent() {
         if (event === 'calendly.event_type_viewed') {
           setShowLine(true);
         } 
-        // Cuando el usuario avanza (selecciona un día o completa la reserva)
-        else {
-          // Ocultamos la línea en cualquier pantalla intermedia (selección de hora, formulario)
+        // Cuando el usuario selecciona una fecha y hora, ocultamos la línea
+        else if (event === 'calendly.date_and_time_selected') {
           setShowLine(false);
-          
-          // Excepción: Volvemos a mostrarla si el evento es el de confirmación final
-          if (event === 'calendly.event_scheduled') {
-            setShowLine(true);
-          }
+        }
+        // Cuando el usuario completa la reserva, volvemos a mostrarla
+        else if (event === 'calendly.event_scheduled') {
+          setShowLine(true);
         }
       }
     };
@@ -121,7 +119,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* 1. BARRA DE PROGRESO SUPREMA (Prioridad máxima de visibilidad) */}
+            {/* 1. BARRA DE PROGRESO SUPREMA - Posicionada por encima de todo */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -135,10 +133,12 @@ export function CalendlyPersistent() {
             </div>
 
             {/* 2. CAPAS DE SEGURIDAD (PERSISTENTES) - Ocultan branding de Calendly */}
+            {/* Parche superior derecho: más estrecho para no tapar navegación interna */}
             <div 
-              className="absolute top-0 right-0 w-[275px] h-[100px] bg-white z-[45] pointer-events-auto"
+              className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
             />
+            {/* Parche inferior para ocultar branding inferior */}
             <div 
               className="absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -152,7 +152,7 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* 3. ESQUELETO DE CARGA */}
+            {/* 3. ESQUELETO DE CARGA CON BLUR SUAVE */}
             <div 
               className={cn(
                 "absolute inset-0 z-40 bg-white pointer-events-none flex flex-col transition-opacity duration-700",
@@ -160,8 +160,8 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax: Muy pequeño (w-11) y con blur sutil (8px) */}
-                <div className="w-11 h-11 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-40 blur-[8px]" />
+                {/* Logo AllenMax difuminado sutilmente */}
+                <div className="w-11 h-11 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-20 blur-[8px]" />
                 
                 <div className="h-10" />
                 
