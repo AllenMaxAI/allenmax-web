@@ -5,10 +5,6 @@ import { CheckCircle2, XCircle, ShieldCheck, Zap, BarChart3, Target } from 'luci
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
-import { motion, useAnimation } from 'framer-motion';
-
-// Importamos la imagen directamente desde la nueva ubicación
-import BMOImage from '@/img/BMO.png';
 
 const philosophyItems = [
   {
@@ -83,60 +79,6 @@ function FadeInSection({ children, className, delay = 0 }: { children: React.Rea
   );
 }
 
-function RobotHeroAnimation({ isMounted }: { isMounted: boolean }) {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (isMounted) {
-      const runSequence = async () => {
-        // FASE 1 – Slide in desde la derecha
-        await controls.start({
-          x: 0,
-          transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
-        });
-
-        // FASE 2 – Derrape
-        await controls.start({
-          x: [0, -22, 0],
-          rotate: [0, -12, 6, 0],
-          scaleX: [1, 1.08, 0.98, 1],
-          scaleY: [1, 0.94, 1.03, 1],
-          transition: { duration: 0.55, ease: "easeOut" }
-        });
-
-        // FASE 3 – Enderezarse
-        await controls.start({
-          rotate: 0,
-          transition: { duration: 0.2 }
-        });
-
-        // FASE 4 – Saludo
-        await controls.start({
-          rotate: [0, 2, -1, 1.5, -0.5, 0],
-          transition: { duration: 1, ease: "easeInOut" }
-        });
-      };
-
-      controls.set({ x: 350 });
-      runSequence();
-    }
-  }, [isMounted, controls]);
-
-  return (
-    <motion.div
-      animate={controls}
-      style={{ transformOrigin: '50% 85%' }}
-      className="w-[220px] lg:w-[260px] h-auto select-none pointer-events-none"
-    >
-      <img 
-        src={BMOImage.src} 
-        alt="Robot AllenMax" 
-        className="w-full h-auto"
-      />
-    </motion.div>
-  );
-}
-
 export default function NosotrosPage() {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -149,53 +91,47 @@ export default function NosotrosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-[1fr_auto] gap-12 items-start">
-            <div className="max-w-4xl">
-              <div className={cn(
-                "space-y-2 mb-12 transition-all duration-1000 ease-out",
-                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              )}>
-                <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
-                <div className="space-y-6">
-                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
-                    Arquitectos de <br />
-                    <span className="text-primary">Evolución.</span>
-                  </h1>
-                  <div className="h-1.5 w-20 bg-primary rounded-full" />
-                </div>
-              </div>
-
-              <p className={cn(
-                "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed transition-all duration-1000 delay-300 ease-out",
-                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              )}>
-                Construimos sistemas de crecimiento para empresas que quieren evolucionar.
-              </p>
-              
-              <div className={cn(
-                "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
-                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              )}>
-                <div className="space-y-6">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    AllenMax nace con una idea clara: 
-                    <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. Es la falta de estructura.</span>
-                  </p>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    Muchas empresas invierten en marketing o implementan tecnología sin una estrategia integrada. El resultado es dispersión y crecimiento inestable.
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary pl-8 py-2">
-                  <p className="text-xl font-bold mb-4">Nosotros hacemos lo contrario.</p>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    Diseñamos sistemas donde marketing, automatización y tecnología trabajan como una única estructura orientada a resultados.
-                  </p>
-                </div>
+          <div className="max-w-4xl">
+            <div className={cn(
+              "space-y-2 mb-12 transition-all duration-1000 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
+              <div className="space-y-6">
+                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                  Arquitectos de <br />
+                  <span className="text-primary">Evolución.</span>
+                </h1>
+                <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
             </div>
+
+            <p className={cn(
+              "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed transition-all duration-1000 delay-300 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              Construimos sistemas de crecimiento para empresas que quieren evolucionar.
+            </p>
             
-            <div className="hidden md:flex justify-end items-start pt-8">
-              <RobotHeroAnimation isMounted={isMounted} />
+            <div className={cn(
+              "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              <div className="space-y-6">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  AllenMax nace con una idea clara: 
+                  <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. Es la falta de estructura.</span>
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Muchas empresas invierten en marketing o implementan tecnología sin una estrategia integrada. El resultado es dispersión y crecimiento inestable.
+                </p>
+              </div>
+              <div className="border-l-2 border-primary pl-8 py-2">
+                <p className="text-xl font-bold mb-4">Nosotros hacemos lo contrario.</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Diseñamos sistemas donde marketing, automatización y tecnología trabajan como una única estructura orientada a resultados.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -206,7 +142,7 @@ export default function NosotrosPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <FadeInSection className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Arquitecta Estratégica
+              Arquitectura Estratégica
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Nuestra identidad se define por la estructura que construimos. No somos una agencia convencional, somos los arquitectos de tu ecosistema digital.
@@ -268,7 +204,7 @@ export default function NosotrosPage() {
             <h3 className="text-center text-2xl font-bold text-primary">La colaboración es ideal si tu empresa:</h3>
             <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
               {forYouItems.map((item, idx) => (
-                <li key={item} className="flex items-start gap-4">
+                <li key={idx} className="flex items-start gap-4">
                   <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
                   <span className="text-base font-medium text-foreground/90">{item}</span>
                 </li>
@@ -290,8 +226,8 @@ export default function NosotrosPage() {
           <FadeInSection className="space-y-16 pb-12">
             <h3 className="text-center text-2xl font-bold text-[#c20000]">Quizás no sea el momento si:</h3>
             <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
-              {notForYouItems.map((item) => (
-                <li key={item} className="flex items-start gap-4">
+              {notForYouItems.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-4">
                   <XCircle className="h-6 w-6 text-[#c20000] flex-shrink-0 mt-0.5" />
                   <span className="text-base font-medium text-muted-foreground/80">{item}</span>
                 </li>
