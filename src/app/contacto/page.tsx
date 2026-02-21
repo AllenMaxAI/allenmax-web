@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -34,12 +35,12 @@ export default function ContactoPage() {
           utm: {}
         });
 
-        // Aumentamos el tiempo a 3 segundos para asegurar que el iframe interno 
-        // haya pasado la fase de los tres puntos antes de mostrarlo
+        // Esperamos 3.5 segundos para asegurar que el renderizado interno de Calendly 
+        // haya pasado la fase de los puntos de carga propios
         const timer = setTimeout(() => {
           setIsLoaded(true);
           window.dispatchEvent(new Event('resize'));
-        }, 3000);
+        }, 3500);
 
         return () => clearTimeout(timer);
       }
@@ -119,12 +120,12 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Calendly con Blur y Puntos Centrados */}
+          {/* Columna Derecha - Calendly con Skeleton Fiel al Original */}
           <div className="relative">
             <div 
               className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[700px] md:min-h-[900px] relative"
             >
-              {/* Placeholder Mockup con Blur y Puntos de Carga Propios */}
+              {/* Placeholder Mockup con Blur y Estructura Real */}
               <div 
                 className={cn(
                   "absolute inset-0 z-20 bg-white transition-opacity duration-1000 pointer-events-none flex flex-col",
@@ -132,29 +133,67 @@ export default function ContactoPage() {
                 )}
               >
                 {/* Puntos de carga centrados (Simulando carga elegante) */}
-                <div className="absolute inset-x-0 top-8 flex justify-center gap-1.5 z-30">
-                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce" />
+                <div className="absolute inset-x-0 top-12 flex justify-center gap-1.5 z-30">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
                 </div>
 
-                <div className="flex flex-col p-8 md:p-12 blur-[6px] opacity-40">
-                  {/* Avatar superior */}
-                  <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-8" />
+                <div className="flex flex-col p-6 md:p-10 blur-[8px] opacity-30">
+                  {/* Logo rectangular oscuro superior */}
+                  <div className="w-24 h-16 bg-[#020817] rounded-md mx-auto mb-10 flex items-center justify-center">
+                    <div className="w-12 h-2 bg-white/10 rounded-full" />
+                  </div>
                   
-                  {/* Líneas de texto */}
-                  <div className="w-48 h-6 bg-gray-200 mx-auto mb-4 rounded-full" />
-                  <div className="w-32 h-4 bg-gray-100 mx-auto mb-12 rounded-full" />
+                  {/* Jake Allen Rosas */}
+                  <div className="w-32 h-3 bg-gray-200 mx-auto mb-3 rounded-full" />
                   
-                  {/* Rejilla de días (Más fiel a Calendly) */}
-                  <div className="grid grid-cols-7 gap-4 mb-8 max-w-xs mx-auto">
+                  {/* Llamada informativa AllenMax */}
+                  <div className="w-72 h-7 bg-gray-300 mx-auto mb-10 rounded-full" />
+                  
+                  {/* Detalles (30 min, web conf) */}
+                  <div className="space-y-4 mb-10 max-w-[280px] mx-auto">
+                    <div className="flex items-center gap-3">
+                      <div className="w-5 h-5 bg-gray-200 rounded-full" />
+                      <div className="w-16 h-3 bg-gray-100 rounded-full" />
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-5 h-5 bg-gray-200 rounded-full" />
+                      <div className="w-48 h-3 bg-gray-100 rounded-full" />
+                    </div>
+                  </div>
+                  
+                  {/* Bloques de texto informativo */}
+                  <div className="space-y-3 mb-12 text-center">
+                    <div className="w-64 h-3 bg-gray-100 mx-auto rounded-full" />
+                    <div className="w-72 h-3 bg-gray-100 mx-auto rounded-full" />
+                    <div className="w-56 h-3 bg-gray-100 mx-auto rounded-full" />
+                  </div>
+                  
+                  {/* Divisor */}
+                  <div className="h-px bg-gray-100 w-full mb-10" />
+
+                  {/* Seleccione un día */}
+                  <div className="w-40 h-5 bg-gray-200 mx-auto mb-10 rounded-full" />
+                  
+                  {/* Selector de Mes */}
+                  <div className="flex justify-center items-center gap-8 mb-10">
+                    <div className="w-4 h-4 bg-gray-100 rounded-full" />
+                    <div className="w-32 h-4 bg-gray-200 rounded-full" />
+                    <div className="w-4 h-4 bg-gray-100 rounded-full" />
+                  </div>
+
+                  {/* Rejilla de días (7 columnas) */}
+                  <div className="grid grid-cols-7 gap-x-6 gap-y-8 max-w-[320px] mx-auto mb-12">
                     {Array.from({ length: 31 }).map((_, i) => (
-                      <div key={i} className="aspect-square bg-gray-100 rounded-full" />
+                      <div key={i} className="aspect-square bg-gray-100 rounded-full flex items-center justify-center">
+                        <div className="w-3 h-3 bg-white/50 rounded-full" />
+                      </div>
                     ))}
                   </div>
                   
-                  {/* Bloque inferior */}
-                  <div className="w-full h-32 bg-gray-50 rounded-xl mt-auto" />
+                  {/* Bloque de zona horaria inferior */}
+                  <div className="w-48 h-4 bg-gray-100 mx-auto rounded-full" />
                 </div>
               </div>
 
