@@ -194,6 +194,14 @@ export default function Home() {
     setIsMounted(true);
   }, []);
 
+  const handleScrollToProceso = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('proceso');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION */}
@@ -228,8 +236,12 @@ export default function Home() {
             "flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-500 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
-            <Button asChild size="lg" className="btn-glow h-14 px-10 text-lg font-bold">
-              <Link href="#proceso">Descubre cómo lo hacemos</Link>
+            <Button 
+              onClick={handleScrollToProceso}
+              size="lg" 
+              className="btn-glow h-14 px-10 text-lg font-bold cursor-pointer"
+            >
+              Descubre cómo lo hacemos
             </Button>
             <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg border-white/10 hover:bg-white/10 hover:text-white transition-colors duration-200">
               <Link href="/servicios">Ver Servicios</Link>
