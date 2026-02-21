@@ -202,7 +202,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      {/* HERO SECTION - PERFECTLY CENTERED & FULL HEIGHT */}
+      {/* HERO SECTION */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
@@ -216,14 +216,14 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-4xl md:text-[3.5rem] font-extrabold tracking-tight leading-[1.15] px-4 max-w-5xl mx-auto">
+            <h1 className="text-5xl md:text-[4.5rem] font-extrabold tracking-tight leading-[1.1] px-4 max-w-5xl mx-auto">
               <span className="block">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
           
           <p className={cn(
-            "max-w-5xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
+            "max-w-4xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
@@ -293,7 +293,7 @@ export default function Home() {
               Impulsa el crecimiento de tu empresa
             </h2>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-3xl mx-auto">
-             Diseñamos e implementamos sistemas que combinan marketing, automatización y tecnología avanzada para crear una estructura digital de alto rendimiento.
+             Diseñamos e implementamos sistemas que combinan <span className="text-primary font-semibold">marketing</span>, <span className="text-primary font-semibold">automatización</span> y <span className="text-primary font-semibold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
             </p>
           </FadeInSection>
           
@@ -317,7 +317,7 @@ export default function Home() {
       <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
               Cómo lo Hacemos Realidad
             </h2>
             <p className="max-w-2xl mx-auto text-muted-foreground text-xl leading-relaxed">
