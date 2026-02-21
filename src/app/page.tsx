@@ -208,7 +208,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl -mt-20">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl -mt-16">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -248,7 +248,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN PROBLEMA */}
-      <section className="px-4 pt-12 pb-20 md:pb-28 relative z-10 bg-[#020817]">
+      <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
@@ -267,7 +267,7 @@ export default function Home() {
             </div>
             
             <div className="relative">
-              <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10">
+              <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10 shadow-none">
                 <h3 className="font-bold mb-10 text-2xl text-white/90">La mayoría de estructuras fallan en:</h3>
                 <ul className="space-y-8">
                   {problemPoints.map((point, index) => (
@@ -286,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* BENEFICIOS */}
-      <section className="px-4 py-20 md:py-28 relative z-10">
+      <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
