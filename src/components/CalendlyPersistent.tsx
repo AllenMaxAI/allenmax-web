@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Progress } from '@/components/ui/progress';
 
 export function CalendlyPersistent() {
   const pathname = usePathname();
@@ -21,9 +20,9 @@ export function CalendlyPersistent() {
             clearInterval(interval);
             return 100;
           }
-          return prev + 2;
+          return prev + 1.5;
         });
-      }, 40);
+      }, 30);
       return () => clearInterval(interval);
     }
   }, [isLoaded]);
@@ -39,11 +38,11 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Simulamos la carga completa del widget real para sincronizar con el desvanecimiento
+        // Simulamos la carga completa del widget real
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
-        }, 2200);
+        }, 2500);
       }
     };
 
@@ -71,7 +70,7 @@ export function CalendlyPersistent() {
         <div className="w-full lg:w-[50%] relative">
           <div 
             className={cn(
-              "rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
+              "rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020817] min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
@@ -82,72 +81,82 @@ export function CalendlyPersistent() {
                 isLoaded ? "opacity-0" : "opacity-100"
               )}
             >
-              {/* Barra de progreso superior con blur de 25px */}
-              <div className="absolute top-0 left-0 w-full z-30 overflow-hidden">
-                <Progress 
-                  value={progress} 
-                  className="h-1 rounded-none bg-transparent blur-[25px] transition-all duration-300" 
+              {/* Contenedor de Barra de Progreso (Sin overflow para que se vea el blur) */}
+              <div className="absolute top-0 left-0 w-full z-30 h-1">
+                {/* Glow / Blur de 25px */}
+                <div 
+                  className="absolute top-0 left-0 h-4 bg-primary/40 blur-[25px] transition-all duration-300 ease-out"
+                  style={{ width: `${progress}%` }}
+                />
+                {/* Línea nítida core */}
+                <div 
+                  className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out"
+                  style={{ width: `${progress}%` }}
                 />
               </div>
 
               {/* Contenido blureado */}
-              <div className="flex flex-col p-6 md:p-10 blur-[15px] opacity-40 mt-4">
-                {/* Logo cuadrado con puntos de carga centrados */}
-                <div className="w-16 h-16 bg-[#020817] rounded-md mx-auto mb-6 flex items-center justify-center relative overflow-hidden">
-                  <div className="flex gap-1 z-30 scale-75">
+              <div className="flex flex-col p-6 md:p-10 blur-[15px] opacity-40 mt-8">
+                {/* Logo Cuadrado Pequeño */}
+                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-6 flex items-center justify-center relative overflow-hidden">
+                   <div className="flex gap-1 scale-75">
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
                   </div>
                 </div>
                 
-                {/* Detalles informativos */}
-                <div className="w-32 h-3 bg-gray-300 mx-auto mb-3 rounded-full" />
-                <div className="w-64 h-7 bg-gray-400 mx-auto mb-8 rounded-full" />
+                {/* Detalles informativos superiores */}
+                <div className="w-24 h-2.5 bg-gray-300 mx-auto mb-3 rounded-full" />
+                <div className="w-56 h-6 bg-gray-400 mx-auto mb-8 rounded-full" />
                 
-                <div className="space-y-4 mb-10 max-w-[300px] mx-auto text-center">
-                  <div className="flex items-center justify-center gap-3">
-                    <div className="w-5 h-5 bg-gray-300 rounded-full" />
-                    <div className="w-20 h-3 bg-gray-200 rounded-full" />
-                  </div>
-                  <div className="flex items-center justify-center gap-3">
-                    <div className="w-5 h-5 bg-gray-300 rounded-full" />
-                    <div className="w-40 h-3 bg-gray-200 rounded-full" />
-                  </div>
-                </div>
-                
-                {/* Texto descriptivo largo */}
                 <div className="space-y-4 mb-10 text-center">
-                  <div className="w-72 h-3 bg-gray-200 mx-auto rounded-full" />
-                  <div className="w-80 h-3 bg-gray-200 mx-auto rounded-full mt-6" />
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 bg-gray-200 rounded-full" />
+                    <div className="w-32 h-2.5 bg-gray-200 rounded-full" />
+                  </div>
                 </div>
                 
-                <div className="h-px bg-gray-200 w-full mb-10" />
-
-                {/* Sección de Calendario (Parte inferior) */}
-                <div className="w-48 h-6 bg-gray-300 mx-auto mb-10 rounded-full" />
+                {/* Párrafos descriptivos */}
+                <div className="space-y-3 mb-12 max-w-[320px] mx-auto text-center">
+                  <div className="w-full h-2 bg-gray-200 rounded-full" />
+                  <div className="w-4/5 h-2 bg-gray-200 rounded-full mx-auto" />
+                  <div className="w-3/4 h-2 bg-gray-200 rounded-full mx-auto mt-6" />
+                </div>
                 
-                <div className="flex justify-center items-center gap-10 mb-8">
+                <div className="h-px bg-gray-100 w-full mb-10" />
+
+                {/* Sección de Calendario Inferior */}
+                <div className="w-40 h-5 bg-gray-300 mx-auto mb-10 rounded-full" />
+                
+                {/* Cabecera del Mes */}
+                <div className="flex justify-between items-center max-w-[350px] mx-auto mb-8 px-4">
                   <div className="w-4 h-4 bg-gray-200 rounded-full" />
-                  <div className="w-40 h-5 bg-gray-300 rounded-full" />
+                  <div className="w-32 h-4 bg-gray-300 rounded-full" />
                   <div className="w-4 h-4 bg-gray-200 rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-7 gap-6 max-w-[350px] mx-auto mb-6">
-                  {Array.from({ length: 7 }).map((_, i) => (
-                    <div key={i} className="w-8 h-2 bg-gray-200 rounded-full mx-auto" />
+                {/* Días de la semana */}
+                <div className="grid grid-cols-7 gap-6 max-w-[350px] mx-auto mb-8">
+                  {['L', 'M', 'X', 'J', 'V', 'S', 'D'].map((_, i) => (
+                    <div key={i} className="w-6 h-2 bg-gray-200 rounded-full mx-auto" />
                   ))}
                 </div>
 
-                <div className="grid grid-cols-7 gap-x-6 gap-y-6 max-w-[350px] mx-auto mb-10">
+                {/* Cuadrícula de días */}
+                <div className="grid grid-cols-7 gap-x-6 gap-y-6 max-w-[350px] mx-auto mb-12">
                   {Array.from({ length: 31 }).map((_, i) => (
-                    <div key={i} className="aspect-square bg-gray-100 rounded-full flex items-center justify-center">
-                      <div className="w-3 h-3 bg-gray-200 rounded-full" />
+                    <div key={i} className="aspect-square bg-gray-50 rounded-full flex items-center justify-center border border-gray-100/50">
+                      <div className="w-2.5 h-2.5 bg-gray-200 rounded-full" />
                     </div>
                   ))}
                 </div>
                 
-                <div className="w-56 h-4 bg-gray-200 mx-auto rounded-full" />
+                {/* Zona horaria inferior */}
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-4 h-4 bg-gray-200 rounded-full" />
+                  <div className="w-48 h-3 bg-gray-200 rounded-full" />
+                </div>
               </div>
             </div>
 
