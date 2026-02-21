@@ -197,8 +197,8 @@ export default function Home() {
         {/* Background Animation */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_80%)]" />
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/30 blur-[140px] rounded-full animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-400/20 blur-[140px] rounded-full animate-pulse [animation-delay:2s]" />
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/40 blur-[150px] rounded-full animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-500/30 blur-[150px] rounded-full animate-pulse [animation-delay:2s]" />
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
@@ -224,10 +224,6 @@ export default function Home() {
               <Link href="/servicios">Ver Servicios</Link>
             </Button>
           </div>
-        </div>
-        
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
-          <div className="w-px h-12 bg-gradient-to-b from-transparent via-primary to-transparent" />
         </div>
       </section>
 
