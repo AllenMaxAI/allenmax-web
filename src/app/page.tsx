@@ -196,12 +196,35 @@ export default function Home() {
 
   const handleScrollToProceso = (e: React.MouseEvent) => {
     e.preventDefault();
-    const element = document.getElementById('proceso');
-    if (element) {
-      // Al usar scrollIntoView con behavior: 'smooth', el navegador gestiona
-      // el desplazamiento fluido de forma nativa y robusta.
-      element.scrollIntoView({ behavior: 'smooth' });
+    const target = document.getElementById('proceso');
+    if (!target) return;
+
+    // Calculamos la posición destino restando el offset del header sticky (aprox 80px)
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1200; // Duración en ms para que sea lento y elegante
+    let start: number | null = null;
+
+    // Función de animación manual para bypassear comportamientos bruscos del navegador
+    function animation(timestamp: number) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const percentage = Math.min(progress / duration, 1);
+      
+      // Easing function: easeInOutCubic para máxima fluidez
+      const easing = percentage < 0.5 
+        ? 4 * percentage * percentage * percentage 
+        : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+
+      window.scrollTo(0, startPosition + distance * easing);
+
+      if (progress < duration) {
+        window.requestAnimationFrame(animation);
+      }
     }
+
+    window.requestAnimationFrame(animation);
   };
 
   return (
