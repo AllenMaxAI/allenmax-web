@@ -189,16 +189,16 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-[#020817] overflow-hidden">
+    <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative pt-24 md:pt-32 h-[80vh] min-h-[700px] flex items-center justify-center text-center px-4">
-        {/* Background Animation sin ruido para evitar líneas horizontales */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Background Animation con máscara de desvanecimiento para evitar líneas de corte */}
+        <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
           
-          {/* Animated Glows - Ajustados para evitar bordes duros */}
-          <div className="absolute top-[-10%] left-[-10%] w-[1000px] h-[1000px] bg-primary/25 blur-[180px] rounded-full animate-pulse will-change-[transform,opacity]" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] bg-blue-600/15 blur-[180px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
+          {/* Animated Glows - Ahora pueden sangrar fuera del contenedor sin crear líneas duras */}
+          <div className="absolute top-[-20%] left-[-10%] w-[1200px] h-[1200px] bg-primary/20 blur-[200px] rounded-full animate-pulse will-change-[transform,opacity]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] bg-blue-600/10 blur-[200px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
@@ -228,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN PROBLEMA */}
-      <section className="px-4 py-24">
+      <section className="px-4 py-24 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
@@ -267,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* BENEFICIOS */}
-      <section className="px-4 py-24">
+      <section className="px-4 py-24 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
@@ -295,7 +295,7 @@ export default function Home() {
       </section>
       
       {/* PROCESO ANIMADO */}
-      <section id="proceso" className="px-4 py-32 bg-card/5">
+      <section id="proceso" className="px-4 py-32 bg-card/5 relative z-10">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
