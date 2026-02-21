@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-type CalendlyView = 'calendar' | 'times' | 'success';
+type View = 'calendar' | 'times' | 'success';
 
 export function CalendlyPersistent() {
   const pathname = usePathname();
@@ -20,8 +20,8 @@ export function CalendlyPersistent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
   
-  // Nuevo estado para la gestión robusta de la vista
-  const [currentView, setCurrentView] = useState<CalendlyView>('calendar');
+  // Estado robusto para el control de la vista
+  const [currentView, setCurrentView] = useState<View>('calendar');
   
   useEffect(() => {
     setMounted(true);
@@ -29,45 +29,30 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
-  // Lógica de detección de eventos de Calendly refinada
+  // Lógica determinista basada en eventos y clicks
   useEffect(() => {
     if (!mounted) return;
 
     const handleCalendlyEvents = (e: MessageEvent) => {
-      // 1. Logging temporal de todos los eventos de Calendly
+      // 1. Logging para depuración
       if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
-        console.log('[Calendly Event Log]:', e.data.event, e.data);
+        console.log('[Calendly]', e.data.event, e.data);
         
         const event = e.data.event;
         
-        // 2. Transiciones de estado explícitas
+        // 2. Restaurar estado al volver al inicio o finalizar
         if (event === 'calendly.event_type_viewed') {
           setCurrentView('calendar');
         } 
         else if (event === 'calendly.event_scheduled') {
           setCurrentView('success');
         }
-        // Intentamos detectar la transición a "times" lo antes posible
-        else if (event === 'calendly.date_and_time_selected') {
-          setCurrentView('times');
-        }
-        // Heurística de altura: Si la altura cambia drásticamente al interactuar, 
-        // probablemente estamos cambiando de vista. Ajustar umbral según logs.
-        else if (event === 'calendly.page_height') {
-          const height = e.data.payload?.height;
-          // Si el calendario inicial suele medir ~800 y el de horas ~1000, 
-          // esto nos sirve de trigger temprano.
-          if (height > 950 && currentView === 'calendar') {
-            // Descomentar si los logs confirman este cambio de altura consistente
-            // setCurrentView('times');
-          }
-        }
       }
     };
 
     window.addEventListener('message', handleCalendlyEvents);
     return () => window.removeEventListener('message', handleCalendlyEvents);
-  }, [mounted, currentView]);
+  }, [mounted]);
 
   // Simulación de progreso de carga
   useEffect(() => {
@@ -120,7 +105,7 @@ export function CalendlyPersistent() {
 
   if (!mounted) return null;
 
-  // La línea solo se renderiza en las vistas permitidas
+  // Derivamos la visibilidad de la línea del estado de la vista
   const showCustomLine = currentView === 'calendar' || currentView === 'success';
 
   return (
@@ -138,7 +123,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* BARRA DE PROGRESO */}
+            {/* BARRA DE PROGRESO SUPREMA */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -151,7 +136,22 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* PARCHES DE SEGURIDAD */}
+            {/* OVERLAY DETERMINISTA PARA CAPTURAR CLICK EN DÍAS */}
+            <div 
+              className={cn(
+                "absolute left-0 right-0 top-[290px] h-[480px] z-[46] transition-all",
+                currentView === 'calendar' ? "pointer-events-auto cursor-pointer" : "pointer-events-none"
+              )}
+              onPointerDown={() => {
+                if (currentView === 'calendar') {
+                  setCurrentView('times');
+                  console.log('[Calendly Overlay] Instant transition to times');
+                }
+              }}
+              aria-hidden="true"
+            />
+
+            {/* PARCHES DE SEGURIDAD (PROTECCIÓN BRANDING) */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -164,12 +164,12 @@ export function CalendlyPersistent() {
             {/* LÍNEA DE CABECERA DINÁMICA */}
             <div 
               className={cn(
-                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-300",
+                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-150",
                 showCustomLine ? "opacity-100" : "opacity-0"
               )}
             />
 
-            {/* ESQUELETO DE CARGA */}
+            {/* ESQUELETO DE CARGA (LIMPIO Y VAPOROSO) */}
             <div 
               className={cn(
                 "absolute inset-0 z-[60] bg-white pointer-events-none flex flex-col transition-opacity duration-700",
@@ -177,7 +177,7 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                <div className="w-11 h-11 bg-gray-100/80 rounded-full mx-auto mt-4 z-50 blur-[8px]" />
+                <div className="w-11 h-11 bg-gray-100/80 rounded-full mx-auto mt-4 z-50" />
                 <div className="h-10" />
                 <div className="px-10 space-y-8 mt-10 blur-[8px] opacity-30">
                   <div className="w-40 h-8 bg-gray-300 mx-auto mb-6 rounded-full" />
