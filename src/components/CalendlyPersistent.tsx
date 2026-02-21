@@ -17,12 +17,44 @@ export function CalendlyPersistent() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [showLine, setShowLine] = useState(true);
   
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const isVisible = pathname === '/contacto';
+
+  // Lógica para detectar navegación interna de Calendly mediante mensajes
+  useEffect(() => {
+    if (!mounted) return;
+
+    const handleCalendlyEvents = (e: MessageEvent) => {
+      // Calendly envía mensajes como objetos con una propiedad 'event'
+      if (e.data.event && e.data.event.startsWith('calendly.')) {
+        const event = e.data.event;
+        
+        // El evento 'event_type_viewed' se dispara al cargar el calendario inicial
+        // y también cuando el usuario pulsa el botón "Atrás" para volver al calendario.
+        if (event === 'calendly.event_type_viewed') {
+          setShowLine(true);
+        } 
+        // Cuando el usuario avanza (selecciona un día o completa la reserva)
+        else {
+          // Ocultamos la línea en cualquier pantalla intermedia (selección de hora, formulario)
+          setShowLine(false);
+          
+          // Excepción: Volvemos a mostrarla si el evento es el de confirmación final
+          if (event === 'calendly.event_scheduled') {
+            setShowLine(true);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('message', handleCalendlyEvents);
+    return () => window.removeEventListener('message', handleCalendlyEvents);
+  }, [mounted]);
 
   useEffect(() => {
     if (mounted && !isLoaded) {
@@ -52,7 +84,6 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Simular tiempo de carga para la transición
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -112,11 +143,16 @@ export function CalendlyPersistent() {
               className="absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[45] pointer-events-auto"
               aria-hidden="true"
             />
+            
+            {/* LÍNEA DE CABECERA DINÁMICA: Responde a la navegación del widget */}
             <div 
-              className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
+              className={cn(
+                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-500",
+                showLine ? "opacity-100" : "opacity-0"
+              )}
             />
 
-            {/* 3. ESQUELETO DE CARGA (Limpio y Minimalista) */}
+            {/* 3. ESQUELETO DE CARGA */}
             <div 
               className={cn(
                 "absolute inset-0 z-40 bg-white pointer-events-none flex flex-col transition-opacity duration-700",
@@ -124,13 +160,11 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax: Muy sutil con un poco de blur */}
-                <div className="w-8 h-8 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-40 blur-[4px]" />
+                {/* Logo AllenMax: Muy pequeño (w-11) y con blur sutil (8px) */}
+                <div className="w-11 h-11 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-40 blur-[8px]" />
                 
-                {/* Espacio del header */}
                 <div className="h-10" />
                 
-                {/* Contenido del widget: Bloques de carga con blur suave */}
                 <div className="px-10 space-y-8 mt-10 opacity-[0.05] blur-[8px]">
                   <div className="w-40 h-8 bg-gray-400 mx-auto mb-6 rounded-full" />
                   <div className="flex items-center justify-center gap-4 mb-8">
