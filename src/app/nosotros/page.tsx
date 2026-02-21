@@ -169,11 +169,11 @@ export default function NosotrosPage() {
           </div>
 
           <div className="space-y-16">
-            <h3 className="text-center text-2xl font-bold text-destructive">Quizás no sea el momento si:</h3>
+            <h3 className="text-center text-2xl font-bold text-[#c20000]">Quizás no sea el momento si:</h3>
             <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
               {notForYouItems.map((item) => (
                 <li key={item} className="flex items-start gap-4">
-                  <XCircle className="h-6 w-6 text-destructive flex-shrink-0 mt-0.5" />
+                  <XCircle className="h-6 w-6 text-[#c20000] flex-shrink-0 mt-0.5" />
                   <span className="text-base font-medium text-muted-foreground/80">{item}</span>
                 </li>
               ))}
