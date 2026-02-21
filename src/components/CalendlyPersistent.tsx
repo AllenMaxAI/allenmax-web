@@ -25,40 +25,32 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
-  // Calendly events logic based on page height
   useEffect(() => {
     if (!mounted) return;
 
     const handleCalendlyEvents = (e: MessageEvent) => {
       if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
-        console.log('[Calendly EVENT]', e.data.event, e.data);
         
-        // Determinate view based on iframe height
+        // Lógica de altura para determinar la vista
         if (e.data.event === 'calendly.page_height') {
           const raw = e.data.payload?.height ?? e.data.payload;
-          console.log('[Calendly HEIGHT RAW]', raw);
-          
           const h = parseInt(String(raw), 10);
-          console.log('[Calendly HEIGHT NUM]', h);
 
           if (!Number.isNaN(h)) {
-            // Logic to classify views by height: 
-            // Calendar (High), Details (Medium), Times (Low)
+            // Clasificación de vistas por altura: 
+            // Calendario (Alta), Detalles/Formulario (Media), Horas (Baja)
             if (h >= 980) {
-              console.log('[Calendly VIEW] calendar height=', h);
               setShowLine(true);
             } else if (h <= 960) {
-              console.log('[Calendly VIEW] times height=', h);
               setShowLine(false);
             } else {
-              // 960 < h < 980 - Assumed "Enter Details" (formulario) view
-              console.log('[Calendly VIEW] details height=', h);
+              // 960 < h < 980 - Asumimos vista de detalles (formulario)
               setShowLine(true);
             }
           }
         }
 
-        // Final Success Screen
+        // Pantalla final de éxito
         if (e.data.event === 'calendly.event_scheduled') {
           setShowLine(true);
         }
@@ -69,7 +61,7 @@ export function CalendlyPersistent() {
     return () => window.removeEventListener('message', handleCalendlyEvents);
   }, [mounted]);
 
-  // Loading progress simulation
+  // Simulación de progreso de carga
   useEffect(() => {
     if (mounted && !isLoaded) {
       const interval = setInterval(() => {
@@ -85,7 +77,7 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isLoaded]);
 
-  // Calendly widget initialization
+  // Inicialización del widget
   useEffect(() => {
     if (!mounted) return;
 
@@ -119,7 +111,7 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isInitialized]);
 
-  // Reset showLine when entering the contact page
+  // Resetear estado al entrar en contacto
   useEffect(() => {
     if (isVisible) {
       setShowLine(true);
@@ -136,14 +128,14 @@ export function CalendlyPersistent() {
       )}
     >
       <div className="container mx-auto px-4 max-w-7xl flex justify-end">
-        <div className="w-full lg:w-[50%] relative">
+        <div className="w-full lg:w-[50%] relative flex justify-center">
           <div 
             className={cn(
-              "rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
+              "w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* PROGRESS BAR */}
+            {/* BARRA DE PROGRESO */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -156,7 +148,7 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* SECURITY PATCHES */}
+            {/* PARCHES DE SEGURIDAD (OCULTAR BRANDING) */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -166,14 +158,14 @@ export function CalendlyPersistent() {
               aria-hidden="true"
             />
             
-            {/* CUSTOM HEADER LINE */}
+            {/* LÍNEA DE CABECERA PERSONALIZADA */}
             {showLine && (
               <div 
                 className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
               />
             )}
 
-            {/* LOADING SKELETON */}
+            {/* ESQUELETO DE CARGA */}
             <div 
               className={cn(
                 "absolute inset-0 z-[60] bg-white pointer-events-none flex flex-col transition-opacity duration-700",
@@ -193,11 +185,11 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* CALENDLY WIDGET */}
+            {/* CONTENEDOR DEL WIDGET */}
             <div 
               ref={calendlyRef}
               className={cn(
-                "w-full h-[1050px] bg-white transition-opacity duration-700",
+                "w-full h-[1050px] bg-white transition-opacity duration-700 mx-auto",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
