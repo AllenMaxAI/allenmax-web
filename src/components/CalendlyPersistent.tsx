@@ -10,6 +10,8 @@ declare global {
   }
 }
 
+type CalendlyView = 'calendar' | 'times' | 'details' | 'success';
+
 export function CalendlyPersistent() {
   const pathname = usePathname();
   const calendlyRef = useRef<HTMLDivElement>(null);
@@ -17,8 +19,14 @@ export function CalendlyPersistent() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
+  
+  // Estados reactivos para la UI custom
   const [showLine, setShowLine] = useState(true);
   const [isTimesView, setIsTimesView] = useState(false);
+  
+  // Refs para persistencia entre navegaciones
+  const lastHeightRef = useRef<number | null>(null);
+  const lastViewRef = useRef<CalendlyView>('calendar');
   
   useEffect(() => {
     setMounted(true);
@@ -26,36 +34,38 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
+  // Lógica de clasificación de vista basada en altura
+  const classifyView = (h: number): CalendlyView => {
+    if (h >= 980) return 'calendar';
+    if (h <= 960) return 'times';
+    return 'details';
+  };
+
   useEffect(() => {
     if (!mounted) return;
 
     const handleCalendlyEvents = (e: MessageEvent) => {
       if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
         
-        // Lógica de altura para determinar la vista
+        // Logging detallado para depuración
         if (e.data.event === 'calendly.page_height') {
           const raw = e.data.payload?.height ?? e.data.payload;
           const h = parseInt(String(raw), 10);
 
           if (!Number.isNaN(h)) {
-            // Clasificación de vistas por altura: 
-            // Calendario (Alta), Detalles/Formulario (Media), Horas (Baja)
-            if (h >= 980) {
-              setShowLine(true);
-              setIsTimesView(false);
-            } else if (h <= 960) {
-              setShowLine(false);
-              setIsTimesView(true);
-            } else {
-              // 960 < h < 980 - Asumimos vista de detalles (formulario)
-              setShowLine(true);
-              setIsTimesView(false);
-            }
+            lastHeightRef.current = h;
+            const view = classifyView(h);
+            lastViewRef.current = view;
+            
+            // Actualizar estados visuales
+            setShowLine(view === 'calendar' || view === 'details');
+            setIsTimesView(view === 'times');
           }
         }
 
         // Pantalla final de éxito
         if (e.data.event === 'calendly.event_scheduled') {
+          lastViewRef.current = 'success';
           setShowLine(true);
           setIsTimesView(false);
         }
@@ -116,11 +126,17 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isInitialized]);
 
-  // Resetear estado al entrar en contacto
+  // Restaurar estado al volver a /contacto
   useEffect(() => {
     if (isVisible) {
-      setShowLine(true);
-      setIsTimesView(false);
+      if (lastHeightRef.current !== null) {
+        const view = classifyView(lastHeightRef.current);
+        setShowLine(view === 'calendar' || view === 'details');
+        setIsTimesView(view === 'times');
+      } else {
+        setShowLine(true);
+        setIsTimesView(false);
+      }
     }
   }, [isVisible]);
 
@@ -174,7 +190,7 @@ export function CalendlyPersistent() {
             {/* PARCHE PARA OCULTAR ZONA HORARIA EN VISTA DE HORAS */}
             {isTimesView && (
               <div 
-                className="absolute top-[82px] left-0 w-full h-[48px] bg-white z-[90] pointer-events-none"
+                className="absolute top-[82px] left-0 w-full h-[40px] bg-white z-[90] pointer-events-none"
                 aria-hidden="true"
               />
             )}
