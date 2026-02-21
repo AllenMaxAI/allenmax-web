@@ -12,7 +12,6 @@ export function CalendlyPersistent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
   
-  // Evitar errores de hidratación asegurando que el contenido dinámico solo se renderice en el cliente
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -67,7 +66,6 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isInitialized]);
 
-  // Durante SSR o antes de montar, no renderizamos nada para evitar desajustes de hidratación
   if (!mounted) return null;
 
   return (
@@ -85,10 +83,10 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Línea de separación persistente (sincronizada con el header del widget real a 86px) */}
+            {/* Línea de separación persistente (sincronizada con el header del widget real a 112px) */}
             <div 
               className={cn(
-                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
+                "absolute top-[112px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
