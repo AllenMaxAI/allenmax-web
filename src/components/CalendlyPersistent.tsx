@@ -25,21 +25,21 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
-  // Lógica para detectar navegación interna de Calendly mediante mensajes
+  // Lógica de detección de eventos de Calendly mejorada
   useEffect(() => {
     if (!mounted) return;
 
     const handleCalendlyEvents = (e: MessageEvent) => {
-      // Calendly envía mensajes como objetos con una propiedad 'event'
+      // Verificamos que el mensaje provenga de Calendly
       if (e.data.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
         const event = e.data.event;
         
-        // Vista principal del calendario: mostramos la línea
+        // La línea SOLO se muestra en la vista inicial del calendario
         if (event === 'calendly.event_type_viewed') {
           setShowLine(true);
         } 
-        // Navegación interna (selección de hora o reserva completada): ocultamos la línea
-        else if (event === 'calendly.date_and_time_selected' || event === 'calendly.event_scheduled') {
+        // Para CUALQUIER otra interacción (selección de fecha, hora, reserva), la ocultamos
+        else {
           setShowLine(false);
         }
       }
@@ -116,7 +116,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* 1. BARRA DE PROGRESO SUPREMA - Por encima de todo */}
+            {/* 1. BARRA DE PROGRESO SUPREMA - Capa más alta fuera de filtros */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -129,8 +129,8 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* 2. CAPAS DE SEGURIDAD (PERSISTENTES) - Ocultan branding de Calendly */}
-            {/* Parche superior derecho: estrecho para no tapar navegación interna */}
+            {/* 2. CAPAS DE SEGURIDAD - Ocultan branding de Calendly */}
+            {/* Parche superior derecho estrecho: 140px para no tapar navegación */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -141,7 +141,7 @@ export function CalendlyPersistent() {
               aria-hidden="true"
             />
             
-            {/* LÍNEA DE CABECERA DINÁMICA: Solo visible en la vista principal del calendario */}
+            {/* LÍNEA DE CABECERA DINÁMICA: Responde a la navegación de Calendly */}
             <div 
               className={cn(
                 "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-500",
