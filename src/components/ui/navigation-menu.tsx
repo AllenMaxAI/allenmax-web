@@ -57,7 +57,14 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}{" "}
     <ChevronDown
-      className="relative top-[1px] ml-1 h-3 w-3 transition-all duration-300 group-data-[state=open]:rotate-180 opacity-0 group-hover:opacity-100 group-data-[state=open]:opacity-100"
+      className={cn(
+        "relative top-[1px] h-3 transition-all duration-300",
+        // Estado base: sin espacio, invisible
+        "w-0 ml-0 opacity-0 overflow-hidden",
+        // Al pasar el ratón o estar abierto: aparece y ocupa espacio
+        "group-hover:w-3 group-hover:ml-1 group-hover:opacity-100",
+        "group-data-[state=open]:w-3 group-data-[state=open]:ml-1 group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180"
+      )}
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
