@@ -14,10 +14,12 @@ export default function ContactoPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // 1. Cargar el script de Calendly
     const scriptId = 'calendly-widget-script';
     let script = document.getElementById(scriptId) as HTMLScriptElement;
     
     if (!script) {
+      console.log('[Calendly Debug] Inyectando script externo...');
       script = document.createElement('script');
       script.id = scriptId;
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
@@ -25,15 +27,23 @@ export default function ContactoPage() {
       document.body.appendChild(script);
     }
 
-    // Función agresiva para ELIMINAR el div de branding
+    // 2. Función agresiva para ELIMINAR el div de branding
     const removeBranding = () => {
+      // Buscamos específicamente por data-id="branding"
       const brandingElements = document.querySelectorAll('[data-id="branding"]');
-      brandingElements.forEach(el => {
-        el.remove();
-      });
+      
+      if (brandingElements.length > 0) {
+        console.log(`[Calendly Debug] ¡Encontrados ${brandingElements.length} elementos de branding! Eliminando...`);
+        brandingElements.forEach(el => {
+          el.remove();
+        });
+      }
     };
 
-    // Observador para detectar cuándo se inyecta el div en el DOM
+    // Ejecución inmediata
+    removeBranding();
+
+    // 3. Observador para detectar cuándo se inyecta el div en el DOM (es asíncrono)
     const observer = new MutationObserver((mutations) => {
       removeBranding();
     });
@@ -43,8 +53,8 @@ export default function ContactoPage() {
       subtree: true
     });
 
-    // Intervalo de respaldo por si el script lo reinyecta
-    const interval = setInterval(removeBranding, 100);
+    // 4. Intervalo de respaldo por si el script de Calendly lo reinyecta tras interacciones
+    const interval = setInterval(removeBranding, 500);
 
     return () => {
       observer.disconnect();
@@ -54,10 +64,10 @@ export default function ContactoPage() {
 
   return (
     <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020617]">
-      <div className="container mx-auto px-6 max-w-7xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Unificada con estilo "Nosotros" */}
+          {/* Columna Izquierda - Estilo unificado con "Nosotros" */}
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
