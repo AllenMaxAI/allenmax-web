@@ -55,8 +55,10 @@ export function CalendlyPersistent() {
           const h = parseInt(String(raw), 10);
 
           if (!Number.isNaN(h)) {
-            lastHeightRef.current = h;
             const view = classifyView(h);
+            console.log('[CALENDLY]', { view, h });
+            
+            lastHeightRef.current = h;
             lastViewRef.current = view;
             
             // Actualizar estados visuales
@@ -65,6 +67,7 @@ export function CalendlyPersistent() {
             setIsCalendarView(view === 'calendar');
 
             if (view === 'calendar') {
+              console.log('[CALENDAR VIEW]', { calendarH: h });
               setCalendarH(h);
             }
           }
@@ -72,6 +75,7 @@ export function CalendlyPersistent() {
 
         // Pantalla final de éxito
         if (e.data.event === 'calendly.event_scheduled') {
+          console.log('[CALENDLY] event_scheduled');
           lastViewRef.current = 'success';
           setShowLine(true);
           setIsTimesView(false);
@@ -163,6 +167,7 @@ export function CalendlyPersistent() {
   // Cálculo dinámico del bottom para el parche de calendario
   // 185px para meses de 6 filas (h >= 1005), ~223px para meses de 5 filas (h < 1005)
   const calendarTZBottom = calendarH !== null && calendarH >= 1005 ? 185 : 223;
+  console.log('[TZ PATCH]', { calendarH, calendarTZBottom });
 
   return (
     <div 
