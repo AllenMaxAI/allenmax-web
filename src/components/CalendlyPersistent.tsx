@@ -14,7 +14,6 @@ export function CalendlyPersistent() {
   const isVisible = pathname === '/contacto';
 
   useEffect(() => {
-    // Simulación de progreso de carga
     if (!isLoaded) {
       const interval = setInterval(() => {
         setProgress((prev) => {
@@ -40,7 +39,6 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Sincronizamos la carga final
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -56,7 +54,7 @@ export function CalendlyPersistent() {
           initCalendly();
           clearInterval(interval);
         }
-      }, 50); // Comprobación agresiva cada 50ms
+      }, 50);
       return () => clearInterval(interval);
     }
   }, [isInitialized]);
@@ -76,22 +74,21 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Skeleton con Blur Refinado y Barra de Progreso */}
             <div 
               className={cn(
                 "absolute inset-0 z-20 bg-white transition-opacity duration-1000 pointer-events-none flex flex-col",
                 isLoaded ? "opacity-0" : "opacity-100"
               )}
             >
-              {/* Barra de progreso en la parte superior del widget */}
-              <div className="absolute top-0 left-0 w-full z-30">
-                <Progress value={progress} className="h-1 rounded-none bg-transparent" />
+              <div className="absolute top-0 left-0 w-full z-30 overflow-hidden">
+                <Progress 
+                  value={progress} 
+                  className="h-1 rounded-none bg-transparent blur-[1px] transition-all duration-300" 
+                />
               </div>
 
               <div className="flex flex-col p-6 md:p-10 blur-[15px] opacity-40 mt-4">
-                {/* Logo CUADRADO compacto superior */}
                 <div className="w-16 h-16 bg-[#020817] rounded-md mx-auto mb-6 flex items-center justify-center relative overflow-hidden">
-                  {/* Puntos de carga centrados dentro del logo blureado */}
                   <div className="flex gap-1 z-30 scale-75">
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
@@ -120,7 +117,6 @@ export function CalendlyPersistent() {
                 
                 <div className="h-px bg-gray-200 w-full mb-10" />
 
-                {/* SECCIÓN CALENDARIO REALISTA */}
                 <div className="w-48 h-6 bg-gray-300 mx-auto mb-10 rounded-full" />
                 
                 <div className="flex justify-center items-center gap-10 mb-8">
@@ -147,7 +143,6 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Contenedor del Widget */}
             <div 
               ref={calendlyRef}
               className={cn(
