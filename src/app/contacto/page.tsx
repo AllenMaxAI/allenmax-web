@@ -77,23 +77,21 @@ export default function ContactoPage() {
 
       <section className="pt-24 md:pt-32 pb-16 bg-background">
         <div className="container mx-auto px-4">
-          
-          <div className="mb-20">
-            <div className="space-y-4">
-              <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
-              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
-                Hablemos de tu <br />
-                <span className="text-primary">crecimiento.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed max-w-2xl pt-6">
-                Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
-              </p>
-            </div>
-          </div>
-
           <div className="grid gap-20 items-start md:grid-cols-[1fr_1.2fr]">
             
-            <div className="space-y-12">
+            {/* Columna Izquierda: Contenido y Títulos */}
+            <div className="space-y-16">
+              <div className="space-y-6">
+                <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
+                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                  Hablemos de tu <br />
+                  <span className="text-primary">crecimiento.</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed pt-2">
+                  Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
+                </p>
+              </div>
+
               <div className="space-y-8">
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
                   En esta sesión estratégica:
@@ -131,6 +129,7 @@ export default function ContactoPage() {
               </div>
             </div>
 
+            {/* Columna Derecha: Widget de Calendly */}
             <div className="relative">
               <div
                 ref={containerRef}
@@ -140,6 +139,7 @@ export default function ContactoPage() {
                   height: '1100px',
                   minWidth: '320px',
                 }}
+                data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
               />
             </div>
 

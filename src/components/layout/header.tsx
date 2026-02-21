@@ -67,14 +67,14 @@ export function AppHeader() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo a la izquierda */}
-          <div className="flex items-center">
+          <div className="flex shrink-0">
             <Logo />
           </div>
 
           {/* Desktop Navigation Centrada */}
-          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center">
+          <div className="hidden md:flex flex-1 justify-center">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -115,61 +115,63 @@ export function AppHeader() {
             </NavigationMenu>
           </div>
 
-          {/* Acciones derecha / Mobile Menu */}
-          <div className="flex items-center">
-            <div className="md:hidden">
-              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-6 w-6" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="w-full sm:w-[320px] bg-background"
-                >
-                  <div className="flex flex-col h-full">
-                    <div className="flex justify-between items-center border-b pb-4">
-                      <Logo />
-                      <Button
-                        variant="ghost"
-                        size="icon"
+          {/* Mobile Menu Trigger */}
+          <div className="flex shrink-0 md:hidden">
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="w-full sm:w-[320px] bg-background"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex justify-between items-center border-b pb-4">
+                    <Logo />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <X className="h-6 w-6" />
+                    </Button>
+                  </div>
+                  <nav className="flex flex-col gap-1 mt-8">
+                    {serviceLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        <X className="h-6 w-6" />
-                      </Button>
-                    </div>
-                    <nav className="flex flex-col gap-1 mt-8">
-                      {serviceLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {React.cloneElement(link.icon, {
-                            className: 'h-5 w-5',
-                          })}
-                          <span>{link.label}</span>
-                        </Link>
-                      ))}
-                      <div className="my-2 border-t" />
-                      {navLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </nav>
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
+                        {React.cloneElement(link.icon, {
+                          className: 'h-5 w-5',
+                        })}
+                        <span>{link.label}</span>
+                      </Link>
+                    ))}
+                    <div className="my-2 border-t" />
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
+
+          {/* Placeholder para balancear el logo en desktop si fuera necesario, 
+              pero el flex-1 justify-center en la nav ya hace el trabajo. */}
+          <div className="hidden md:flex shrink-0 w-[120px] justify-end" />
         </div>
       </div>
     </header>
