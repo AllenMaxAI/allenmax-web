@@ -198,41 +198,18 @@ export default function Home() {
     e.preventDefault();
     const target = document.getElementById('proceso');
     if (!target) return;
-
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 1200;
-    let start: number | null = null;
-
-    function animation(timestamp: number) {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      const percentage = Math.min(progress / duration, 1);
-      
-      const easing = percentage < 0.5 
-        ? 4 * percentage * percentage * percentage 
-        : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
-
-      window.scrollTo(0, startPosition + distance * easing);
-
-      if (progress < duration) {
-        window.requestAnimationFrame(animation);
-      }
-    }
-
-    window.requestAnimationFrame(animation);
+    target.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      {/* HERO SECTION */}
-      <section className="relative pt-10 md:pt-16 min-h-screen flex flex-col items-center justify-start text-center px-4">
+      {/* HERO SECTION - PERFECTLY CENTERED */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl mt-6 md:mt-12">
+        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl -mt-16 md:-mt-20">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -240,7 +217,7 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-extrabold tracking-tight leading-[1.1] px-4">
+            <h1 className="text-3xl md:text-[2.8rem] font-extrabold tracking-tight leading-[1.1] px-4 max-w-4xl mx-auto">
               <span className="block">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
