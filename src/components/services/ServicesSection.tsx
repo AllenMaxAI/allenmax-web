@@ -17,7 +17,7 @@ type ServicesSectionProps = {
 
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section className="pt-24 md:pt-32 pb-24 md:pb-32 bg-background">
+    <section className="pt-24 md:pt-32 bg-background">
       <div className="container mx-auto px-4">
         <div className="space-y-24">
           {services.map((service, index) => (
