@@ -26,6 +26,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://assets.calendly.com" />
         <link rel="dns-prefetch" href="https://calendly.com" />
+        <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body
@@ -45,7 +46,7 @@ export default function RootLayout({
         <Toaster />
         <Script 
           src="https://assets.calendly.com/assets/external/widget.js" 
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
       </body>
     </html>

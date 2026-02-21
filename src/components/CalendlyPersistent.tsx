@@ -3,13 +3,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Progress } from '@/components/ui/progress';
 
 export function CalendlyPersistent() {
   const pathname = usePathname();
   const calendlyRef = useRef<HTMLDivElement>(null);
   const [isInitialized, setIsInitialized] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
   const isVisible = pathname === '/contacto';
+
+  useEffect(() => {
+    // Simulación de progreso de carga
+    if (!isLoaded) {
+      const interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            return 100;
+          }
+          return prev + 2;
+        });
+      }, 40);
+      return () => clearInterval(interval);
+    }
+  }, [isLoaded]);
 
   useEffect(() => {
     const initCalendly = () => {
@@ -22,10 +40,11 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Simulamos la carga para el desvanecimiento del blur
+        // Sincronizamos la carga final
         setTimeout(() => {
           setIsLoaded(true);
-        }, 2500);
+          setProgress(100);
+        }, 2200);
       }
     };
 
@@ -37,12 +56,11 @@ export function CalendlyPersistent() {
           initCalendly();
           clearInterval(interval);
         }
-      }, 300);
+      }, 50); // Comprobación agresiva cada 50ms
       return () => clearInterval(interval);
     }
   }, [isInitialized]);
 
-  // Usamos absolute para que se mueva con el scroll y no flote
   return (
     <div 
       className={cn(
@@ -58,15 +76,20 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Skeleton con Blur Refinado */}
+            {/* Skeleton con Blur Refinado y Barra de Progreso */}
             <div 
               className={cn(
                 "absolute inset-0 z-20 bg-white transition-opacity duration-1000 pointer-events-none flex flex-col",
                 isLoaded ? "opacity-0" : "opacity-100"
               )}
             >
-              <div className="flex flex-col p-6 md:p-10 blur-[15px] opacity-40">
-                {/* Logo CUADRADO más pequeño superior */}
+              {/* Barra de progreso en la parte superior del widget */}
+              <div className="absolute top-0 left-0 w-full z-30">
+                <Progress value={progress} className="h-1 rounded-none bg-transparent" />
+              </div>
+
+              <div className="flex flex-col p-6 md:p-10 blur-[15px] opacity-40 mt-4">
+                {/* Logo CUADRADO compacto superior */}
                 <div className="w-16 h-16 bg-[#020817] rounded-md mx-auto mb-6 flex items-center justify-center relative overflow-hidden">
                   {/* Puntos de carga centrados dentro del logo blureado */}
                   <div className="flex gap-1 z-30 scale-75">
@@ -124,7 +147,7 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Contenedor del Widget con altura de 1050px */}
+            {/* Contenedor del Widget */}
             <div 
               ref={calendlyRef}
               className={cn(
