@@ -14,7 +14,6 @@ export default function ContactoPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Carga del script de Calendly
     const scriptId = 'calendly-widget-script';
     let script = document.getElementById(scriptId) as HTMLScriptElement;
     
@@ -26,30 +25,25 @@ export default function ContactoPage() {
       document.body.appendChild(script);
     }
 
-    // Script para limpiar el branding de Calendly
     const removeBranding = () => {
+      // Intentar borrarlo si el script lo inyecta en el DOM principal
       const branding = document.querySelector('[data-id="branding"]');
       if (branding) {
         branding.remove();
       }
-      // Forzar resize para que Calendly se ajuste
       window.dispatchEvent(new Event('resize'));
     };
 
-    // Observar cambios en el DOM para eliminar el branding si aparece
-    const observer = new MutationObserver((mutations) => {
-      removeBranding();
-    });
+    const observer = new MutationObserver(removeBranding);
 
     if (containerRef.current) {
-      observer.observe(containerRef.current, {
+      observer.observe(document.body, {
         childList: true,
         subtree: true
       });
     }
 
-    // Intervalo de seguridad por si el observer no pilla el iframe interno
-    const interval = setInterval(removeBranding, 1000);
+    const interval = setInterval(removeBranding, 500);
 
     return () => {
       observer.disconnect();
@@ -58,13 +52,13 @@ export default function ContactoPage() {
   }, []);
 
   return (
-    <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020617]">
+    <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-background">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
-          {/* Columna Izquierda - Estilo unificado con Nosotros */}
-          <div className="space-y-10">
-            <div className="space-y-2">
+          {/* Columna Izquierda - Estilo exacto de Nosotros */}
+          <div className="max-w-4xl">
+            <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
                 Sesión Estratégica
               </span>
@@ -77,7 +71,7 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed max-w-lg">
+            <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed max-w-lg">
               Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
             </p>
 
@@ -97,8 +91,7 @@ export default function ContactoPage() {
               </ul>
             </div>
 
-            {/* Separador sutil */}
-            <div className="h-px w-full bg-white/10" />
+            <div className="h-px w-full bg-white/10 my-10" />
 
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold tracking-tight leading-tight text-white">
@@ -121,14 +114,19 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Widget Calendly */}
+          {/* Columna Derecha - Widget Calendly con Máscara */}
           <div className="relative" ref={containerRef}>
             <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020617] min-h-[700px]">
-              <div 
-                className="calendly-inline-widget w-full h-[700px] lg:h-[1050px]"
-                data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1&background_color=020617&text_color=ffffff&primary_color=3b82f6"
-                style={{ minWidth: '320px' }}
-              />
+              <div className="relative w-full h-full overflow-hidden">
+                {/* Máscara para tapar el branding ribbon de la esquina superior derecha */}
+                <div className="absolute top-0 right-0 w-32 h-14 bg-[#020617] z-20 pointer-events-none" />
+                
+                <div 
+                  className="calendly-inline-widget w-full h-[700px] lg:h-[950px] relative z-10"
+                  data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1&background_color=020617&text_color=ffffff&primary_color=3b82f6"
+                  style={{ minWidth: '320px' }}
+                />
+              </div>
             </div>
           </div>
 
