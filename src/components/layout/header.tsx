@@ -18,6 +18,7 @@ import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuStore,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -63,7 +64,7 @@ export function AppHeader() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full border-b border-border transition-all duration-300',
-        isScrolled ? 'bg-header/90 backdrop-blur-sm' : 'bg-header'
+        isScrolled ? 'bg-background/90 backdrop-blur-sm' : 'bg-background'
       )}
     >
       <div className="container mx-auto px-4">
@@ -73,7 +74,7 @@ export function AppHeader() {
             <Logo />
           </div>
 
-          {/* Desktop Navigation Centrada Absolute */}
+          {/* Desktop Navigation Centrada */}
           <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <NavigationMenu>
               <NavigationMenuList>
@@ -86,9 +87,9 @@ export function AppHeader() {
                           <NavigationMenuLink asChild>
                             <Link
                               href={service.href}
-                              className="flex items-center gap-3 select-none rounded-md p-3 text-sm no-underline outline-none transition-colors hover:bg-primary/90 focus:bg-primary/90"
+                              className="flex items-center gap-3 select-none rounded-md p-3 text-sm no-underline outline-none transition-colors hover:bg-primary/90 hover:text-primary-foreground focus:bg-primary/90 focus:text-primary-foreground"
                             >
-                              {React.cloneElement(service.icon, {
+                              {React.cloneElement(service.icon as React.ReactElement, {
                                 className: 'h-4 w-4',
                               })}
                               <span>{service.label}</span>
@@ -143,10 +144,10 @@ export function AppHeader() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
+                        className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 hover:text-primary-foreground transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {React.cloneElement(link.icon, {
+                        {React.cloneElement(link.icon as React.ReactElement, {
                           className: 'h-5 w-5',
                         })}
                         <span>{link.label}</span>
@@ -157,7 +158,7 @@ export function AppHeader() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 transition-colors"
+                        className="p-3 rounded-md text-lg font-medium text-foreground hover:bg-primary/90 hover:text-primary-foreground transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.label}
