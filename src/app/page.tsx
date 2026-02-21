@@ -99,7 +99,6 @@ function FadeInSection({ children, className }: { children: React.ReactNode; cla
 function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], index: number }) {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
-  const isEven = index % 2 === 0;
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
@@ -139,7 +138,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
       </div>
 
       <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
-        {isEven ? (
+        {index % 2 === 0 ? (
           <>
             <div className={cn(
               "text-right transition-all duration-700 delay-500",
@@ -204,12 +203,12 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION - PERFECTLY CENTERED */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4">
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 -mt-16">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl -mt-16 md:-mt-20">
+        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -217,17 +216,17 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-3xl md:text-[2.8rem] font-extrabold tracking-tight leading-[1.1] px-4 max-w-4xl mx-auto">
+            <h1 className="text-3xl md:text-[2.6rem] font-extrabold tracking-tight leading-tight px-4 max-w-4xl mx-auto">
               <span className="block">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
           
           <p className={cn(
-            "max-w-4xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
+            "max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
-            Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
+            Combinamos marketing estratégico y tecnología avanzada para atraer más clientes,<br className="hidden md:block" /> optimizar tus operaciones y escalar tu negocio sin límites.
           </p>
           
           <div className={cn(
@@ -248,8 +247,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN PROBLEMA */}
-      <section className="px-4 py-24 md:py-32 relative z-10">
+      {/* SECCIÓN PROBLEMA - SUBIDA PARA APARECER ANTES */}
+      <section className="px-4 pb-24 md:pb-32 relative z-10 pt-4 md:pt-8">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
@@ -268,7 +267,7 @@ export default function Home() {
             </div>
             
             <div className="relative">
-              <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10 shadow-none">
+              <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10">
                 <h3 className="font-bold mb-10 text-2xl text-white/90">La mayoría de estructuras fallan en:</h3>
                 <ul className="space-y-8">
                   {problemPoints.map((point, index) => (
