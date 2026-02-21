@@ -25,7 +25,7 @@ export default function ServiciosPage() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="pt-24 md:pt-32 pb-20 md:pb-28">
+      <section className="pt-24 md:pt-32 pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <div className="space-y-2 mb-12">
@@ -37,17 +37,16 @@ export default function ServiciosPage() {
                 </h1>
                 <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
+              <p className="text-xl md:text-2xl text-primary font-medium mt-12 leading-relaxed">
+                Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
+              </p>
             </div>
-
-            <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed">
-              Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
-            </p>
           </div>
         </div>
       </section>
 
       {/* CATEGORÍAS DE SERVICIOS */}
-      <section className="">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {serviceCategories.map((category) => (
