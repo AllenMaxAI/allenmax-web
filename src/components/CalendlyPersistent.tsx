@@ -42,12 +42,18 @@ export function CalendlyPersistent() {
           console.log('[Calendly HEIGHT NUM]', h);
 
           if (!Number.isNaN(h)) {
-            // Thresholds derived from actual widget behavior:
-            // ~989px+ for Calendar, ~947px- for Times/Slots
+            // Logic to classify views by height: 
+            // Calendar (High), Details (Medium), Times (Low)
             if (h >= 980) {
-              setShowLine(true); // Calendar View (Month/Days)
+              console.log('[Calendly VIEW] calendar height=', h);
+              setShowLine(true);
             } else if (h <= 960) {
-              setShowLine(false); // Timeslots View
+              console.log('[Calendly VIEW] times height=', h);
+              setShowLine(false);
+            } else {
+              // 960 < h < 980 - Assumed "Enter Details" (formulario) view
+              console.log('[Calendly VIEW] details height=', h);
+              setShowLine(true);
             }
           }
         }
