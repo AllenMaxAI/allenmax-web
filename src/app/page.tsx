@@ -227,27 +227,27 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative pt-24 md:pt-32 h-[80vh] min-h-[700px] flex items-center justify-center text-center px-4">
+      <section className="relative pt-24 md:pt-32 min-h-screen flex items-center justify-center text-center px-4">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl">
+        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl">
           <div className={cn(
-            "space-y-4 transition-all duration-1000 ease-out",
+            "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.2] px-4">
+            <h1 className="text-3xl md:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight leading-[1.15] px-4">
               <span className="block">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
           
           <p className={cn(
-            "max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out",
+            "max-w-4xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
@@ -272,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN PROBLEMA */}
-      <section className="px-4 py-24 relative z-10">
+      <section className="px-4 py-24 md:py-32 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
@@ -291,7 +291,7 @@ export default function Home() {
             </div>
             
             <div className="relative">
-              <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10">
+              <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10 shadow-none">
                 <h3 className="font-bold mb-10 text-2xl text-white/90">La mayoría de estructuras fallan en:</h3>
                 <ul className="space-y-8">
                   {problemPoints.map((point, index) => (
@@ -324,7 +324,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {benefits.map((benefit) => (
               <FadeInSection key={benefit.title} className={cn("flex flex-col items-center text-center gap-6 group")}>
-                <div className="flex-shrink-0 bg-primary/10 p-6 rounded-2xl text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+                <div className="flex-shrink-0 bg-primary/10 p-6 rounded-2xl text-primary transition-all duration-300">
                   {React.cloneElement(benefit.icon as React.ReactElement, { className: "h-10 w-10" })}
                 </div>
                 <div>
