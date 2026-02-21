@@ -206,25 +206,10 @@ export function CalendlyPersistent() {
 
             {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
             {isCalendarView && (
-              <>
-                {/* Tapa el texto original */}
-                <div 
-                  className="absolute top-[675px] left-0 w-full h-[60px] bg-white z-[90] pointer-events-none"
-                  aria-hidden="true"
-                />
-                {/* Renderiza el texto propio alineado */}
-                <div 
-                  className="absolute top-[675px] left-0 w-full h-[60px] z-[91] pointer-events-none px-12 flex flex-col justify-center items-start"
-                >
-                  <span className="text-sm font-bold text-[#0060e0]">Zona horaria</span>
-                  <div className="flex items-center gap-2 mt-1">
-                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                    </svg>
-                    <span className="text-sm text-gray-600">Europa Central (Madrid)</span>
-                  </div>
-                </div>
-              </>
+              <div 
+                className="absolute top-[648px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
+                aria-hidden="true"
+              />
             )}
 
             {/* ESQUELETO DE CARGA PERSONALIZADO */}
