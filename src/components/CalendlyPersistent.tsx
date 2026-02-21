@@ -17,6 +17,7 @@ export function CalendlyPersistent() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [showLine, setShowLine] = useState(true);
   
   useEffect(() => {
     setMounted(true);
@@ -24,7 +25,7 @@ export function CalendlyPersistent() {
 
   const isVisible = pathname === '/contacto';
 
-  // Calendly events logging
+  // Calendly events logic based on page height
   useEffect(() => {
     if (!mounted) return;
 
@@ -32,8 +33,28 @@ export function CalendlyPersistent() {
       if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
         console.log('[Calendly EVENT]', e.data.event, e.data);
         
+        // Determinate view based on iframe height
         if (e.data.event === 'calendly.page_height') {
-          console.log('[Calendly HEIGHT]', e.data.payload);
+          const raw = e.data.payload?.height ?? e.data.payload;
+          console.log('[Calendly HEIGHT RAW]', raw);
+          
+          const h = parseInt(String(raw), 10);
+          console.log('[Calendly HEIGHT NUM]', h);
+
+          if (!Number.isNaN(h)) {
+            // Thresholds derived from actual widget behavior:
+            // ~989px+ for Calendar, ~947px- for Times/Slots
+            if (h >= 980) {
+              setShowLine(true); // Calendar View (Month/Days)
+            } else if (h <= 960) {
+              setShowLine(false); // Timeslots View
+            }
+          }
+        }
+
+        // Final Success Screen
+        if (e.data.event === 'calendly.event_scheduled') {
+          setShowLine(true);
         }
       }
     };
@@ -72,7 +93,6 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Artificial delay to ensure visual consistency
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -93,6 +113,13 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isInitialized]);
 
+  // Reset showLine when entering the contact page
+  useEffect(() => {
+    if (isVisible) {
+      setShowLine(true);
+    }
+  }, [isVisible]);
+
   if (!mounted) return null;
 
   return (
@@ -110,7 +137,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* SUPREME PROGRESS BAR */}
+            {/* PROGRESS BAR */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -123,7 +150,7 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* SECURITY PATCHES (BRANDING PROTECTION) */}
+            {/* SECURITY PATCHES */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -134,9 +161,11 @@ export function CalendlyPersistent() {
             />
             
             {/* CUSTOM HEADER LINE */}
-            <div 
-              className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
-            />
+            {showLine && (
+              <div 
+                className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
+              />
+            )}
 
             {/* LOADING SKELETON */}
             <div 
