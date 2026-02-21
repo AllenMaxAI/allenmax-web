@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card } from '@/components/ui/card';
@@ -48,8 +47,8 @@ export default function ServiciosPage() {
         </div>
       </section>
 
-      {/* CATEGORÍAS DE SERVICIOS */}
-      <section className="pb-24 md:pb-32">
+      {/* CATEGORÍAS DE SERVICIOS - Eliminado pb-24 md:pb-32 para evitar espacio excesivo */}
+      <section className="">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {serviceCategories.map((category) => (
