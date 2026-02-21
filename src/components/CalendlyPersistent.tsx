@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -39,13 +40,10 @@ export function CalendlyPersistent() {
         if (event === 'calendly.event_type_viewed') {
           setShowLine(true);
         } 
-        // Cuando el usuario selecciona una fecha y hora, ocultamos la línea
-        else if (event === 'calendly.date_and_time_selected') {
+        // Cuando el usuario selecciona una fecha y hora o completa la reserva, ocultamos la línea
+        // para que no interfiera con las líneas nativas de esas pantallas internas.
+        else {
           setShowLine(false);
-        }
-        // Cuando el usuario completa la reserva, volvemos a mostrarla
-        else if (event === 'calendly.event_scheduled') {
-          setShowLine(true);
         }
       }
     };
@@ -144,7 +142,7 @@ export function CalendlyPersistent() {
               aria-hidden="true"
             />
             
-            {/* LÍNEA DE CABECERA DINÁMICA: Responde a la navegación del widget */}
+            {/* LÍNEA DE CABECERA DINÁMICA: Solo visible en la vista principal del calendario */}
             <div 
               className={cn(
                 "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-500",
@@ -160,8 +158,8 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax difuminado sutilmente */}
-                <div className="w-11 h-11 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-20 blur-[8px]" />
+                {/* Logo AllenMax con un toque de blur sutil */}
+                <div className="w-11 h-11 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-5 blur-[8px]" />
                 
                 <div className="h-10" />
                 
