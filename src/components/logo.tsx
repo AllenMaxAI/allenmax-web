@@ -6,11 +6,11 @@ export function Logo({ className }: { className?: string }) {
     <Link
       href="/"
       className={cn(
-        'flex items-center text-2xl font-bold text-foreground',
+        'flex items-center text-2xl font-bold text-white',
         className
       )}
     >
-      AllenMax
+      Allen<span className="text-primary">Max</span>
     </Link>
   );
 }
