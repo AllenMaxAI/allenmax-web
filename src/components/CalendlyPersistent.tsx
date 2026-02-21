@@ -23,6 +23,7 @@ export function CalendlyPersistent() {
   // Estados reactivos para la UI custom
   const [showLine, setShowLine] = useState(true);
   const [isTimesView, setIsTimesView] = useState(false);
+  const [isCalendarView, setIsCalendarView] = useState(true);
   
   // Refs para persistencia entre navegaciones
   const lastHeightRef = useRef<number | null>(null);
@@ -57,10 +58,10 @@ export function CalendlyPersistent() {
             const view = classifyView(h);
             lastViewRef.current = view;
             
-            // Actualizar estados visuales de forma coordinada
-            const isCalendarOrDetails = view === 'calendar' || view === 'details';
-            setShowLine(isCalendarOrDetails);
+            // Actualizar estados visuales
+            setShowLine(view === 'calendar' || view === 'details');
             setIsTimesView(view === 'times');
+            setIsCalendarView(view === 'calendar');
           }
         }
 
@@ -69,6 +70,7 @@ export function CalendlyPersistent() {
           lastViewRef.current = 'success';
           setShowLine(true);
           setIsTimesView(false);
+          setIsCalendarView(false);
         }
       }
     };
@@ -131,13 +133,18 @@ export function CalendlyPersistent() {
   useEffect(() => {
     if (isVisible) {
       if (lastHeightRef.current !== null) {
-        const view = classifyView(lastHeightRef.current);
-        const isCalendarOrDetails = view === 'calendar' || view === 'details' || lastViewRef.current === 'success';
-        setShowLine(isCalendarOrDetails);
-        setIsTimesView(view === 'times');
+        const h = lastHeightRef.current;
+        const view = classifyView(h);
+        const isSuccess = lastViewRef.current === 'success';
+        
+        setShowLine(view === 'calendar' || view === 'details' || isSuccess);
+        setIsTimesView(view === 'times' && !isSuccess);
+        setIsCalendarView(view === 'calendar' && !isSuccess);
       } else {
+        // Estado inicial por defecto
         setShowLine(true);
         setIsTimesView(false);
+        setIsCalendarView(true);
       }
     }
   }, [isVisible]);
@@ -189,12 +196,35 @@ export function CalendlyPersistent() {
               />
             )}
 
-            {/* PARCHE PARA OCULTAR ZONA HORARIA EN VISTA DE HORAS (MÁS DELGADO) */}
+            {/* PARCHE PARA OCULTAR ZONA HORARIA EN VISTA DE HORAS */}
             {isTimesView && (
               <div 
-                className="absolute top-[82px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none transition-opacity duration-300"
+                className="absolute top-[82px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
                 aria-hidden="true"
               />
+            )}
+
+            {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
+            {isCalendarView && (
+              <>
+                {/* Tapa el texto original */}
+                <div 
+                  className="absolute top-[675px] left-0 w-full h-[60px] bg-white z-[90] pointer-events-none"
+                  aria-hidden="true"
+                />
+                {/* Renderiza el texto propio alineado */}
+                <div 
+                  className="absolute top-[675px] left-0 w-full h-[60px] z-[91] pointer-events-none px-12 flex flex-col justify-center items-start"
+                >
+                  <span className="text-sm font-bold text-[#0060e0]">Zona horaria</span>
+                  <div className="flex items-center gap-2 mt-1">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Europa Central (Madrid)</span>
+                  </div>
+                </div>
+              </>
             )}
 
             {/* ESQUELETO DE CARGA PERSONALIZADO */}
