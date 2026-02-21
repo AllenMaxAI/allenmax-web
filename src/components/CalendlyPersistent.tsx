@@ -164,9 +164,8 @@ export function CalendlyPersistent() {
 
   if (!mounted) return null;
 
-  // Cálculo dinámico del bottom para el parche de calendario
-  // 185px para meses de 6 filas (h >= 1005), ~223px para meses de 5 filas (h < 1005)
-  const calendarTZBottom = calendarH !== null && calendarH >= 1005 ? 185 : 223;
+  // Cálculo del bottom para el parche de calendario (fijo en 220px para el label)
+  const calendarTZBottom = 220;
   console.log('[TZ PATCH]', { calendarH, calendarTZBottom });
 
   return (
@@ -222,10 +221,10 @@ export function CalendlyPersistent() {
               />
             )}
 
-            {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
+            {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL (SOLO EL LABEL) */}
             {isCalendarView && (
               <div 
-                className="absolute left-0 w-full bg-white z-[90] pointer-events-none h-[20px]"
+                className="absolute bg-white z-[90] pointer-events-none h-[20px] w-[160px] left-[64px]"
                 style={{ bottom: calendarTZBottom }}
                 aria-hidden="true"
               />
