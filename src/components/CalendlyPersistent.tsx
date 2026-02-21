@@ -10,8 +10,6 @@ declare global {
   }
 }
 
-type View = 'calendar' | 'times' | 'success';
-
 export function CalendlyPersistent() {
   const pathname = usePathname();
   const calendlyRef = useRef<HTMLDivElement>(null);
@@ -20,40 +18,22 @@ export function CalendlyPersistent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
   
-  // Estado robusto para el control de la vista
-  const [currentView, setCurrentView] = useState<View>('calendar');
-  
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const isVisible = pathname === '/contacto';
 
-  // Reset del estado al volver a la ruta de contacto o al navegar a ella
-  useEffect(() => {
-    if (pathname === '/contacto') {
-      setCurrentView('calendar');
-    }
-  }, [pathname]);
-
-  // Manejo de eventos de Calendly
+  // Calendly events logging
   useEffect(() => {
     if (!mounted) return;
 
     const handleCalendlyEvents = (e: MessageEvent) => {
-      // Logging temporal para depuración
       if (e.data?.event && typeof e.data.event === 'string' && e.data.event.startsWith('calendly.')) {
-        console.log('[Calendly]', e.data.event, e.data);
+        console.log('[Calendly EVENT]', e.data.event, e.data);
         
-        const event = e.data.event;
-        
-        // Restaurar estado al volver al inicio (evento emitido por Calendly)
-        if (event === 'calendly.event_type_viewed') {
-          setCurrentView('calendar');
-        } 
-        // Mostrar línea en pantalla de éxito
-        else if (event === 'calendly.event_scheduled') {
-          setCurrentView('success');
+        if (e.data.event === 'calendly.page_height') {
+          console.log('[Calendly HEIGHT]', e.data.payload);
         }
       }
     };
@@ -62,7 +42,7 @@ export function CalendlyPersistent() {
     return () => window.removeEventListener('message', handleCalendlyEvents);
   }, [mounted]);
 
-  // Simulación de progreso de carga
+  // Loading progress simulation
   useEffect(() => {
     if (mounted && !isLoaded) {
       const interval = setInterval(() => {
@@ -78,7 +58,7 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isLoaded]);
 
-  // Inicialización de Calendly
+  // Calendly widget initialization
   useEffect(() => {
     if (!mounted) return;
 
@@ -92,7 +72,7 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Tiempo de cortesía para asegurar carga visual del iframe
+        // Artificial delay to ensure visual consistency
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -115,9 +95,6 @@ export function CalendlyPersistent() {
 
   if (!mounted) return null;
 
-  // Lógica derivada para mostrar la línea custom
-  const showCustomLine = currentView === 'calendar' || currentView === 'success';
-
   return (
     <div 
       className={cn(
@@ -133,7 +110,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* BARRA DE PROGRESO SUPREMA */}
+            {/* SUPREME PROGRESS BAR */}
             <div 
               className={cn(
                 "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
@@ -146,37 +123,7 @@ export function CalendlyPersistent() {
               />
             </div>
 
-            {/* OVERLAY DETERMINISTA PARA CAPTURAR CLICK EN DÍAS (GRID) */}
-            <div 
-              className={cn(
-                "absolute left-0 right-0 top-[360px] h-[320px] z-[46] transition-all",
-                currentView === 'calendar' ? "pointer-events-auto cursor-pointer" : "pointer-events-none"
-              )}
-              onPointerDown={() => {
-                if (currentView === 'calendar') {
-                  setCurrentView('times');
-                  console.log('[Calendly Overlay] Grid clicked -> View: times');
-                }
-              }}
-              aria-hidden="true"
-            />
-
-            {/* OVERLAY DETERMINISTA PARA CAPTURAR CLICK EN BOTÓN BACK */}
-            <div 
-              className={cn(
-                "absolute top-[20px] left-[15px] w-[60px] h-[60px] z-[46] transition-all",
-                currentView === 'times' ? "pointer-events-auto cursor-pointer" : "pointer-events-none"
-              )}
-              onPointerDown={() => {
-                if (currentView === 'times') {
-                  setCurrentView('calendar');
-                  console.log('[Calendly Overlay] Back button clicked -> View: calendar');
-                }
-              }}
-              aria-hidden="true"
-            />
-
-            {/* PARCHES DE SEGURIDAD (PROTECCIÓN BRANDING) */}
+            {/* SECURITY PATCHES (BRANDING PROTECTION) */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -186,15 +133,12 @@ export function CalendlyPersistent() {
               aria-hidden="true"
             />
             
-            {/* LÍNEA DE CABECERA DINÁMICA */}
+            {/* CUSTOM HEADER LINE */}
             <div 
-              className={cn(
-                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto transition-opacity duration-150",
-                showCustomLine ? "opacity-100" : "opacity-0"
-              )}
+              className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
             />
 
-            {/* ESQUELETO DE CARGA */}
+            {/* LOADING SKELETON */}
             <div 
               className={cn(
                 "absolute inset-0 z-[60] bg-white pointer-events-none flex flex-col transition-opacity duration-700",
@@ -214,7 +158,7 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* WIDGET CALENDLY */}
+            {/* CALENDLY WIDGET */}
             <div 
               ref={calendlyRef}
               className={cn(
