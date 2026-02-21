@@ -216,9 +216,9 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-5xl mx-auto">
-              <span className="block">Transformamos empresas con</span>
-              <span className="block text-primary">Marketing e IA</span>
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-6xl mx-auto">
+              <span className="block text-white">Transformamos empresas con</span>
+              <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
           
@@ -248,13 +248,16 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN PROBLEMA */}
-      <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
+      <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-                El problema: Invertir en marketing sin tener un <span className="text-primary">sistema</span>
-              </h2>
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+                  El problema: Invertir en marketing sin tener un <span className="text-primary">sistema</span>
+                </h2>
+                <div className="h-1.5 w-20 bg-primary/30 rounded-full" />
+              </div>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Muchas empresas generan contactos, pero sin una estructura que los aproveche, el esfuerzo se diluye. El resultado es una pérdida constante de oportunidades y un crecimiento estancado.
               </p>
@@ -293,7 +296,8 @@ export default function Home() {
               Impulsa el crecimiento de tu empresa
             </h2>
             <div className="h-1.5 w-20 bg-primary/30 rounded-full mb-10" />
-            <div className="max-w-4xl mx-auto px-4 py-8 rounded-3xl border border-white/5 bg-white/[0.02]">
+            <div className="max-w-4xl mx-auto px-6 py-10 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
               <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed">
                Diseñamos e implementamos sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> y <span className="text-primary font-bold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
               </p>
@@ -303,7 +307,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {benefits.map((benefit) => (
               <FadeInSection key={benefit.title} className={cn("flex flex-col items-center text-center gap-6 group")}>
-                <div className="flex-shrink-0 bg-primary/10 p-6 rounded-2xl text-primary transition-all duration-300">
+                <div className="flex-shrink-0 bg-primary/10 p-6 rounded-2xl text-primary transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-105">
                   {React.cloneElement(benefit.icon as React.ReactElement, { className: "h-10 w-10" })}
                 </div>
                 <div>
@@ -321,14 +325,14 @@ export default function Home() {
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
-              Cómo lo Hacemos <span className="relative inline-block">
+              Cómo lo Hacemos <span className="relative inline-block px-1">
                 <span className="relative z-10 text-primary">Realidad</span>
-                <span className="absolute -bottom-1 left-0 w-full h-3 bg-primary/10 -rotate-1" />
+                <span className="absolute bottom-1 left-0 w-full h-4 bg-primary/10 -rotate-1 rounded-sm" />
               </span>
             </h2>
-            <div className="h-1 w-24 bg-white/10 rounded-full mb-10" />
+            <div className="h-1.5 w-20 bg-primary/30 rounded-full mb-10" />
             <p className="max-w-2xl mx-auto text-muted-foreground text-xl leading-relaxed">
-              Nuestro proceso probado garantiza resultados excepcionales y una <span className="text-white/90 font-medium underline decoration-primary/40 underline-offset-8">implementación sin fricciones.</span>
+              Nuestro proceso probado garantiza resultados excepcionales y una <span className="text-white/90 font-medium underline decoration-primary/40 underline-offset-8 decoration-2">implementación sin fricciones.</span>
             </p>
           </FadeInSection>
 
