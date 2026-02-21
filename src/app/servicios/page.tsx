@@ -43,7 +43,6 @@ export default function ServiciosPage() {
                 </h2>
                 <div className="h-2 w-20 bg-primary rounded-full" />
               </div>
-              {/* Bloque de texto eliminado */}
             </div>
           </div>
         </div>
@@ -54,7 +53,7 @@ export default function ServiciosPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {serviceCategories.map((category) => (
-              <Card key={category.title} className="text-center flex flex-col justify-between p-10 border border-white/5 bg-card/40 backdrop-blur-sm shadow-2xl hover:bg-card/60 transition-all duration-300 group">
+              <Card key={category.title} className="text-center flex flex-col justify-between p-10 border border-white/5 bg-card/40 backdrop-blur-sm shadow-none hover:bg-card/60 transition-all duration-300 group">
                   <div>
                     <div className="flex justify-center mb-8 bg-primary/10 w-20 h-20 rounded-2xl items-center mx-auto text-primary transition-transform duration-300 group-hover:scale-110">
                       {category.icon}
