@@ -44,13 +44,13 @@ const notForYouItems = [
 export default function NosotrosPage() {
   return (
     <div className="flex flex-col">
-      {/* HERO SECTION - Responsable de su espaciado superior y cuerpo */}
+      {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <div className="space-y-4 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.1] mb-6">
+              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] mb-6">
                 Arquitectos de <br />
                 <span className="text-primary">Evolución.</span>
               </h1>
@@ -82,7 +82,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* ARQUITECTURA ESTRATÉGICA - Solo padding-top para evitar duplicar espacio con la anterior */}
+      {/* ARQUITECTURA ESTRATÉGICA */}
       <section className="pt-20 md:pt-28">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
@@ -133,7 +133,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* ALINEACIÓN - Solo padding-top */}
+      {/* ALINEACIÓN */}
       <section className="pt-20 md:pt-28">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
@@ -182,7 +182,6 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* CtaSection al final es el único que aporta padding-bottom final */}
       <CtaSection />
     </div>
   );
