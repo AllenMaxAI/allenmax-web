@@ -17,12 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark">
+    <html lang="es" className="dark" style={{ backgroundColor: '#020817' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Aceleración de red: Pre-conectamos a Calendly inmediatamente */}
         <link rel="preconnect" href="https://assets.calendly.com" />
         <link rel="preconnect" href="https://calendly.com" />
+        <link rel="dns-prefetch" href="https://assets.calendly.com" />
+        <link rel="dns-prefetch" href="https://calendly.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body
@@ -36,6 +39,7 @@ export default function RootLayout({
           <AppFooter />
         </div>
         <Toaster />
+        {/* Cargamos el script de Calendly globalmente para que persista en memoria (window.Calendly) */}
         <Script 
           src="https://assets.calendly.com/assets/external/widget.js" 
           strategy="lazyOnload"

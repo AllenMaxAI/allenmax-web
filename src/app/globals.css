@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    /* Exactamente #020817: HSL(228, 80%, 5%) */
     --background: 228 80% 5%;
     --foreground: 0 0% 98%;
     --card: 228 80% 7%;
@@ -35,9 +34,11 @@
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    background-color: #020817;
   }
   body {
     @apply bg-[#020817] text-foreground antialiased;
+    background-color: #020817;
   }
 }
 
