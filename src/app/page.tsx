@@ -60,7 +60,7 @@ const problemPoints = [
 export default function Home() {
   
   return (
-    <div className="flex flex-col bg-[#020617] bg-[radial-gradient(ellipse_at_top,_rgba(37,99,235,0.2),_transparent_55%)]">
+    <div className="flex flex-col bg-[#020617] bg-[radial-gradient(ellipse_at_50%_30%,_rgba(37,99,235,0.18),_transparent_65%)] bg-fixed">
        <section className="pt-24 md:pt-32 h-[60vh] min-h-[600px] flex items-center justify-center text-center px-4">
         <div className="z-10 flex flex-col items-center gap-6">
            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter max-w-4xl leading-[1.1]">

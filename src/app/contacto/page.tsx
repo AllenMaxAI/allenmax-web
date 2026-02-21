@@ -70,7 +70,7 @@ export default function ContactoPage() {
             {/* Columna Izquierda */}
             <div className="space-y-12">
               <div className="space-y-8">
-                <div className="space-y-4">
+                <div className="space-y-2">
                   <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
                   <div className="space-y-6">
                     <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">

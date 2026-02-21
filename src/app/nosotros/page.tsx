@@ -47,7 +47,7 @@ export default function NosotrosPage() {
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
-            <div className="space-y-4 mb-12">
+            <div className="space-y-2 mb-12">
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
               <div className="space-y-6">
                 <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
