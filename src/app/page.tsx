@@ -197,39 +197,18 @@ export default function Home() {
     e.preventDefault();
     const target = document.getElementById('proceso');
     if (!target) return;
-    
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 1200;
-    let start: number | null = null;
-
-    function step(timestamp: number) {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      const percentage = Math.min(progress / duration, 1);
-      
-      const ease = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-      
-      window.scrollTo(0, startPosition + distance * ease(percentage));
-      
-      if (progress < duration) {
-        window.requestAnimationFrame(step);
-      }
-    }
-
-    window.requestAnimationFrame(step);
+    target.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      {/* HERO SECTION - PERFECTLY CENTERED */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 -mt-12 md:-mt-8">
+      {/* HERO SECTION - PERFECTLY CENTERED & FULL HEIGHT */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl">
+        <div className="z-10 flex flex-col items-center gap-10 max-w-6xl -mt-20">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -244,7 +223,7 @@ export default function Home() {
           </div>
           
           <p className={cn(
-            "max-w-5xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
+            "max-w-4xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
@@ -268,8 +247,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN PROBLEMA - SUBIDA PARA APARECER ANTES */}
-      <section className="px-4 pb-24 md:pb-32 relative z-10 -mt-10 pt-0">
+      {/* SECCIÓN PROBLEMA - APARECE AL HACER SCROLL */}
+      <section className="px-4 py-24 md:py-32 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
