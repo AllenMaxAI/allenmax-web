@@ -24,7 +24,6 @@ export function CalendlyPersistent() {
   const [showLine, setShowLine] = useState(true);
   const [isTimesView, setIsTimesView] = useState(false);
   const [isCalendarView, setIsCalendarView] = useState(true);
-  const [calendarH, setCalendarH] = useState<number | null>(null);
   
   // Refs para persistencia entre navegaciones
   const lastHeightRef = useRef<number | null>(null);
@@ -65,11 +64,6 @@ export function CalendlyPersistent() {
             setShowLine(view === 'calendar' || view === 'details');
             setIsTimesView(view === 'times');
             setIsCalendarView(view === 'calendar');
-
-            if (view === 'calendar') {
-              console.log('[CALENDAR VIEW]', { calendarH: h });
-              setCalendarH(h);
-            }
           }
         }
 
@@ -149,10 +143,6 @@ export function CalendlyPersistent() {
         setShowLine(view === 'calendar' || view === 'details' || isSuccess);
         setIsTimesView(view === 'times' && !isSuccess);
         setIsCalendarView(view === 'calendar' && !isSuccess);
-
-        if (view === 'calendar') {
-          setCalendarH(h);
-        }
       } else {
         // Estado inicial por defecto
         setShowLine(true);
@@ -163,10 +153,6 @@ export function CalendlyPersistent() {
   }, [isVisible]);
 
   if (!mounted) return null;
-
-  // Cálculo del bottom para el parche de calendario (fijo en 220px para el label)
-  const calendarTZBottom = 220;
-  console.log('[TZ PATCH]', { calendarH, calendarTZBottom });
 
   return (
     <div 
@@ -221,11 +207,10 @@ export function CalendlyPersistent() {
               />
             )}
 
-            {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL (SOLO EL LABEL) */}
+            {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
             {isCalendarView && (
               <div 
-                className="absolute bg-white z-[90] pointer-events-none h-[20px] w-[160px] left-[64px]"
-                style={{ bottom: calendarTZBottom }}
+                className="absolute left-0 w-full bg-white z-[90] pointer-events-none bottom-[65px] h-[90px]"
                 aria-hidden="true"
               />
             )}
