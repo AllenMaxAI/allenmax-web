@@ -85,7 +85,7 @@ export function CalendlyPersistent() {
               <div className="absolute top-0 left-0 w-full z-30 h-1">
                 {/* Glow / Blur de 25px más intenso */}
                 <div 
-                  className="absolute top-0 left-0 h-8 bg-primary/60 blur-[25px] transition-all duration-300 ease-out"
+                  className="absolute top-0 left-0 h-8 bg-primary/60 blur-[80px] transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
                 />
                 {/* Línea nítida core */}
