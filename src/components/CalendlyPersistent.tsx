@@ -161,7 +161,8 @@ export function CalendlyPersistent() {
   if (!mounted) return null;
 
   // Cálculo dinámico del bottom para el parche de calendario
-  const calendarTZBottom = calendarH !== null && calendarH >= 1005 ? 185 : 220;
+  // 185px para meses de 6 filas (h >= 1005), ~223px para meses de 5 filas (h < 1005)
+  const calendarTZBottom = calendarH !== null && calendarH >= 1005 ? 185 : 223;
 
   return (
     <div 
