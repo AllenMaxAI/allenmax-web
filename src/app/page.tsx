@@ -137,7 +137,7 @@ export default function Home() {
         </div>
       </section>
       
-       <section id="proceso" className="pt-20 pb-24 md:pt-32 md:pb-32 px-4">
+       <section id="proceso" className="pt-20 md:pt-32 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
