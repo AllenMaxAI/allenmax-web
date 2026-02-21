@@ -164,7 +164,7 @@ export default function NosotrosPage() {
               <div className="w-full border-t border-border/50"></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-background px-6 text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
+              <span className="bg-[#020817] px-6 text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
                 Y por el contrario
               </span>
             </div>

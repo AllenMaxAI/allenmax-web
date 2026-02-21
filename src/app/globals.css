@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 228 50% 12%;
+    --background: 228 80% 5%;
     --foreground: 0 0% 98%;
     --card: 228 80% 9%;
     --card-foreground: 0 0% 98%;
@@ -34,11 +34,11 @@
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
-    background-color: #030a1c;
+    background-color: #020817;
   }
   body {
-    @apply bg-[#030a1c] text-foreground antialiased;
-    background-color: #030a1c;
+    @apply bg-[#020817] text-foreground antialiased;
+    background-color: #020817;
   }
 }
 
