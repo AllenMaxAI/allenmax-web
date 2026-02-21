@@ -35,12 +35,12 @@ export default function ContactoPage() {
           utm: {}
         });
 
-        // Esperamos 3.5 segundos para asegurar que el renderizado interno de Calendly 
+        // Esperamos un tiempo prudencial para asegurar que el renderizado interno de Calendly 
         // haya pasado la fase de los puntos de carga propios
         const timer = setTimeout(() => {
           setIsLoaded(true);
           window.dispatchEvent(new Event('resize'));
-        }, 3500);
+        }, 4000);
 
         return () => clearTimeout(timer);
       }
@@ -120,7 +120,7 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Calendly con Skeleton Fiel al Original */}
+          {/* Columna Derecha - Calendly con Skeleton Realista */}
           <div className="relative">
             <div 
               className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[700px] md:min-h-[900px] relative"
@@ -132,26 +132,26 @@ export default function ContactoPage() {
                   isLoaded ? "opacity-0" : "opacity-100"
                 )}
               >
-                {/* Puntos de carga centrados (Simulando carga elegante) */}
+                {/* Puntos de carga centrados */}
                 <div className="absolute inset-x-0 top-12 flex justify-center gap-1.5 z-30">
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
                 </div>
 
-                <div className="flex flex-col p-6 md:p-10 blur-[8px] opacity-30">
-                  {/* Logo rectangular oscuro superior */}
-                  <div className="w-24 h-16 bg-[#020817] rounded-md mx-auto mb-10 flex items-center justify-center">
-                    <div className="w-12 h-2 bg-white/10 rounded-full" />
+                <div className="flex flex-col p-6 md:p-10 blur-[10px] opacity-40">
+                  {/* Logo rectangular oscuro superior (Jake Allen Rosas PFP/Logo) */}
+                  <div className="w-28 h-20 bg-[#020817] rounded-md mx-auto mb-10 flex items-center justify-center">
+                    <div className="w-14 h-2 bg-white/10 rounded-full" />
                   </div>
                   
-                  {/* Jake Allen Rosas */}
+                  {/* Jake Allen Rosas Name Line */}
                   <div className="w-32 h-3 bg-gray-200 mx-auto mb-3 rounded-full" />
                   
-                  {/* Llamada informativa AllenMax */}
-                  <div className="w-72 h-7 bg-gray-300 mx-auto mb-10 rounded-full" />
+                  {/* Título de la llamada */}
+                  <div className="w-72 h-8 bg-gray-300 mx-auto mb-10 rounded-full" />
                   
-                  {/* Detalles (30 min, web conf) */}
+                  {/* Detalles de la reunión (Duración, Ubicación) */}
                   <div className="space-y-4 mb-10 max-w-[280px] mx-auto">
                     <div className="flex items-center gap-3">
                       <div className="w-5 h-5 bg-gray-200 rounded-full" />
@@ -163,27 +163,28 @@ export default function ContactoPage() {
                     </div>
                   </div>
                   
-                  {/* Bloques de texto informativo */}
+                  {/* Bloques de texto informativo central */}
                   <div className="space-y-3 mb-12 text-center">
                     <div className="w-64 h-3 bg-gray-100 mx-auto rounded-full" />
                     <div className="w-72 h-3 bg-gray-100 mx-auto rounded-full" />
                     <div className="w-56 h-3 bg-gray-100 mx-auto rounded-full" />
                   </div>
                   
-                  {/* Divisor */}
+                  {/* Divisor horizontal */}
                   <div className="h-px bg-gray-100 w-full mb-10" />
 
-                  {/* Seleccione un día */}
+                  {/* SECCIÓN CALENDARIO (PARTE INFERIOR) */}
+                  {/* "Seleccione un día" */}
                   <div className="w-40 h-5 bg-gray-200 mx-auto mb-10 rounded-full" />
                   
-                  {/* Selector de Mes */}
+                  {/* Selector de Mes y Navegación */}
                   <div className="flex justify-center items-center gap-8 mb-10">
                     <div className="w-4 h-4 bg-gray-100 rounded-full" />
                     <div className="w-32 h-4 bg-gray-200 rounded-full" />
                     <div className="w-4 h-4 bg-gray-100 rounded-full" />
                   </div>
 
-                  {/* Rejilla de días (7 columnas) */}
+                  {/* Rejilla de días (7 columnas x 5 filas aprox) */}
                   <div className="grid grid-cols-7 gap-x-6 gap-y-8 max-w-[320px] mx-auto mb-12">
                     {Array.from({ length: 31 }).map((_, i) => (
                       <div key={i} className="aspect-square bg-gray-100 rounded-full flex items-center justify-center">
@@ -193,7 +194,7 @@ export default function ContactoPage() {
                   </div>
                   
                   {/* Bloque de zona horaria inferior */}
-                  <div className="w-48 h-4 bg-gray-100 mx-auto rounded-full" />
+                  <div className="w-48 h-4 bg-gray-100 mx-auto rounded-full mt-4" />
                 </div>
               </div>
 
