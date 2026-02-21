@@ -247,8 +247,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN PROBLEMA - APARECE AL HACER SCROLL */}
-      <section className="px-4 pt-12 pb-24 md:pt-16 md:pb-32 relative z-10 bg-[#020817]">
+      {/* SECCIÓN PROBLEMA */}
+      <section className="px-4 pt-12 pb-20 md:pt-16 md:pb-28 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
@@ -286,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* BENEFICIOS */}
-      <section className="px-4 py-24 relative z-10">
+      <section className="px-4 py-20 md:py-28 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
@@ -314,7 +314,7 @@ export default function Home() {
       </section>
       
       {/* PROCESO ANIMADO */}
-      <section id="proceso" className="px-4 relative z-10 bg-[#020817] scroll-mt-20">
+      <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
