@@ -77,8 +77,8 @@ export default function ContactoPage() {
                 <InlineWidget 
                   url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
                   styles={{
-                    height: '1100px',
-                    width: '100%',
+                    height: '1050px',
+                    width: '80%',
                   }}
                   pageSettings={{
                     backgroundColor: 'ffffff',
