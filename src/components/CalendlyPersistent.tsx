@@ -70,7 +70,7 @@ export function CalendlyPersistent() {
         <div className="w-full lg:w-[50%] relative">
           <div 
             className={cn(
-              "rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
+              "rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
@@ -93,68 +93,60 @@ export function CalendlyPersistent() {
                 />
               </div>
 
-              {/* Contenido blureado */}
-              <div className="flex flex-col p-6 md:p-10 blur-[18px] opacity-40 mt-8">
-                {/* Logo AllenMax Negro */}
-                <div className="w-10 h-10 bg-[#020817] rounded-lg mx-auto mb-4 flex items-center justify-center relative overflow-hidden">
-                   <div className="flex gap-1 scale-50">
-                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" />
+              {/* Contenido blureado del esqueleto */}
+              <div className="flex flex-col blur-[18px] opacity-40 mt-12">
+                {/* Logo AllenMax Negro en bloque */}
+                <div className="w-12 h-12 bg-[#020817] rounded-lg mx-auto mb-10 flex items-center justify-center relative overflow-hidden">
+                   <span className="text-[7px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
+                </div>
+                
+                {/* Línea horizontal de separación real */}
+                <div className="h-px bg-gray-200 w-full mb-10" />
+                
+                <div className="px-10 space-y-8">
+                  <div className="w-48 h-5 bg-gray-300 mx-auto mb-6 rounded-full" />
+                  
+                  <div className="flex items-center justify-center gap-2 mb-8">
+                    <div className="w-4 h-4 bg-gray-200 rounded-full" />
+                    <div className="w-24 h-2 bg-gray-200 rounded-full" />
                   </div>
-                </div>
-                
-                <div className="w-20 h-2 bg-gray-200 mx-auto mb-3 rounded-full" />
-                <div className="w-48 h-5 bg-gray-300 mx-auto mb-6 rounded-full" />
-                
-                <div className="flex items-center justify-center gap-2 mb-8">
-                  <div className="w-4 h-4 bg-gray-200 rounded-full" />
-                  <div className="w-24 h-2 bg-gray-200 rounded-full" />
-                </div>
-                
-                <div className="space-y-2 mb-10 max-w-[280px] mx-auto text-center">
-                  <div className="w-full h-1.5 bg-gray-100 rounded-full" />
-                  <div className="w-5/6 h-1.5 bg-gray-100 rounded-full mx-auto" />
-                  <div className="w-4/5 h-1.5 bg-gray-100 rounded-full mx-auto" />
-                </div>
-                
-                <div className="h-px bg-gray-100 w-full mb-8" />
-                <div className="w-32 h-4 bg-gray-300 mx-auto mb-8 rounded-full" />
-                
-                <div className="flex justify-between items-center max-w-[320px] mx-auto mb-6 px-2">
-                  <div className="w-6 h-6 bg-gray-100 rounded-full" />
-                  <div className="w-24 h-3 bg-gray-200 rounded-full" />
-                  <div className="w-6 h-6 bg-gray-100 rounded-full" />
-                </div>
+                  
+                  <div className="space-y-3 mb-12 max-w-[280px] mx-auto text-center">
+                    <div className="w-full h-1.5 bg-gray-100 rounded-full" />
+                    <div className="w-5/6 h-1.5 bg-gray-100 rounded-full mx-auto" />
+                  </div>
+                  
+                  <div className="w-32 h-4 bg-gray-300 mx-auto mb-10 rounded-full" />
+                  
+                  <div className="flex justify-between items-center max-w-[320px] mx-auto mb-8 px-2">
+                    <div className="w-6 h-6 bg-gray-100 rounded-full" />
+                    <div className="w-24 h-3 bg-gray-200 rounded-full" />
+                    <div className="w-6 h-6 bg-gray-100 rounded-full" />
+                  </div>
 
-                <div className="grid grid-cols-7 gap-4 max-w-[320px] mx-auto mb-6">
-                  {Array.from({ length: 7 }).map((_, i) => (
-                    <div key={i} className="w-4 h-1.5 bg-gray-100 rounded-full mx-auto" />
-                  ))}
-                </div>
+                  <div className="grid grid-cols-7 gap-4 max-w-[320px] mx-auto mb-8">
+                    {Array.from({ length: 7 }).map((_, i) => (
+                      <div key={i} className="w-4 h-1.5 bg-gray-100 rounded-full mx-auto" />
+                    ))}
+                  </div>
 
-                <div className="grid grid-cols-7 gap-y-6 max-w-[320px] mx-auto mb-10">
-                  {Array.from({ length: 31 }).map((_, i) => (
-                    <div key={i} className="aspect-square w-8 bg-gray-50 rounded-full flex items-center justify-center mx-auto">
-                      <div className="w-2 h-2 bg-gray-200 rounded-full" />
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="flex items-center justify-center gap-2 mt-4">
-                  <div className="w-4 h-4 bg-gray-100 rounded-full" />
-                  <div className="w-40 h-2 bg-gray-200 rounded-full" />
+                  <div className="grid grid-cols-7 gap-y-8 max-w-[320px] mx-auto">
+                    {Array.from({ length: 31 }).map((_, i) => (
+                      <div key={i} className="aspect-square w-8 bg-gray-50 rounded-full flex items-center justify-center mx-auto">
+                        <div className="w-2 h-2 bg-gray-200 rounded-full" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Capa para ocultar el ribbon superior derecho (DESARROLLADO POR Calendly) */}
+            {/* Parche superior derecho para ocultar el ribbon (limpio, sin bordes grises) */}
             <div 
               className={cn(
-                "absolute top-0 right-0 w-[160px] h-[160px] bg-white z-30 pointer-events-none transition-opacity duration-700",
+                "absolute top-0 right-0 w-[160px] h-[50px] bg-white z-30 pointer-events-none transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
-              style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 0)' }}
               aria-hidden="true"
             />
 
@@ -167,7 +159,7 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* Capa para ocultar el branding inferior de Calendly */}
+            {/* Parche inferior para ocultar el branding de Calendly con línea de separación */}
             <div 
               className={cn(
                 "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-30 pointer-events-none transition-opacity duration-700",
