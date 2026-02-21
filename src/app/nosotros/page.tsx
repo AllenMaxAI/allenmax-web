@@ -136,7 +136,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* ALINEACIÓN */}
-      <section className="py-20 md:py-28">
+      <section>
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
