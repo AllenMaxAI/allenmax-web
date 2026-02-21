@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -99,11 +98,11 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* Esqueleto de Carga con Blur */}
+            {/* Esqueleto de Carga - Desaparición Instantánea para evitar rastros */}
             <div 
               className={cn(
-                "absolute inset-0 z-20 bg-white transition-all duration-500 pointer-events-none flex flex-col",
-                isLoaded ? "opacity-0 invisible" : "opacity-100 visible"
+                "absolute inset-0 z-20 bg-white pointer-events-none flex flex-col",
+                isLoaded ? "hidden" : "flex"
               )}
             >
               {/* Contenedor de Barra de Progreso */}
@@ -144,7 +143,7 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Parche superior derecho para ocultar el ribbon y bloquear clics (275px de ancho) */}
+            {/* Parche superior derecho (ribbon) - Bloqueo de clics activado */}
             <div 
               className={cn(
                 "absolute top-0 right-0 w-[275px] h-[100px] bg-white z-30 pointer-events-auto transition-opacity duration-700",
@@ -162,7 +161,7 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* Parche inferior para ocultar el branding de Calendly y bloquear clics */}
+            {/* Parche inferior (branding) - Bloqueo de clics activado */}
             <div 
               className={cn(
                 "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
