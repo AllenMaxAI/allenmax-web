@@ -216,7 +216,7 @@ export default function Home() {
             <Button asChild size="lg" className="btn-glow h-14 px-10 text-lg font-bold">
               <Link href="#proceso">Descubre cómo lo hacemos</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg border-white/10 hover:bg-white/5">
+            <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg border-white/10 hover:bg-white/10 hover:text-white transition-colors duration-200">
               <Link href="/servicios">Ver Servicios</Link>
             </Button>
           </div>

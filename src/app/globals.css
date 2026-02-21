@@ -46,7 +46,7 @@
   .btn-glow {
     /* Forzamos la transición de box-shadow para que no sea brusca */
     transition-property: box-shadow, background-color, color, border-color, transform !important;
-    transition-duration: 250ms !important;
+    transition-duration: 150ms !important;
     transition-timing-function: ease-in-out !important;
   }
   .btn-glow:hover {
