@@ -52,7 +52,7 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
-        // Simular tiempo de carga para el esqueleto
+        // Simular tiempo de carga para la transición
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -90,20 +90,28 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Línea de separación persistente (sincronizada con el header del widget real a 86px) */}
+            {/* Capas de Seguridad (Escudos) - Siempre visibles para tapar el branding desde el inicio */}
             <div 
-              className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto"
+              className="absolute top-0 right-0 w-[275px] h-[100px] bg-white z-[45] pointer-events-auto"
+              aria-hidden="true"
+            />
+            <div 
+              className="absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[45] pointer-events-auto"
+              aria-hidden="true"
+            />
+            <div 
+              className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
             />
 
-            {/* Esqueleto de Carga - Desaparición Instantánea para evitar rastros */}
+            {/* Esqueleto de Carga con Animación de Desvanecimiento */}
             <div 
               className={cn(
-                "absolute inset-0 z-20 bg-white pointer-events-none flex flex-col",
-                isLoaded ? "hidden" : "flex"
+                "absolute inset-0 z-40 bg-white pointer-events-none flex flex-col transition-opacity duration-700",
+                isLoaded ? "opacity-0 invisible" : "opacity-100"
               )}
             >
-              {/* Contenedor de Barra de Progreso - Sin resplandores extraños */}
-              <div className="absolute top-0 left-0 w-full z-30 h-1">
+              {/* Barra de Progreso Superior */}
+              <div className="absolute top-0 left-0 w-full z-50 h-1">
                 <div 
                   className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
@@ -111,23 +119,21 @@ export function CalendlyPersistent() {
               </div>
 
               {/* Contenido del esqueleto */}
-              <div className="flex flex-col mt-10">
-                {/* Logo AllenMax Negro - Centrado y ajustado */}
-                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-2 flex items-center justify-center relative overflow-hidden">
-                   <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
+              <div className="flex flex-col mt-4">
+                {/* Logo AllenMax Negro - Ajustado para no tocar la línea de 86px */}
+                <div className="w-14 h-14 bg-[#020817] rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden">
+                   <span className="text-[7px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
-                {/* Línea horizontal de separación en el esqueleto a 86px */}
-                <div className="h-px bg-gray-200 w-full mb-10" />
+                {/* Espacio del header antes de la línea de 86px */}
+                <div className="h-4" />
                 
-                <div className="px-10 space-y-8 blur-[18px] opacity-40">
+                <div className="px-10 space-y-8 blur-[18px] opacity-40 mt-10">
                   <div className="w-48 h-5 bg-gray-300 mx-auto mb-6 rounded-full" />
-                  
                   <div className="flex items-center justify-center gap-2 mb-8">
                     <div className="w-4 h-4 bg-gray-200 rounded-full" />
                     <div className="w-24 h-2 bg-gray-200 rounded-full" />
                   </div>
-                  
                   <div className="space-y-3 mb-12 max-w-[280px] mx-auto text-center">
                     <div className="w-full h-1.5 bg-gray-100 rounded-full" />
                     <div className="w-5/6 h-1.5 bg-gray-100 rounded-full mx-auto" />
@@ -136,25 +142,13 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Parche superior derecho (ribbon) - Visibilidad inmediata y bloqueo de clics */}
-            <div 
-              className="absolute top-0 right-0 w-[275px] h-[100px] bg-white z-30 pointer-events-auto"
-              aria-hidden="true"
-            />
-
             {/* Widget real de Calendly */}
             <div 
               ref={calendlyRef}
               className={cn(
-                "w-full h-[1050px] transition-opacity duration-700 bg-white",
+                "w-full h-[1050px] bg-white transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
-            />
-
-            {/* Parche inferior (branding) - Visibilidad inmediata y bloqueo de clics */}
-            <div 
-              className="absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[35] pointer-events-auto"
-              aria-hidden="true"
             />
           </div>
         </div>
