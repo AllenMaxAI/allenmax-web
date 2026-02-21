@@ -74,10 +74,10 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Línea de separación persistente (para que no desaparezca al cargar) */}
+            {/* Línea de separación persistente (sincronizada con el header del widget real) */}
             <div 
               className={cn(
-                "absolute top-[132px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
+                "absolute top-[112px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-none transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
@@ -103,12 +103,12 @@ export function CalendlyPersistent() {
 
               {/* Contenido blureado del esqueleto */}
               <div className="flex flex-col blur-[18px] opacity-40 mt-12">
-                {/* Logo AllenMax Negro en bloque más grande */}
-                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-5 flex items-center justify-center relative overflow-hidden">
+                {/* Logo AllenMax Negro */}
+                <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden">
                    <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
-                {/* Línea horizontal de separación en el esqueleto */}
+                {/* Línea horizontal de separación en el esqueleto (coincidiendo con top-112px) */}
                 <div className="h-px bg-gray-200 w-full mb-10" />
                 
                 <div className="px-10 space-y-8">
