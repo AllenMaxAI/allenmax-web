@@ -198,15 +198,9 @@ export default function Home() {
     e.preventDefault();
     const element = document.getElementById('proceso');
     if (element) {
-      const offset = 80; // Compensación por el header sticky
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
       });
     }
   };
@@ -327,7 +321,7 @@ export default function Home() {
       </section>
       
       {/* PROCESO ANIMADO */}
-      <section id="proceso" className="px-4 relative z-10">
+      <section id="proceso" className="px-4 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
