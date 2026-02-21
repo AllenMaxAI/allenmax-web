@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { XCircle, Rocket, GanttChartSquare, Milestone, Phone } from 'lucide-react';
+import { XCircle, Rocket, GanttChartSquare, Milestone } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
@@ -228,10 +228,8 @@ export default function Home() {
             "flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-500 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
-            <Button asChild size="lg" className="btn-glow animate-glow-loop h-14 px-10 text-lg font-bold">
-              <Link href="#proceso" className="flex items-center gap-3">
-                Descubre cómo lo hacemos <Phone className="h-5 w-5" />
-              </Link>
+            <Button asChild size="lg" className="btn-glow h-14 px-10 text-lg font-bold">
+              <Link href="#proceso">Descubre cómo lo hacemos</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg border-white/10 hover:bg-white/10 hover:text-white transition-colors duration-200">
               <Link href="/servicios">Ver Servicios</Link>
