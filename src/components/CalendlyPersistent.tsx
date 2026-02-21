@@ -35,14 +35,13 @@ export function CalendlyPersistent() {
       if (e.data.event && e.data.event.startsWith('calendly.')) {
         const event = e.data.event;
         
-        // El evento 'event_type_viewed' se dispara al cargar el calendario inicial
-        // y también cuando el usuario pulsa el botón "Atrás" para volver al calendario.
+        // Si el usuario vuelve al calendario (botón atrás) o carga la vista inicial
         if (event === 'calendly.event_type_viewed') {
           setShowLine(true);
         } 
-        // Cuando el usuario selecciona una fecha y hora o completa la reserva, ocultamos la línea
-        // para que no interfiera con las líneas nativas de esas pantallas internas.
-        else {
+        // Solo ocultamos la línea cuando el usuario avanza a la selección de hora o completa la reserva
+        // así evitamos que mensajes internos de carga oculten la línea en la pantalla de inicio
+        else if (event === 'calendly.date_and_time_selected' || event === 'calendly.event_scheduled') {
           setShowLine(false);
         }
       }
@@ -131,7 +130,7 @@ export function CalendlyPersistent() {
             </div>
 
             {/* 2. CAPAS DE SEGURIDAD (PERSISTENTES) - Ocultan branding de Calendly */}
-            {/* Parche superior derecho: más estrecho para no tapar navegación interna */}
+            {/* Parche superior derecho: estrecho para no tapar navegación interna */}
             <div 
               className="absolute top-0 right-0 w-[140px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
