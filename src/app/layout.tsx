@@ -21,7 +21,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Aceleración de red: Pre-conectamos a Calendly inmediatamente */}
         <link rel="preconnect" href="https://assets.calendly.com" />
         <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://assets.calendly.com" />
@@ -39,7 +38,6 @@ export default function RootLayout({
           <AppFooter />
         </div>
         <Toaster />
-        {/* Cargamos el script de Calendly globalmente para que persista en memoria (window.Calendly) */}
         <Script 
           src="https://assets.calendly.com/assets/external/widget.js" 
           strategy="lazyOnload"
