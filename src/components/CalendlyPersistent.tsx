@@ -42,16 +42,16 @@ export function CalendlyPersistent() {
     }
   }, [isInitialized]);
 
-  // Si no es la página de contacto, mantenemos el widget montado pero oculto y sin interactividad
+  // Usamos absolute para que se mueva con el scroll y no flote
   return (
     <div 
       className={cn(
-        "fixed inset-0 z-40 flex items-center justify-center transition-opacity duration-500 pointer-events-none",
-        isVisible ? "opacity-100" : "opacity-0 invisible"
+        "absolute top-0 left-0 w-full z-40 flex justify-center transition-opacity duration-500 pointer-events-none pt-24 md:pt-32",
+        isVisible ? "opacity-100" : "opacity-0 invisible h-0"
       )}
     >
-      <div className="container mx-auto px-4 max-w-7xl h-full flex items-center justify-end">
-        <div className="w-full lg:w-[50%] relative mt-16 lg:mt-0">
+      <div className="container mx-auto px-4 max-w-7xl flex justify-end">
+        <div className="w-full lg:w-[50%] relative">
           <div 
             className={cn(
               "rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[700px] md:min-h-[900px] relative pointer-events-auto transition-transform duration-500",

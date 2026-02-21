@@ -74,7 +74,7 @@ export default function ContactoPage() {
 
           {/* Columna Derecha: Hueco reservado para el widget persistente */}
           <div className="relative min-h-[700px] md:min-h-[900px] pointer-events-none">
-            {/* Este espacio se mantiene vacío porque el widget global se posiciona aquí */}
+            {/* Este espacio se mantiene vacío porque el widget global se posiciona aquí mediante absolute en el layout */}
           </div>
 
         </div>
