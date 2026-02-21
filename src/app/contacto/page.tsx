@@ -1,7 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
 import { Check } from 'lucide-react';
-import { InlineWidget } from 'react-calendly';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -11,23 +11,42 @@ const strategicSessionItems = [
 ];
 
 export default function ContactoPage() {
+  useEffect(() => {
+    // Carga del script oficial de Calendly de forma única
+    const scriptId = 'calendly-widget-script';
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    // Forzamos el recalculo del layout de Calendly tras la carga
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <section className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4">
           <div className="grid gap-20 items-start md:grid-cols-[1fr_1.2fr]">
             
-            {/* Columna Izquierda */}
+            {/* Columna Izquierda - Cabecera sincronizada con Nosotros */}
             <div className="space-y-12">
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
+              <div className="space-y-2 mb-12">
+                <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Sesión Estratégica</span>
+                <div className="space-y-6">
                   <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
                     Hablemos de tu <br />
                     <span className="text-primary">crecimiento.</span>
                   </h1>
+                  <div className="h-1.5 w-20 bg-primary rounded-full" />
                 </div>
-                <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
 
               <p className="text-xl md:text-2xl text-primary font-medium leading-relaxed">
@@ -71,22 +90,13 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            {/* Columna Derecha - Calendly */}
+            {/* Columna Derecha - Calendly Robusto */}
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden bg-white border border-border shadow-2xl min-h-[700px]">
-                <InlineWidget 
-                  url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
-                  styles={{
-                    height: '700px',
-                    width: '100%',
-                  }}
-                  pageSettings={{
-                    backgroundColor: 'ffffff',
-                    hideEventTypeDetails: false,
-                    hideLandingPageDetails: false,
-                    primaryColor: '2563eb',
-                    textColor: '000000',
-                  }}
+              <div className="rounded-2xl overflow-hidden bg-transparent border border-white/10 shadow-2xl min-h-[700px] lg:min-h-[850px]">
+                <div 
+                  className="calendly-inline-widget w-full h-[700px] lg:h-[850px]"
+                  data-url="https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1"
+                  style={{ minWidth: '320px' }}
                 />
               </div>
             </div>
