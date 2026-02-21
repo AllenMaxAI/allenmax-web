@@ -23,7 +23,6 @@ export function CalendlyPersistent() {
   // Estados reactivos para la UI custom
   const [showLine, setShowLine] = useState(true);
   const [isTimesView, setIsTimesView] = useState(false);
-  const [isCalendarView, setIsCalendarView] = useState(true);
   
   // Refs para persistencia entre navegaciones
   const lastHeightRef = useRef<number | null>(null);
@@ -63,7 +62,6 @@ export function CalendlyPersistent() {
             // Actualizar estados visuales
             setShowLine(view === 'calendar' || view === 'details');
             setIsTimesView(view === 'times');
-            setIsCalendarView(view === 'calendar');
           }
         }
 
@@ -73,7 +71,6 @@ export function CalendlyPersistent() {
           lastViewRef.current = 'success';
           setShowLine(true);
           setIsTimesView(false);
-          setIsCalendarView(false);
         }
       }
     };
@@ -142,12 +139,10 @@ export function CalendlyPersistent() {
         
         setShowLine(view === 'calendar' || view === 'details' || isSuccess);
         setIsTimesView(view === 'times' && !isSuccess);
-        setIsCalendarView(view === 'calendar' && !isSuccess);
       } else {
         // Estado inicial por defecto
         setShowLine(true);
         setIsTimesView(false);
-        setIsCalendarView(true);
       }
     }
   }, [isVisible]);
@@ -203,14 +198,6 @@ export function CalendlyPersistent() {
             {isTimesView && (
               <div 
                 className="absolute top-[82px] left-0 w-full h-[20px] bg-white z-[90] pointer-events-none"
-                aria-hidden="true"
-              />
-            )}
-
-            {/* PARCHE PARA ZONA HORARIA EN VISTA DE CALENDARIO INICIAL */}
-            {isCalendarView && (
-              <div 
-                className="absolute left-0 w-full bg-white z-[90] pointer-events-none bottom-[65px] h-[90px]"
                 aria-hidden="true"
               />
             )}
