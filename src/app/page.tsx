@@ -73,7 +73,7 @@ function FadeInSection({ children, className }: { children: React.ReactNode; cla
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 }); // Umbral más bajo para asegurar que se active antes
     
     const current = domRef.current;
     if (current) observer.observe(current);
@@ -108,7 +108,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
           setIsVisible(true);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.2 });
     
     const current = domRef.current;
     if (current) observer.observe(current);
@@ -188,6 +188,12 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
 }
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION */}
@@ -198,7 +204,10 @@ export default function Home() {
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
-          <div className="space-y-4 opacity-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
+          <div className={cn(
+            "space-y-4 fill-mode-both transition-opacity duration-700",
+            isMounted ? "animate-in fade-in slide-in-from-bottom-8 duration-1000" : "opacity-0"
+          )}>
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
@@ -208,11 +217,17 @@ export default function Home() {
             </h1>
           </div>
           
-          <p className="max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed opacity-0 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 fill-mode-both">
+          <p className={cn(
+            "max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed fill-mode-both transition-opacity duration-700",
+            isMounted ? "animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200" : "opacity-0"
+          )}>
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500 fill-mode-both">
+          <div className={cn(
+            "flex flex-col sm:flex-row gap-4 fill-mode-both transition-opacity duration-700",
+            isMounted ? "animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500" : "opacity-0"
+          )}>
             <Button asChild size="lg" className="btn-glow h-14 px-10 text-lg font-bold">
               <Link href="#proceso">Descubre cómo lo hacemos</Link>
             </Button>
