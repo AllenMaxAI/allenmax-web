@@ -189,16 +189,16 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-[#030a1c] overflow-hidden">
+    <div className="flex flex-col bg-[#020817] overflow-hidden">
       {/* HERO SECTION */}
       <section className="relative pt-24 md:pt-32 h-[80vh] min-h-[700px] flex items-center justify-center text-center px-4">
         {/* Background Animation sin ruido para evitar líneas horizontales */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_80%)]" />
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
           
-          {/* Animated Glows - Azul más claro y vibrante sin ruido visible */}
-          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/40 blur-[140px] rounded-full animate-pulse will-change-[transform,opacity]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-500/30 blur-[140px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
+          {/* Animated Glows - Ajustados para evitar bordes duros */}
+          <div className="absolute top-[-10%] left-[-10%] w-[1000px] h-[1000px] bg-primary/25 blur-[180px] rounded-full animate-pulse will-change-[transform,opacity]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] bg-blue-600/15 blur-[180px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
@@ -228,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN PROBLEMA */}
-      <section className="px-4 py-24 bg-gradient-to-b from-transparent to-card/5">
+      <section className="px-4 py-24">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
