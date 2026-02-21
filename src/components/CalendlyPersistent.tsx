@@ -102,12 +102,8 @@ export function CalendlyPersistent() {
                 isLoaded ? "hidden" : "flex"
               )}
             >
-              {/* Contenedor de Barra de Progreso */}
+              {/* Contenedor de Barra de Progreso - Sin resplandores extraños */}
               <div className="absolute top-0 left-0 w-full z-30 h-1">
-                <div 
-                  className="absolute top-0 left-0 h-8 bg-primary/60 blur-[25px] transition-all duration-300 ease-out"
-                  style={{ width: `${progress}%` }}
-                />
                 <div 
                   className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
@@ -116,7 +112,7 @@ export function CalendlyPersistent() {
 
               {/* Contenido del esqueleto */}
               <div className="flex flex-col mt-10">
-                {/* Logo AllenMax Negro */}
+                {/* Logo AllenMax Negro - Centrado y ajustado */}
                 <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-2 flex items-center justify-center relative overflow-hidden">
                    <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
