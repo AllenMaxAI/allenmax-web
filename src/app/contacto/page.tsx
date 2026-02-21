@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Check } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -11,6 +12,12 @@ const strategicSessionItems = [
 ];
 
 export default function ContactoPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020817]">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -18,7 +25,10 @@ export default function ContactoPage() {
           
           {/* Columna Izquierda: Contenido Informativo */}
           <div className="max-w-4xl z-10">
-            <div className="space-y-2 mb-12">
+            <div className={cn(
+              "space-y-2 mb-12 transition-all duration-1000 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
                 Sesión Estratégica
               </span>
@@ -31,11 +41,17 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            <p className="text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed max-w-lg">
+            <p className={cn(
+              "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed max-w-lg transition-all duration-1000 delay-300 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
             </p>
 
-            <div className="space-y-8 pt-4">
+            <div className={cn(
+              "space-y-8 pt-4 transition-all duration-1000 delay-500 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <h2 className="text-xl md:text-2xl font-bold tracking-tight text-white">
                 En esta sesión estratégica:
               </h2>
@@ -51,9 +67,15 @@ export default function ContactoPage() {
               </ul>
             </div>
 
-            <div className="h-px w-full bg-white/10 my-10" />
+            <div className={cn(
+              "h-px w-full bg-white/10 my-10 transition-opacity duration-1000 delay-700",
+              isMounted ? "opacity-100" : "opacity-0"
+            )} />
 
-            <div className="space-y-6">
+            <div className={cn(
+              "space-y-6 transition-all duration-1000 delay-800 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
               <h3 className="text-xl md:text-2xl font-bold tracking-tight leading-tight text-white">
                 Construyamos algo que tenga sentido a largo plazo
               </h3>
