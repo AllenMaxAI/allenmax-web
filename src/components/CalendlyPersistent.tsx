@@ -92,10 +92,7 @@ export function CalendlyPersistent() {
           >
             {/* Línea de separación persistente (sincronizada con el header del widget real a 86px) */}
             <div 
-              className={cn(
-                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
-                isLoaded ? "opacity-100" : "opacity-0"
-              )}
+              className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto"
             />
 
             {/* Esqueleto de Carga - Desaparición Instantánea para evitar rastros */}
@@ -117,8 +114,8 @@ export function CalendlyPersistent() {
                 />
               </div>
 
-              {/* Contenido blureado del esqueleto */}
-              <div className="flex flex-col blur-[18px] opacity-40 mt-10">
+              {/* Contenido del esqueleto */}
+              <div className="flex flex-col mt-10">
                 {/* Logo AllenMax Negro */}
                 <div className="w-16 h-16 bg-[#020817] rounded-lg mx-auto mb-2 flex items-center justify-center relative overflow-hidden">
                    <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
@@ -127,7 +124,7 @@ export function CalendlyPersistent() {
                 {/* Línea horizontal de separación en el esqueleto a 86px */}
                 <div className="h-px bg-gray-200 w-full mb-10" />
                 
-                <div className="px-10 space-y-8">
+                <div className="px-10 space-y-8 blur-[18px] opacity-40">
                   <div className="w-48 h-5 bg-gray-300 mx-auto mb-6 rounded-full" />
                   
                   <div className="flex items-center justify-center gap-2 mb-8">
@@ -143,12 +140,9 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Parche superior derecho (ribbon) - Bloqueo de clics activado */}
+            {/* Parche superior derecho (ribbon) - Visibilidad inmediata y bloqueo de clics */}
             <div 
-              className={cn(
-                "absolute top-0 right-0 w-[275px] h-[100px] bg-white z-30 pointer-events-auto transition-opacity duration-700",
-                isLoaded ? "opacity-100" : "opacity-0"
-              )}
+              className="absolute top-0 right-0 w-[275px] h-[100px] bg-white z-30 pointer-events-auto"
               aria-hidden="true"
             />
 
@@ -161,12 +155,9 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* Parche inferior (branding) - Bloqueo de clics activado */}
+            {/* Parche inferior (branding) - Visibilidad inmediata y bloqueo de clics */}
             <div 
-              className={cn(
-                "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
-                isLoaded ? "opacity-100" : "opacity-0"
-              )}
+              className="absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-[35] pointer-events-auto"
               aria-hidden="true"
             />
           </div>
