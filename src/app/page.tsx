@@ -192,13 +192,9 @@ export default function Home() {
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative pt-24 md:pt-32 h-[80vh] min-h-[700px] flex items-center justify-center text-center px-4">
-        {/* Background Animation con máscara de desvanecimiento para evitar líneas de corte */}
+        {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
-          
-          {/* Animated Glows - Ahora pueden sangrar fuera del contenedor sin crear líneas duras */}
-          <div className="absolute top-[-20%] left-[-10%] w-[1200px] h-[1200px] bg-primary/20 blur-[200px] rounded-full animate-pulse will-change-[transform,opacity]" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] bg-blue-600/10 blur-[200px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
@@ -247,7 +243,8 @@ export default function Home() {
             </div>
             
             <div className="relative group">
-              <div className="absolute -inset-4 bg-primary/10 blur-xl rounded-3xl group-hover:bg-primary/20 transition-colors" />
+              {/* Glow mucho más sutil */}
+              <div className="absolute -inset-1 bg-primary/5 blur-md rounded-3xl transition-colors group-hover:bg-primary/10" />
               <div className="relative bg-card/40 backdrop-blur-sm p-10 md:p-12 rounded-2xl border border-white/10 shadow-2xl">
                 <h3 className="font-bold mb-10 text-2xl text-white/90">La mayoría de estructuras fallan en:</h3>
                 <ul className="space-y-8">
