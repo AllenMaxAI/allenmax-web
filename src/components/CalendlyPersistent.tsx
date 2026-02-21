@@ -81,25 +81,22 @@ export function CalendlyPersistent() {
                 isLoaded ? "opacity-0" : "opacity-100"
               )}
             >
-              {/* Contenedor de Barra de Progreso (Halo de luz de 25px) */}
+              {/* Contenedor de Barra de Progreso */}
               <div className="absolute top-0 left-0 w-full z-30 h-1">
-                {/* Glow / Blur de 25px más intenso */}
                 <div 
                   className="absolute top-0 left-0 h-8 bg-primary/60 blur-[25px] transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
                 />
-                {/* Línea nítida core */}
                 <div 
                   className="absolute top-0 left-0 h-1 bg-primary transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
                 />
               </div>
 
-              {/* Contenido blureado - Réplica de la captura */}
+              {/* Contenido blureado */}
               <div className="flex flex-col p-6 md:p-10 blur-[18px] opacity-40 mt-8">
-                
-                {/* Logo Cuadrado Pequeño (Simulando la PFP del widget) */}
-                <div className="w-10 h-10 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center relative overflow-hidden">
+                {/* Logo AllenMax Negro */}
+                <div className="w-10 h-10 bg-[#020817] rounded-lg mx-auto mb-4 flex items-center justify-center relative overflow-hidden">
                    <div className="flex gap-1 scale-50">
                     <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
                     <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
@@ -107,7 +104,6 @@ export function CalendlyPersistent() {
                   </div>
                 </div>
                 
-                {/* Textos Informativos */}
                 <div className="w-20 h-2 bg-gray-200 mx-auto mb-3 rounded-full" />
                 <div className="w-48 h-5 bg-gray-300 mx-auto mb-6 rounded-full" />
                 
@@ -116,7 +112,6 @@ export function CalendlyPersistent() {
                   <div className="w-24 h-2 bg-gray-200 rounded-full" />
                 </div>
                 
-                {/* Descripción blureada */}
                 <div className="space-y-2 mb-10 max-w-[280px] mx-auto text-center">
                   <div className="w-full h-1.5 bg-gray-100 rounded-full" />
                   <div className="w-5/6 h-1.5 bg-gray-100 rounded-full mx-auto" />
@@ -124,25 +119,20 @@ export function CalendlyPersistent() {
                 </div>
                 
                 <div className="h-px bg-gray-100 w-full mb-8" />
-
-                {/* Sección Calendario Inferior */}
                 <div className="w-32 h-4 bg-gray-300 mx-auto mb-8 rounded-full" />
                 
-                {/* Selector de Mes */}
                 <div className="flex justify-between items-center max-w-[320px] mx-auto mb-6 px-2">
                   <div className="w-6 h-6 bg-gray-100 rounded-full" />
                   <div className="w-24 h-3 bg-gray-200 rounded-full" />
                   <div className="w-6 h-6 bg-gray-100 rounded-full" />
                 </div>
 
-                {/* Días de la semana */}
                 <div className="grid grid-cols-7 gap-4 max-w-[320px] mx-auto mb-6">
                   {Array.from({ length: 7 }).map((_, i) => (
                     <div key={i} className="w-4 h-1.5 bg-gray-100 rounded-full mx-auto" />
                   ))}
                 </div>
 
-                {/* Cuadrícula de Calendario Realista */}
                 <div className="grid grid-cols-7 gap-y-6 max-w-[320px] mx-auto mb-10">
                   {Array.from({ length: 31 }).map((_, i) => (
                     <div key={i} className="aspect-square w-8 bg-gray-50 rounded-full flex items-center justify-center mx-auto">
@@ -151,13 +141,22 @@ export function CalendlyPersistent() {
                   ))}
                 </div>
                 
-                {/* Zona Horaria */}
                 <div className="flex items-center justify-center gap-2 mt-4">
                   <div className="w-4 h-4 bg-gray-100 rounded-full" />
                   <div className="w-40 h-2 bg-gray-200 rounded-full" />
                 </div>
               </div>
             </div>
+
+            {/* Capa para ocultar el ribbon superior derecho (DESARROLLADO POR Calendly) */}
+            <div 
+              className={cn(
+                "absolute top-0 right-0 w-[160px] h-[160px] bg-white z-30 pointer-events-none transition-opacity duration-700",
+                isLoaded ? "opacity-100" : "opacity-0"
+              )}
+              style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 0)' }}
+              aria-hidden="true"
+            />
 
             {/* Widget real de Calendly */}
             <div 
@@ -168,7 +167,7 @@ export function CalendlyPersistent() {
               )}
             />
 
-            {/* Capa para ocultar el branding de Calendly */}
+            {/* Capa para ocultar el branding inferior de Calendly */}
             <div 
               className={cn(
                 "absolute bottom-0 left-0 w-full h-[65px] bg-white border-t border-[#e5e7eb] z-30 pointer-events-none transition-opacity duration-700",
