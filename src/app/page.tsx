@@ -203,12 +203,12 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4">
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-6xl -mt-20">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-7xl -mt-20">
           <div className={cn(
             "space-y-6 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -216,9 +216,9 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-6xl mx-auto">
+            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-7xl mx-auto">
               <span className="block text-white">Transformamos empresas con</span>
-              <span className="block text-primary">Marketing e Inteligencia Artificial</span>
+              <span className="block text-primary mt-1">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
           
@@ -292,10 +292,12 @@ export default function Home() {
       <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-              Impulsa el crecimiento de tu empresa
-            </h2>
-            <div className="h-1.5 w-20 bg-primary/30 rounded-full mb-10" />
+            <div className="flex flex-col items-center mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                Impulsa el crecimiento de tu empresa
+              </h2>
+              <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
+            </div>
             <div className="max-w-4xl mx-auto px-6 py-10 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
               <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed">
@@ -324,13 +326,15 @@ export default function Home() {
       <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
-              Cómo lo Hacemos <span className="relative inline-block px-1">
-                <span className="relative z-10 text-primary">Realidad</span>
-                <span className="absolute bottom-1 left-0 w-full h-4 bg-primary/10 -rotate-1 rounded-sm" />
-              </span>
-            </h2>
-            <div className="h-1.5 w-20 bg-primary/30 rounded-full mb-10" />
+            <div className="flex flex-col items-center mb-8">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                Cómo lo Hacemos <span className="relative inline-block px-1">
+                  <span className="relative z-10 text-primary">Realidad</span>
+                  <span className="absolute bottom-1 left-0 w-full h-4 bg-primary/10 -rotate-1 rounded-sm" />
+                </span>
+              </h2>
+              <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
+            </div>
             <p className="max-w-2xl mx-auto text-muted-foreground text-xl leading-relaxed">
               Nuestro proceso probado garantiza resultados excepcionales y una <span className="text-white/90 font-medium underline decoration-primary/40 underline-offset-8 decoration-2">implementación sin fricciones.</span>
             </p>
