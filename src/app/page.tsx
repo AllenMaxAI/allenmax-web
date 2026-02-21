@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { XCircle, Rocket, GanttChartSquare, Milestone, ArrowRight } from 'lucide-react';
+import { XCircle, Rocket, GanttChartSquare, Milestone } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
@@ -119,7 +119,6 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
 
   return (
     <div ref={domRef} className="relative">
-      {/* Mobile view */}
       <div className="md:hidden">
         <div className={cn(
           "flex items-center gap-4 mb-4 transition-all duration-700",
@@ -139,7 +138,6 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
         )}>{step.description}</p>
       </div>
 
-      {/* Desktop view */}
       <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
         {isEven ? (
           <>
@@ -194,11 +192,20 @@ export default function Home() {
     <div className="flex flex-col bg-[#030a1c] overflow-hidden">
       {/* HERO SECTION */}
       <section className="relative pt-24 md:pt-32 h-[80vh] min-h-[700px] flex items-center justify-center text-center px-4">
-        {/* Background Animation */}
+        {/* Background Animation with Dithering to prevent TN Banding */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_80%)]" />
-          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/40 blur-[150px] rounded-full animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-500/30 blur-[150px] rounded-full animate-pulse [animation-delay:2s]" />
+          
+          {/* Static Dithering Layer */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.035]" 
+            style={{ 
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
+            }} 
+          />
+
+          {/* Animated Glows - Clearer Blue and smoother transitions */}
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/50 blur-[150px] rounded-full animate-pulse will-change-[transform,opacity]" />
+          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-400/40 blur-[150px] rounded-full animate-pulse [animation-delay:2s] will-change-[transform,opacity]" />
         </div>
 
         <div className="z-10 flex flex-col items-center gap-8 max-w-5xl">
@@ -238,7 +245,7 @@ export default function Home() {
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Muchas empresas generan contactos, pero sin una estructura que los aproveche, el esfuerzo se diluye. El resultado es una pérdida constante de oportunidades y un crecimiento estancado.
               </p>
-              <div className="pt-4 border-l-4 border-primary pl-8 space-y-2">
+              <div className="pt-4 space-y-2">
                  <p className="text-xl font-bold italic text-white/90">
                   "Sin un sistema predecible, no hay crecimiento sostenible."
                 </p>
@@ -307,7 +314,6 @@ export default function Home() {
           </FadeInSection>
 
           <div className="relative max-w-5xl mx-auto mt-20">
-            {/* Central Vertical Line with Glow */}
             <div className="absolute left-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-primary/50 via-primary to-primary/50 -translate-x-1/2 hidden md:block opacity-30 blur-[1px]" />
             <div className="absolute left-1/2 top-0 h-full w-[1px] bg-white/10 -translate-x-1/2 hidden md:block" />
 
