@@ -216,7 +216,7 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-5xl md:text-[5.5rem] font-extrabold tracking-tight leading-[1] px-4 max-w-5xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-5xl mx-auto">
               <span className="block">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e IA</span>
             </h1>
