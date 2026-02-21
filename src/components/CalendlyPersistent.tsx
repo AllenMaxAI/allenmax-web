@@ -4,6 +4,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
+declare global {
+  interface Window {
+    Calendly?: any;
+  }
+}
+
 export function CalendlyPersistent() {
   const pathname = usePathname();
   const calendlyRef = useRef<HTMLDivElement>(null);
@@ -46,6 +52,7 @@ export function CalendlyPersistent() {
         });
         setIsInitialized(true);
         
+        // Simular tiempo de carga para el esqueleto
         setTimeout(() => {
           setIsLoaded(true);
           setProgress(100);
@@ -83,10 +90,10 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Línea de separación persistente (sincronizada con el header del widget real a 112px) */}
+            {/* Línea de separación persistente (sincronizada con el header del widget real a 86px) */}
             <div 
               className={cn(
-                "absolute top-[112px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
+                "absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[35] pointer-events-auto transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
@@ -117,7 +124,7 @@ export function CalendlyPersistent() {
                    <span className="text-[8px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
-                {/* Línea horizontal de separación en el esqueleto */}
+                {/* Línea horizontal de separación en el esqueleto a 86px */}
                 <div className="h-px bg-gray-200 w-full mb-10" />
                 
                 <div className="px-10 space-y-8">
@@ -132,28 +139,6 @@ export function CalendlyPersistent() {
                     <div className="w-full h-1.5 bg-gray-100 rounded-full" />
                     <div className="w-5/6 h-1.5 bg-gray-100 rounded-full mx-auto" />
                   </div>
-                  
-                  <div className="w-32 h-4 bg-gray-300 mx-auto mb-10 rounded-full" />
-                  
-                  <div className="flex justify-between items-center max-w-[320px] mx-auto mb-8 px-2">
-                    <div className="w-6 h-6 bg-gray-100 rounded-full" />
-                    <div className="w-24 h-3 bg-gray-200 rounded-full" />
-                    <div className="w-6 h-6 bg-gray-100 rounded-full" />
-                  </div>
-
-                  <div className="grid grid-cols-7 gap-4 max-w-[320px] mx-auto mb-8">
-                    {Array.from({ length: 7 }).map((_, i) => (
-                      <div key={i} className="w-4 h-1.5 bg-gray-100 rounded-full mx-auto" />
-                    ))}
-                  </div>
-
-                  <div className="grid grid-cols-7 gap-y-8 max-w-[320px] mx-auto">
-                    {Array.from({ length: 31 }).map((_, i) => (
-                      <div key={i} className="aspect-square w-8 bg-gray-50 rounded-full flex items-center justify-center mx-auto">
-                        <div className="w-2 h-2 bg-gray-200 rounded-full" />
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>
@@ -161,7 +146,7 @@ export function CalendlyPersistent() {
             {/* Parche superior derecho para ocultar el ribbon y bloquear clics */}
             <div 
               className={cn(
-                "absolute top-0 right-0 w-[280px] h-[100px] bg-white z-30 pointer-events-auto transition-opacity duration-700",
+                "absolute top-0 right-0 w-[275px] h-[100px] bg-white z-30 pointer-events-auto transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
               aria-hidden="true"
