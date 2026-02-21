@@ -54,7 +54,7 @@ export function CalendlyPersistent() {
         <div className="w-full lg:w-[50%] relative">
           <div 
             className={cn(
-              "rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[700px] md:min-h-[900px] relative pointer-events-auto transition-transform duration-500",
+              "rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
@@ -66,8 +66,8 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col p-6 md:p-10 blur-[15px] opacity-40">
-                {/* Logo CUADRADO pequeño superior */}
-                <div className="w-20 h-20 bg-[#020817] rounded-md mx-auto mb-6 flex items-center justify-center relative overflow-hidden">
+                {/* Logo CUADRADO más pequeño superior */}
+                <div className="w-16 h-16 bg-[#020817] rounded-md mx-auto mb-6 flex items-center justify-center relative overflow-hidden">
                   {/* Puntos de carga centrados dentro del logo blureado */}
                   <div className="flex gap-1 z-30 scale-75">
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
@@ -79,14 +79,14 @@ export function CalendlyPersistent() {
                 <div className="w-32 h-3 bg-gray-300 mx-auto mb-3 rounded-full" />
                 <div className="w-64 h-7 bg-gray-400 mx-auto mb-8 rounded-full" />
                 
-                <div className="space-y-4 mb-10 max-w-[300px] mx-auto">
-                  <div className="flex items-center gap-3">
+                <div className="space-y-4 mb-10 max-w-[300px] mx-auto text-center">
+                  <div className="flex items-center justify-center gap-3">
                     <div className="w-5 h-5 bg-gray-300 rounded-full" />
                     <div className="w-20 h-3 bg-gray-200 rounded-full" />
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center gap-3">
                     <div className="w-5 h-5 bg-gray-300 rounded-full" />
-                    <div className="w-60 h-3 bg-gray-200 rounded-full" />
+                    <div className="w-40 h-3 bg-gray-200 rounded-full" />
                   </div>
                 </div>
                 
@@ -124,11 +124,11 @@ export function CalendlyPersistent() {
               </div>
             </div>
 
-            {/* Contenedor del Widget */}
+            {/* Contenedor del Widget con altura de 1050px */}
             <div 
               ref={calendlyRef}
               className={cn(
-                "w-full h-[700px] md:h-[900px] transition-opacity duration-700",
+                "w-full h-[1050px] transition-opacity duration-700",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
