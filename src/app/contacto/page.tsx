@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
-import { CtaSection } from '@/components/layout/CtaSection';
 
 const strategicSessionItems = [
   "Analizaremos tu situación actual",
@@ -13,7 +12,6 @@ const strategicSessionItems = [
 
 export default function ContactoPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const scriptId = 'calendly-script';
@@ -23,7 +21,7 @@ export default function ContactoPage() {
       if (containerRef.current && (window as any).Calendly) {
         const calendly = (window as any).Calendly;
         
-        // Limpiar para evitar duplicados en reinicializaciones
+        // Limpiar para evitar duplicados y errores de hidratación
         containerRef.current.innerHTML = '';
         
         const url = "https://calendly.com/agency-allenmax/reunion-allenmax?locale=es&hide_gdpr_banner=1";
@@ -33,6 +31,8 @@ export default function ContactoPage() {
             url: url,
             parentElement: containerRef.current,
           });
+        } else if (calendly.initInlineWidgets) {
+          calendly.initInlineWidgets();
         }
       }
     };
@@ -42,20 +42,18 @@ export default function ContactoPage() {
       script.id = scriptId;
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
-      script.onload = () => {
-        setIsLoaded(true);
-        initCalendly();
-      };
+      script.onload = initCalendly;
       document.body.appendChild(script);
     } else {
-      setIsLoaded(true);
       if ((window as any).Calendly) {
         initCalendly();
+      } else {
+        script.onload = initCalendly;
       }
     }
 
     return () => {
-      // Opcional: limpieza si fuera necesario
+      // Limpieza opcional
     };
   }, []);
 
@@ -129,7 +127,7 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            {/* Columna Derecha: Widget de Calendly */}
+            {/* Columna Derecha: Widget de Calendly (Alineado arriba) */}
             <div className="relative">
               <div
                 ref={containerRef}
@@ -146,7 +144,6 @@ export default function ContactoPage() {
           </div>
         </div>
       </section>
-      <CtaSection />
     </>
   );
 }
