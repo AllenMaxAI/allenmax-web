@@ -121,8 +121,8 @@ export function CalendlyPersistent() {
 
               {/* Contenido del esqueleto - Desenfoque EXTREMO para disimular como en la referencia */}
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax con MUCHO BLUR como en la referencia */}
-                <div className="w-11 h-11 bg-[#020817]/60 rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2 z-50 blur-[14px]">
+                {/* Logo AllenMax con MUCHO BLUR y opacidad reducida para no destacar */}
+                <div className="w-11 h-11 bg-[#020817]/10 rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2 z-50 blur-[14px]">
                    <span className="text-[6px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
