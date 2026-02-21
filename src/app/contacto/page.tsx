@@ -13,7 +13,7 @@ const strategicSessionItems = [
 
 export default function ContactoPage() {
   return (
-    <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020617]">
+    <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020817]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
@@ -75,22 +75,22 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha - Widget Calendly con Branding Eliminado */}
+          {/* Columna Derecha - Widget Calendly */}
           <div className="relative">
-            <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-[#020617]">
+            <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-white">
                <InlineWidget 
                 url="https://calendly.com/agency-allenmax/reunion-allenmax"
                 styles={{
-                  height: '700px',
+                  height: '1100px',
                   width: '100%',
                 }}
                 pageSettings={{
-                  backgroundColor: '020617',
+                  backgroundColor: '020817',
                   hideGdprBanner: true,
                   hideLandingPageDetails: false,
                   primaryColor: '3b82f6',
                   textColor: 'ffffff',
-                  hideBranding: true, // Esta es la instrucción que elimina el branding
+                  hideBranding: true,
                 }}
               />
             </div>
