@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -101,8 +102,8 @@ export function CalendlyPersistent() {
             {/* Esqueleto de Carga con Blur */}
             <div 
               className={cn(
-                "absolute inset-0 z-20 bg-white transition-opacity duration-1000 pointer-events-none flex flex-col",
-                isLoaded ? "opacity-0" : "opacity-100"
+                "absolute inset-0 z-20 bg-white transition-all duration-500 pointer-events-none flex flex-col",
+                isLoaded ? "opacity-0 invisible" : "opacity-100 visible"
               )}
             >
               {/* Contenedor de Barra de Progreso */}
