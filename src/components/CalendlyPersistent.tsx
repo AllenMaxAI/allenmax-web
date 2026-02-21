@@ -90,7 +90,7 @@ export function CalendlyPersistent() {
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
-            {/* Capas de Seguridad (Escudos) - Siempre visibles para tapar el branding y clics desde el inicio */}
+            {/* Capas de Seguridad (Escudos) - Siempre visibles y bloquean eventos */}
             <div 
               className="absolute top-0 right-0 w-[275px] h-[100px] bg-white z-[45] pointer-events-auto"
               aria-hidden="true"
@@ -119,25 +119,27 @@ export function CalendlyPersistent() {
                 />
               </div>
 
-              {/* Contenido del esqueleto - Desenfoque general para disimular */}
-              <div className="flex flex-col mt-4 blur-[1px]">
-                {/* Logo AllenMax Negro - Más pequeño (w-11) y centrado */}
-                <div className="w-11 h-11 bg-[#020817] rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2">
+              {/* Contenido del esqueleto - Desenfoque EXTREMO para disimular como en la referencia */}
+              <div className="flex flex-col mt-4">
+                {/* Logo AllenMax Negro - Pequeño y nítido para guiar */}
+                <div className="w-11 h-11 bg-[#020817] rounded-lg mx-auto mb-1 flex items-center justify-center relative overflow-hidden mt-2 z-50">
                    <span className="text-[6px] text-white font-extrabold uppercase tracking-tighter">allenmax</span>
                 </div>
                 
                 {/* Espacio del header antes de la línea de 86px */}
                 <div className="h-6" />
                 
-                <div className="px-10 space-y-8 blur-[18px] opacity-40 mt-10">
-                  <div className="w-48 h-5 bg-gray-300 mx-auto mb-6 rounded-full" />
-                  <div className="flex items-center justify-center gap-2 mb-8">
-                    <div className="w-4 h-4 bg-gray-200 rounded-full" />
-                    <div className="w-24 h-2 bg-gray-200 rounded-full" />
+                {/* Elementos con desenfoque de 40px y baja opacidad para efecto "nube" */}
+                <div className="px-10 space-y-12 blur-[40px] opacity-[0.15] mt-10">
+                  <div className="w-48 h-10 bg-gray-400 mx-auto mb-6 rounded-full" />
+                  <div className="flex items-center justify-center gap-6 mb-8">
+                    <div className="w-12 h-12 bg-gray-300 rounded-full" />
+                    <div className="w-32 h-4 bg-gray-300 rounded-full" />
                   </div>
-                  <div className="space-y-3 mb-12 max-w-[280px] mx-auto text-center">
-                    <div className="w-full h-1.5 bg-gray-100 rounded-full" />
-                    <div className="w-5/6 h-1.5 bg-gray-100 rounded-full mx-auto" />
+                  <div className="space-y-6 mb-12 max-w-[320px] mx-auto text-center">
+                    <div className="w-full h-3 bg-gray-200 rounded-full" />
+                    <div className="w-5/6 h-3 bg-gray-200 rounded-full mx-auto" />
+                    <div className="w-4/6 h-3 bg-gray-200 rounded-full mx-auto" />
                   </div>
                 </div>
               </div>
