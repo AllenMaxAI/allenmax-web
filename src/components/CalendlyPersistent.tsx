@@ -124,14 +124,14 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax: Muy sutil, sin blur para evitar artefactos */}
-                <div className="w-8 h-8 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-40" />
+                {/* Logo AllenMax: Muy sutil con un poco de blur */}
+                <div className="w-8 h-8 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-40 blur-[4px]" />
                 
                 {/* Espacio del header */}
                 <div className="h-10" />
                 
-                {/* Contenido del widget: Bloques de carga limpios */}
-                <div className="px-10 space-y-8 mt-10 opacity-[0.05]">
+                {/* Contenido del widget: Bloques de carga con blur suave */}
+                <div className="px-10 space-y-8 mt-10 opacity-[0.05] blur-[8px]">
                   <div className="w-40 h-8 bg-gray-400 mx-auto mb-6 rounded-full" />
                   <div className="flex items-center justify-center gap-4 mb-8">
                     <div className="w-10 h-10 bg-gray-300 rounded-full" />
