@@ -83,7 +83,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* ARQUITECTURA ESTRATÉGICA */}
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -136,7 +136,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* ALINEACIÓN (CONECTAMOS) */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">

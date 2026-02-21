@@ -18,7 +18,6 @@ import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuStore,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -68,7 +67,7 @@ export function AppHeader() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo a la izquierda */}
           <div className="flex shrink-0">
             <Logo />
@@ -169,9 +168,6 @@ export function AppHeader() {
               </SheetContent>
             </Sheet>
           </div>
-
-          {/* Spacer para mantener balance visual si fuera necesario */}
-          <div className="hidden md:block w-[120px]" />
         </div>
       </div>
     </header>
