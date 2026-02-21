@@ -318,7 +318,7 @@ export default function Home() {
       </section>
       
       {/* PROCESO ANIMADO */}
-      <section id="proceso" className="px-4 py-32 relative z-10">
+      <section id="proceso" className="px-4 relative z-10">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
