@@ -93,7 +93,7 @@ export function CalendlyPersistent() {
             {/* 1. BARRA DE PROGRESO SUPREMA (Prioridad máxima de visibilidad) */}
             <div 
               className={cn(
-                "absolute top-0 left-0 w-full z-[70] h-1 blur-[0.2px] transition-opacity duration-700",
+                "absolute top-0 left-0 w-full z-[70] h-1 transition-opacity duration-700",
                 isLoaded ? "opacity-0 invisible" : "opacity-100"
               )}
             >
@@ -116,7 +116,7 @@ export function CalendlyPersistent() {
               className="absolute top-[86px] left-0 w-full h-[1px] bg-[#e5e7eb] z-[45] pointer-events-auto"
             />
 
-            {/* 3. ESQUELETO DE CARGA (Efecto Neblina Vaporosa) */}
+            {/* 3. ESQUELETO DE CARGA (Limpio y Minimalista) */}
             <div 
               className={cn(
                 "absolute inset-0 z-40 bg-white pointer-events-none flex flex-col transition-opacity duration-700",
@@ -124,23 +124,23 @@ export function CalendlyPersistent() {
               )}
             >
               <div className="flex flex-col mt-4">
-                {/* Logo AllenMax: Nebulosa circular extremadamente suave */}
-                <div className="w-10 h-10 bg-gray-100/10 rounded-full mx-auto mt-4 z-50 blur-[25px]" />
+                {/* Logo AllenMax: Muy sutil, sin blur para evitar artefactos */}
+                <div className="w-8 h-8 bg-gray-100 rounded-full mx-auto mt-4 z-50 opacity-40" />
                 
                 {/* Espacio del header */}
                 <div className="h-10" />
                 
-                {/* Contenido del widget con desenfoque masivo (Efecto nube) */}
-                <div className="px-10 space-y-12 blur-[50px] opacity-[0.1] mt-10">
-                  <div className="w-48 h-10 bg-gray-400 mx-auto mb-6 rounded-full" />
-                  <div className="flex items-center justify-center gap-6 mb-8">
-                    <div className="w-12 h-12 bg-gray-300 rounded-full" />
-                    <div className="w-32 h-4 bg-gray-300 rounded-full" />
+                {/* Contenido del widget: Bloques de carga limpios */}
+                <div className="px-10 space-y-8 mt-10 opacity-[0.05]">
+                  <div className="w-40 h-8 bg-gray-400 mx-auto mb-6 rounded-full" />
+                  <div className="flex items-center justify-center gap-4 mb-8">
+                    <div className="w-10 h-10 bg-gray-300 rounded-full" />
+                    <div className="w-28 h-3 bg-gray-300 rounded-full" />
                   </div>
-                  <div className="space-y-6 mb-12 max-w-[320px] mx-auto text-center">
-                    <div className="w-full h-3 bg-gray-200 rounded-full" />
-                    <div className="w-5/6 h-3 bg-gray-200 rounded-full mx-auto" />
-                    <div className="w-4/6 h-3 bg-gray-200 rounded-full mx-auto" />
+                  <div className="space-y-4 mb-12 max-w-[280px] mx-auto text-center">
+                    <div className="w-full h-2 bg-gray-200 rounded-full" />
+                    <div className="w-5/6 h-2 bg-gray-200 rounded-full mx-auto" />
+                    <div className="w-4/6 h-2 bg-gray-200 rounded-full mx-auto" />
                   </div>
                 </div>
               </div>
