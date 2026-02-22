@@ -5,6 +5,12 @@
       "description": "Business professionals analyzing data on a futuristic interface",
       "imageUrl": "https://images.unsplash.com/photo-1762427354251-f008b64dbc32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnVzaW5lc3MlMjBkYXRhJTIwYW5hbHlzaXN8ZW58MHx8fHwxNzcxMzI4NTI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business data analysis"
+    },
+    {
+      "id": "ai-architecture",
+      "description": "Abstract visualization of AI architecture and strategic connections",
+      "imageUrl": "https://images.unsplash.com/photo-1707023934064-cd112f1e472c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhaSUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NzE3MjU5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ai architecture"
     }
   ]
 }

@@ -5,9 +5,11 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BrainCircuit, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const serviceCategories = [
   {
@@ -62,64 +64,90 @@ function FadeInSection({ children, className, delay = 0 }: { children: React.Rea
 
 export default function ServiciosPage() {
   const [isMounted, setIsMounted] = useState(false);
+  const heroImage = PlaceHolderImages.find(img => img.id === 'ai-architecture');
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className={cn(
-              "space-y-2 mb-12 transition-all duration-1000 ease-out",
-              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}>
-              <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestros Servicios</span>
-              <div className="space-y-6">
-                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
-                  La Sinergia <br />
-                  <span className="text-primary">Perfecta.</span>
-                </h1>
-                <div className="h-1.5 w-20 bg-primary rounded-full" />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-12">
+              <div className={cn(
+                "space-y-2 transition-all duration-1000 ease-out",
+                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )}>
+                <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestros Servicios</span>
+                <div className="space-y-6">
+                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                    La Sinergia <br />
+                    <span className="text-primary">Perfecta.</span>
+                  </h1>
+                  <div className="h-1.5 w-20 bg-primary rounded-full" />
+                </div>
+              </div>
+              
+              <p className={cn(
+                "text-xl md:text-2xl text-primary font-medium leading-relaxed transition-all duration-1000 delay-300 ease-out",
+                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )}>
+                Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
+              </p>
+
+              <div className={cn(
+                "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
+                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )}>
+                <div className="space-y-6">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    No ofrecemos servicios aislados. 
+                    <span className="block text-foreground font-semibold mt-2">Diseñamos soluciones que se integran en el ADN de tu negocio.</span>
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Implementar IA o Marketing sin una base sólida es solo ruido. Nuestra metodología asegura que cada acción contribuya a un sistema de crecimiento predecible.
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary pl-8 py-2">
+                  <p className="text-xl font-bold mb-4">Sinergia Estratégica.</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Conectamos cada pieza de tu ecosistema digital para que la captación, la conversión y la fidelización funcionen de forma coordinada y escalable.
+                  </p>
+                </div>
               </div>
             </div>
-            
-            <p className={cn(
-              "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed transition-all duration-1000 delay-300 ease-out",
-              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}>
-              Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
-            </p>
 
+            {/* Imagen a la derecha */}
             <div className={cn(
-              "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
-              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              "relative hidden lg:block transition-all duration-1000 delay-700 ease-out",
+              isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
-              <div className="space-y-6">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  No ofrecemos servicios aislados. 
-                  <span className="block text-foreground font-semibold mt-2">Diseñamos soluciones que se integran en el ADN de tu negocio.</span>
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Implementar IA o Marketing sin una base sólida es solo ruido. Nuestra metodología asegura que cada acción contribuya a un sistema de crecimiento predecible.
-                </p>
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 pointer-events-none" />
+                {heroImage && (
+                  <Image
+                    src={heroImage.imageUrl}
+                    alt={heroImage.description}
+                    width={800}
+                    height={600}
+                    className="object-cover w-full h-auto grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+                    data-ai-hint={heroImage.imageHint}
+                  />
+                )}
               </div>
-              <div className="border-l-2 border-primary pl-8 py-2">
-                <p className="text-xl font-bold mb-4">Sinergia Estratégica.</p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Conectamos cada pieza de tu ecosistema digital para que la captación, la conversión y la fidelización funcionen de forma coordinada y escalable.
-                </p>
-              </div>
+              {/* Elementos decorativos abstractos */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-primary/40 rounded-tr-3xl" />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-primary/40 rounded-bl-3xl" />
             </div>
           </div>
         </div>
       </section>
 
       {/* CATEGORÍAS DE SERVICIOS */}
-      <section className="pt-20 md:pt-28 pb-0">
+      <section className="pt-24 md:pt-32 pb-0">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {serviceCategories.map((category, index) => (
@@ -144,6 +172,6 @@ export default function ServiciosPage() {
         </div>
       </section>
       <CtaSection />
-    </>
+    </div>
   );
 }
