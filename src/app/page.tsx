@@ -197,7 +197,9 @@ export default function Home() {
     e.preventDefault();
     const target = document.getElementById('proceso');
     if (!target) return;
-    target.scrollIntoView({ behavior: 'smooth' });
+    
+    // Usamos el método nativo que respeta el scroll-behavior definido en globals.css
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
