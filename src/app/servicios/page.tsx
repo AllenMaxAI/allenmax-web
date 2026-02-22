@@ -5,11 +5,9 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BrainCircuit, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
-import serviciosImg from '@/img/servicios.png';
 
 const serviceCategories = [
   {
@@ -116,20 +114,13 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            {/* Imagen a la derecha - Alineada arriba */}
+            {/* Espacio reservado para la nueva imagen */}
             <div className={cn(
               "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out pt-0",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
               <div className="relative w-full max-w-[400px] aspect-square group">
-                <Image
-                  src={serviciosImg}
-                  alt="Servicios AllenMax"
-                  width={500}
-                  height={500}
-                  priority
-                  className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-all duration-700 ease-in-out"
-                />
+                {/* Aquí puedes añadir la nueva imagen */}
               </div>
             </div>
           </div>
