@@ -227,7 +227,7 @@ export default function Home() {
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20">
         {/* Fondo extendido y con máscara suave */}
-        <div className="absolute inset-0 z-0 pointer-events-none h-[150vh] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
+        <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[300vh] [mask-image:linear-gradient(to_bottom,black_25%,transparent_95%)]">
           <NeuralBackground />
         </div>
         
