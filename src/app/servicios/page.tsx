@@ -118,7 +118,7 @@ export default function ServiciosPage() {
 
             {/* Imagen a la derecha - Sin caja de fondo */}
             <div className={cn(
-              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out pt-8",
+              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out pt-0",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
               <div className="relative w-full max-w-[400px] aspect-square group">
