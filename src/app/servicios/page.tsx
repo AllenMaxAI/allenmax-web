@@ -93,6 +93,28 @@ export default function ServiciosPage() {
             )}>
               Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
             </p>
+
+            {/* Bloque de diseño igual al de Nosotros */}
+            <div className={cn(
+              "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              <div className="space-y-6">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  AllenMax nace con una idea clara: 
+                  <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. Es la falta de estructura.</span>
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Muchas empresas invierten en marketing o implementan tecnología sin una estrategia integrada. El resultado es dispersión y crecimiento inestable.
+                </p>
+              </div>
+              <div className="border-l-2 border-primary pl-8 py-2">
+                <p className="text-xl font-bold mb-4">Nosotros hacemos lo contrario.</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Diseñamos sistemas donde marketing, automatización y tecnología trabajan como una única estructura orientada a resultados.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
