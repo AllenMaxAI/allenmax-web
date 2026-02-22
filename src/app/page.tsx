@@ -197,9 +197,30 @@ export default function Home() {
     e.preventDefault();
     const target = document.getElementById('proceso');
     if (!target) return;
-    
-    // Usamos el método nativo que respeta el scroll-behavior definido en globals.css
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1200; // Un poco más lento para profesionalismo
+    let start: number | null = null;
+
+    const animation = (currentTime: number) => {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    };
+
+    // Función de easing: easeInOutCubic
+    const ease = (t: number, b: number, c: number, d: number) => {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t * t + b;
+      t -= 2;
+      return (c / 2) * (t * t * t + 2) + b;
+    };
+
+    requestAnimationFrame(animation);
   };
 
   return (
