@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
+import serviciosImg from '@/img/servicios.png';
 
 const serviceCategories = [
   {
@@ -115,14 +116,14 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            {/* Imagen a la derecha - Sin destellos decorativos */}
+            {/* Imagen a la derecha - Importada como módulo */}
             <div className={cn(
               "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
               <div className="relative w-full max-w-[400px] aspect-square rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm group">
                 <Image
-                  src="/src/img/servicios.png"
+                  src={serviciosImg}
                   alt="Servicios AllenMax"
                   width={500}
                   height={500}
