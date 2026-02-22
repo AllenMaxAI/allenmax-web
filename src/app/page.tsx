@@ -30,27 +30,27 @@ const processSteps = [
   {
     step: "1",
     title: "Contacto",
-    description: "Agenda una llamada para analizar tus necesidades y desafíos específicos. Evaluamos la viabilidad estratégica para generar un impacto inmediato en tu mercado."
+    description: "Analizamos tus necesidades y desafíos específicos para evaluar la viabilidad estratégica y asegurar un impacto inmediato."
   },
   {
     step: "2",
     title: "Propuesta",
-    description: "Recibe un plan estratégico detallado con tiempos y costes transparentes. Estructuramos una hoja de ruta precisa orientada a objetivos de crecimiento medibles."
+    description: "Recibe un plan estratégico detallado con tiempos y costes transparentes. Estructuramos una hoja de ruta precisa orientada a objetivos."
   },
   {
     step: "3",
     title: "Desarrollo",
-    description: "Implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas de IA y marketing modulares para asegurar un escalado sólido y constante."
+    description: "Implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas modulares para asegurar un escalado sólido."
   },
   {
     step: "4",
     title: "Refinamiento",
-    description: "Optimizamos cada flujo de trabajo basándonos en datos de rendimiento reales. Ajustamos la estrategia de forma proactiva para maximizar el retorno de tu inversión."
+    description: "Optimizamos cada flujo de trabajo basándonos en datos reales. Ajustamos la estrategia para maximizar el retorno de tu inversión."
   },
   {
     step: "5",
     title: "Lidera tu sector",
-    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva insuperable. Consolida tu posición de liderazgo mediante la eficiencia operativa que permite la IA."
+    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva. Consolida tu posición mediante eficiencia operativa avanzada."
   }
 ];
 
@@ -300,10 +300,10 @@ export default function Home() {
               </h2>
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
             </div>
-            <div className="max-w-md mx-auto px-6 py-4 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
+            <div className="max-w-sm mx-auto px-4 py-2.5 rounded-2xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
-              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-               Diseñamos e implementamos sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> y <span className="text-primary font-bold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
+              <p className="text-muted-foreground text-base md:text-lg leading-snug">
+               Sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> e <span className="text-primary font-bold">IA</span> para un alto rendimiento.
               </p>
             </div>
           </FadeInSection>
