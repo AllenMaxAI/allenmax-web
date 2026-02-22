@@ -44,7 +44,7 @@ export function AppFooter() {
 
           {/* Columna Contacto */}
           <div className="lg:col-span-4 space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-white/90">Hablemos</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-white/90">Contacto</h4>
             <div className="space-y-4">
               <a 
                 href="mailto:agency@allenmax.com" 
