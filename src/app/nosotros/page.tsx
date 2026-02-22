@@ -5,6 +5,46 @@ import { CheckCircle2, XCircle, ShieldCheck, Zap, BarChart3, Target } from 'luci
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
+
+// Importación de la imagen desde la ruta especificada
+import nosotrosImg from '@/app/images/nosotros.png';
+
+function FadeInSection({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const current = domRef.current;
+    if (current) observer.observe(current);
+    return () => {
+      if (current) observer.unobserve(current);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={domRef}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={cn(
+        "transition-all duration-1000 ease-out",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
 
 const philosophyItems = [
   {
@@ -43,42 +83,6 @@ const notForYouItems = [
   "Considera la tecnología y el marketing como un gasto, no una inversión.",
 ];
 
-function FadeInSection({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const domRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    const current = domRef.current;
-    if (current) observer.observe(current);
-    return () => {
-      if (current) observer.unobserve(current);
-    };
-  }, []);
-
-  return (
-    <div
-      ref={domRef}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={cn(
-        "transition-all duration-1000 ease-out",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
 export default function NosotrosPage() {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -91,46 +95,63 @@ export default function NosotrosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className={cn(
-              "space-y-2 mb-12 transition-all duration-1000 ease-out",
-              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}>
-              <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
-              <div className="space-y-6">
-                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
-                  Arquitectos de <br />
-                  <span className="text-primary">Evolución.</span>
-                </h1>
-                <div className="h-1.5 w-20 bg-primary rounded-full" />
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+            <div className="space-y-12">
+              <div className={cn(
+                "space-y-2 transition-all duration-1000 ease-out",
+                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )}>
+                <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
+                <div className="space-y-6">
+                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                    Arquitectos de <br />
+                    <span className="text-primary">Evolución.</span>
+                  </h1>
+                  <div className="h-1.5 w-20 bg-primary rounded-full" />
+                </div>
+              </div>
+
+              <p className={cn(
+                "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed transition-all duration-1000 delay-300 ease-out",
+                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )}>
+                Construimos sistemas de crecimiento para empresas que quieren evolucionar.
+              </p>
+              
+              <div className={cn(
+                "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
+                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )}>
+                <div className="space-y-6">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    AllenMax nace con una idea clara: 
+                    <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. Es la falta de estructura.</span>
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Muchas empresas invierten en marketing o implementan tecnología sin una estrategia integrada. El resultado es dispersión y crecimiento inestable.
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary pl-8 py-2">
+                  <p className="text-xl font-bold mb-4">Nosotros hacemos lo contrario.</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Diseñamos sistemas donde marketing, automatización y tecnología trabajan como una única estructura orientada a resultados.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <p className={cn(
-              "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed transition-all duration-1000 delay-300 ease-out",
-              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}>
-              Construimos sistemas de crecimiento para empresas que quieren evolucionar.
-            </p>
-            
+            {/* IMAGEN HERO DERECHA (SÓLO DESKTOP) */}
             <div className={cn(
-              "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
-              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out items-start",
+              isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
-              <div className="space-y-6">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  AllenMax nace con una idea clara: 
-                  <span className="block text-foreground font-semibold mt-2">El problema no es la falta de herramientas. Es la falta de estructura.</span>
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Muchas empresas invierten en marketing o implementan tecnología sin una estrategia integrada. El resultado es dispersión y crecimiento inestable.
-                </p>
-              </div>
-              <div className="border-l-2 border-primary pl-8 py-2">
-                <p className="text-xl font-bold mb-4">Nosotros hacemos lo contrario.</p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Diseñamos sistemas donde marketing, automatización y tecnología trabajan como una única estructura orientada a resultados.
-                </p>
+              <div className="relative w-full max-w-[450px] aspect-square">
+                <Image 
+                  src={nosotrosImg}
+                  alt="Nosotros AllenMax"
+                  className="w-full h-auto object-contain"
+                  priority
+                />
               </div>
             </div>
           </div>
