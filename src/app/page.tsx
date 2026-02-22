@@ -224,13 +224,13 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20">
-        {/* Fondo extendido y con máscara suave */}
-        <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[300vh] [mask-image:linear-gradient(to_bottom,black_25%,transparent_95%)]">
-          <NeuralBackground />
-        </div>
-        
+    <div className="flex flex-col bg-[#020817] overflow-x-hidden relative">
+      {/* Fondo de Red Neuronal Global */}
+      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[300vh] [mask-image:linear-gradient(to_bottom,black_25%,transparent_95%)]">
+        <NeuralBackground />
+      </div>
+
+      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
@@ -272,7 +272,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
+      {/* Sección "El problema" - Sin fondo sólido para dejar ver la red */}
+      <section className="px-4 py-20 md:py-28 relative z-10 scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <div className="space-y-8">
@@ -312,7 +313,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
+      {/* Sección "Beneficios" - Sin fondo sólido para dejar ver la red */}
+      <section className="px-4 py-20 md:py-28 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-20 flex flex-col items-center">
             <div className="flex flex-col items-center mb-6">
@@ -345,7 +347,8 @@ export default function Home() {
         </div>
       </section>
       
-      <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
+      {/* Sección "Proceso" - Aquí ya puede tener su fondo o seguir heredando si la red llega hasta aquí */}
+      <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
             <div className="flex flex-col items-center mb-8">
