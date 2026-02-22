@@ -23,7 +23,7 @@ export function AppFooter() {
   };
 
   return (
-    <footer className="relative border-t border-white/5 bg-[#020817] pt-6 pb-6 overflow-hidden">
+    <footer className="relative border-t border-white/5 bg-[#020817] pt-4 pb-6 overflow-hidden">
       {/* Elemento decorativo sutil de fondo */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       
