@@ -115,24 +115,20 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            {/* Imagen a la derecha - Espacio más pequeño y optimizado */}
+            {/* Imagen a la derecha - Sin destellos decorativos */}
             <div className={cn(
               "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
               <div className="relative w-full max-w-[400px] aspect-square rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-700" />
                 <Image
                   src="/src/img/servicios.png"
                   alt="Servicios AllenMax"
                   width={500}
                   height={500}
-                  className="object-cover w-full h-full opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700 ease-in-out"
+                  className="object-cover w-full h-full opacity-80 hover:opacity-100 transition-all duration-700 ease-in-out"
                 />
               </div>
-              {/* Elementos decorativos sutiles */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
             </div>
           </div>
         </div>
