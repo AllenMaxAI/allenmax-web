@@ -30,27 +30,27 @@ const processSteps = [
   {
     step: "1",
     title: "Contacto",
-    description: "Agenda una llamada y cuéntanos tu proyecto en detalle. Analizamos tus necesidades específicas y desafíos actuales para entender el potencial real de tu negocio. Definimos el punto de partida ideal para una transformación digital que genere impacto inmediato y duradero en tu mercado. Evaluamos la viabilidad técnica y estratégica de cada iniciativa propuesta."
+    description: "Agenda una llamada para analizar tus necesidades y desafíos específicos. Evaluamos la viabilidad estratégica para generar un impacto inmediato en tu mercado."
   },
   {
     step: "2",
     title: "Propuesta",
-    description: "Recibe un plan estratégico detallado con tiempos de entrega claros y costes transparentes. Estructuramos una hoja de ruta precisa, orientada a objetivos medibles que faciliten el seguimiento del éxito. Sin sorpresas, con total claridad en cada fase operativa del proceso de escalado. Detallamos cada hito clave para asegurar una alineación total con tus expectativas."
+    description: "Recibe un plan estratégico detallado con tiempos y costes transparentes. Estructuramos una hoja de ruta precisa orientada a objetivos de crecimiento medibles."
   },
   {
     step: "3",
     title: "Desarrollo",
-    description: "Creamos e implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas de IA y marketing con un enfoque modular, permitiendo que tu empresa crezca de forma escalable. Priorizamos la entrega de valor constante para que tu equipo vea progresos reales desde las primeras semanas. Integramos tecnología de última generación adaptada a tu flujo de trabajo."
+    description: "Implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas de IA y marketing modulares para asegurar un escalado sólido y constante."
   },
   {
     step: "4",
     title: "Refinamiento",
-    description: "Mantenemos una iteración constante enfocada 100% en la obtención de resultados tangibles. Optimizamos cada flujo de trabajo y embudo de ventas basándonos en datos de rendimiento en tiempo real. Ajustamos la estrategia de forma proactiva para maximizar el retorno de tu inversión día tras día. Realizamos pruebas A/B y análisis profundos para detectar nuevas oportunidades."
+    description: "Optimizamos cada flujo de trabajo basándonos en datos de rendimiento reales. Ajustamos la estrategia de forma proactiva para maximizar el retorno de tu inversión."
   },
   {
     step: "5",
     title: "Lidera tu sector",
-    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva insuperable en tu nicho. Consolida una posición de liderazgo indiscutible mediante la eficiencia operativa que solo la IA permite. Escala tu operación global con sistemas autónomos que aprenden y mejoran su rendimiento de forma independiente. Establece nuevos estándares de calidad y servicio en tu industria."
+    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva insuperable. Consolida tu posición de liderazgo mediante la eficiencia operativa que permite la IA."
   }
 ];
 
@@ -118,6 +118,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
 
   return (
     <div ref={domRef} className="relative">
+      {/* Mobile view */}
       <div className="md:hidden">
         <div className={cn(
           "flex items-center gap-4 mb-4 transition-all duration-700",
@@ -137,6 +138,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
         )}>{step.description}</p>
       </div>
 
+      {/* Desktop view with fixed left alignment for text */}
       <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
         {index % 2 === 0 ? (
           <>
@@ -202,28 +204,28 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      {/* HERO SECTION */}
+      {/* HERO SECTION - Optimized for 2 lines and cleaner look */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-7xl -mt-20">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-[60rem] -mt-20">
           <div className={cn(
-            "space-y-6 transition-all duration-1000 ease-out",
+            "space-y-4 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-[50rem] mx-auto">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.15] px-4">
               <span className="block text-white">Transformamos empresas con</span>
-              <span className="block text-primary mt-1">Marketing e Inteligencia Artificial</span>
+              <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
           
           <p className={cn(
-            "max-w-4xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4 mx-auto",
+            "max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
@@ -247,7 +249,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN PROBLEMA */}
+      {/* PROBLEMA - Compact padding for faster visibility on scroll */}
       <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
@@ -288,7 +290,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BENEFICIOS */}
+      {/* BENEFICIOS - Uniform padding and smaller box */}
       <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
@@ -322,7 +324,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* PROCESO ANIMADO */}
+      {/* PROCESO - Uniform padding and creative title */}
       <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
