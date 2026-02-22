@@ -225,8 +225,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden py-20">
-        <NeuralBackground />
+      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20">
+        {/* Fondo extendido y con máscara suave */}
+        <div className="absolute inset-0 z-0 pointer-events-none h-[150vh] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
+          <NeuralBackground />
+        </div>
         
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />

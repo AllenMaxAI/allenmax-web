@@ -14,7 +14,7 @@ export function NeuralBackground() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 80; // Aumentado ligeramente para más densidad
+    const particleCount = 100; // Un poco más para cubrir el área extendida
     const connectionDistance = 160;
 
     class Particle {
@@ -27,7 +27,7 @@ export function NeuralBackground() {
       constructor(width: number, height: number) {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.25; // Movimiento suave
+        this.vx = (Math.random() - 0.5) * 0.25;
         this.vy = (Math.random() - 0.5) * 0.25;
         this.size = Math.random() * 2 + 0.5;
       }
@@ -44,19 +44,20 @@ export function NeuralBackground() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.4)'; // Opacidad de partículas aumentada
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
         ctx.fill();
       }
     }
 
     const resize = () => {
-      if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      if (!canvas || !canvas.parentElement) return;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
       init();
     };
 
     const init = () => {
+      if (!canvas) return;
       particles = [];
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle(canvas.width, canvas.height));
@@ -79,7 +80,6 @@ export function NeuralBackground() {
 
           if (dist < connectionDistance) {
             ctx.beginPath();
-            // Opacidad de líneas aumentada para visibilidad
             const alpha = (1 - dist / connectionDistance) * 0.25;
             ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
             ctx.lineWidth = 0.8;
@@ -107,7 +107,7 @@ export function NeuralBackground() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-none"
-      style={{ opacity: 0.6 }} // Opacidad general del canvas ajustada
+      style={{ opacity: 0.6 }}
     />
   );
 }
