@@ -1,13 +1,12 @@
 'use client';
 
 import { Logo } from '@/components/logo';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 
 const socialLinks = [
-  { icon: <Twitter className="h-4 w-4" />, href: '#', label: 'Twitter' },
+  { icon: <Instagram className="h-4 w-4" />, href: 'https://www.instagram.com/allenmax.es/', label: 'Instagram' },
   { icon: <Linkedin className="h-4 w-4" />, href: '#', label: 'LinkedIn' },
-  { icon: <Github className="h-4 w-4" />, href: '#', label: 'GitHub' },
 ];
 
 export function AppFooter() {
@@ -21,7 +20,7 @@ export function AppFooter() {
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10">
           
-          {/* Columna Marca: 8/12 */}
+          {/* Columna Marca */}
           <div className="lg:col-span-8 space-y-6">
             <Logo className="text-2xl font-extrabold tracking-tight" />
             <p className="text-base text-muted-foreground/70 leading-relaxed max-w-md">
@@ -32,6 +31,8 @@ export function AppFooter() {
                 <Link 
                   key={index} 
                   href={link.href} 
+                  target={link.href.startsWith('http') ? "_blank" : undefined}
+                  rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
                   className="flex items-center justify-center h-10 w-10 rounded-full border border-white/5 bg-white/[0.02] text-muted-foreground/50 hover:text-primary hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
                   aria-label={link.label}
                 >
@@ -41,7 +42,7 @@ export function AppFooter() {
             </div>
           </div>
 
-          {/* Columna Contacto: 4/12 */}
+          {/* Columna Contacto */}
           <div className="lg:col-span-4 space-y-6">
             <h4 className="text-sm font-bold uppercase tracking-widest text-white/90">Hablemos</h4>
             <div className="space-y-4">
