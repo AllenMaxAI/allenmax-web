@@ -23,11 +23,11 @@ export function AppFooter() {
   };
 
   return (
-    <footer className="relative border-t border-white/5 bg-[#020817] pt-4 pb-6 overflow-hidden">
+    <footer className="relative border-t border-white/5 bg-[#020817] pt-0 pb-6 overflow-hidden">
       {/* Elemento decorativo sutil de fondo */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container mx-auto px-6 max-w-6xl mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10">
           
           {/* Columna Marca */}
