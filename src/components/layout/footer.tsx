@@ -1,12 +1,12 @@
 'use client';
 
 import { Logo } from '@/components/logo';
-import { Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+import { Instagram, Facebook, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 const socialLinks = [
   { icon: <Instagram className="h-4 w-4" />, href: 'https://www.instagram.com/allenmax.es/', label: 'Instagram' },
-  { icon: <Linkedin className="h-4 w-4" />, href: '#', label: 'LinkedIn' },
+  { icon: <Facebook className="h-4 w-4" />, href: 'https://www.facebook.com/profile.php?id=61575519193800&locale=es_ES', label: 'Facebook' },
 ];
 
 export function AppFooter() {
@@ -31,8 +31,8 @@ export function AppFooter() {
                 <Link 
                   key={index} 
                   href={link.href} 
-                  target={link.href.startsWith('http') ? "_blank" : undefined}
-                  rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-center h-10 w-10 rounded-full border border-white/5 bg-white/[0.02] text-muted-foreground/50 hover:text-primary hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
                   aria-label={link.label}
                 >
