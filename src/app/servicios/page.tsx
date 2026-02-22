@@ -74,7 +74,7 @@ export default function ServiciosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
             <div className="space-y-12">
               <div className={cn(
                 "space-y-2 transition-all duration-1000 ease-out",
@@ -118,7 +118,7 @@ export default function ServiciosPage() {
 
             {/* Imagen a la derecha - Sin caja de fondo */}
             <div className={cn(
-              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out",
+              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out pt-8",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
               <div className="relative w-full max-w-[400px] aspect-square group">
