@@ -59,9 +59,7 @@ const NavigationMenuTrigger = React.forwardRef<
     <ChevronDown
       className={cn(
         "relative top-[1px] h-3 transition-all duration-300 ease-in-out",
-        // Estado base: sin ancho, sin margen y totalmente invisible
         "w-0 ml-0 opacity-0 overflow-hidden",
-        // Solo al pasar el ratón sobre EL TRIGGER específico o estar abierto: aparece y ocupa espacio
         "group-hover:w-3 group-hover:ml-1 group-hover:opacity-100",
         "group-data-[state=open]:w-3 group-data-[state=open]:ml-1 group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180"
       )}
@@ -92,7 +90,7 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
+  <div className={cn("absolute left-1/2 -translate-x-1/2 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
         "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",

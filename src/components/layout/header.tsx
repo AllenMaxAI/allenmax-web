@@ -17,7 +17,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -74,7 +73,8 @@ export function AppHeader() {
           </div>
 
           {/* Desktop Navigation Centrada Absolutamente */}
-          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1">
+            {/* Solo Servicios usa NavigationMenu para tener su propio contexto de centrado */}
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -83,36 +83,33 @@ export function AppHeader() {
                     <ul className="grid w-[280px] gap-1 p-2 md:w-[300px] bg-[#020817] border border-white/5">
                       {serviceLinks.map((service) => (
                         <li key={service.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={service.href}
-                              className="flex items-center gap-3 select-none rounded-md p-3 text-sm no-underline outline-none transition-colors hover:bg-primary/90 hover:text-primary-foreground focus:bg-primary/90 focus:text-primary-foreground"
-                            >
-                              {React.cloneElement(service.icon as React.ReactElement, {
-                                className: 'h-4 w-4',
-                              })}
-                              <span>{service.label}</span>
-                            </Link>
-                          </NavigationMenuLink>
+                          <Link
+                            href={service.href}
+                            className="flex items-center gap-3 select-none rounded-md p-3 text-sm no-underline outline-none transition-colors hover:bg-primary/90 hover:text-primary-foreground focus:bg-primary/90 focus:text-primary-foreground"
+                          >
+                            {React.cloneElement(service.icon as React.ReactElement, {
+                              className: 'h-4 w-4',
+                            })}
+                            <span>{service.label}</span>
+                          </Link>
                         </li>
                       ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                {navLinks.map((link) => (
-                  <NavigationMenuItem key={link.href}>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        href={link.href}
-                        className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-white/5")}
-                      >
-                        {link.label}
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
               </NavigationMenuList>
             </NavigationMenu>
+
+            {/* Los demás enlaces se renderizan como botones normales con el mismo estilo */}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-white/5")}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Menu Trigger */}
