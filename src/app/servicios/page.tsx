@@ -116,18 +116,18 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            {/* Imagen a la derecha - Importada como módulo */}
+            {/* Imagen a la derecha - Sin caja de fondo */}
             <div className={cn(
               "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
-              <div className="relative w-full max-w-[400px] aspect-square rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm group">
+              <div className="relative w-full max-w-[400px] aspect-square group">
                 <Image
                   src={serviciosImg}
                   alt="Servicios AllenMax"
                   width={500}
                   height={500}
-                  className="object-cover w-full h-full opacity-80 hover:opacity-100 transition-all duration-700 ease-in-out"
+                  className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-all duration-700 ease-in-out"
                 />
               </div>
             </div>
