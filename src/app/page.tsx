@@ -225,8 +225,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden relative">
-      {/* Fondo de Red Neuronal Global */}
-      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[300vh] [mask-image:linear-gradient(to_bottom,black_25%,transparent_95%)]">
+      {/* Fondo de Red Neuronal Global con degradado más rápido */}
+      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[220vh] [mask-image:linear-gradient(to_bottom,black_5%,transparent_50%)]">
         <NeuralBackground />
       </div>
 
@@ -272,7 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sección "El problema" - Sin fondo sólido para dejar ver la red */}
+      {/* Sección "El problema" */}
       <section className="px-4 py-20 md:py-28 relative z-10 scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
@@ -313,7 +313,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sección "Beneficios" - Sin fondo sólido para dejar ver la red */}
+      {/* Sección "Beneficios" */}
       <section className="px-4 py-20 md:py-28 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-20 flex flex-col items-center">
@@ -347,7 +347,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Sección "Proceso" - Aquí ya puede tener su fondo o seguir heredando si la red llega hasta aquí */}
+      {/* Sección "Proceso" */}
       <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
