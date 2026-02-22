@@ -30,27 +30,27 @@ const processSteps = [
   {
     step: "1",
     title: "Contacto",
-    description: "Analizamos tus necesidades y desafíos específicos para evaluar la viabilidad estratégica y asegurar un impacto inmediato."
+    description: "Analizamos tus necesidades específicas para evaluar la viabilidad estratégica y asegurar un impacto inmediato desde el primer día."
   },
   {
     step: "2",
     title: "Propuesta",
-    description: "Recibe un plan estratégico detallado con tiempos y costes transparentes. Estructuramos una hoja de ruta precisa orientada a objetivos."
+    description: "Recibe un plan estratégico detallado con tiempos y costes transparentes. Estructuramos una hoja de ruta precisa orientada a objetivos claros."
   },
   {
     step: "3",
     title: "Desarrollo",
-    description: "Implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas modulares para asegurar un escalado sólido."
+    description: "Implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas modulares para asegurar un escalado sólido y profesional."
   },
   {
     step: "4",
     title: "Refinamiento",
-    description: "Optimizamos cada flujo de trabajo basándonos en datos reales. Ajustamos la estrategia para maximizar el retorno de tu inversión."
+    description: "Optimizamos cada flujo de trabajo basándonos en datos reales. Ajustamos la estrategia continuamente para maximizar el retorno de tu inversión."
   },
   {
     step: "5",
     title: "Lidera tu sector",
-    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva. Consolida tu posición mediante eficiencia operativa avanzada."
+    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva real. Consolida tu posición mediante eficiencia operativa avanzada y escalable."
   }
 ];
 
@@ -118,7 +118,6 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
 
   return (
     <div ref={domRef} className="relative">
-      {/* Mobile view */}
       <div className="md:hidden">
         <div className={cn(
           "flex items-center gap-4 mb-4 transition-all duration-700",
@@ -138,7 +137,6 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
         )}>{step.description}</p>
       </div>
 
-      {/* Desktop view with fixed left alignment for text */}
       <div className="hidden md:grid md:grid-cols-2 md:gap-x-16 items-center">
         {index % 2 === 0 ? (
           <>
@@ -146,7 +144,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
               "text-left transition-all duration-700 delay-500",
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             )}>
-              <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-sm ml-auto">{step.description}</p>
             </div>
             <div className="flex items-center gap-4">
                <div className={cn(
@@ -179,7 +177,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
               "text-left transition-all duration-700 delay-500",
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             )}>
-              <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-sm">{step.description}</p>
             </div>
           </>
         )}
@@ -204,13 +202,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      {/* HERO SECTION - Optimized for 2 lines and cleaner look */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-[60rem] -mt-20">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-[70rem] -mt-20">
           <div className={cn(
             "space-y-4 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -218,8 +215,8 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.15] px-4">
-              <span className="block text-white">Transformamos empresas con</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] px-4">
+              <span className="block text-white mb-1">Transformamos empresas con</span>
               <span className="block text-primary">Marketing e Inteligencia Artificial</span>
             </h1>
           </div>
@@ -249,7 +246,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROBLEMA - Compact padding for faster visibility on scroll */}
       <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
@@ -290,20 +286,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BENEFICIOS - Uniform padding and smaller box */}
       <section className="px-4 py-20 md:py-28 relative z-10 bg-[#020817]">
         <div className="container mx-auto max-w-6xl">
-          <FadeInSection className="text-center mb-24 flex flex-col items-center">
+          <FadeInSection className="text-center mb-20 flex flex-col items-center">
             <div className="flex flex-col items-center mb-6">
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
                 Impulsa el crecimiento de tu empresa
               </h2>
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
             </div>
-            <div className="max-w-sm mx-auto px-4 py-2.5 rounded-2xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
+            <div className="max-w-xs mx-auto px-4 py-1.5 rounded-2xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
-              <p className="text-muted-foreground text-base md:text-lg leading-snug">
-               Sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> e <span className="text-primary font-bold">IA</span> para un alto rendimiento.
+              <p className="text-muted-foreground text-sm md:text-base leading-snug">
+               Sistemas de <span className="text-primary font-bold">marketing</span> e <span className="text-primary font-bold">IA</span> para un alto rendimiento.
               </p>
             </div>
           </FadeInSection>
@@ -324,7 +319,6 @@ export default function Home() {
         </div>
       </section>
       
-      {/* PROCESO - Uniform padding and creative title */}
       <section id="proceso" className="px-4 py-20 md:py-28 relative z-10 bg-[#020817] scroll-mt-20">
         <div className="container mx-auto">
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
