@@ -44,21 +44,21 @@ export function NeuralBackground() {
       getAlphaAtY(canvasHeight: number) {
         const yProgress = this.y / canvasHeight;
         
-        // Si es una partícula "fantasma" (para los clústeres de abajo), opacidad un 15% más alta que antes (0.12 -> 0.14)
-        if (this.isGhost) return 0.14;
+        // Aumentamos opacidad base de fantasmas para que sean visibles
+        if (this.isGhost) return 0.28;
 
         // Para las partículas principales (arriba):
         if (yProgress < 0.1) return 1;
         if (yProgress < 0.3) {
           return 1 - ((yProgress - 0.1) / 0.2);
         }
-        return 0.05; 
+        return 0.08; 
       }
 
       draw(canvasHeight: number) {
         if (!ctx) return;
         // Aumentamos el multiplicador de dibujo para mejorar visibilidad general
-        const alpha = this.getAlphaAtY(canvasHeight) * 0.45;
+        const alpha = this.getAlphaAtY(canvasHeight) * 0.7;
         if (alpha < 0.01) return;
 
         ctx.beginPath();
@@ -90,8 +90,8 @@ export function NeuralBackground() {
       }
 
       // Clústeres aleatorios "fantasma" por toda la página
-      // Aumentamos la cantidad un 15% (de 20 a 23 por cada 1000px)
-      const ghostCount = Math.floor((height / 1000) * 23);
+      // Aumentamos densidad de fantasmas a 45 por cada 1000px de altura
+      const ghostCount = Math.floor((height / 1000) * 45);
       for (let i = 0; i < ghostCount; i++) {
         const p = new Particle(width, height, true);
         particles.push(p);
@@ -123,12 +123,12 @@ export function NeuralBackground() {
           if (dist < connectionDistance) {
             const combinedAlpha = Math.min(pAlpha, p2Alpha);
             const distFactor = (1 - dist / connectionDistance);
-            // Aumentamos intensidad de línea un 15% (0.22 -> 0.25)
-            const alpha = distFactor * combinedAlpha * 0.25;
+            // Aumentamos intensidad de línea significativamente (0.25 -> 0.45)
+            const alpha = distFactor * combinedAlpha * 0.45;
             
             ctx.beginPath();
             ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
-            ctx.lineWidth = 0.5;
+            ctx.lineWidth = 0.6;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
@@ -153,7 +153,7 @@ export function NeuralBackground() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-none"
-      style={{ opacity: 0.9 }}
+      style={{ opacity: 0.95 }}
     />
   );
 }
