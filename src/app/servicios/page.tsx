@@ -5,9 +5,13 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BrainCircuit, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
+
+// Importación de la imagen local
+import serviciosImg from '@/img/servicios.png';
 
 const serviceCategories = [
   {
@@ -114,13 +118,18 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            {/* Espacio reservado para la nueva imagen */}
+            {/* Contenedor de la imagen nueva */}
             <div className={cn(
-              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out pt-0",
+              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out items-start",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
-              <div className="relative w-full max-w-[400px] aspect-square group">
-                {/* Aquí puedes añadir la nueva imagen */}
+              <div className="relative w-full max-w-[450px] aspect-square">
+                <Image 
+                  src={serviciosImg}
+                  alt="Servicios AllenMax"
+                  className="w-full h-auto object-contain"
+                  priority
+                />
               </div>
             </div>
           </div>
