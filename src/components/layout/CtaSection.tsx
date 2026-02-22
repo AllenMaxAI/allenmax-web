@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export function CtaSection() {
   return (
-    <section className="py-20 md:py-28 text-center">
+    <section className="py-12 md:py-20 text-center">
       <div className="container mx-auto px-4">
         <Button asChild size="lg" className="font-bold h-14 px-8">
           <Link href="/contacto" className="flex items-center gap-3">
