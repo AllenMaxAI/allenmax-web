@@ -240,9 +240,6 @@ export default function Home() {
             >
               Descubre cómo lo hacemos
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg border-white/10 hover:bg-white/10 hover:text-white transition-colors duration-200">
-              <Link href="/servicios">Ver Servicios</Link>
-            </Button>
           </div>
         </div>
       </section>
