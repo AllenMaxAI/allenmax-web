@@ -9,7 +9,6 @@ import Image from 'next/image';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const serviceCategories = [
   {
@@ -64,7 +63,6 @@ function FadeInSection({ children, className, delay = 0 }: { children: React.Rea
 
 export default function ServiciosPage() {
   const [isMounted, setIsMounted] = useState(false);
-  const handshakeImage = PlaceHolderImages.find(img => img.id === 'ai-collaboration');
 
   useEffect(() => {
     setIsMounted(true);
@@ -124,16 +122,13 @@ export default function ServiciosPage() {
             )}>
               <div className="relative w-full max-w-[400px] aspect-square rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-700" />
-                {handshakeImage && (
-                  <Image
-                    src={handshakeImage.imageUrl}
-                    alt={handshakeImage.description}
-                    width={500}
-                    height={500}
-                    className="object-cover w-full h-full opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700 ease-in-out"
-                    data-ai-hint={handshakeImage.imageHint}
-                  />
-                )}
+                <Image
+                  src="/src/img/servicios.png"
+                  alt="Servicios AllenMax"
+                  width={500}
+                  height={500}
+                  className="object-cover w-full h-full opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700 ease-in-out"
+                />
               </div>
               {/* Elementos decorativos sutiles */}
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
