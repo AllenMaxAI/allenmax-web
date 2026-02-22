@@ -119,7 +119,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* CATEGORÍAS DE SERVICIOS */}
-      <section className="pt-20 md:pt-28 pb-10 md:pb-12">
+      <section className="pt-20 md:pt-28 pb-0">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
             {serviceCategories.map((category, index) => (

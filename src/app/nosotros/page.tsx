@@ -223,7 +223,7 @@ export default function NosotrosPage() {
             </div>
           </FadeInSection>
 
-          <FadeInSection className="space-y-16 pb-12">
+          <FadeInSection className="space-y-16 pb-0">
             <h3 className="text-center text-2xl font-bold text-[#c20000]">Quizás no sea el momento si:</h3>
             <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
               {notForYouItems.map((item, idx) => (
