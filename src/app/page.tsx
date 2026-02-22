@@ -144,7 +144,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
               "text-left transition-all duration-700 delay-500",
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             )}>
-              <p className="text-base text-muted-foreground leading-relaxed max-w-sm ml-auto">{step.description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-sm ml-auto text-left">{step.description}</p>
             </div>
             <div className="flex items-center gap-4">
                <div className={cn(
@@ -177,7 +177,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
               "text-left transition-all duration-700 delay-500",
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             )}>
-              <p className="text-base text-muted-foreground leading-relaxed max-w-sm">{step.description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-sm text-left">{step.description}</p>
             </div>
           </>
         )}
@@ -298,7 +298,7 @@ export default function Home() {
             <div className="max-w-xs mx-auto px-4 py-1.5 rounded-2xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
               <p className="text-muted-foreground text-sm md:text-base leading-snug">
-               Sistemas de <span className="text-primary font-bold">marketing</span> e <span className="text-primary font-bold">IA</span> para un alto rendimiento.
+               Impulsamos tu <span className="text-primary font-bold">rentabilidad</span> con <span className="text-primary font-bold">tecnología</span> de vanguardia.
               </p>
             </div>
           </FadeInSection>
