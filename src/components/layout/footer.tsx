@@ -3,6 +3,7 @@
 import { Logo } from '@/components/logo';
 import { Instagram, Facebook, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { useToast } from '@/hooks/use-toast';
 
 const socialLinks = [
   { icon: <Instagram className="h-4 w-4" />, href: 'https://www.instagram.com/allenmax.es/', label: 'Instagram' },
@@ -11,6 +12,15 @@ const socialLinks = [
 
 export function AppFooter() {
   const currentYear = new Date().getFullYear();
+  const { toast } = useToast();
+
+  const handleCopy = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: "Copiado al portapapeles",
+      description: `${label} copiado con éxito.`,
+    });
+  };
 
   return (
     <footer className="relative border-t border-white/5 bg-[#020817] pt-10 pb-6 overflow-hidden">
@@ -46,9 +56,9 @@ export function AppFooter() {
           <div className="lg:col-span-4 space-y-6">
             <h4 className="text-sm font-bold uppercase tracking-widest text-white/90">Contacto</h4>
             <div className="space-y-6">
-              <a 
-                href="mailto:agency@allenmax.com" 
-                className="flex items-start gap-4 group"
+              <button 
+                onClick={() => handleCopy('agency@allenmax.com', 'Email')}
+                className="flex items-start gap-4 group text-left w-full focus:outline-none"
               >
                 <div className="mt-1 text-primary">
                   <Mail className="h-4 w-4" />
@@ -57,10 +67,10 @@ export function AppFooter() {
                   <span className="text-[10px] text-muted-foreground/40 font-bold uppercase tracking-widest mb-0.5">Email</span>
                   <span className="text-sm text-white/80 group-hover:text-primary transition-colors">agency@allenmax.com</span>
                 </div>
-              </a>
-              <a 
-                href="tel:+34654487378" 
-                className="flex items-start gap-4 group"
+              </button>
+              <button 
+                onClick={() => handleCopy('+34 654 48 73 78', 'Teléfono')}
+                className="flex items-start gap-4 group text-left w-full focus:outline-none"
               >
                 <div className="mt-1 text-primary">
                   <Phone className="h-4 w-4" />
@@ -69,7 +79,7 @@ export function AppFooter() {
                   <span className="text-[10px] text-muted-foreground/40 font-bold uppercase tracking-widest mb-0.5">Teléfono</span>
                   <span className="text-sm text-white/80 group-hover:text-primary transition-colors">+34 654 48 73 78</span>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
 
