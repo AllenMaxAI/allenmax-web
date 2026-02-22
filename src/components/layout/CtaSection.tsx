@@ -7,7 +7,7 @@ export function CtaSection() {
   return (
     <section className="py-24 md:py-32 text-center">
       <div className="container mx-auto px-4">
-        <Button asChild size="lg" className="font-bold h-14 px-10 text-lg shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all">
+        <Button asChild size="lg" className="font-bold h-14 px-10 text-lg shadow-[0_0_12px_rgba(59,130,246,0.2)] hover:shadow-[0_0_18px_rgba(59,130,246,0.3)] transition-all">
           <Link href="/contacto" className="flex items-center gap-3">
             Agendar llamada estratégica <Phone className="h-5 w-5" />
           </Link>
