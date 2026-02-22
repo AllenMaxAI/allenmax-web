@@ -30,27 +30,27 @@ const processSteps = [
   {
     step: "1",
     title: "Contacto",
-    description: "Agenda una llamada y cuéntanos tu proyecto."
+    description: "Agenda una llamada y cuéntanos tu proyecto. Analizamos tus necesidades específicas para entender el potencial de tu negocio. Definimos el punto de partida ideal para tu transformación digital."
   },
   {
     step: "2",
     title: "Propuesta",
-    description: "Recibe un plan detallado con tiempos y costes."
+    description: "Recibe un plan detallado con tiempos y costes. Estructuramos una hoja de ruta clara, transparente y orientada a objetivos medibles. Sin sorpresas, con total claridad en cada fase del proceso."
   },
   {
     step: "3",
     title: "Desarrollo",
-    description: "Creamos soluciones personalizadas de forma ágil."
+    description: "Creamos soluciones personalizadas de forma ágil. Implementamos sistemas de IA y marketing con un enfoque modular y escalable. Priorizamos la entrega de valor constante para que veas progresos reales rápido."
   },
   {
     step: "4",
     title: "Refinamiento",
-    description: "Iteración constante enfocada en resultados."
+    description: "Iteración constante enfocada en resultados. Optimizamos cada flujo de trabajo basándonos en datos reales de rendimiento. Ajustamos la estrategia para maximizar el retorno de tu inversión día tras día."
   },
   {
     step: "5",
     title: "Lidera tu sector",
-    description: "Aplica IA para obtener ventaja competitiva."
+    description: "Aplica IA para obtener ventaja competitiva. Consolida una posición de liderazgo en tu mercado mediante la eficiencia tecnológica. Escala tu operación con sistemas que aprenden y mejoran de forma autónoma."
   }
 ];
 
@@ -216,7 +216,7 @@ export default function Home() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest">
               Liderando la Revolución Digital
             </span>
-            <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-5xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] px-4 max-w-[50rem] mx-auto">
               <span className="block text-white">Transformamos empresas con</span>
               <span className="block text-primary mt-1">Marketing e Inteligencia Artificial</span>
             </h1>
@@ -298,9 +298,9 @@ export default function Home() {
               </h2>
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
             </div>
-            <div className="max-w-2xl mx-auto px-8 py-8 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
+            <div className="max-w-xl mx-auto px-6 py-6 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
-              <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed">
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
                Diseñamos e implementamos sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> y <span className="text-primary font-bold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
               </p>
             </div>
