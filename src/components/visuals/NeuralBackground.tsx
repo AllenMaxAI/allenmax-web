@@ -14,9 +14,8 @@ export function NeuralBackground() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 60;
-    const connectionDistance = 150;
-    const mouse = { x: -100, y: -100, radius: 150 };
+    const particleCount = 80; // Aumentado ligeramente para más densidad
+    const connectionDistance = 160;
 
     class Particle {
       x: number;
@@ -28,9 +27,9 @@ export function NeuralBackground() {
       constructor(width: number, height: number) {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.3; // Movimiento muy lento
-        this.vy = (Math.random() - 0.5) * 0.3;
-        this.size = Math.random() * 1.5 + 0.5;
+        this.vx = (Math.random() - 0.5) * 0.25; // Movimiento suave
+        this.vy = (Math.random() - 0.5) * 0.25;
+        this.size = Math.random() * 2 + 0.5;
       }
 
       update(width: number, height: number) {
@@ -45,12 +44,13 @@ export function NeuralBackground() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; // Primary color with low opacity
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.4)'; // Opacidad de partículas aumentada
         ctx.fill();
       }
     }
 
     const resize = () => {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       init();
@@ -64,6 +64,7 @@ export function NeuralBackground() {
     };
 
     const animate = () => {
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p, i) => {
@@ -78,8 +79,10 @@ export function NeuralBackground() {
 
           if (dist < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.1 * (1 - dist / connectionDistance)})`;
-            ctx.lineWidth = 0.5;
+            // Opacidad de líneas aumentada para visibilidad
+            const alpha = (1 - dist / connectionDistance) * 0.25;
+            ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
+            ctx.lineWidth = 0.8;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
@@ -103,8 +106,8 @@ export function NeuralBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-none opacity-40"
-      style={{ filter: 'blur(0.5px)' }}
+      className="absolute inset-0 z-0 pointer-events-none"
+      style={{ opacity: 0.6 }} // Opacidad general del canvas ajustada
     />
   );
 }
