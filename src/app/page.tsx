@@ -222,10 +222,11 @@ export default function Home() {
           </div>
           
           <p className={cn(
-            "max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
+            "max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
-            Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, optimizar tus operaciones y escalar tu negocio sin límites.
+            Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, <br className="hidden md:block" />
+            optimizar tus operaciones y escalar tu negocio sin límites.
           </p>
           
           <div className={cn(
@@ -329,7 +330,7 @@ export default function Home() {
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
             </div>
             <p className="max-w-2xl mx-auto text-muted-foreground text-xl leading-relaxed">
-              Nuestro proceso probado garantiza resultados excepcionales y una <span className="text-white/90 font-medium underline decoration-primary/40 underline-offset-8 decoration-2">implementación sin fricciones.</span>
+              Nuestro proceso probado garantiza resultados excepcionales y una <span className="text-white/90 font-medium decoration-primary/40 underline-offset-8 decoration-2">implementación sin fricciones.</span>
             </p>
           </FadeInSection>
 
