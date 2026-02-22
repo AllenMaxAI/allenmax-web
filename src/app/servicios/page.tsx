@@ -10,8 +10,8 @@ import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-// Importación de la imagen local
-import serviciosImg from '@/img/servicios.png';
+// Importación de la imagen desde la nueva ruta
+import serviciosImg from '@/app/images/servicios.png';
 
 const serviceCategories = [
   {
@@ -118,7 +118,7 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            {/* Contenedor de la imagen nueva */}
+            {/* Contenedor de la imagen sin caja y alineada arriba */}
             <div className={cn(
               "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out items-start",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
