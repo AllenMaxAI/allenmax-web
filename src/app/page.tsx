@@ -300,7 +300,7 @@ export default function Home() {
               </h2>
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
             </div>
-            <div className="max-w-lg mx-auto px-6 py-6 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
+            <div className="max-w-md mx-auto px-6 py-4 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
                Diseñamos e implementamos sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> y <span className="text-primary font-bold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
