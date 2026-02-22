@@ -44,22 +44,21 @@ export function NeuralBackground() {
       getAlphaAtY(canvasHeight: number) {
         const yProgress = this.y / canvasHeight;
         
-        // Si es una partícula "fantasma" (para los clústeres de abajo), mantenemos opacidad baja constante
-        if (this.isGhost) return 0.12;
+        // Si es una partícula "fantasma" (para los clústeres de abajo), opacidad un 15% más alta que antes (0.12 -> 0.14)
+        if (this.isGhost) return 0.14;
 
         // Para las partículas principales (arriba):
-        // 0% - 10%: Opacidad 1
-        // 10% - 30%: Desvanecimiento rápido
         if (yProgress < 0.1) return 1;
         if (yProgress < 0.3) {
           return 1 - ((yProgress - 0.1) / 0.2);
         }
-        return 0.05; // Mínimo para las principales
+        return 0.05; 
       }
 
       draw(canvasHeight: number) {
         if (!ctx) return;
-        const alpha = this.getAlphaAtY(canvasHeight) * 0.4;
+        // Aumentamos el multiplicador de dibujo para mejorar visibilidad general
+        const alpha = this.getAlphaAtY(canvasHeight) * 0.45;
         if (alpha < 0.01) return;
 
         ctx.beginPath();
@@ -91,8 +90,8 @@ export function NeuralBackground() {
       }
 
       // Clústeres aleatorios "fantasma" por toda la página
-      // Ponemos una densidad baja pero constante
-      const ghostCount = Math.floor((height / 1000) * 20);
+      // Aumentamos la cantidad un 15% (de 20 a 23 por cada 1000px)
+      const ghostCount = Math.floor((height / 1000) * 23);
       for (let i = 0; i < ghostCount; i++) {
         const p = new Particle(width, height, true);
         particles.push(p);
@@ -122,10 +121,10 @@ export function NeuralBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            // La opacidad de la línea depende de la distancia y la opacidad de las partículas
             const combinedAlpha = Math.min(pAlpha, p2Alpha);
             const distFactor = (1 - dist / connectionDistance);
-            const alpha = distFactor * combinedAlpha * 0.22;
+            // Aumentamos intensidad de línea un 15% (0.22 -> 0.25)
+            const alpha = distFactor * combinedAlpha * 0.25;
             
             ctx.beginPath();
             ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
