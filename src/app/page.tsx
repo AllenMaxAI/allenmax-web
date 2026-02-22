@@ -222,7 +222,7 @@ export default function Home() {
           </div>
           
           <p className={cn(
-            "max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
+            "max-w-4xl text-lg md:text-xl text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ease-out px-4",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             Combinamos marketing estratégico y tecnología avanzada para atraer más clientes, <br className="hidden md:block" />
