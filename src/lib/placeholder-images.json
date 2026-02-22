@@ -11,6 +11,12 @@
       "description": "Abstract visualization of AI architecture and strategic connections",
       "imageUrl": "https://images.unsplash.com/photo-1707023934064-cd112f1e472c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhaSUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NzE3MjU5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "ai architecture"
+    },
+    {
+      "id": "ai-collaboration",
+      "description": "Futuristic illustration of human and robot collaboration representing AI partnership",
+      "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhaSUyMGh1bWFuJTIwaGFuZHNoYWtlfGVufDB8fHx8MTc3MTcyNjQwMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ai collaboration"
     }
   ]
 }

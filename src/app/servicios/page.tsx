@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -64,7 +65,7 @@ function FadeInSection({ children, className, delay = 0 }: { children: React.Rea
 
 export default function ServiciosPage() {
   const [isMounted, setIsMounted] = useState(false);
-  const heroImage = PlaceHolderImages.find(img => img.id === 'ai-architecture');
+  const handshakeImage = PlaceHolderImages.find(img => img.id === 'ai-collaboration');
 
   useEffect(() => {
     setIsMounted(true);
@@ -75,7 +76,7 @@ export default function ServiciosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
             <div className="space-y-12">
               <div className={cn(
                 "space-y-2 transition-all duration-1000 ease-out",
@@ -107,40 +108,37 @@ export default function ServiciosPage() {
                     No ofrecemos servicios aislados. 
                     <span className="block text-foreground font-semibold mt-2">Diseñamos soluciones que se integran en el ADN de tu negocio.</span>
                   </p>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    Implementar IA o Marketing sin una base sólida es solo ruido. Nuestra metodología asegura que cada acción contribuya a un sistema de crecimiento predecible.
-                  </p>
                 </div>
                 <div className="border-l-2 border-primary pl-8 py-2">
                   <p className="text-xl font-bold mb-4">Sinergia Estratégica.</p>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Conectamos cada pieza de tu ecosistema digital para que la captación, la conversión y la fidelización funcionen de forma coordinada y escalable.
+                    Conectamos cada pieza para que la captación y conversión funcionen de forma coordinada.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Imagen a la derecha */}
+            {/* Imagen a la derecha - Espacio más pequeño y optimizado */}
             <div className={cn(
-              "relative hidden lg:block transition-all duration-1000 delay-700 ease-out",
+              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out",
               isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 pointer-events-none" />
-                {heroImage && (
+              <div className="relative w-full max-w-[400px] aspect-square rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-700" />
+                {handshakeImage && (
                   <Image
-                    src={heroImage.imageUrl}
-                    alt={heroImage.description}
-                    width={800}
-                    height={600}
-                    className="object-cover w-full h-auto grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
-                    data-ai-hint={heroImage.imageHint}
+                    src={handshakeImage.imageUrl}
+                    alt={handshakeImage.description}
+                    width={500}
+                    height={500}
+                    className="object-cover w-full h-full opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700 ease-in-out"
+                    data-ai-hint={handshakeImage.imageHint}
                   />
                 )}
               </div>
-              {/* Elementos decorativos abstractos */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-primary/40 rounded-tr-3xl" />
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-primary/40 rounded-bl-3xl" />
+              {/* Elementos decorativos sutiles */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
             </div>
           </div>
         </div>

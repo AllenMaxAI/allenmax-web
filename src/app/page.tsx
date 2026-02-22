@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -205,7 +206,7 @@ export default function Home() {
     const duration = 1200;
     let start: number | null = null;
 
-    const ease = (t: number, b: number, c: number, d: number) => {
+    const easeAnimation = (t: number, b: number, c: number, d: number) => {
       t /= d / 2;
       if (t < 1) return (c / 2) * t * t * t + b;
       t -= 2;
@@ -215,7 +216,7 @@ export default function Home() {
     const animation = (currentTime: number) => {
       if (start === null) start = currentTime;
       const timeElapsed = currentTime - start;
-      const run = ease(timeElapsed, startPosition, distance, duration);
+      const run = easeAnimation(timeElapsed, startPosition, distance, duration);
       window.scrollTo(0, run);
       if (timeElapsed < duration) requestAnimationFrame(animation);
     };

@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,23 +33,19 @@
     @apply border-border;
   }
   
-  /* Personalización de Scrollbar para Firefox */
   * {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--primary)) hsl(var(--background));
   }
 
-  /* Personalización de Scrollbar para Chrome, Edge y Safari */
   *::-webkit-scrollbar {
     width: 10px;
   }
 
-  /* Carril del scrollbar */
   *::-webkit-scrollbar-track {
     background: hsl(var(--background));
   }
 
-  /* Pulgar (thumb) del scrollbar */
   *::-webkit-scrollbar-thumb {
     background-color: hsl(var(--primary));
     border-radius: 20px;
