@@ -30,27 +30,27 @@ const processSteps = [
   {
     step: "1",
     title: "Contacto",
-    description: "Agenda una llamada y cuéntanos tu proyecto. Analizamos tus necesidades específicas para entender el potencial de tu negocio. Definimos el punto de partida ideal para tu transformación digital."
+    description: "Agenda una llamada y cuéntanos tu proyecto en detalle. Analizamos tus necesidades específicas y desafíos actuales para entender el potencial real de tu negocio. Definimos el punto de partida ideal para una transformación digital que genere impacto inmediato y duradero en tu mercado."
   },
   {
     step: "2",
     title: "Propuesta",
-    description: "Recibe un plan detallado con tiempos y costes. Estructuramos una hoja de ruta clara, transparente y orientada a objetivos medibles. Sin sorpresas, con total claridad en cada fase del proceso."
+    description: "Recibe un plan estratégico detallado con tiempos de entrega claros y costes transparentes. Estructuramos una hoja de ruta precisa, orientada a objetivos medibles que faciliten el seguimiento del éxito. Sin sorpresas, con total claridad en cada fase operativa del proceso de escalado."
   },
   {
     step: "3",
     title: "Desarrollo",
-    description: "Creamos soluciones personalizadas de forma ágil. Implementamos sistemas de IA y marketing con un enfoque modular y escalable. Priorizamos la entrega de valor constante para que veas progresos reales rápido."
+    description: "Creamos e implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas de IA y marketing con un enfoque modular, permitiendo que tu empresa crezca de forma escalable. Priorizamos la entrega de valor constante para que tu equipo vea progresos reales desde las primeras semanas."
   },
   {
     step: "4",
     title: "Refinamiento",
-    description: "Iteración constante enfocada en resultados. Optimizamos cada flujo de trabajo basándonos en datos reales de rendimiento. Ajustamos la estrategia para maximizar el retorno de tu inversión día tras día."
+    description: "Mantenemos una iteración constante enfocada 100% en la obtención de resultados tangibles. Optimizamos cada flujo de trabajo y embudo de ventas basándonos en datos de rendimiento en tiempo real. Ajustamos la estrategia de forma proactiva para maximizar el retorno de tu inversión día tras día."
   },
   {
     step: "5",
     title: "Lidera tu sector",
-    description: "Aplica IA para obtener ventaja competitiva. Consolida una posición de liderazgo en tu mercado mediante la eficiencia tecnológica. Escala tu operación con sistemas que aprenden y mejoran de forma autónoma."
+    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva insuperable en tu nicho. Consolida una posición de liderazgo indiscutible mediante la eficiencia operativa que solo la IA permite. Escala tu operación global con sistemas autónomos que aprenden y mejoran su rendimiento de forma independiente."
   }
 ];
 
@@ -141,7 +141,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
         {index % 2 === 0 ? (
           <>
             <div className={cn(
-              "text-right transition-all duration-700 delay-500",
+              "text-left transition-all duration-700 delay-500",
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             )}>
               <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
