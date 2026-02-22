@@ -5,9 +5,9 @@ import Link from 'next/link';
 
 export function CtaSection() {
   return (
-    <section className="py-12 text-center">
+    <section className="py-24 md:py-32 text-center">
       <div className="container mx-auto px-4">
-        <Button asChild size="lg" className="font-bold h-14 px-8">
+        <Button asChild size="lg" className="font-bold h-14 px-10 text-lg shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all">
           <Link href="/contacto" className="flex items-center gap-3">
             Agendar llamada estratégica <Phone className="h-5 w-5" />
           </Link>
