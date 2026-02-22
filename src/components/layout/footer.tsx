@@ -60,7 +60,7 @@ export function AppFooter() {
                 onClick={() => handleCopy('agency@allenmax.com', 'Email')}
                 className="flex items-start gap-4 group text-left w-full focus:outline-none"
               >
-                <div className="mt-1.5 text-primary">
+                <div className="mt-4 text-primary">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
@@ -72,7 +72,7 @@ export function AppFooter() {
                 onClick={() => handleCopy('+34 654 48 73 78', 'Teléfono')}
                 className="flex items-start gap-4 group text-left w-full focus:outline-none"
               >
-                <div className="mt-1.5 text-primary">
+                <div className="mt-4 text-primary">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
