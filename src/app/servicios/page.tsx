@@ -118,6 +118,42 @@ export default function ServiciosPage() {
         </div>
       </section>
 
+      {/* ARQUITECTURA ESTRATÉGICA (MISMO DISEÑO QUE NOSOTROS) */}
+      <section className="py-20 md:py-28 bg-[#020817]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <FadeInSection className="grid lg:grid-cols-2 gap-x-20 gap-y-16 items-start">
+            <div className="space-y-8">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                Integración <span className="text-primary">Estratégica</span>
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Entendemos que la tecnología y el marketing no son compartimentos estancos. Para que tu empresa escale, cada herramienta debe estar al servicio de una estrategia unificada.
+              </p>
+              <div className="border-l-2 border-primary pl-6 py-1">
+                <p className="text-lg font-medium italic text-white/80">
+                  "Unificamos marketing e inteligencia artificial para crear una ventaja competitiva real y sostenible."
+                </p>
+              </div>
+            </div>
+            
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-foreground">Sistemas, no parches</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  En lugar de soluciones aisladas, diseñamos la infraestructura completa que tu negocio necesita para captar clientes de forma predecible.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-foreground">Potencia con IA</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Utilizamos la inteligencia artificial no solo por innovación, sino para optimizar cada punto de contacto y maximizar tu conversión.
+                </p>
+              </div>
+            </div>
+          </FadeInSection>
+        </div>
+      </section>
+
       {/* CATEGORÍAS DE SERVICIOS */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
@@ -133,7 +169,7 @@ export default function ServiciosPage() {
                       <p className="text-lg text-muted-foreground leading-relaxed">{category.description}</p>
                     </div>
                     <div className="mt-10">
-                      <Button asChild className="w-full btn-glow h-14 text-lg font-bold">
+                      <Button asChild className="w-full h-14 text-lg font-bold">
                           <Link href={category.href}>Saber más</Link>
                       </Button>
                   </div>
