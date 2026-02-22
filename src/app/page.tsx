@@ -324,10 +324,7 @@ export default function Home() {
           <FadeInSection className="text-center mb-24 flex flex-col items-center">
             <div className="flex flex-col items-center mb-8">
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-                Cómo lo Hacemos <span className="relative inline-block px-1">
-                  <span className="relative z-10 text-primary">Realidad</span>
-                  <span className="absolute bottom-1 left-0 w-full h-4 bg-primary/10 -rotate-1 rounded-sm" />
-                </span>
+                Cómo lo Hacemos <span className="text-primary">Realidad</span>
               </h2>
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
             </div>
