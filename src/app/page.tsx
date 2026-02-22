@@ -225,8 +225,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden relative">
-      {/* Fondo de Red Neuronal Global con degradado más rápido */}
-      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[220vh] [mask-image:linear-gradient(to_bottom,black_5%,transparent_50%)]">
+      {/* Fondo de Red Neuronal Global - Abarca más altura sin máscara CSS restrictiva */}
+      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[350vh]">
         <NeuralBackground />
       </div>
 
