@@ -225,13 +225,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden relative">
-      {/* Fondo de Red Neuronal Global - Abarca más altura sin máscara CSS restrictiva */}
-      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none h-[350vh]">
+      {/* Fondo de Red Neuronal Global - Capa absoluta al fondo de todo el contenedor */}
+      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none min-h-full h-full">
         <NeuralBackground />
       </div>
 
+      {/* Las secciones son transparentes para dejar ver el fondo global */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20 z-10">
-        <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
