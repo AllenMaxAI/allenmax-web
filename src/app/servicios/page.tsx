@@ -127,6 +127,7 @@ export default function ServiciosPage() {
                   alt="Servicios AllenMax"
                   width={500}
                   height={500}
+                  priority
                   className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-all duration-700 ease-in-out"
                 />
               </div>

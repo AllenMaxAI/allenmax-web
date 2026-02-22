@@ -176,7 +176,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
             </div>
             <div className={cn(
               "text-left transition-all duration-700 delay-500",
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-y-10"
             )}>
               <p className="text-base text-muted-foreground leading-relaxed max-w-sm text-left">{step.description}</p>
             </div>
