@@ -50,14 +50,14 @@ export function AppFooter() {
                 href="mailto:agency@allenmax.com" 
                 className="flex flex-col group"
               >
-                <span className="text-xs text-muted-foreground/40 font-bold uppercase tracking-tighter mb-1">Email</span>
+                <span className="text-xs text-muted-foreground/40 font-bold uppercase tracking-tighter mb-1">Email ✉️</span>
                 <span className="text-sm text-white/80 group-hover:text-primary transition-colors">agency@allenmax.com</span>
               </a>
               <a 
                 href="tel:+34654487378" 
                 className="flex flex-col group"
               >
-                <span className="text-xs text-muted-foreground/40 font-bold uppercase tracking-tighter mb-1">Teléfono</span>
+                <span className="text-xs text-muted-foreground/40 font-bold uppercase tracking-tighter mb-1">Teléfono 📞</span>
                 <span className="text-sm text-white/80 group-hover:text-primary transition-colors">+34 654 48 73 78</span>
               </a>
             </div>
