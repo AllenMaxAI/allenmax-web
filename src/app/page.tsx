@@ -7,6 +7,7 @@ import Link from 'next/link';
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
+import { NeuralBackground } from '@/components/visuals/NeuralBackground';
 
 const benefits = [
   {
@@ -201,7 +202,7 @@ export default function Home() {
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 1200; // Un poco más lento para profesionalismo
+    const duration = 1200;
     let start: number | null = null;
 
     const animation = (currentTime: number) => {
@@ -212,7 +213,6 @@ export default function Home() {
       if (timeElapsed < duration) requestAnimationFrame(animation);
     };
 
-    // Función de easing: easeInOutCubic
     const ease = (t: number, b: number, c: number, d: number) => {
       t /= d / 2;
       if (t < 1) return (c / 2) * t * t * t + b;
@@ -226,6 +226,8 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden py-20">
+        <NeuralBackground />
+        
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
