@@ -30,27 +30,27 @@ const processSteps = [
   {
     step: "1",
     title: "Contacto",
-    description: "Agenda una llamada y cuéntanos tu proyecto en detalle. Analizamos tus necesidades específicas y desafíos actuales para entender el potencial real de tu negocio. Definimos el punto de partida ideal para una transformación digital que genere impacto inmediato y duradero en tu mercado."
+    description: "Agenda una llamada y cuéntanos tu proyecto en detalle. Analizamos tus necesidades específicas y desafíos actuales para entender el potencial real de tu negocio. Definimos el punto de partida ideal para una transformación digital que genere impacto inmediato y duradero en tu mercado. Evaluamos la viabilidad técnica y estratégica de cada iniciativa propuesta."
   },
   {
     step: "2",
     title: "Propuesta",
-    description: "Recibe un plan estratégico detallado con tiempos de entrega claros y costes transparentes. Estructuramos una hoja de ruta precisa, orientada a objetivos medibles que faciliten el seguimiento del éxito. Sin sorpresas, con total claridad en cada fase operativa del proceso de escalado."
+    description: "Recibe un plan estratégico detallado con tiempos de entrega claros y costes transparentes. Estructuramos una hoja de ruta precisa, orientada a objetivos medibles que faciliten el seguimiento del éxito. Sin sorpresas, con total claridad en cada fase operativa del proceso de escalado. Detallamos cada hito clave para asegurar una alineación total con tus expectativas."
   },
   {
     step: "3",
     title: "Desarrollo",
-    description: "Creamos e implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas de IA y marketing con un enfoque modular, permitiendo que tu empresa crezca de forma escalable. Priorizamos la entrega de valor constante para que tu equipo vea progresos reales desde las primeras semanas."
+    description: "Creamos e implementamos soluciones personalizadas de forma ágil y eficiente. Desplegamos sistemas de IA y marketing con un enfoque modular, permitiendo que tu empresa crezca de forma escalable. Priorizamos la entrega de valor constante para que tu equipo vea progresos reales desde las primeras semanas. Integramos tecnología de última generación adaptada a tu flujo de trabajo."
   },
   {
     step: "4",
     title: "Refinamiento",
-    description: "Mantenemos una iteración constante enfocada 100% en la obtención de resultados tangibles. Optimizamos cada flujo de trabajo y embudo de ventas basándonos en datos de rendimiento en tiempo real. Ajustamos la estrategia de forma proactiva para maximizar el retorno de tu inversión día tras día."
+    description: "Mantenemos una iteración constante enfocada 100% en la obtención de resultados tangibles. Optimizamos cada flujo de trabajo y embudo de ventas basándonos en datos de rendimiento en tiempo real. Ajustamos la estrategia de forma proactiva para maximizar el retorno de tu inversión día tras día. Realizamos pruebas A/B y análisis profundos para detectar nuevas oportunidades."
   },
   {
     step: "5",
     title: "Lidera tu sector",
-    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva insuperable en tu nicho. Consolida una posición de liderazgo indiscutible mediante la eficiencia operativa que solo la IA permite. Escala tu operación global con sistemas autónomos que aprenden y mejoran su rendimiento de forma independiente."
+    description: "Aplica tecnología de vanguardia para obtener una ventaja competitiva insuperable en tu nicho. Consolida una posición de liderazgo indiscutible mediante la eficiencia operativa que solo la IA permite. Escala tu operación global con sistemas autónomos que aprenden y mejoran su rendimiento de forma independiente. Establece nuevos estándares de calidad y servicio en tu industria."
   }
 ];
 
@@ -132,7 +132,7 @@ function AnimatedProcessStep({ step, index }: { step: typeof processSteps[0], in
           <h3 className="font-bold text-xl">{step.title}</h3>
         </div>
         <p className={cn(
-          "text-base text-muted-foreground leading-relaxed transition-all duration-700 delay-500",
+          "text-base text-muted-foreground leading-relaxed text-left transition-all duration-700 delay-500",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         )}>{step.description}</p>
       </div>
@@ -298,7 +298,7 @@ export default function Home() {
               </h2>
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
             </div>
-            <div className="max-w-xl mx-auto px-6 py-6 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
+            <div className="max-w-lg mx-auto px-6 py-6 rounded-3xl border border-white/5 bg-white/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-500" />
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
                Diseñamos e implementamos sistemas que combinan <span className="text-primary font-bold">marketing</span>, <span className="text-primary font-bold">automatización</span> y <span className="text-primary font-bold">tecnología avanzada</span> para crear una estructura digital de alto rendimiento.
