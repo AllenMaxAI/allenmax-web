@@ -202,12 +202,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden">
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden py-20">
         <div className="absolute inset-0 z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
         </div>
 
-        <div className="z-10 flex flex-col items-center gap-8 max-w-[70rem] -mt-20">
+        <div className="z-10 flex flex-col items-center gap-8 max-w-[70rem]">
           <div className={cn(
             "space-y-4 transition-all duration-1000 ease-out",
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -288,7 +288,7 @@ export default function Home() {
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-20 flex flex-col items-center">
             <div className="flex flex-col items-center mb-6">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+              <h2 className="text-3xl md:text-5 font-bold tracking-tight">
                 Impulsa el crecimiento de tu empresa
               </h2>
               <div className="h-1.5 w-20 bg-primary/30 rounded-full mt-6" />
