@@ -44,21 +44,20 @@ export function NeuralBackground() {
       getAlphaAtY(canvasHeight: number) {
         const yProgress = this.y / canvasHeight;
         
-        // Aumentamos opacidad base de fantasmas para que sean visibles
-        if (this.isGhost) return 0.28;
+        // Mantener opacidad para fantasmas para que sigan siendo visibles abajo
+        if (this.isGhost) return 0.32;
 
-        // Para las partículas principales (arriba):
-        if (yProgress < 0.1) return 1;
+        // Reducir opacidad máxima arriba para que no "brille" de más
+        if (yProgress < 0.1) return 0.75;
         if (yProgress < 0.3) {
-          return 1 - ((yProgress - 0.1) / 0.2);
+          return 0.75 - ((yProgress - 0.1) / 0.2 * 0.67); // Desvanece hacia 0.08
         }
         return 0.08; 
       }
 
       draw(canvasHeight: number) {
         if (!ctx) return;
-        // Aumentamos el multiplicador de dibujo para mejorar visibilidad general
-        const alpha = this.getAlphaAtY(canvasHeight) * 0.7;
+        const alpha = this.getAlphaAtY(canvasHeight) * 0.6;
         if (alpha < 0.01) return;
 
         ctx.beginPath();
@@ -82,15 +81,14 @@ export function NeuralBackground() {
       const height = canvas.height;
       const width = canvas.width;
       
-      // Partículas densas en la parte superior (Hero)
-      const topCount = Math.floor(width < 768 ? 60 : 120);
+      // Cantidad moderada arriba (como antes)
+      const topCount = Math.floor(width < 768 ? 50 : 90);
       for (let i = 0; i < topCount; i++) {
         const p = new Particle(width, height * 0.4, false);
         particles.push(p);
       }
 
-      // Clústeres aleatorios "fantasma" por toda la página
-      // Aumentamos densidad de fantasmas a 45 por cada 1000px de altura
+      // Mantener densidad alta de fantasmas para las secciones inferiores
       const ghostCount = Math.floor((height / 1000) * 45);
       for (let i = 0; i < ghostCount; i++) {
         const p = new Particle(width, height, true);
@@ -123,8 +121,8 @@ export function NeuralBackground() {
           if (dist < connectionDistance) {
             const combinedAlpha = Math.min(pAlpha, p2Alpha);
             const distFactor = (1 - dist / connectionDistance);
-            // Aumentamos intensidad de línea significativamente (0.25 -> 0.45)
-            const alpha = distFactor * combinedAlpha * 0.45;
+            // Ajuste fino del multiplicador de línea
+            const alpha = distFactor * combinedAlpha * 0.38;
             
             ctx.beginPath();
             ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
