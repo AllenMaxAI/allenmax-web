@@ -7,7 +7,8 @@ Este es el proyecto oficial de AllenMax, desarrollado con Next.js, Tailwind CSS 
 Para publicar esta web en tu dominio `allenmax.com`, sigue esta guía:
 
 ### 1. Subir a GitHub
-Abre la terminal en Firebase Studio y ejecuta:
+Abre la terminal en Firebase Studio (**Atajo: `Ctrl + ` ` `** o **Menú > Terminal > Nueva Terminal**) y ejecuta:
+
 ```bash
 git init
 git add .
