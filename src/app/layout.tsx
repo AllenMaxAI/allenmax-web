@@ -8,8 +8,25 @@ import Script from 'next/script';
 import { CalendlyPersistent } from '@/components/CalendlyPersistent';
 
 export const metadata: Metadata = {
-  title: 'AllenMax | Marketing Digital & IA',
-  description: 'Transformamos tu empresa con Inteligencia Artificial y Marketing Digital de alto impacto.',
+  title: 'AllenMax | Marketing Digital & IA de Alto Impacto',
+  description: 'Transformamos tu empresa con Inteligencia Artificial y Marketing Digital estratégico. Sistemas de captación y automatización para escalar tu negocio.',
+  metadataBase: new URL('https://allenmax.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'AllenMax | Marketing Digital & IA',
+    description: 'Evoluciona tu empresa con sistemas inteligentes de crecimiento.',
+    url: 'https://allenmax.com',
+    siteName: 'AllenMax',
+    locale: 'es_ES',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AllenMax | Marketing Digital & IA',
+    description: 'Sistemas de crecimiento estratégico para empresas que quieren evolucionar.',
+  },
 };
 
 export default function RootLayout({
