@@ -4,22 +4,23 @@ Este es el proyecto oficial de AllenMax, desarrollado con Next.js, Tailwind CSS 
 
 ## 🚀 Pasos para el Despliegue
 
-Para publicar esta web en tu dominio `allenmax.com`, sigue esta guía:
+Sigue esta guía para publicar tu web en `allenmax.com`:
 
 ### 1. Subir a GitHub
-Para abrir la terminal en Firebase Studio y ejecutar los comandos:
-1. Haz clic en el **icono de las tres líneas** (arriba a la izquierda, al lado de "Firebase Studio").
-2. En el menú que aparece, selecciona **Terminal**.
-3. Haz clic en **Nueva Terminal**.
-
-Una vez abierta la ventana negra abajo, ejecuta estos comandos uno por uno:
+Ya tienes la terminal abierta. Ejecuta estos comandos uno por uno:
 
 ```bash
-git init
+# 1. Prepara los archivos
 git add .
+
+# 2. Crea el punto de guardado
 git commit -m "Preparado para despliegue"
-git branch -M main
+
+# 3. Conecta con tu repositorio (SUSTITUYE LA URL)
+# Ve a GitHub, crea un repo vacío y copia la URL que termina en .git
 git remote add origin https://github.com/TU_USUARIO/NOMBRE_REPOSITORIO.git
+
+# 4. Sube el código
 git push -u origin main
 ```
 
@@ -28,18 +29,17 @@ git push -u origin main
 2. Selecciona tu proyecto.
 3. Entra en **App Hosting** en el menú lateral.
 4. Haz clic en "Comenzar" y conecta tu repositorio de GitHub recién creado.
-5. Sigue los pasos para configurar el despliegue automático.
+5. Firebase detectará automáticamente que es un proyecto de Next.js.
 
 ### 3. Conectar Dominio (Hostinger)
-1. Una vez desplegado en App Hosting, ve a la pestaña de configuración del backend.
-2. Haz clic en **"Conectar dominio personalizado"**.
-3. Introduce `allenmax.com`.
-4. Firebase te proporcionará los registros DNS (A o CNAME).
-5. Ve a tu panel de control en **Hostinger**, entra en la gestión de DNS y añade los registros indicados por Firebase.
+1. En la pestaña de configuración de tu backend en App Hosting, haz clic en **"Conectar dominio personalizado"**.
+2. Introduce `allenmax.com`.
+3. Firebase te dará unos registros DNS (A y CNAME).
+4. Ve a tu panel de **Hostinger**, entra en la gestión de DNS de tu dominio y añade los registros exactos que te dio Firebase.
 
 ## 🛠️ Tecnologías utilizadas
 - **Next.js 15** (App Router)
-- **Tailwind CSS** para estilos
-- **Framer Motion** para animaciones
-- **Lucide React** para iconos
-- **Firebase** para el hosting y servicios backend
+- **Tailwind CSS** (Glow UI effects)
+- **Framer Motion** (Animations)
+- **Lucide React** (Icons)
+- **Firebase** (App Hosting & Backend)
