@@ -21,12 +21,24 @@ Inicia sesión en Hostinger > Dominios > `allenmax.com` > **DNS / Nameservers**.
 
 *Nota: Borra cualquier otro registro tipo "A" antiguo para que no haya conflictos.*
 
-## 🛠️ Solución de Errores (Dominio)
+## 🛠️ SOLUCIÓN AL ERROR: "Se produjo un error mientras se creaba el dominio"
 
-Si recibes el error "Se produjo un error mientras se creaba el dominio":
-1. **Conflicto de Hosting**: Ve a la sección **"Hosting"** (la clásica, no App Hosting) en el menú izquierdo. Si ves `allenmax.com` ahí, elimínalo. Los dominios no pueden estar en Hosting y App Hosting a la vez.
-2. **Subdominio primero**: Intenta agregar `www.allenmax.com`. Si funciona, luego podrás agregar el principal.
-3. **Refrescar sesión**: Cierra la pestaña de la consola, espera 2 minutos y vuelve a entrar.
+Si recibes este mensaje rojo en la consola, sigue este orden estrictamente:
+
+1. **Eliminar conflictos de Hosting Clásico**:
+   - Ve al menú izquierdo: **Compilación** > **Hosting** (el que NO es App Hosting).
+   - Si el dominio `allenmax.com` aparece ahí, **elimínalo** completamente. 
+   - Espera 1 minuto y vuelve a intentar en App Hosting.
+
+2. **Truco del Subdominio**:
+   - Intenta añadir primero `www.allenmax.com`. 
+   - Si este funciona, Firebase "desbloquea" la validación y luego podrás añadir el dominio principal sin el `www`.
+
+3. **Modo Incógnito**:
+   - Abre la consola de Firebase en una ventana de incógnito. A veces los errores de dominio son fallos de caché de tu cuenta de Google en el navegador.
+
+4. **Plan Blaze**:
+   - Asegúrate de que el proyecto sigue en el plan **Blaze**. Si hay algún problema con la tarjeta o el límite, Firebase bloquea la creación de nuevos recursos de red como los dominios.
 
 ## 💻 Tecnologías utilizadas
 - **Next.js 15** (App Router)
