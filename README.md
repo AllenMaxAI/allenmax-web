@@ -4,33 +4,29 @@ Este es el proyecto oficial de AllenMax, desarrollado con Next.js, Tailwind CSS 
 
 ## 🚀 Guía de Lanzamiento Final (Hostinger)
 
-Tu web ya está en la nube de Firebase. Sigue estos pasos finales para que se vea en `allenmax.com`:
+Tu web ya está en la nube. Sigue estos pasos para que se vea en `allenmax.com`:
 
-### 1. Conectar tu Dominio en la Consola de Firebase
-1. En tu consola (donde ves el backend "Studio"), haz clic en el botón **"Ver"**.
-2. Ve a la pestaña **"Dominios"** o **"Configuración"**.
-3. Haz clic en **"Conectar dominio personalizado"**.
-4. Escribe `allenmax.com`.
-5. Firebase te mostrará unos registros DNS (Valores tipo A y CNAME). **Cópialos**.
+### 1. Configuración en la Consola de Firebase
+1. En **App Hosting** > **Configuración**, añade el dominio `allenmax.com`.
+2. **IMPORTANTE**: No marques la casilla de "Redireccionar" al añadir el dominio principal.
+3. Firebase te dará unos valores. Cópialos.
 
-### 2. Configurar en Hostinger
-1. Inicia sesión en tu panel de **Hostinger**.
-2. Ve a **Dominios** > selecciona `allenmax.com` > **DNS / Nameservers**.
-3. Añade los registros que te dio Firebase:
-   - **Registro A**: Apunta a la dirección IP que te dio Firebase.
-   - **Registro CNAME**: (Si te lo pide) para el subdominio `www`.
-4. Borra cualquier registro "A" antiguo que apunte a una IP diferente para evitar conflictos.
+### 2. Configuración en Hostinger (DNS)
+Inicia sesión en Hostinger > Dominios > `allenmax.com` > **DNS / Nameservers**. Añade estos registros:
 
-### 3. Aparecer en Google
-1. Entra en [Google Search Console](https://search.google.com/search-console).
-2. Añade la propiedad `https://allenmax.com`.
-3. El archivo `sitemap.xml` ya está configurado para que Google te encuentre rápido.
+| Tipo | Nombre (Host) | Valor (Punta a) | TTL |
+| :--- | :--- | :--- | :--- |
+| **A** | `@` | [IP que te dio Firebase] | 14400 |
+| **CNAME** | `www` | `allenmax.com` | 14400 |
 
-*Nota: El certificado SSL (el candado de seguridad) se activará automáticamente unas horas después de que los DNS se propaguen.*
+*Nota: Borra cualquier otro registro tipo "A" antiguo para que no haya conflictos.*
+
+### 3. Verificación y SSL
+- Los cambios pueden tardar desde unos minutos hasta 24 horas en propagarse (habitualmente son 30 min).
+- El certificado SSL (el candado de seguridad) lo genera Firebase automáticamente una vez que el dominio está conectado.
 
 ## 🛠️ Tecnologías utilizadas
 - **Next.js 15** (App Router)
 - **Tailwind CSS** (Glow UI effects)
 - **Framer Motion** (Animations)
-- **Lucide React** (Icons)
-- **Firebase** (App Hosting & Backend)
+- **Firebase** (App Hosting)
