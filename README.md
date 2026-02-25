@@ -23,7 +23,8 @@ Inicia sesión en Hostinger > Dominios > `allenmax.com` > **DNS / Nameservers**.
 
 ## 🔍 SEO & Indexación
 Para que Google indexe tu web correctamente, añade el sitemap en Google Search Console:
-- **URL del Sitemap:** `https://allenmax.com/sitemap.xml`
+- **URL del Sitemap:** `sitemap.xml` (Si ya estás dentro de la propiedad https://allenmax.com)
+- **URL Completa:** `https://allenmax.com/sitemap.xml`
 
 ## 🛠️ SOLUCIÓN AL ERROR: "Se produjo un error mientras se creaba el dominio"
 
@@ -39,7 +40,7 @@ Si recibes este mensaje rojo en la consola, sigue este orden estrictamente:
    - Si este funciona, Firebase "desbloquea" la validación y luego podrás añadir el dominio principal sin el `www`.
 
 3. **Modo Incógnito**:
-   - Abre la consola de Firebase en una ventana de incógnito. A veces los errores de dominio son fallos de caché de tu cuenta de Google en el navegador.
+   - Abre la consola de Firebase en una ventana de incógnito. A veces los errores de dominio son fallos de caché.
 
 ## 💻 Tecnologías utilizadas
 - **Next.js 15** (App Router)
