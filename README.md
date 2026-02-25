@@ -21,6 +21,10 @@ Inicia sesión en Hostinger > Dominios > `allenmax.com` > **DNS / Nameservers**.
 
 *Nota: Borra cualquier otro registro tipo "A" antiguo para que no haya conflictos.*
 
+## 🔍 SEO & Indexación
+Para que Google indexe tu web correctamente, añade el sitemap en Google Search Console:
+- **URL del Sitemap:** `https://allenmax.com/sitemap.xml`
+
 ## 🛠️ SOLUCIÓN AL ERROR: "Se produjo un error mientras se creaba el dominio"
 
 Si recibes este mensaje rojo en la consola, sigue este orden estrictamente:
@@ -36,9 +40,6 @@ Si recibes este mensaje rojo en la consola, sigue este orden estrictamente:
 
 3. **Modo Incógnito**:
    - Abre la consola de Firebase en una ventana de incógnito. A veces los errores de dominio son fallos de caché de tu cuenta de Google en el navegador.
-
-4. **Plan Blaze**:
-   - Asegúrate de que el proyecto sigue en el plan **Blaze**. Si hay algún problema con la tarjeta o el límite, Firebase bloquea la creación de nuevos recursos de red como los dominios.
 
 ## 💻 Tecnologías utilizadas
 - **Next.js 15** (App Router)
