@@ -21,26 +21,24 @@ Inicia sesión en Hostinger > Dominios > `allenmax.com` > **DNS / Nameservers**.
 
 *Nota: Borra cualquier otro registro tipo "A" antiguo para que no haya conflictos.*
 
+### ⏳ Tiempo de Propagación
+Una vez configurado en Hostinger, el estado en Firebase pasará a **"Pendiente"**. 
+- Este proceso puede tardar desde unos minutos hasta **24 horas**.
+- Hasta que el estado sea **"Activo"**, Google Search Console no podrá leer el sitemap.
+
 ## 🔍 SEO & Indexación
-Para que Google indexe tu web correctamente, añade el sitemap en Google Search Console:
-- **URL del Sitemap:** `sitemap.xml` (Si ya estás dentro de la propiedad https://allenmax.com)
-- **URL Completa:** `https://allenmax.com/sitemap.xml`
+Para que Google indexe tu web correctamente, añade el sitemap en Google Search Console **solo cuando el dominio esté activo**:
+- **URL del Sitemap:** `https://allenmax.com/sitemap.xml`
 
-## 🛠️ SOLUCIÓN AL ERROR: "Se produjo un error mientras se creaba el dominio"
+## 🛠️ SOLUCIÓN A ERRORES COMUNES
 
-Si recibes este mensaje rojo en la consola, sigue este orden estrictamente:
+### Error: "Se produjo un error mientras se creaba el dominio"
+1. **Eliminar conflictos**: Ve a **Compilación > Hosting** (el clásico). Si el dominio aparece ahí, elimínalo.
+2. **Ventana de Incógnito**: Abre la consola de Firebase en incógnito para evitar fallos de caché.
+3. **Subdominio primero**: Intenta añadir `www.allenmax.com` primero. Si funciona, luego añade el principal.
 
-1. **Eliminar conflictos de Hosting Clásico**:
-   - Ve al menú izquierdo: **Compilación** > **Hosting** (el que NO es App Hosting).
-   - Si el dominio `allenmax.com` aparece ahí, **elimínalo** completamente. 
-   - Espera 1 minuto y vuelve a intentar en App Hosting.
-
-2. **Truco del Subdominio**:
-   - Intenta añadir primero `www.allenmax.com`. 
-   - Si este funciona, Firebase "desbloquea" la validación y luego podrás añadir el dominio principal sin el `www`.
-
-3. **Modo Incógnito**:
-   - Abre la consola de Firebase en una ventana de incógnito. A veces los errores de dominio son fallos de caché.
+### Error: "Sitemap no se ha podido obtener"
+- Este error es normal mientras el dominio esté en estado **"Pendiente"**. Espera a que la web cargue correctamente en el navegador antes de volver a enviarlo en Search Console.
 
 ## 💻 Tecnologías utilizadas
 - **Next.js 15** (App Router)
