@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: 'AllenMax | Marketing Digital & IA de Alto Impacto',
   description: 'Transformamos tu empresa con Inteligencia Artificial y Marketing Digital estratégico. Sistemas de captación y automatización para escalar tu negocio.',
   metadataBase: new URL('https://allenmax.com'),
+  icons: {
+    icon: '/favicon.ico', // El archivo debe estar en public/ o src/app/
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   alternates: {
     canonical: '/',
   },
