@@ -19,7 +19,7 @@ export default function ContactoPage() {
   }, []);
 
   return (
-    <section className="pt-24 md:pt-32 pb-16 min-h-screen bg-[#020817]">
+    <section className="pt-24 md:pt-32 pb-8 lg:pb-16 min-h-screen bg-[#020817]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid gap-16 items-start lg:grid-cols-[1fr_1.1fr]">
           
@@ -94,9 +94,9 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Columna Derecha: Hueco reservado para el widget persistente */}
-          <div className="relative min-h-[1050px] pointer-events-none">
-            {/* Este espacio se mantiene vacío porque el widget global se posiciona aquí mediante absolute en el layout */}
+          {/* Columna Derecha: Hueco reservado para el widget persistente en desktop */}
+          <div className="relative min-h-[1050px] pointer-events-none hidden lg:block">
+            {/* Este espacio se mantiene vacío para el widget absoluto en desktop */}
           </div>
 
         </div>

@@ -129,7 +129,7 @@ export function CalendlyPersistent() {
     }
   }, [mounted, isInitialized]);
 
-  // Restaurar estado visual inmediatamente al volver a /contacto para evitar parpadeos (flash)
+  // Restaurar estado visual inmediatamente al volver a /contacto
   useEffect(() => {
     if (isVisible) {
       if (lastHeightRef.current !== null) {
@@ -140,7 +140,6 @@ export function CalendlyPersistent() {
         setShowLine(view === 'calendar' || view === 'details' || isSuccess);
         setIsTimesView(view === 'times' && !isSuccess);
       } else {
-        // Estado inicial por defecto
         setShowLine(true);
         setIsTimesView(false);
       }
@@ -152,7 +151,8 @@ export function CalendlyPersistent() {
   return (
     <div 
       className={cn(
-        "absolute top-0 left-0 w-full z-40 flex justify-center transition-opacity duration-500 pointer-events-none pt-24 md:pt-32",
+        "w-full z-40 flex justify-center transition-all duration-500 pointer-events-none pb-12 lg:pb-0",
+        "lg:absolute lg:top-0 lg:left-0 lg:pt-24 lg:md:pt-32", // En desktop se posiciona absoluto sobre el header
         isVisible ? "opacity-100" : "opacity-0 invisible h-0"
       )}
     >
@@ -160,7 +160,7 @@ export function CalendlyPersistent() {
         <div className="w-full lg:w-[50%] relative flex justify-center">
           <div 
             className={cn(
-              "w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
+              "w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white min-h-[900px] lg:min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
               isVisible ? "translate-y-0" : "translate-y-10"
             )}
           >
@@ -226,7 +226,7 @@ export function CalendlyPersistent() {
             <div 
               ref={calendlyRef}
               className={cn(
-                "w-full h-[1050px] bg-white transition-opacity duration-700 mx-auto",
+                "w-full h-[900px] lg:h-[1050px] bg-white transition-opacity duration-700 mx-auto",
                 isLoaded ? "opacity-100" : "opacity-0"
               )}
             />
