@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Menu,
-  X,
   LayoutDashboard,
   TrendingUp,
   BrainCircuit,
@@ -74,7 +73,6 @@ export function AppHeader() {
 
           {/* Desktop Navigation Centrada Absolutamente */}
           <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1">
-            {/* Solo Servicios usa NavigationMenu para tener su propio contexto de centrado */}
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -100,7 +98,6 @@ export function AppHeader() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {/* Los demás enlaces se renderizan como botones normales con el mismo estilo */}
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -127,13 +124,7 @@ export function AppHeader() {
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-center border-b border-white/5 pb-4">
                     <Logo />
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      <X className="h-6 w-6" />
-                    </Button>
+                    {/* Botón de cierre manual eliminado porque SheetContent ya incluye uno por defecto */}
                   </div>
                   <nav className="flex flex-col gap-1 mt-8">
                     {serviceLinks.map((link) => (

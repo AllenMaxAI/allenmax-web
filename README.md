@@ -37,8 +37,8 @@ Para que Google indexe tu web correctamente, añade el sitemap en Google Search 
 2. **Ventana de Incógnito**: Abre la consola de Firebase en incógnito para evitar fallos de caché.
 3. **Subdominio primero**: Intenta añadir `www.allenmax.com` primero. Si funciona, luego añade el principal.
 
-### Error: "Sitemap no se ha podido obtener"
-- Este error es normal mientras el dominio esté en estado **"Pendiente"**. Espera a que la web cargue correctamente en el navegador antes de volver a enviarlo en Search Console.
+### Error: "Sitemap no se ha podido obtener" (Google Search Console)
+- Este error es **normal** mientras el dominio esté en estado **"Pendiente"**. Google necesita que el dominio esté activo y con el certificado SSL (candadito) funcionando antes de poder leer el sitemap.
 
 ## 💻 Tecnologías utilizadas
 - **Next.js 15** (App Router)
