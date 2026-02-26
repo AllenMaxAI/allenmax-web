@@ -44,6 +44,17 @@ Tu web se verá en `allenmax.com` siguiendo estos pasos:
 - **Favicon:** Gestionado automáticamente desde `src/app/icon.png`.
 
 ## 🛠️ Solución de Errores Comunes
-- **Doble "X" en móvil**: Corregido.
-- **Error al añadir dominio**: Si falla, prueba a añadir primero `www.allenmax.com`.
-- **Sitemap no obtenido**: Solo funcionará cuando el dominio esté **Activo** y con SSL.
+
+### 1. El Favicon no cambia (sale el antiguo)
+Los navegadores guardan el icono en una memoria muy profunda. Para verlo actualizado:
+- En PC: Pulsa `Ctrl` + `F5` mientras estás en tu web.
+- En móvil: Cierra la pestaña, borra el historial reciente de los últimos 15 min y vuelve a entrar.
+- **Truco definitivo**: Abre la web en una **ventana de incógnito**. Si ahí se ve bien, es que el cambio ya está hecho y solo tu navegador normal tiene el "recuerdo" del viejo.
+
+### 2. Error al añadir dominio en Firebase
+Si te da error al intentar crear el dominio:
+1. Ve a la sección **Hosting** (debajo de App Hosting) y borra el dominio de allí si aparece.
+2. Prueba a añadir primero `www.allenmax.com` en lugar de solo `allenmax.com`.
+
+### 3. Sitemap "No se ha podido obtener"
+Esto es normal si el dominio todavía está en estado **"Pendiente"**. Google solo podrá leerlo cuando el dominio esté **Activo**.
