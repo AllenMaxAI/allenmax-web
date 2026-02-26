@@ -10,11 +10,16 @@ Cada vez que quieras publicar cambios en `allenmax.com`, abre la **Terminal** y 
 2. **Confirmar**: `git commit -m "Descripción del cambio"`
 3. **Subir**: `git push`
 
-### ¿Cómo saber si se está publicando?
-1. Ve a tu panel de **Firebase Console**.
-2. Entra en **App Hosting**.
-3. Haz clic en tu backend (**Studio**).
-4. Verás una sección llamada **"Rollouts"** (Despliegues). Si sale un círculo girando, es que se está actualizando. Cuando salga un check verde ✅, los cambios ya estarán en la web.
+### 📊 ¿Cómo monitorizar el progreso?
+Para ver cuánto le falta a tu actualización, sigue estos pasos:
+
+1. Ve a tu panel de **[Firebase Console](https://console.firebase.google.com/)**.
+2. Entra en tu proyecto y ve a la sección **App Hosting** (en el menú lateral izquierdo).
+3. Haz clic en el nombre de tu backend (probablemente se llame **"Studio"** o similar).
+4. Verás una sección llamada **"Rollouts"** (Despliegues).
+   - **Círculo giratorio azul**: Firebase está construyendo y subiendo los cambios (tarda 2-4 min).
+   - **Check verde ✅**: Los cambios ya están en vivo en `allenmax.com`.
+   - **Equis roja ❌**: Hubo un error (puedes hacer clic para ver por qué falló).
 
 ## 🌐 Configuración del Dominio (Hostinger)
 
@@ -34,10 +39,11 @@ Tu web se verá en `allenmax.com` siguiendo estos pasos:
 *Importante: El estado **"Pendiente"** es normal durante las primeras 24h por la propagación DNS.*
 
 ## 🔍 SEO & Indexación
-- **URL del Sitemap:** `https://allenmax.com/sitemap.xml`
+- **Sitemap:** `https://allenmax.com/sitemap.xml` (Enviar a Google Search Console una vez el dominio esté Activo).
+- **Robots:** Gestionado automáticamente en `/robots.txt`.
 - **Favicon:** Gestionado automáticamente desde `src/app/icon.png`.
 
 ## 🛠️ Solución de Errores Comunes
-- **Doble "X" en móvil**: Corregido eliminando el botón manual en `AppHeader`.
+- **Doble "X" en móvil**: Corregido.
 - **Error al añadir dominio**: Si falla, prueba a añadir primero `www.allenmax.com`.
 - **Sitemap no obtenido**: Solo funcionará cuando el dominio esté **Activo** y con SSL.
