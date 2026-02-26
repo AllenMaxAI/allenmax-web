@@ -2,46 +2,42 @@
 
 Este es el proyecto oficial de AllenMax, desarrollado con Next.js, Tailwind CSS y Firebase.
 
-## 🚀 Guía de Lanzamiento Final (Hostinger)
+## 🚀 Guía de Despliegue (GitHub -> Firebase)
 
-Tu web ya está en la nube. Sigue estos pasos para que se vea en `allenmax.com`:
+Cada vez que hagamos cambios en el código, sigue estos pasos en la terminal para publicarlos:
 
-### 1. Configuración en la Consola de Firebase
-1. En **App Hosting** > **Configuración**, añade el dominio `allenmax.com`.
-2. **IMPORTANTE**: No marques la casilla de "Redireccionar" al añadir el dominio principal.
-3. Firebase te dará unos valores (Registros A y CNAME). Cópialos.
+1. **Preparar archivos**: `git add .`
+2. **Confirmar cambios**: `git commit -m "Descripción de lo que has cambiado"`
+3. **Subir a la nube**: `git push`
 
-### 2. Configuración en Hostinger (DNS)
-Inicia sesión en Hostinger > Dominios > `allenmax.com` > **DNS / Nameservers**. Añade estos registros:
+*Nota: Una vez hagas el `push`, Firebase detectará el cambio y actualizará la web en unos 2-3 minutos automáticamente.*
 
+## 🌐 Configuración del Dominio (Hostinger)
+
+Tu web se verá en `allenmax.com` siguiendo estos pasos:
+
+### 1. En la Consola de Firebase
+1. Ve a **App Hosting** > **Configuración** > **Añadir dominio personalizado**.
+2. Escribe `allenmax.com` (sin marcar la casilla de redirección).
+3. Copia los valores DNS (Registros A y CNAME) que te proporcione Firebase.
+
+### 2. En Hostinger (DNS)
 | Tipo | Nombre (Host) | Valor (Punta a) | TTL |
 | :--- | :--- | :--- | :--- |
 | **A** | `@` | [IP que te dio Firebase] | 14400 |
 | **CNAME** | `www` | `allenmax.com` | 14400 |
 
-*Nota: Borra cualquier otro registro tipo "A" antiguo para que no haya conflictos.*
-
-### ⏳ Tiempo de Propagación
-Una vez configurado en Hostinger, el estado en Firebase pasará a **"Pendiente"**. 
-- Este proceso puede tardar desde unos minutos hasta **24 horas**.
-- Hasta que el estado sea **"Activo"**, Google Search Console no podrá leer el sitemap.
+*Importante: El estado **"Pendiente"** en Firebase es normal y puede tardar hasta 24 horas en activarse.*
 
 ## 🔍 SEO & Indexación
-Para que Google indexe tu web correctamente, añade el sitemap en Google Search Console **solo cuando el dominio esté activo**:
+Cuando el dominio esté en estado **"Activo"**, añade el sitemap en Google Search Console:
 - **URL del Sitemap:** `https://allenmax.com/sitemap.xml`
 
-## 🛠️ SOLUCIÓN A ERRORES COMUNES
+## 🛠️ Solución de Errores Comunes
+- **Error al añadir dominio**: Si falla, intenta añadir primero `www.allenmax.com`.
+- **Sitemap no obtenido**: Google solo puede leer el sitemap cuando el dominio está activo y el certificado SSL (candadito) funcionando.
 
-### Error: "Se produjo un error mientras se creaba el dominio"
-1. **Eliminar conflictos**: Ve a **Compilación > Hosting** (el clásico). Si el dominio aparece ahí, elimínalo.
-2. **Ventana de Incógnito**: Abre la consola de Firebase en incógnito para evitar fallos de caché.
-3. **Subdominio primero**: Intenta añadir `www.allenmax.com` primero. Si funciona, luego añade el principal.
-
-### Error: "Sitemap no se ha podido obtener" (Google Search Console)
-- Este error es **normal** mientras el dominio esté en estado **"Pendiente"**. Google necesita que el dominio esté activo y con el certificado SSL (candadito) funcionando antes de poder leer el sitemap.
-
-## 💻 Tecnologías utilizadas
+## 💻 Tecnologías
 - **Next.js 15** (App Router)
-- **Tailwind CSS** (Glow UI effects)
-- **Framer Motion** (Animations)
-- **Firebase** (App Hosting)
+- **Tailwind CSS** (Glow UI)
+- **Firebase App Hosting**
