@@ -4,13 +4,17 @@ Este es el proyecto oficial de AllenMax, desarrollado con Next.js, Tailwind CSS 
 
 ## 🚀 Guía de Despliegue (GitHub -> Firebase)
 
-Para que tus cambios se vean en la web, abre la **Terminal** (abajo en el panel o con `Ctrl + ` `) y ejecuta estos pasos:
+Cada vez que quieras publicar cambios en `allenmax.com`, abre la **Terminal** y ejecuta:
 
-1. **Preparar archivos**: `git add .`
-2. **Confirmar cambios**: `git commit -m "Descripción de lo que has cambiado"`
-3. **Subir a la nube**: `git push`
+1. **Preparar**: `git add .`
+2. **Confirmar**: `git commit -m "Descripción del cambio"`
+3. **Subir**: `git push`
 
-*Nota: Una vez hagas el `push`, Firebase detectará el cambio y actualizará la web en unos 2-3 minutos automáticamente.*
+### ¿Cómo saber si se está publicando?
+1. Ve a tu panel de **Firebase Console**.
+2. Entra en **App Hosting**.
+3. Haz clic en tu backend (**Studio**).
+4. Verás una sección llamada **"Rollouts"** (Despliegues). Si sale un círculo girando, es que se está actualizando. Cuando salga un check verde ✅, los cambios ya estarán en la web.
 
 ## 🌐 Configuración del Dominio (Hostinger)
 
@@ -19,26 +23,21 @@ Tu web se verá en `allenmax.com` siguiendo estos pasos:
 ### 1. En la Consola de Firebase
 1. Ve a **App Hosting** > **Configuración** > **Añadir dominio personalizado**.
 2. Escribe `allenmax.com` (sin marcar la casilla de redirección).
-3. Copia los valores DNS (Registros A y CNAME) que te proporcione Firebase.
+3. Copia los valores DNS (Registros A y CNAME).
 
 ### 2. En Hostinger (DNS)
 | Tipo | Nombre (Host) | Valor (Punta a) | TTL |
 | :--- | :--- | :--- | :--- |
-| **A** | `@` | [IP que te dio Firebase] | 14400 |
+| **A** | `@` | [IP de Firebase] | 14400 |
 | **CNAME** | `www` | `allenmax.com` | 14400 |
 
-*Importante: El estado **"Pendiente"** en Firebase es normal y puede tardar hasta 24 horas en activarse por la propagación DNS.*
+*Importante: El estado **"Pendiente"** es normal durante las primeras 24h por la propagación DNS.*
 
 ## 🔍 SEO & Indexación
-Cuando el dominio esté en estado **"Activo"**, añade el sitemap en Google Search Console:
 - **URL del Sitemap:** `https://allenmax.com/sitemap.xml`
+- **Favicon:** Gestionado automáticamente desde `src/app/icon.png`.
 
 ## 🛠️ Solución de Errores Comunes
-- **Error al añadir dominio**: Si falla, intenta añadir primero `www.allenmax.com`.
-- **Sitemap no obtenido**: Google solo puede leer el sitemap cuando el dominio está activo y el certificado SSL (candadito) funcionando.
-- **Doble "X" en móvil**: Corregido eliminando el botón de cierre manual en `AppHeader`, ya que el componente `Sheet` lo incluye por defecto.
-
-## 💻 Tecnologías
-- **Next.js 15** (App Router)
-- **Tailwind CSS** (Glow UI)
-- **Firebase App Hosting**
+- **Doble "X" en móvil**: Corregido eliminando el botón manual en `AppHeader`.
+- **Error al añadir dominio**: Si falla, prueba a añadir primero `www.allenmax.com`.
+- **Sitemap no obtenido**: Solo funcionará cuando el dominio esté **Activo** y con SSL.
