@@ -36,6 +36,7 @@ Cuando el dominio esté en estado **"Activo"**, añade el sitemap en Google Sear
 ## 🛠️ Solución de Errores Comunes
 - **Error al añadir dominio**: Si falla, intenta añadir primero `www.allenmax.com`.
 - **Sitemap no obtenido**: Google solo puede leer el sitemap cuando el dominio está activo y el certificado SSL (candadito) funcionando.
+- **Doble "X" en móvil**: Corregido eliminando el botón de cierre manual en `AppHeader`, ya que el componente `Sheet` lo incluye por defecto.
 
 ## 💻 Tecnologías
 - **Next.js 15** (App Router)

@@ -64,7 +64,6 @@ export default function RootLayout({
           <AppHeader />
           <main className="flex-1 flex flex-col bg-[#020817]">
             <div className="flex-1">{children}</div>
-            {/* El widget se mueve aquí para que en móvil fluya después del contenido pero antes del footer */}
             <CalendlyPersistent />
           </main>
           <AppFooter />
