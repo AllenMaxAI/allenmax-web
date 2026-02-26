@@ -4,7 +4,7 @@ Este es el proyecto oficial de AllenMax, desarrollado con Next.js, Tailwind CSS 
 
 ## 🚀 Guía de Despliegue (GitHub -> Firebase)
 
-Cada vez que hagamos cambios en el código, sigue estos pasos en la terminal para publicarlos:
+Para que tus cambios se vean en la web, abre la **Terminal** (abajo en el panel o con `Ctrl + ` `) y ejecuta estos pasos:
 
 1. **Preparar archivos**: `git add .`
 2. **Confirmar cambios**: `git commit -m "Descripción de lo que has cambiado"`
@@ -27,7 +27,7 @@ Tu web se verá en `allenmax.com` siguiendo estos pasos:
 | **A** | `@` | [IP que te dio Firebase] | 14400 |
 | **CNAME** | `www` | `allenmax.com` | 14400 |
 
-*Importante: El estado **"Pendiente"** en Firebase es normal y puede tardar hasta 24 horas en activarse.*
+*Importante: El estado **"Pendiente"** en Firebase es normal y puede tardar hasta 24 horas en activarse por la propagación DNS.*
 
 ## 🔍 SEO & Indexación
 Cuando el dominio esté en estado **"Activo"**, añade el sitemap en Google Search Console:
