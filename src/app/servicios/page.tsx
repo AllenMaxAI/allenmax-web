@@ -72,7 +72,7 @@ export default function ServiciosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl">
+          <div className="max-w-6xl mx-auto">
             <div className="space-y-12">
               <div className={cn(
                 "space-y-2 transition-all duration-1000 ease-out",
@@ -80,7 +80,7 @@ export default function ServiciosPage() {
               )}>
                 <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestros Servicios</span>
                 <div className="space-y-6">
-                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[1.1]">
                     La Sinergia <br />
                     <span className="text-primary">Perfecta.</span>
                   </h1>
@@ -120,6 +120,14 @@ export default function ServiciosPage() {
       {/* CATEGORÍAS DE SERVICIOS */}
       <section className="pt-24 md:pt-32 pb-0">
         <div className="container mx-auto px-4">
+          <FadeInSection className="max-w-3xl mb-16 md:mb-24 mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+              Nuestras Áreas de Impacto
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Combinamos visión estratégica y ejecución técnica para transformar cada contacto en una oportunidad real.
+            </p>
+          </FadeInSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
             {serviceCategories.map((category, index) => (
               <FadeInSection key={category.title} delay={index * 200}>

@@ -91,7 +91,7 @@ export default function NosotrosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl">
+          <div className="max-w-6xl mx-auto">
             <div className="space-y-12">
               <div className={cn(
                 "space-y-2 transition-all duration-1000 ease-out",
@@ -99,7 +99,7 @@ export default function NosotrosPage() {
               )}>
                 <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestra Identidad</span>
                 <div className="space-y-6">
-                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1]">
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[1.1]">
                     Arquitectos de <br />
                     <span className="text-primary">Evolución.</span>
                   </h1>
@@ -140,13 +140,13 @@ export default function NosotrosPage() {
       </section>
 
       {/* ARQUITECTURA ESTRATÉGICA */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-32">
         <div className="container mx-auto px-4 max-w-6xl">
-          <FadeInSection className="max-w-3xl mb-20 md:mb-32">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-left">
+          <FadeInSection className="max-w-3xl mb-20 md:mb-32 mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
               Arquitectura Estratégica
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed text-left">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Nuestra identidad se define por la estructura que construimos. No somos una agencia convencional, somos los arquitectos de tu ecosistema digital.
             </p>
           </FadeInSection>
@@ -191,10 +191,10 @@ export default function NosotrosPage() {
       </section>
 
       {/* ALINEACIÓN */}
-      <section className="pb-20">
+      <section className="pb-24">
         <div className="container mx-auto px-4 max-w-6xl">
-          <FadeInSection className="max-w-3xl mb-24 md:mb-32">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          <FadeInSection className="max-w-3xl mb-24 md:mb-32 mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
               ¿Conectamos?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
