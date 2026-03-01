@@ -7,7 +7,6 @@ import Link from 'next/link';
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
-import { NeuralBackground } from '@/components/visuals/NeuralBackground';
 
 const benefits = [
   {
@@ -225,10 +224,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-[#020817] overflow-x-hidden relative">
-      <div className="absolute top-0 left-0 w-full z-0 pointer-events-none min-h-full h-full">
-        <NeuralBackground />
-      </div>
-
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20 z-10">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_90%)]" />
