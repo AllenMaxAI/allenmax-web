@@ -10,9 +10,6 @@ import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-// Importación de la imagen desde la nueva ruta
-import serviciosImg from '@/app/images/servicios.png';
-
 const serviceCategories = [
   {
     icon: <TrendingUp className="h-10 w-10 text-primary" />,
@@ -76,7 +73,7 @@ export default function ServiciosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+          <div className="max-w-4xl">
             <div className="space-y-12">
               <div className={cn(
                 "space-y-2 transition-all duration-1000 ease-out",
@@ -115,21 +112,6 @@ export default function ServiciosPage() {
                     Conectamos cada pieza para que la captación y conversión funcionen de forma coordinada.
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Contenedor de la imagen sin caja y alineada arriba */}
-            <div className={cn(
-              "relative hidden lg:flex justify-center transition-all duration-1000 delay-700 ease-out items-start",
-              isMounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
-            )}>
-              <div className="relative w-full max-w-[450px] aspect-square">
-                <Image 
-                  src={serviciosImg}
-                  alt="Servicios AllenMax"
-                  className="w-full h-auto object-contain"
-                  priority
-                />
               </div>
             </div>
           </div>
