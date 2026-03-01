@@ -11,13 +11,13 @@ import React from 'react';
 
 const serviceCategories = [
   {
-    icon: <TrendingUp className="h-10 w-10 text-primary" />,
+    icon: <TrendingUp className="h-12 w-12 text-primary" />,
     title: 'Marketing Digital',
     description: 'Estrategias probadas para construir tu presencia online, atraer a tu audiencia y convertir visitantes en clientes.',
     href: '/servicios/marketing-digital',
   },
   {
-    icon: <BrainCircuit className="h-10 w-10 text-primary" />,
+    icon: <BrainCircuit className="h-12 w-12 text-primary" />,
     title: 'Inteligencia Artificial',
     description: 'Soluciones de IA a medida para automatizar procesos, potenciar la toma de decisiones y desbloquear un rendimiento superior.',
     href: '/servicios/ia',
@@ -72,15 +72,15 @@ export default function ServiciosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto text-center">
             <div className="space-y-12">
               <div className={cn(
-                "space-y-2 transition-all duration-1000 ease-out",
+                "space-y-4 transition-all duration-1000 ease-out",
                 isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               )}>
                 <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Nuestros Servicios</span>
-                <div className="space-y-6">
-                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[1.1]">
+                <div className="flex flex-col items-center gap-6">
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-[1.1]">
                     La Sinergia <br />
                     <span className="text-primary">Perfecta.</span>
                   </h1>
@@ -88,26 +88,28 @@ export default function ServiciosPage() {
                 </div>
               </div>
               
-              <p className={cn(
-                "text-xl md:text-2xl text-primary font-medium leading-relaxed transition-all duration-1000 delay-300 ease-out",
-                isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              )}>
-                Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
-              </p>
+              <div className="flex justify-center">
+                <p className={cn(
+                  "text-xl md:text-3xl text-primary font-medium leading-relaxed max-w-3xl transition-all duration-1000 delay-300 ease-out",
+                  isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                )}>
+                  Estructuramos tu crecimiento con sistemas que combinan marketing y tecnología.
+                </p>
+              </div>
 
               <div className={cn(
-                "grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 delay-500 ease-out",
+                "grid md:grid-cols-2 gap-12 items-start text-left max-w-5xl mx-auto transition-all duration-1000 delay-500 ease-out",
                 isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               )}>
                 <div className="space-y-6">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                     No ofrecemos servicios aislados. 
                     <span className="block text-foreground font-semibold mt-2">Diseñamos soluciones que se integran en el ADN de tu negocio.</span>
                   </p>
                 </div>
                 <div className="border-l-2 border-primary pl-8 py-2">
-                  <p className="text-xl font-bold mb-4">Sinergia Estratégica.</p>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-xl md:text-2xl font-bold mb-4">Sinergia Estratégica.</p>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                     Conectamos cada pieza para que la captación y conversión funcionen de forma coordinada.
                   </p>
                 </div>
@@ -118,29 +120,29 @@ export default function ServiciosPage() {
       </section>
 
       {/* CATEGORÍAS DE SERVICIOS */}
-      <section className="pt-24 md:pt-32 pb-0">
+      <section className="py-24 md:py-36">
         <div className="container mx-auto px-4">
-          <FadeInSection className="max-w-3xl mb-16 md:mb-24 mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          <FadeInSection className="max-w-4xl mb-24 mx-auto text-center">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
               Nuestras Áreas de Impacto
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-xl text-muted-foreground leading-relaxed">
               Combinamos visión estratégica y ejecución técnica para transformar cada contacto en una oportunidad real.
             </p>
           </FadeInSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
             {serviceCategories.map((category, index) => (
               <FadeInSection key={category.title} delay={index * 200}>
-                <Card className="text-center flex flex-col justify-between p-10 border border-white/5 bg-card/40 backdrop-blur-sm shadow-none hover:bg-card/60 transition-all duration-300 group h-full">
+                <Card className="text-center flex flex-col justify-between p-12 border border-white/5 bg-card/40 backdrop-blur-sm shadow-none hover:bg-card/60 transition-all duration-500 group h-full rounded-[2.5rem]">
                     <div>
-                      <div className="flex justify-center mb-8 bg-primary/10 w-20 h-20 rounded-2xl items-center mx-auto text-primary transition-transform duration-300 group-hover:scale-110">
+                      <div className="flex justify-center mb-8 bg-primary/10 w-24 h-24 rounded-3xl items-center mx-auto text-primary transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                         {category.icon}
                       </div>
-                      <h2 className="text-3xl font-bold mb-4">{category.title}</h2>
-                      <p className="text-lg text-muted-foreground leading-relaxed">{category.description}</p>
+                      <h2 className="text-3xl md:text-4xl font-bold mb-6">{category.title}</h2>
+                      <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{category.description}</p>
                     </div>
-                    <div className="mt-10">
-                      <Button asChild className="w-full h-14 text-lg font-bold">
+                    <div className="mt-12">
+                      <Button asChild className="w-full h-16 text-xl font-bold rounded-2xl">
                           <Link href={category.href}>Saber más</Link>
                       </Button>
                   </div>
