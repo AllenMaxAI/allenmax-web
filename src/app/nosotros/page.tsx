@@ -5,7 +5,6 @@ import { CheckCircle2, XCircle, ShieldCheck, Zap, BarChart3, Target } from 'luci
 import React from 'react';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 function FadeInSection({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -92,7 +91,7 @@ export default function NosotrosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+          <div className="max-w-6xl">
             <div className="space-y-12">
               <div className={cn(
                 "space-y-2 transition-all duration-1000 ease-out",
@@ -143,11 +142,11 @@ export default function NosotrosPage() {
       {/* ARQUITECTURA ESTRATÉGICA */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 max-w-6xl">
-          <FadeInSection className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          <FadeInSection className="max-w-3xl mb-20 md:mb-32">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-left">
               Arquitectura Estratégica
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed text-left">
               Nuestra identidad se define por la estructura que construimos. No somos una agencia convencional, somos los arquitectos de tu ecosistema digital.
             </p>
           </FadeInSection>
@@ -192,9 +191,9 @@ export default function NosotrosPage() {
       </section>
 
       {/* ALINEACIÓN */}
-      <section>
-        <div className="container mx-auto px-4 max-w-5xl">
-          <FadeInSection className="text-center max-w-3xl mx-auto mb-24 md:mb-32">
+      <section className="pb-20">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <FadeInSection className="max-w-3xl mb-24 md:mb-32">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
               ¿Conectamos?
             </h2>
@@ -203,40 +202,31 @@ export default function NosotrosPage() {
             </p>
           </FadeInSection>
 
-          <FadeInSection className="space-y-16">
-            <h3 className="text-center text-2xl font-bold text-primary">La colaboración es ideal si tu empresa:</h3>
-            <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
-              {forYouItems.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-4">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-base font-medium text-foreground/90">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </FadeInSection>
-          
-          <FadeInSection className="relative text-center my-28">
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="w-full border-t border-border/50"></div>
-            </div>
-            <div className="relative flex justify-center">
-              <span className="bg-[#020817] px-6 text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
-                Y por el contrario
-              </span>
-            </div>
-          </FadeInSection>
-
-          <FadeInSection className="space-y-16 pb-0">
-            <h3 className="text-center text-2xl font-bold text-[#c20000]">Quizás no sea el momento si:</h3>
-            <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
-              {notForYouItems.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-4">
-                  <XCircle className="h-6 w-6 text-[#c20000] flex-shrink-0 mt-0.5" />
-                  <span className="text-base font-medium text-muted-foreground/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </FadeInSection>
+          <div className="grid md:grid-cols-2 gap-16">
+            <FadeInSection className="space-y-12">
+              <h3 className="text-2xl font-bold text-primary">La colaboración es ideal si tu empresa:</h3>
+              <ul className="space-y-6">
+                {forYouItems.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-4">
+                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-base font-medium text-foreground/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </FadeInSection>
+            
+            <FadeInSection className="space-y-12">
+              <h3 className="text-2xl font-bold text-[#c20000]">Quizás no sea el momento si:</h3>
+              <ul className="space-y-6">
+                {notForYouItems.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-4">
+                    <XCircle className="h-6 w-6 text-[#c20000] flex-shrink-0 mt-0.5" />
+                    <span className="text-base font-medium text-muted-foreground/80">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </FadeInSection>
+          </div>
         </div>
       </section>
 

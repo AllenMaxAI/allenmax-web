@@ -5,7 +5,6 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BrainCircuit, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { CtaSection } from '@/components/layout/CtaSection';
 import { cn } from '@/lib/utils';
 import React from 'react';
@@ -73,7 +72,7 @@ export default function ServiciosPage() {
       {/* HERO SECTION */}
       <section className="pt-24 md:pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+          <div className="max-w-6xl">
             <div className="space-y-12">
               <div className={cn(
                 "space-y-2 transition-all duration-1000 ease-out",
@@ -121,7 +120,7 @@ export default function ServiciosPage() {
       {/* CATEGORÍAS DE SERVICIOS */}
       <section className="pt-24 md:pt-32 pb-0">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
             {serviceCategories.map((category, index) => (
               <FadeInSection key={category.title} delay={index * 200}>
                 <Card className="text-center flex flex-col justify-between p-10 border border-white/5 bg-card/40 backdrop-blur-sm shadow-none hover:bg-card/60 transition-all duration-300 group h-full">
