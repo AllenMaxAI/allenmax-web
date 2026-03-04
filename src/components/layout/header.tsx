@@ -7,7 +7,6 @@ import {
   LayoutDashboard,
   TrendingUp,
   BrainCircuit,
-  Bot,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -46,7 +45,6 @@ const serviceLinks = [
 ];
 
 const navLinks = [
-  { href: '/servicios/agencia-ia', label: 'Agencia IA', icon: <Bot className="h-4 w-4" /> },
   { href: '/nosotros', label: 'Nosotros' },
   { href: '/contacto', label: 'Contacto' },
 ];
@@ -116,11 +114,9 @@ export function AppHeader() {
                 href={link.href}
                 className={cn(
                   navigationMenuTriggerStyle(), 
-                  "bg-transparent hover:bg-white/5 gap-2",
-                  link.href === '/servicios/agencia-ia' && "text-primary font-bold"
+                  "bg-transparent hover:bg-white/5 gap-2"
                 )}
               >
-                {link.icon}
                 {link.label}
               </Link>
             ))}
@@ -148,13 +144,9 @@ export function AppHeader() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className={cn(
-                          "flex items-center gap-3 p-3 rounded-md text-lg font-medium transition-colors hover:bg-white/5",
-                          link.href === '/servicios/agencia-ia' ? "text-primary bg-primary/5" : "text-white"
-                        )}
+                        className="flex items-center gap-3 p-3 rounded-md text-lg font-medium text-white transition-colors hover:bg-white/5"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {link.icon}
                         <span>{link.label}</span>
                       </Link>
                     ))}
