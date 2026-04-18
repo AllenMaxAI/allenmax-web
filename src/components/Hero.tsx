@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Cpu, Zap, Activity } from 'lucide-react';
+import { ArrowRight, Cpu, Zap, Activity, Layers, Database, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Hero() {
@@ -12,26 +12,26 @@ export function Hero() {
       {/* Texture & Grain Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
       
-      {/* Mesh Gradients */}
-      <div className="absolute top-0 left-[-10%] w-[60%] h-[60%] bg-primary/5 blur-[140px] rounded-full"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[160px] rounded-full"></div>
+      {/* Mesh Gradients - Enhanced for depth */}
+      <div className="absolute top-0 left-[-10%] w-[70%] h-[70%] bg-primary/10 blur-[160px] rounded-full"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-secondary/15 blur-[180px] rounded-full"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-center">
           
-          {/* Left Side: Editorial Content */}
+          {/* Left Side: Editorial Content (The text you like) */}
           <div className="lg:col-span-7 space-y-12">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 animate-in fade-in slide-in-from-left-4 duration-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/50">Systems Engineering</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/50">High Fidelity Systems</span>
               </div>
               
               <h1 className="text-7xl md:text-9xl lg:text-[130px] font-black leading-[0.8] tracking-[-0.08em] text-foreground select-none">
                 <span className="block animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-100">MENOS</span>
                 <span className="block text-primary italic relative animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
                   GESTIÓN,
-                  <span className="absolute -right-8 top-0 text-xl font-mono text-foreground/20 hidden lg:block tracking-normal uppercase font-bold">01. ROI Focus</span>
+                  <span className="absolute -right-8 top-0 text-xl font-mono text-foreground/20 hidden lg:block tracking-normal uppercase font-bold">01. Efficiency</span>
                 </span>
                 <span className="block animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
                   MÁS <span className="text-foreground/10 transition-colors hover:text-primary/20 cursor-default">RESULTADOS</span>
@@ -62,85 +62,76 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Side: The "Automation Matrix" - Unique Visual */}
-          <div className="lg:col-span-5 relative flex justify-center items-center">
-            <div className="relative w-full aspect-square max-w-[500px] animate-in zoom-in duration-1000 delay-500">
+          {/* Right Side: Isometric Glass Architecture */}
+          <div className="lg:col-span-5 relative flex justify-center items-center h-[500px] perspective-[2000px]">
+            <div className="relative w-full h-full flex items-center justify-center transform-gpu rotate-x-[25deg] rotate-y-[-15deg] rotate-z-[5deg]">
               
-              {/* Background Grid Layer */}
-              <div className="absolute inset-0 opacity-20">
-                <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.2" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-                </svg>
-              </div>
-
-              {/* Animated Intelligence Paths */}
-              <div className="absolute inset-0">
-                <svg width="100%" height="100%" viewBox="0 0 400 400" className="overflow-visible">
-                  {/* Path 1 */}
-                  <path d="M 50 100 Q 150 50 200 200 T 350 300" stroke="url(#gradient1)" strokeWidth="2" fill="none" className="animate-path" />
-                  {/* Path 2 */}
-                  <path d="M 350 100 Q 250 150 200 200 T 50 300" stroke="url(#gradient2)" strokeWidth="1.5" fill="none" className="animate-path-slow" />
-                  
-                  {/* Gradients */}
-                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="transparent" />
-                    <stop offset="50%" stopColor="hsl(var(--primary))" />
-                    <stop offset="100%" stopColor="transparent" />
-                  </linearGradient>
-                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="transparent" />
-                    <stop offset="50%" stopColor="hsl(var(--secondary))" />
-                    <stop offset="100%" stopColor="transparent" />
-                  </linearGradient>
-
-                  {/* Nodes */}
-                  <circle cx="200" cy="200" r="4" fill="hsl(var(--primary))" className="animate-pulse" />
-                  <circle cx="50" cy="100" r="3" fill="hsl(var(--foreground))" fillOpacity="0.2" />
-                  <circle cx="350" cy="300" r="3" fill="hsl(var(--foreground))" fillOpacity="0.2" />
-                </svg>
-              </div>
-
-              {/* The "Intelligence Core" */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative group">
-                  {/* Outer Glow */}
-                  <div className="absolute inset-0 bg-primary/20 blur-[60px] rounded-full animate-pulse"></div>
-                  
-                  {/* Central Geometric Core */}
-                  <div className="relative w-40 h-40 bg-white/10 backdrop-blur-3xl rounded-[2.5rem] border border-white/20 shadow-2xl overflow-hidden flex flex-col items-center justify-center p-6 group-hover:scale-105 transition-transform duration-700">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent animate-shimmer"></div>
-                    
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                      <Cpu className="text-primary w-8 h-8" />
-                    </div>
-                    
-                    <div className="text-center space-y-1">
-                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40">Core Processor</p>
-                      <div className="flex items-center gap-2 justify-center">
-                        <Activity className="text-primary w-3 h-3 animate-pulse" />
-                        <span className="text-xs font-mono font-bold">ACTIVE</span>
-                      </div>
-                    </div>
-
-                    {/* Technical details overlay */}
-                    <div className="absolute bottom-2 right-2 opacity-20">
-                      <Zap size={12} />
-                    </div>
-                  </div>
-
-                  {/* Floating Metric Tags (More editorial than generic cards) */}
-                  <div className="absolute -top-12 -left-12 px-4 py-2 bg-foreground text-background rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl animate-float">
-                    Automated Workflow
-                  </div>
-                  <div className="absolute -bottom-8 -right-8 px-4 py-2 bg-white border border-foreground/10 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg animate-float-slow">
-                    Latency: 12ms
+              {/* Layer 1: Data Infrastructure (Bottom) */}
+              <div className="absolute w-[300px] h-[200px] bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm transform-gpu translate-z-[-100px] animate-layer-1 flex flex-col p-6 shadow-2xl">
+                <div className="flex justify-between items-start mb-4">
+                  <Database className="text-white/20 w-6 h-6" />
+                  <div className="w-12 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className="w-1/2 h-full bg-primary/40 animate-progress"></div>
                   </div>
                 </div>
+                <div className="space-y-2">
+                  <div className="h-2 w-full bg-white/5 rounded-full"></div>
+                  <div className="h-2 w-2/3 bg-white/5 rounded-full"></div>
+                </div>
+                <div className="mt-auto text-[8px] font-mono text-white/20">INFRASTRUCTURE_BASE_v4.2</div>
+              </div>
+
+              {/* Layer 2: Intelligence Engine (Middle) */}
+              <div className="absolute w-[340px] h-[240px] bg-white/10 border border-white/20 rounded-3xl backdrop-blur-md transform-gpu translate-z-0 animate-layer-2 flex items-center justify-center p-8 shadow-2xl ring-1 ring-white/10">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/40 transition-colors duration-1000"></div>
+                  <div className="relative w-20 h-20 bg-primary/20 rounded-2xl flex items-center justify-center border border-primary/30 shadow-[0_0_40px_rgba(0,110,255,0.3)]">
+                    <Cpu className="text-primary w-10 h-10 animate-pulse" />
+                  </div>
+                </div>
+                <div className="ml-6 space-y-3 flex-1">
+                  <div className="h-1.5 w-full bg-primary/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary animate-shimmer-fast"></div>
+                  </div>
+                  <div className="h-1.5 w-3/4 bg-primary/10 rounded-full"></div>
+                  <div className="flex gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+                    <div className="text-[10px] font-bold text-primary uppercase tracking-tighter">AI Engine Active</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Layer 3: Results & Metrics (Top) */}
+              <div className="absolute w-[280px] h-[180px] bg-white/20 border border-white/30 rounded-3xl backdrop-blur-lg transform-gpu translate-z-[100px] animate-layer-3 flex flex-col p-6 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-green-500/20 rounded-lg">
+                    <Sparkles className="text-green-400 w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] font-black uppercase text-foreground/60 tracking-widest">ROI Delivery</span>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end">
+                    <span className="text-3xl font-black text-foreground">94%</span>
+                    <Activity className="text-primary w-4 h-4" />
+                  </div>
+                  <div className="flex gap-1 h-8 items-end">
+                    {[40, 70, 45, 90, 65, 80, 55].map((h, i) => (
+                      <div 
+                        key={i} 
+                        className="flex-1 bg-primary/20 rounded-t-sm animate-chart-up" 
+                        style={{ height: `${h}%`, animationDelay: `${i * 0.1}s` }}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Connections */}
+              <div className="absolute inset-0 z-[-1] pointer-events-none opacity-20">
+                <svg width="100%" height="100%" viewBox="0 0 400 400" className="overflow-visible">
+                  <line x1="100" y1="100" x2="300" y2="300" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="4 4" className="animate-dash" />
+                  <circle cx="200" cy="200" r="100" stroke="hsl(var(--primary))" strokeWidth="0.5" fill="none" className="animate-spin-slow" />
+                </svg>
               </div>
 
             </div>
@@ -150,39 +141,52 @@ export function Hero() {
       </div>
 
       <style jsx global>{`
-        @keyframes shimmer {
+        @keyframes layer-1 {
+          0%, 100% { transform: translateZ(-100px) translateY(0); }
+          50% { transform: translateZ(-110px) translateY(-5px); }
+        }
+        @keyframes layer-2 {
+          0%, 100% { transform: translateZ(0) translateY(0); }
+          50% { transform: translateZ(10px) translateY(-10px); }
+        }
+        @keyframes layer-3 {
+          0%, 100% { transform: translateZ(100px) translateY(0); }
+          50% { transform: translateZ(120px) translateY(-15px); }
+        }
+        .animate-layer-1 { animation: layer-1 6s ease-in-out infinite; }
+        .animate-layer-2 { animation: layer-2 6s ease-in-out infinite 0.5s; }
+        .animate-layer-3 { animation: layer-3 6s ease-in-out infinite 1s; }
+        
+        @keyframes progress {
+          0% { width: 0%; }
+          100% { width: 100%; }
+        }
+        .animate-progress { animation: progress 3s linear infinite; }
+        
+        @keyframes shimmer-fast {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
         }
-        @keyframes float {
-          0%, 100% { transform: translateY(0) rotate(0); }
-          50% { transform: translateY(-10px) rotate(2deg); }
+        .animate-shimmer-fast { animation: shimmer-fast 1.5s infinite linear; }
+        
+        @keyframes chart-up {
+          from { height: 0; opacity: 0; }
+          to { opacity: 1; }
         }
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0) rotate(0); }
-          50% { transform: translateY(10px) rotate(-2deg); }
+        .animate-chart-up { animation: chart-up 1s ease-out forwards; }
+        
+        .animate-spin-slow { animation: spin 20s linear infinite; }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
-        .animate-path {
-          stroke-dasharray: 1000;
-          stroke-dashoffset: 1000;
-          animation: draw 10s linear infinite;
+        
+        .animate-dash {
+          stroke-dasharray: 10;
+          animation: dash 10s linear infinite;
         }
-        .animate-path-slow {
-          stroke-dasharray: 1000;
-          stroke-dashoffset: 1000;
-          animation: draw 15s linear infinite reverse;
-        }
-        @keyframes draw {
-          to { stroke-dashoffset: 0; }
-        }
-        .animate-shimmer {
-          animation: shimmer 3s infinite linear;
-        }
-        .animate-float {
-          animation: float 5s ease-in-out infinite;
-        }
-        .animate-float-slow {
-          animation: float-slow 7s ease-in-out infinite;
+        @keyframes dash {
+          to { stroke-dashoffset: -100; }
         }
       `}</style>
     </section>
