@@ -9,25 +9,39 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 export function Hero() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'hero-bg');
 
+  const handleCalendly = () => {
+    // Aquí iría el enlace a Calendly
+    window.open('https://calendly.com/tu-usuario', '_blank');
+  };
+
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <div className="flex flex-col items-start space-y-8 z-10">
+        <div className="flex flex-col items-start space-y-8 z-10 text-left">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent text-primary text-xs font-bold tracking-wider uppercase">
-            Innovación en Alicante
+            Impulsando el Futuro en Alicante
           </div>
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-foreground">
-            Automatización con IA en <span className="text-primary">Alicante</span> para tu negocio
+            Automatiza tu <span className="text-primary">Captación</span> y Atención al Cliente
           </h1>
           <p className="text-xl text-foreground/70 max-w-lg leading-relaxed">
-            Impulsa tu negocio con IA. Reducimos costes, optimizamos procesos y liberamos el potencial de tu equipo con soluciones inteligentes personalizadas.
+            Ayudamos a empresas y clínicas dentales a centralizar su comunicación, automatizar procesos y multiplicar sus resultados mediante IA.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Button size="lg" className="rounded-full px-8 py-7 text-lg font-bold bg-primary hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg shadow-primary/25">
-              Agendar demo gratuita
+            <Button 
+              size="lg" 
+              onClick={handleCalendly}
+              className="rounded-full px-8 py-7 text-lg font-bold bg-primary hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg shadow-primary/25"
+            >
+              Agendar llamada
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 py-7 text-lg font-bold border-primary text-primary hover:bg-primary/5 transition-all">
-              Ver servicios
+            <Button 
+              size="lg" 
+              variant="outline" 
+              asChild
+              className="rounded-full px-8 py-7 text-lg font-bold border-primary text-primary hover:bg-primary/5 transition-all"
+            >
+              <a href="#crm-dental">Ver CRM Dental</a>
             </Button>
           </div>
           <div className="flex items-center gap-4 pt-4">
@@ -39,7 +53,7 @@ export function Hero() {
               ))}
             </div>
             <p className="text-sm text-foreground/60">
-              <span className="font-bold text-foreground">+50 negocios</span> ya confían en nosotros
+              <span className="font-bold text-foreground">+100 empresas</span> transformadas
             </p>
           </div>
         </div>
@@ -62,8 +76,8 @@ export function Hero() {
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
               </div>
               <div>
-                <p className="text-xs font-bold text-foreground">Sistema activo</p>
-                <p className="text-[10px] text-muted-foreground">Optimización en tiempo real</p>
+                <p className="text-xs font-bold text-foreground">Agente IA activo</p>
+                <p className="text-[10px] text-muted-foreground">Gestionando leads en tiempo real</p>
               </div>
             </div>
           </div>

@@ -2,27 +2,27 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "AI abstract technology background",
-      "imageUrl": "https://picsum.photos/seed/ai-tech/1200/800",
-      "imageHint": "AI technology"
+      "description": "Tecnología de automatización inteligente",
+      "imageUrl": "https://picsum.photos/seed/allenmax-hero/1200/800",
+      "imageHint": "AI automation"
     },
     {
-      "id": "service-1",
-      "description": "Automated workflow representation",
-      "imageUrl": "https://picsum.photos/seed/workflow/600/400",
-      "imageHint": "automated workflow"
+      "id": "crm-dental",
+      "description": "Dashboard de CRM para clínicas dentales",
+      "imageUrl": "https://picsum.photos/seed/dental-crm/800/600",
+      "imageHint": "medical dashboard"
     },
     {
-      "id": "service-2",
-      "description": "Customer support AI bot",
-      "imageUrl": "https://picsum.photos/seed/bot/600/400",
-      "imageHint": "AI chatbot"
+      "id": "voice-ai",
+      "description": "Interfaz de agentes de voz con transcripción",
+      "imageUrl": "https://picsum.photos/seed/voice-tech/600/400",
+      "imageHint": "voice assistant"
     },
     {
-      "id": "service-3",
-      "description": "Data analysis visualization",
-      "imageUrl": "https://picsum.photos/seed/data/600/400",
-      "imageHint": "data analysis"
+      "id": "social-metrics",
+      "description": "Métricas de redes sociales optimizadas por IA",
+      "imageUrl": "https://picsum.photos/seed/social-ia/600/400",
+      "imageHint": "social analytics"
     }
   ]
 }

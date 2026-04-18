@@ -1,43 +1,52 @@
+
 import Link from 'next/link';
+import { Mail, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t py-12 px-6">
+    <footer className="bg-white border-t py-16 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
         <div className="col-span-2">
           <Link href="/" className="flex items-center gap-2 mb-6">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">A</span>
+              <span className="text-white font-bold text-sm">AM</span>
             </div>
-            <span className="text-xl font-bold tracking-tight text-foreground">AllenMax</span>
+            <span className="text-2xl font-bold tracking-tight text-foreground">AllenMax</span>
           </Link>
-          <p className="text-foreground/60 max-w-xs leading-relaxed">
-            Liderando la revolución de la inteligencia artificial en Alicante. Transformamos negocios tradicionales en empresas del futuro.
+          <p className="text-foreground/60 max-w-xs leading-relaxed mb-6">
+            Agencia líder en automatización con IA en Alicante. Especialistas en optimización para clínicas dentales y servicios.
           </p>
+          <div className="flex gap-4">
+            <a href="#" className="p-2 bg-gray-50 rounded-full hover:text-primary transition-colors"><Instagram size={20} /></a>
+            <a href="#" className="p-2 bg-gray-50 rounded-full hover:text-primary transition-colors"><Linkedin size={20} /></a>
+            <a href="#" className="p-2 bg-gray-50 rounded-full hover:text-primary transition-colors"><Twitter size={20} /></a>
+            <a href="mailto:hola@allenmax.ai" className="p-2 bg-gray-50 rounded-full hover:text-primary transition-colors"><Mail size={20} /></a>
+          </div>
         </div>
         
         <div>
-          <h4 className="font-bold mb-4">Empresa</h4>
-          <ul className="space-y-2 text-sm text-foreground/70">
-            <li><Link href="#nosotros" className="hover:text-primary transition-colors">Nosotros</Link></li>
-            <li><Link href="#blog" className="hover:text-primary transition-colors">Blog</Link></li>
-            <li><Link href="#servicios" className="hover:text-primary transition-colors">Servicios</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Privacidad</Link></li>
+          <h4 className="font-bold mb-6">Servicios</h4>
+          <ul className="space-y-4 text-sm text-foreground/70">
+            <li><Link href="#crm-dental" className="hover:text-primary transition-colors">CRM Dental</Link></li>
+            <li><Link href="#solucion" className="hover:text-primary transition-colors">Chatbots & Voz</Link></li>
+            <li><Link href="#servicios" className="hover:text-primary transition-colors">Webs Inteligentes</Link></li>
+            <li><Link href="#servicios" className="hover:text-primary transition-colors">RRSS con IA</Link></li>
           </ul>
         </div>
         
         <div>
-          <h4 className="font-bold mb-4">Recursos</h4>
-          <ul className="space-y-2 text-sm text-foreground/70">
-            <li><Link href="#faq" className="hover:text-primary transition-colors">FAQ</Link></li>
-            <li><Link href="#herramientas" className="hover:text-primary transition-colors">Herramientas</Link></li>
-            <li><Link href="#proceso" className="hover:text-primary transition-colors">Metodología</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Soporte</Link></li>
+          <h4 className="font-bold mb-6">Legal</h4>
+          <ul className="space-y-4 text-sm text-foreground/70">
+            <li><Link href="#" className="hover:text-primary transition-colors">Aviso Legal</Link></li>
+            <li><Link href="#" className="hover:text-primary transition-colors">Privacidad</Link></li>
+            <li><Link href="#" className="hover:text-primary transition-colors">Cookies</Link></li>
+            <li><Link href="mailto:hola@allenmax.ai" className="hover:text-primary transition-colors">Contacto</Link></li>
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t text-center text-sm text-foreground/40">
-        © {new Date().getFullYear()} AllenMax. Todos los derechos reservados.
+      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/40">
+        <p>© {new Date().getFullYear()} AllenMax Automation. Todos los derechos reservados.</p>
+        <p className="flex items-center gap-1">Hecho con <span className="text-red-500">❤️</span> en Alicante</p>
       </div>
     </footer>
   );
