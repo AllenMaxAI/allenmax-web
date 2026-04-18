@@ -13,39 +13,33 @@ import {
   ShieldCheck,
   Zap,
   Target,
-  Settings,
   Users,
   Activity,
   Sparkles,
   Cpu
 } from 'lucide-react';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 
 export default function CRMDentalPage() {
-  const images = PlaceHolderImages;
-  const crmImg = images.find(img => img.id === 'crm-dental');
-
   return (
     <div className="pt-24 min-h-screen bg-background relative overflow-hidden">
-      {/* Sistema de Fondos y Texturas (Match con Home) */}
+      {/* Sistema de Fondos y Texturas (Coherente con Home) */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
       <div className="absolute top-0 left-[-10%] w-[70%] h-[70%] bg-primary/10 blur-[160px] rounded-full"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-secondary/15 blur-[180px] rounded-full"></div>
 
-      {/* HERO: Impacto Editorial */}
+      {/* HERO: Impacto Profesional */}
       <section className="relative z-10 pt-20 pb-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-8 space-y-8">
+            <div className="lg:col-span-10 space-y-8">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></div>
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Sector Dental Premium</span>
               </div>
-              <h1 className="text-6xl md:text-8xl lg:text-[110px] font-black leading-[0.85] tracking-tight text-foreground italic">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight text-foreground italic">
                 AUTOMATIZA TU <br />
                 <span className="text-primary not-italic">CLÍNICA AL 100%</span>
               </h1>
@@ -68,7 +62,7 @@ export default function CRMDentalPage() {
         </div>
       </section>
 
-      {/* SECCIÓN 1: EL CEREBRO (CRM) - Intercalado derecha */}
+      {/* SECCIÓN 1: EL CEREBRO (CRM) */}
       <Section id="crm-core" title="" className="!py-0">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="relative order-2 lg:order-1">
@@ -87,10 +81,6 @@ export default function CRMDentalPage() {
                       </div>
                     ))}
                   </div>
-                  <div className="space-y-2 pt-4">
-                    <div className="w-full h-1.5 bg-white/5 rounded-full"></div>
-                    <div className="w-2/3 h-1.5 bg-white/5 rounded-full"></div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -99,7 +89,7 @@ export default function CRMDentalPage() {
             <div className="inline-flex p-3 rounded-2xl bg-primary/5 text-primary">
               <Cpu size={32} />
             </div>
-            <h2 className="text-4xl lg:text-6xl font-black tracking-tighter leading-none">🧠 UN CRM DISEÑADO <br /><span className="text-foreground/30">PARA CLÍNICAS</span></h2>
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tighter leading-none">🧠 UN CRM DISEÑADO <br /><span className="text-foreground/30">PARA CLÍNICAS</span></h2>
             <p className="text-lg text-foreground/60 leading-relaxed">
               Centraliza toda tu operación en un solo lugar. Nuestro CRM personalizado te permite una gestión con precisión quirúrgica.
             </p>
@@ -121,12 +111,12 @@ export default function CRMDentalPage() {
         </div>
       </Section>
 
-      {/* SECCIÓN 2: AUTOMATIZACIÓN (CHATBOTS) - Fondo oscuro intercalado */}
+      {/* SECCIÓN 2: AUTOMATIZACIÓN (CHATBOTS) */}
       <div className="bg-slate-900 mt-32 py-32 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[150px] rounded-full"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-4xl lg:text-7xl font-black italic tracking-tighter">🤖 AUTOMATIZACIÓN COMPLETA</h2>
+            <h2 className="text-4xl lg:text-6xl font-black italic tracking-tighter">🤖 AUTOMATIZACIÓN COMPLETA</h2>
             <p className="text-xl text-white/40 max-w-2xl mx-auto font-medium">Chatbots en todos tus canales. Atiende a tus pacientes automáticamente 24/7.</p>
           </div>
           
@@ -172,14 +162,14 @@ export default function CRMDentalPage() {
         </div>
       </div>
 
-      {/* SECCIÓN 3: AGENTE DE VOZ - Visual de ondas y llamadas */}
+      {/* SECCIÓN 3: AGENTE DE VOZ */}
       <Section id="voice-agent" title="" className="!py-32">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-8">
             <div className="inline-flex p-3 rounded-2xl bg-blue-500/10 text-blue-500">
               <Phone size={32} />
             </div>
-            <h2 className="text-4xl lg:text-6xl font-black tracking-tighter leading-none">📞 AGENTE DE VOZ <br /><span className="text-primary">CON IA</span></h2>
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tighter leading-none">📞 AGENTE DE VOZ <br /><span className="text-primary">CON IA</span></h2>
             <p className="text-lg text-foreground/60 leading-relaxed italic border-l-4 border-primary/20 pl-6">
               "Como una recepcionista, pero automática. Tu clínica responde llamadas sin necesidad de personal."
             </p>
@@ -196,19 +186,15 @@ export default function CRMDentalPage() {
                 </li>
               ))}
             </ul>
-            <div className="p-4 bg-foreground text-background rounded-2xl text-center font-black uppercase tracking-widest text-[10px]">
-              Sin esperas. Sin llamadas perdidas.
-            </div>
           </div>
           
           <div className="relative flex justify-center items-center">
-            <div className="w-80 h-80 bg-primary/10 rounded-full flex items-center justify-center relative">
+            <div className="w-64 h-64 bg-primary/10 rounded-full flex items-center justify-center relative">
               <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-ping opacity-20"></div>
-              <div className="absolute inset-10 border-2 border-primary/20 rounded-full animate-ping opacity-20 [animation-delay:0.5s]"></div>
-              <div className="relative z-10 w-40 h-40 bg-white rounded-3xl shadow-2xl flex flex-col items-center justify-center p-6 border group hover:scale-105 transition-transform">
-                <div className="flex gap-1 h-12 mb-4 items-center">
-                  {[...Array(8)].map((_, i) => (
-                    <div key={i} className="w-1.5 bg-primary rounded-full animate-pulse" style={{ height: `${20 + Math.random() * 80}%`, animationDuration: `${0.4 + Math.random()}s` }}></div>
+              <div className="relative z-10 w-32 h-32 bg-white rounded-3xl shadow-2xl flex flex-col items-center justify-center p-6 border group hover:scale-105 transition-transform">
+                <div className="flex gap-1 h-8 mb-4 items-center">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="w-1 bg-primary rounded-full animate-pulse" style={{ height: `${20 + Math.random() * 80}%`, animationDuration: `${0.4 + Math.random()}s` }}></div>
                   ))}
                 </div>
                 <span className="text-[8px] font-black uppercase tracking-widest text-foreground/40">Voice Analysis</span>
@@ -218,37 +204,36 @@ export default function CRMDentalPage() {
         </div>
       </Section>
 
-      {/* SECCIÓN 4: CITAS Y SEGUIMIENTO - Cards intercaladas */}
+      {/* SECCIÓN 4: CITAS Y SEGUIMIENTO */}
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="rounded-[48px] border-none bg-white shadow-xl shadow-slate-200/50 p-12 overflow-hidden relative group">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-             <Calendar className="text-primary w-12 h-12 mb-8" />
-             <h3 className="text-3xl font-black mb-6">📅 GESTIÓN <br />AUTOMÁTICA DE CITAS</h3>
-             <p className="text-foreground/50 mb-8 leading-relaxed">Olvídate de gestionar agendas manualmente. El sistema crea, cambia y recuerda citas automáticamente.</p>
-             <div className="space-y-3">
+          <Card className="rounded-[40px] border-none bg-white shadow-xl shadow-slate-200/50 p-10 overflow-hidden relative group">
+             <Calendar className="text-primary w-10 h-10 mb-6" />
+             <h3 className="text-2xl font-black mb-4">📅 GESTIÓN AUTOMÁTICA DE CITAS</h3>
+             <p className="text-foreground/50 mb-6 text-sm leading-relaxed">Olvídate de gestionar agendas manualmente. El sistema crea, cambia y recuerda citas automáticamente.</p>
+             <div className="space-y-2">
                {["Crea citas automáticamente", "Cambios y cancelaciones", "Recordatorios WhatsApp", "Reduce ausencias"].map((t, i) => (
-                 <div key={i} className="flex items-center gap-2 text-sm font-bold text-foreground/70">
-                   <div className="w-1.5 h-1.5 bg-primary rounded-full"></div> {t}
+                 <div key={i} className="flex items-center gap-2 text-xs font-bold text-foreground/70">
+                   <div className="w-1 h-1 bg-primary rounded-full"></div> {t}
                  </div>
                ))}
              </div>
           </Card>
 
-          <Card className="rounded-[48px] border-none bg-slate-50 p-12 overflow-hidden relative group">
-             <TrendingUp className="text-green-500 w-12 h-12 mb-8" />
-             <h3 className="text-3xl font-black mb-6">🔁 SEGUIMIENTO <br />Y INGRESOS</h3>
-             <p className="text-foreground/50 mb-8 leading-relaxed">No pierdas oportunidades. El sistema reactiva pacientes y gestiona pagos sin intervención humana.</p>
-             <div className="grid grid-cols-1 gap-4">
+          <Card className="rounded-[40px] border-none bg-slate-50 p-10 overflow-hidden relative group">
+             <TrendingUp className="text-green-500 w-10 h-10 mb-6" />
+             <h3 className="text-2xl font-black mb-4">🔁 SEGUIMIENTO E INGRESOS</h3>
+             <p className="text-foreground/50 mb-6 text-sm leading-relaxed">No pierdas oportunidades. El sistema reactiva pacientes y gestiona pagos sin intervención humana.</p>
+             <div className="grid grid-cols-1 gap-2">
                {[
                  "Seguimiento automático",
                  "Recordatorios de pagos",
                  "Reactivación de inactivos",
                  "Nuevas oportunidades"
                ].map((t, i) => (
-                 <div key={i} className="bg-white p-4 rounded-2xl border flex justify-between items-center group-hover:border-green-500/30 transition-all">
-                   <span className="font-bold text-sm">{t}</span>
-                   <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                 <div key={i} className="bg-white p-3 rounded-xl border flex justify-between items-center group-hover:border-green-500/30 transition-all">
+                   <span className="font-bold text-xs">{t}</span>
+                   <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
                  </div>
                ))}
              </div>
@@ -256,7 +241,7 @@ export default function CRMDentalPage() {
         </div>
       </div>
 
-      {/* SECCIÓN 5: ¿QUÉ GANAS? - Grid minimalista */}
+      {/* SECCIÓN 5: ¿QUÉ GANAS? */}
       <Section id="benefits" title="📈 ¿QUÉ GANAS CON ESTO?" subtitle="Resultados tangibles desde el primer mes" className="bg-white/30 backdrop-blur-sm border-y">
         <div className="grid md:grid-cols-3 gap-8">
           {[
@@ -277,43 +262,20 @@ export default function CRMDentalPage() {
         </div>
       </Section>
 
-      {/* SECCIÓN 6: IMPLEMENTACIÓN - Pasos táctiles */}
-      <Section id="implementation" title="⚙️ IMPLEMENTACIÓN SIMPLE" subtitle="Sin complicaciones técnicas para tu equipo">
-        <div className="grid md:grid-cols-3 gap-12 text-center relative">
-          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -z-10 hidden md:block"></div>
-          {[
-            { n: "01", t: "Configuración", d: "Diseñamos el sistema a tu medida." },
-            { n: "02", t: "Conexión", d: "Lo conectamos con tus canales." },
-            { n: "03", t: "Activación", d: "Empieza a funcionar automáticamente." }
-          ].map((step, i) => (
-            <div key={i} className="space-y-6 bg-background px-4">
-              <div className="w-20 h-20 rounded-full bg-white border shadow-lg flex items-center justify-center mx-auto text-2xl font-black text-primary">
-                {step.n}
-              </div>
-              <div>
-                <h4 className="text-2xl font-black mb-2">{step.t}</h4>
-                <p className="text-sm text-foreground/50">{step.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* FINAL CTA: Editorial y masivo */}
+      {/* FINAL CTA */}
       <section className="py-40 px-6">
-        <div className="max-w-5xl mx-auto bg-primary rounded-[80px] p-20 text-center text-white relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,110,255,0.3)]">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full -mr-64 -mt-64 blur-[120px]"></div>
-          <div className="relative z-10 space-y-12">
-            <h2 className="text-5xl lg:text-8xl font-black leading-[0.8] tracking-tighter italic">
+        <div className="max-w-5xl mx-auto bg-primary rounded-[60px] p-16 text-center text-white relative overflow-hidden shadow-2xl">
+          <div className="relative z-10 space-y-10">
+            <h2 className="text-4xl lg:text-6xl font-black leading-[1] tracking-tighter italic">
               CONVIERTE TU CLÍNICA EN UN <br />
               <span className="text-white/40 not-italic uppercase">SISTEMA QUE TRABAJA POR TI</span>
             </h2>
             <p className="text-xl text-white/70 max-w-2xl mx-auto font-medium">
               Automatiza procesos, mejora la atención y escala sin contratar más personal.
             </p>
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 h-24 rounded-full px-16 text-3xl font-black shadow-2xl group" asChild>
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90 h-20 rounded-full px-12 text-2xl font-black shadow-2xl group" asChild>
               <Link href="/contacto">
-                AGENDAR LLAMADA <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" size={32} />
+                AGENDAR LLAMADA <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" size={28} />
               </Link>
             </Button>
           </div>
@@ -324,9 +286,6 @@ export default function CRMDentalPage() {
         @keyframes pulse-soft {
           0%, 100% { transform: scale(1); opacity: 0.1; }
           50% { transform: scale(1.1); opacity: 0.2; }
-        }
-        .perspective-2000 {
-          perspective: 2000px;
         }
       `}</style>
     </div>
