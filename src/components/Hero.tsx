@@ -3,145 +3,109 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Zap, Target, BarChart3, ChevronRight, Activity } from 'lucide-react';
+import { ArrowRight, Activity, Globe, Cpu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-40 px-6 overflow-hidden bg-background">
-      {/* Texture & Grain Overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-52 px-6 overflow-hidden bg-background">
+      {/* Texture & Grain Overlay - Adds a "printed" high-end feel */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.05] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
       
-      {/* Background Blobs */}
-      <div className="absolute top-0 left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full animate-pulse"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[150px] rounded-full"></div>
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-0 left-[-10%] w-[60%] h-[60%] bg-primary/5 blur-[140px] rounded-full animate-pulse"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[160px] rounded-full"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-center">
           
-          {/* Left Side: Content */}
-          <div className="lg:col-span-7 space-y-10">
-            <div className="space-y-6">
-              <h1 className="text-6xl md:text-8xl lg:text-[110px] font-black leading-[0.85] tracking-[-0.06em] text-foreground animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
-                Menos <br />
-                <span className="text-primary italic">Gestión,</span> <br />
-                Más <br />
-                <span className="relative">
-                  Crecimiento
-                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary/40 -z-10" viewBox="0 0 300 12" fill="none" preserveAspectRatio="none">
-                    <path d="M1 11C40 3 150 1 299 9" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
-                  </svg>
+          {/* Left Side: Editorial Content */}
+          <div className="lg:col-span-8 space-y-12">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 animate-in fade-in slide-in-from-left-4 duration-700">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></div>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/50">Intelligence as a Service</span>
+              </div>
+              
+              <h1 className="text-7xl md:text-9xl lg:text-[130px] font-black leading-[0.8] tracking-[-0.08em] text-foreground select-none">
+                <span className="block animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-100">MENOS</span>
+                <span className="block text-primary italic relative animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+                  GESTIÓN,
+                  <span className="absolute -right-8 top-0 text-xl font-mono text-foreground/20 hidden lg:block tracking-normal uppercase font-bold">01. Efficiency</span>
+                </span>
+                <span className="block animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
+                  MÁS <span className="text-foreground/10 transition-colors hover:text-primary/20 cursor-default">ROI</span>
                 </span>
               </h1>
-              
-              <p className="text-xl lg:text-2xl text-foreground/40 max-w-xl font-medium leading-tight animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-                Transformamos tu infraestructura comercial con sistemas de IA que no solo hablan, sino que cierran pacientes y optimizan tu retorno.
-              </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-              <Button 
-                size="lg" 
-                className="h-16 rounded-full px-10 text-lg font-bold bg-primary hover:bg-primary/90 transition-all shadow-[0_15px_30px_rgba(0,110,255,0.25)] group"
-              >
-                Agendar demo gratuita
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="ghost"
-                className="h-16 rounded-full px-10 text-lg font-bold hover:bg-black/5 transition-all text-foreground/60"
-              >
-                Nuestra metodología
-              </Button>
+            <div className="max-w-xl space-y-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-400">
+              <p className="text-xl lg:text-2xl text-foreground/50 font-medium leading-tight">
+                Diseñamos arquitecturas de automatización que eliminan la fricción operativa y multiplican tu capacidad de cierre.
+              </p>
+              
+              <div className="flex flex-wrap gap-5">
+                <Button 
+                  size="lg" 
+                  className="h-16 rounded-full px-10 text-lg font-bold bg-primary hover:bg-primary/90 transition-all shadow-[0_20px_40px_rgba(0,110,255,0.2)] group"
+                >
+                  Agendar consulta estratégica
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                </Button>
+                <div className="flex items-center gap-4 px-6 border-l border-foreground/10">
+                  <div className="text-left">
+                    <p className="text-sm font-black text-foreground">+40%</p>
+                    <p className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest">Conversión media</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Side: Operational Visual */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative aspect-square w-full max-w-[500px] mx-auto animate-in zoom-in duration-1000 delay-500">
-              {/* Outer Glow Ring */}
-              <div className="absolute inset-0 border-[0.5px] border-black/5 rounded-[4rem] rotate-3 scale-105"></div>
+          {/* Right Side: The "Core" Abstract Visual */}
+          <div className="lg:col-span-4 relative flex justify-center items-center">
+            <div className="relative w-full aspect-square max-w-[400px] animate-in zoom-in duration-1000 delay-500">
+              {/* Abstract Core Rings */}
+              <div className="absolute inset-0 border border-foreground/[0.03] rounded-full animate-[spin_20s_linear_infinite]"></div>
+              <div className="absolute inset-4 border border-foreground/[0.05] rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+              <div className="absolute inset-12 border border-primary/20 rounded-full blur-[2px] animate-[pulse_4s_ease-in-out_infinite]"></div>
               
-              {/* Main Console Window */}
-              <div className="w-full h-full bg-white rounded-[3.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.08)] border border-white p-8 flex flex-col overflow-hidden">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/20"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/20"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/20"></div>
-                  </div>
-                  <div className="px-3 py-1 rounded-full bg-primary/5 border border-primary/10 flex items-center gap-2">
+              {/* Central Processor Visual */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-32 h-32 bg-white rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.12)] border border-white p-6 flex flex-col justify-between overflow-hidden group hover:scale-105 transition-transform duration-500">
+                  <div className="flex justify-between items-start">
+                    <Cpu size={24} className="text-primary" />
                     <Activity size={12} className="text-primary animate-pulse" />
-                    <span className="text-[10px] font-black uppercase tracking-widest text-primary">System Live</span>
                   </div>
-                </div>
-
-                <div className="flex-1 space-y-6">
-                  {/* Lead Processing Visual */}
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-end">
-                      <span className="text-[11px] font-bold text-foreground/30 uppercase tracking-tighter">Neural Capture</span>
-                      <span className="text-[11px] font-mono text-primary">89.4% Eff.</span>
+                  <div>
+                    <div className="w-full h-1 bg-slate-100 rounded-full mb-2 overflow-hidden">
+                      <div className="w-2/3 h-full bg-primary animate-[shimmer_2s_infinite]"></div>
                     </div>
-                    <div className="h-24 w-full bg-slate-50 rounded-2xl p-4 flex items-end gap-1">
-                      {[...Array(15)].map((_, i) => (
-                        <div 
-                          key={i} 
-                          className="flex-1 bg-primary/20 rounded-full animate-bar-grow"
-                          style={{ 
-                            height: `${30 + Math.random() * 70}%`,
-                            animationDelay: `${i * 0.05}s`
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Operational Logs */}
-                  <div className="space-y-3">
-                    <p className="text-[11px] font-bold text-foreground/30 uppercase tracking-tighter">Live Operations</p>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-black/[0.02] group hover:border-primary/20 transition-colors">
-                        <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                          <Target size={14} className="text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-[10px] font-bold leading-none mb-1">Lead ID: #4492 Calificado</p>
-                          <p className="text-[9px] text-foreground/40">Intención de compra detectada: 9.4/10</p>
-                        </div>
-                        <ChevronRight size={14} className="text-foreground/20" />
-                      </div>
-                      <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-black/[0.02]">
-                        <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                          <Zap size={14} className="text-secondary" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-[10px] font-bold leading-none mb-1">Cita Confirmada: Dental Alicante</p>
-                          <p className="text-[9px] text-foreground/40">Auto-agendado por Voice Agent v4</p>
-                        </div>
-                        <ChevronRight size={14} className="text-foreground/20" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-black/[0.03] flex justify-between items-center">
-                  <div className="flex -space-x-2">
-                    {[1,2,3].map(i => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-100"></div>
-                    ))}
-                    <div className="w-8 h-8 rounded-full border-2 border-white bg-primary flex items-center justify-center text-[10px] font-bold text-white">+12</div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-[11px] font-black text-foreground">+24.5k</p>
-                    <p className="text-[9px] font-bold text-foreground/30 uppercase tracking-tighter">Operations / mo</p>
+                    <p className="text-[9px] font-mono font-bold text-foreground/30 uppercase tracking-tighter">System Pulse</p>
                   </div>
                 </div>
               </div>
 
-              {/* Decorative Accent */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/20 blur-3xl rounded-full -z-10 animate-pulse"></div>
+              {/* Data Floating Elements */}
+              <div className="absolute -top-4 -right-4 p-4 bg-white/80 backdrop-blur-xl border border-white shadow-xl rounded-2xl animate-bounce-slow">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
+                    <Globe size={14} className="text-secondary" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-foreground">Lead Sync</p>
+                    <p className="text-[8px] text-foreground/40">Real-time update</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute -bottom-8 -left-8 p-5 bg-foreground text-background rounded-2xl shadow-2xl animate-float">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 opacity-50">Performance</p>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-2xl font-black">99.8</span>
+                  <span className="text-[10px] font-mono">ms</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -149,13 +113,23 @@ export function Hero() {
       </div>
 
       <style jsx global>{`
-        @keyframes bar-grow {
-          0%, 100% { transform: scaleY(1); }
-          50% { transform: scaleY(1.4); }
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(200%); }
         }
-        .animate-bar-grow {
-          animation: bar-grow 2s ease-in-out infinite;
-          transform-origin: bottom;
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0); }
+          50% { transform: translate(5px, -15px); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 4s ease-in-out infinite;
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
         }
       `}</style>
     </section>
