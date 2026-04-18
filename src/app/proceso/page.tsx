@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Section } from '@/components/Section';
 
 export default function ProcesoPage() {
   return (
-    <div className="pt-24 bg-background">
+    <div className="pt-24 min-h-screen">
       <Section id="proceso" title="Tu camino a la automatización" subtitle="Un método probado en 4 pasos para transformar los resultados de tu negocio">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[

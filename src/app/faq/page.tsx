@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { Section } from '@/components/Section';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 export default function FAQPage() {
   return (
-    <div className="pt-24 bg-background">
+    <div className="pt-24 min-h-screen">
       <Section id="faq" title="Preguntas Frecuentes" subtitle="Resolvemos tus dudas sobre cómo integrar la IA en tu negocio">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-3xl border shadow-sm">
           <Accordion type="single" collapsible className="w-full">

@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { Section } from '@/components/Section';
 import { TrendingUp, Clock, Wallet, BarChart, Heart } from 'lucide-react';
 
 export default function BeneficiosPage() {
   return (
-    <div className="pt-24 bg-background">
+    <div className="pt-24 min-h-screen">
       <Section id="beneficios" title="Resultados tangibles" subtitle="Cómo la automatización con AllenMax impacta directamente en tu cuenta de resultados">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[

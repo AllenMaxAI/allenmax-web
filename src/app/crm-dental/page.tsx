@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Section } from '@/components/Section';
 import { ShieldCheck, CheckCircle2 } from 'lucide-react';
@@ -10,7 +11,7 @@ export default function CRMDentalPage() {
   const crmImg = images.find(img => img.id === 'crm-dental');
 
   return (
-    <div className="pt-24 bg-background">
+    <div className="pt-24 min-h-screen">
       <Section id="crm-dental-hero" title="CRM Inteligente para Clínicas" subtitle="La herramienta definitiva diseñada para maximizar la conversión de pacientes" dark className="overflow-hidden min-h-[60vh] flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 text-left">
