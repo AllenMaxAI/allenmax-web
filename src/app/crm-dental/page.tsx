@@ -20,12 +20,12 @@ import Link from 'next/link';
 export default function CRMDentalPage() {
   return (
     <div className="pt-24 min-h-screen bg-background relative overflow-hidden">
-      {/* Sistema de Fondos y Texturas (Coherente con Home) */}
+      {/* Sistema de Fondos y Texturas */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
       <div className="absolute top-0 left-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[160px] rounded-full"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-400/5 blur-[180px] rounded-full"></div>
 
-      {/* HERO: Rediseño basado en captura */}
+      {/* HERO */}
       <section className="relative z-10 pt-20 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-4xl space-y-10">
@@ -34,13 +34,13 @@ export default function CRMDentalPage() {
               <span className="text-[10px] font-black uppercase tracking-widest text-primary/70">Sector Dental Premium</span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tight text-foreground uppercase italic">
+            <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-foreground uppercase italic">
               AUTOMATIZA TU <br />
-              <span className="text-primary not-italic">CLÍNICA AL 100%</span>
+              <span className="text-primary not-italic">CLÍNICA CON IA</span>
             </h1>
             
             <p className="text-lg lg:text-xl text-foreground/50 font-medium max-w-2xl leading-relaxed">
-              El CRM inteligente que centraliza la gestión de pacientes, citas y comunicación para escalar tu facturación sin esfuerzo manual.
+              Convierte tu clínica en un sistema inteligente que gestiona pacientes, citas y comunicación de forma automática, 24/7.
             </p>
             
             <div className="flex flex-wrap items-center gap-8 pt-4">
@@ -58,7 +58,7 @@ export default function CRMDentalPage() {
         </div>
       </section>
 
-      {/* SECCIÓN 1: EL CEREBRO (CRM) - Intercalado Izquierda */}
+      {/* SECCIÓN 1: EL CEREBRO (CRM) */}
       <Section id="crm-core" title="" className="!py-16">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
@@ -82,7 +82,7 @@ export default function CRMDentalPage() {
           </div>
           <div className="order-1 lg:order-2 space-y-6">
             <h2 className="text-3xl lg:text-4xl font-black tracking-tight leading-none uppercase">
-              🧠 El cerebro <br /><span className="text-primary">de tu gestión</span>
+              El cerebro <br /><span className="text-primary">de tu gestión</span>
             </h2>
             <p className="text-lg text-foreground/50 leading-relaxed font-medium">
               Nuestro CRM no es solo una base de datos; es el motor que controla cada interacción con el paciente desde el primer contacto hasta el alta.
@@ -110,7 +110,7 @@ export default function CRMDentalPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-black tracking-tight leading-none uppercase">
-                🤖 Comunicación <br /><span className="text-primary">inteligente</span>
+                Comunicación <br /><span className="text-primary">inteligente</span>
               </h2>
               <p className="text-lg text-foreground/50 leading-relaxed font-medium">
                 La IA integrada en el CRM responde dudas, califica pacientes y agenda citas automáticamente a través de WhatsApp e Instagram.
@@ -164,7 +164,7 @@ export default function CRMDentalPage() {
           </div>
           <div className="space-y-6">
             <h2 className="text-3xl lg:text-4xl font-black tracking-tight leading-none uppercase">
-              📞 Recepción <br /><span className="text-primary">100% autónoma</span>
+              Recepción <br /><span className="text-primary">100% autónoma</span>
             </h2>
             <p className="text-lg text-foreground/50 leading-relaxed italic border-l-4 border-primary/20 pl-6">
               "Como una recepcionista, pero automática. Tu clínica responde llamadas sin necesidad de personal."
@@ -191,7 +191,7 @@ export default function CRMDentalPage() {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="p-10 bg-white rounded-[40px] border border-slate-100 shadow-xl space-y-6">
              <Calendar className="text-primary" size={32} />
-             <h3 className="text-2xl font-black uppercase tracking-tight">📅 Agenda siempre llena</h3>
+             <h3 className="text-2xl font-black uppercase tracking-tight">Agenda siempre llena</h3>
              <p className="text-foreground/50 text-sm leading-relaxed">El CRM optimiza los huecos en tiempo real, moviendo citas y enviando recordatorios para eliminar el absentismo.</p>
              <ul className="space-y-2 pt-4">
                 {["Recordatorios por SMS/WhatsApp", "Reprogramación autónoma", "Confirmaciones digitales", "Gestión de lista de espera"].map((t, i) => (
@@ -203,7 +203,7 @@ export default function CRMDentalPage() {
           </div>
           <div className="p-10 bg-slate-900 text-white rounded-[40px] shadow-2xl space-y-6">
              <TrendingUp className="text-primary" size={32} />
-             <h3 className="text-2xl font-black uppercase tracking-tight">📈 Retorno Directo</h3>
+             <h3 className="text-2xl font-black uppercase tracking-tight">Retorno Directo</h3>
              <p className="text-white/40 text-sm leading-relaxed">No pierdas ni una oportunidad de facturación. El sistema reactiva pacientes antiguos automáticamente.</p>
              <div className="grid gap-2 pt-4">
                {[
@@ -223,7 +223,7 @@ export default function CRMDentalPage() {
       </div>
 
       {/* SECCIÓN 5: IMPLEMENTACIÓN */}
-      <Section id="impl" title="⚙️ Instalación sin fricción" subtitle="Configuramos, conectamos y activamos el sistema por ti">
+      <Section id="impl" title="Instalación sin fricción" subtitle="Configuramos, conectamos y activamos el sistema por ti">
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {[
             { t: "Configuración", d: "Adaptamos el CRM a tu protocolo clínico" },

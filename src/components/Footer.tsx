@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Mail, Instagram, Linkedin, Twitter } from 'lucide-react';
 
@@ -46,7 +45,7 @@ export function Footer() {
       </div>
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/40">
         <p>© {new Date().getFullYear()} AllenMax Automation. Todos los derechos reservados.</p>
-        <p className="flex items-center gap-1">Hecho con <span className="text-red-500">❤️</span> en Alicante</p>
+        <p className="flex items-center gap-1">Hecho en Alicante</p>
       </div>
     </footer>
   );
