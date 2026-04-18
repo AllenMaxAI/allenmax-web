@@ -13,122 +13,101 @@ import {
   Share2, 
   ArrowRight,
   Phone,
-  Layout,
   Cpu,
-  MousePointer2
+  MousePointer2,
+  TrendingUp,
+  Layers
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 interface ServiceVisualProps {
   type: string;
+  className?: string;
 }
 
-const ServiceVisual = ({ type }: ServiceVisualProps) => {
+const ServiceVisual = ({ type, className }: ServiceVisualProps) => {
   switch (type) {
-    case 'automation':
-      return (
-        <div className="relative w-full h-40 bg-blue-50/50 rounded-2xl border border-blue-100/50 flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(#e0e7ff_1px,transparent_1px)] [background-size:16px_16px] [opacity:0.3]"></div>
-          <div className="flex gap-4 items-center z-10">
-            <div className="p-3 bg-white rounded-xl shadow-sm border border-blue-100 animate-bounce">
-              <Zap className="text-primary" size={20} />
-            </div>
-            <div className="w-12 h-0.5 bg-blue-200 relative overflow-hidden">
-              <div className="absolute inset-y-0 bg-primary w-full -translate-x-full animate-[shimmer_2s_infinite]"></div>
-            </div>
-            <div className="p-3 bg-white rounded-xl shadow-sm border border-blue-100">
-              <Cpu className="text-blue-400" size={20} />
-            </div>
-          </div>
-        </div>
-      );
     case 'chatbot':
       return (
-        <div className="relative w-full h-40 bg-blue-50/50 rounded-2xl border border-blue-100/50 p-4 flex flex-col gap-2 overflow-hidden">
-          <div className="self-end bg-primary text-white text-[10px] px-3 py-1.5 rounded-2xl rounded-tr-none shadow-sm animate-pulse">
+        <div className={cn("relative w-full h-full min-h-[200px] bg-slate-50 rounded-2xl border border-slate-200/50 p-6 flex flex-col gap-3 overflow-hidden group-hover:border-primary/30 transition-colors", className)}>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+          <div className="self-end bg-primary text-white text-[11px] px-4 py-2 rounded-2xl rounded-tr-none shadow-sm animate-in slide-in-from-right-4 duration-700">
             ¿Cómo podéis ayudarme?
           </div>
-          <div className="self-start bg-white text-foreground/80 text-[10px] px-3 py-1.5 rounded-2xl rounded-tl-none shadow-sm border border-blue-100">
-            ¡Claro! Creamos agentes de IA...
+          <div className="self-start bg-white text-foreground/80 text-[11px] px-4 py-2 rounded-2xl rounded-tl-none shadow-md border border-slate-100 animate-in slide-in-from-left-4 duration-1000 delay-300">
+            ¡Hola! Estamos automatizando tu clínica 24/7.
           </div>
-          <div className="mt-auto w-full h-8 bg-white/80 rounded-full border border-blue-100 flex items-center px-3 justify-between">
-            <div className="w-1/2 h-2 bg-blue-50 rounded-full"></div>
-            <div className="w-4 h-4 bg-primary rounded-full flex items-center justify-center">
-              <ArrowRight size={10} className="text-white" />
+          <div className="mt-auto w-full h-10 bg-white rounded-full border border-slate-200 flex items-center px-4 justify-between shadow-inner">
+            <div className="flex gap-1">
+              <div className="w-1 h-1 bg-slate-300 rounded-full animate-bounce"></div>
+              <div className="w-1 h-1 bg-slate-300 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+              <div className="w-1 h-1 bg-slate-300 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+            </div>
+            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+              <ArrowRight size={12} className="text-white" />
             </div>
           </div>
         </div>
       );
     case 'voice':
       return (
-        <div className="relative w-full h-40 bg-blue-50/50 rounded-2xl border border-blue-100/50 flex flex-col items-center justify-center overflow-hidden gap-4">
-          <div className="flex items-center gap-1 h-8">
-            {[...Array(12)].map((_, i) => (
+        <div className={cn("relative w-full h-full min-h-[200px] bg-primary/5 rounded-2xl border border-primary/10 flex flex-col items-center justify-center overflow-hidden gap-6", className)}>
+          <div className="flex items-center gap-1.5 h-16">
+            {[...Array(15)].map((_, i) => (
               <div 
                 key={i} 
-                className="w-1 bg-primary rounded-full animate-pulse" 
-                style={{ height: `${Math.random() * 100}%`, animationDelay: `${i * 0.1}s` }}
+                className="w-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(0,122,255,0.3)]" 
+                style={{ height: `${20 + Math.random() * 80}%`, animationDuration: `${0.5 + Math.random()}s` }}
               ></div>
             ))}
           </div>
-          <div className="flex gap-2">
-            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
-              <Phone size={14} className="text-white rotate-[135deg]" />
+          <div className="flex gap-3">
+            <div className="px-4 py-1.5 bg-white rounded-full flex items-center gap-2 shadow-sm border border-slate-100">
+              <Phone size={12} className="text-primary" />
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Llamada en curso</span>
             </div>
-            <div className="w-20 h-8 bg-primary rounded-full flex items-center justify-center gap-2 shadow-lg">
-              <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
-              <span className="text-[10px] font-bold text-white uppercase tracking-widest">En vivo</span>
-            </div>
+          </div>
+        </div>
+      );
+    case 'automation':
+      return (
+        <div className={cn("relative w-full h-full min-h-[200px] bg-slate-900 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden", className)}>
+          <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-50"></div>
+          <div className="relative z-10 flex flex-col items-center gap-4">
+             <div className="flex gap-8 items-center">
+                <div className="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl">
+                  <Zap className="text-yellow-400" size={24} />
+                </div>
+                <div className="w-16 h-[2px] bg-gradient-to-r from-primary/50 to-transparent relative">
+                  <div className="absolute top-1/2 left-0 -translate-y-1/2 w-2 h-2 bg-primary rounded-full blur-[2px] animate-[shimmer_2s_infinite]"></div>
+                </div>
+                <div className="p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
+                  <Cpu className="text-blue-400" size={24} />
+                </div>
+             </div>
           </div>
         </div>
       );
     case 'web':
       return (
-        <div className="relative w-full h-40 bg-blue-50/50 rounded-2xl border border-blue-100/50 p-3 overflow-hidden">
-          <div className="w-full h-full bg-white rounded-lg border border-blue-100 shadow-sm overflow-hidden flex flex-col">
-            <div className="h-4 border-b border-blue-50 bg-blue-50/20 flex items-center px-2 gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-red-300"></div>
-              <div className="w-1.5 h-1.5 rounded-full bg-yellow-300"></div>
-              <div className="w-1.5 h-1.5 rounded-full bg-green-300"></div>
+        <div className={cn("relative w-full h-full min-h-[160px] bg-slate-50 rounded-2xl border border-slate-200 p-4", className)}>
+          <div className="w-full h-full bg-white rounded-xl border border-slate-100 shadow-2xl overflow-hidden flex flex-col">
+            <div className="h-6 border-b border-slate-50 bg-slate-50/50 flex items-center px-3 gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-red-400/50"></div>
+              <div className="w-2 h-2 rounded-full bg-yellow-400/50"></div>
+              <div className="w-2 h-2 rounded-full bg-green-400/50"></div>
             </div>
-            <div className="p-4 flex flex-col gap-2">
-              <div className="w-2/3 h-2 bg-blue-100 rounded-full"></div>
-              <div className="w-full h-4 bg-primary/10 rounded-md"></div>
-              <div className="w-1/2 h-8 bg-primary rounded-md self-center mt-2 flex items-center justify-center">
-                <MousePointer2 size={12} className="text-white animate-bounce" />
+            <div className="p-4 space-y-3">
+              <div className="w-3/4 h-3 bg-slate-100 rounded-full"></div>
+              <div className="w-full h-6 bg-primary/5 rounded-lg border border-primary/10"></div>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="h-10 bg-slate-50 rounded-lg"></div>
+                <div className="h-10 bg-primary rounded-lg flex items-center justify-center">
+                  <MousePointer2 size={14} className="text-white animate-bounce" />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      );
-    case 'prompts':
-      return (
-        <div className="relative w-full h-40 bg-slate-900 rounded-2xl border border-white/10 p-4 font-mono text-[10px] overflow-hidden">
-          <div className="text-green-400 opacity-80">{"{ \"system_instruction\": \"...\" }"}</div>
-          <div className="text-blue-300 mt-2">{"prompt > /generate_optimized"}</div>
-          <div className="text-white/60 mt-1 animate-pulse">|</div>
-          <div className="absolute bottom-0 right-0 p-3">
-            <Sparkles className="text-primary/40" size={24} />
-          </div>
-        </div>
-      );
-    case 'social':
-      return (
-        <div className="relative w-full h-40 bg-blue-50/50 rounded-2xl border border-blue-100/50 p-4 flex flex-col gap-4 overflow-hidden">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary/20"></div>
-            <div className="flex-1 space-y-1">
-              <div className="w-1/2 h-2 bg-blue-200 rounded-full"></div>
-              <div className="w-1/3 h-1.5 bg-blue-100 rounded-full"></div>
-            </div>
-          </div>
-          <div className="flex-1 bg-white rounded-lg border border-blue-100 shadow-sm flex items-center justify-center">
-            <Share2 className="text-primary/20" size={32} />
-          </div>
-          <div className="flex justify-between">
-            <div className="w-8 h-1.5 bg-red-100 rounded-full"></div>
-            <div className="w-8 h-1.5 bg-blue-100 rounded-full"></div>
-            <div className="w-8 h-1.5 bg-green-100 rounded-full"></div>
           </div>
         </div>
       );
@@ -138,146 +117,145 @@ const ServiceVisual = ({ type }: ServiceVisualProps) => {
 };
 
 export default function ServiciosPage() {
-  const mainServices = [
-    {
-      title: "Chatbots Inteligentes",
-      type: "chatbot",
-      icon: <MessageSquare />,
-      desc: "Automatizamos la atención y gestión de oportunidades, asegurando que ningún cliente quede sin respuesta.",
-      features: [
-        "Respuestas inmediatas",
-        "Calificación de leads",
-        "Agendación de citas",
-        "Integración nativa"
-      ]
-    },
-    {
-      title: "Agentes de IA",
-      type: "voice",
-      icon: <Bot />,
-      desc: "Asistentes virtuales que ayudan a tu equipo en tareas específicas, mejorando la eficiencia operativa.",
-      features: [
-        "Soporte comercial",
-        "Consultas frecuentes",
-        "Gestión de info",
-        "Flujos internos"
-      ]
-    },
-    {
-      title: "Automatización",
-      type: "automation",
-      icon: <Zap />,
-      desc: "Eliminamos fricción operativa mediante sistemas que conectan tus herramientas y flujos de trabajo.",
-      features: [
-        "Integración total",
-        "Flujos inteligentes",
-        "Seguimiento auto",
-        "Optimización ROI"
-      ]
-    },
-    {
-      title: "Webs Inteligentes",
-      type: "web",
-      icon: <Globe />,
-      desc: "Desarrollamos webs que ya vienen con automatización integrada para convertir desde el minuto uno.",
-      features: [
-        "Integración captación",
-        "Formularios dinámicos",
-        "Seguimiento auto",
-        "Foco en conversión"
-      ]
-    },
-    {
-      title: "Ingeniería Prompts",
-      type: "prompts",
-      icon: <Sparkles />,
-      desc: "Optimizamos los modelos de IA para que cumplan tareas concretas con la máxima eficiencia técnica.",
-      features: [
-        "Prompts estratégicos",
-        "Estandarización",
-        "IA avanzada",
-        "Rendimiento alto"
-      ]
-    },
-    {
-      title: "Social Media IA",
-      type: "social",
-      icon: <Share2 />,
-      desc: "Combinamos creatividad y tecnología para que tu estrategia de redes sea más efectiva y rentable.",
-      features: [
-        "Análisis de métricas",
-        "Copies optimizados",
-        "Programación auto",
-        "Mejora por datos"
-      ]
-    }
-  ];
-
   return (
     <div className="pt-24 bg-background min-h-screen">
       <Section 
-        id="servicios-hero" 
-        title="Inteligencia Artificial Estratégica" 
-        subtitle="No implementamos acciones aisladas. Construimos sistemas diseñados para atraer, convertir y fidelizar."
+        id="servicios-header" 
+        title="Ingeniería de Sistemas Inteligentes" 
+        subtitle="No vendemos software. Construimos los sistemas nerviosos que hacen que tu empresa sea más eficiente y rentable."
       >
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {mainServices.map((service, i) => (
-            <div key={i} className="bg-white rounded-[2.5rem] p-8 border border-border shadow-sm hover:shadow-xl transition-all group flex flex-col">
-              <div className="mb-6">
-                <ServiceVisual type={service.type} />
-              </div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                  {React.cloneElement(service.icon as React.ReactElement, { size: 20 })}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(300px,auto)]">
+          
+          {/* Chatbots - Destacado principal */}
+          <div className="md:col-span-8 bg-white rounded-[2.5rem] p-10 border border-slate-200/60 shadow-sm hover:shadow-xl transition-all group overflow-hidden relative">
+            <div className="grid lg:grid-cols-2 gap-10 items-center h-full">
+              <div className="space-y-6 order-2 lg:order-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider">
+                  <MessageSquare size={12} />
+                  Automatización de Respuesta
                 </div>
-                <h3 className="text-2xl font-bold tracking-tight">{service.title}</h3>
+                <h3 className="text-3xl font-extrabold tracking-tight">Chatbots que cierran ventas</h3>
+                <p className="text-slate-500 leading-relaxed">
+                  Aseguramos que ningún lead se enfríe. Chatbots que califican, agendan y responden con la precisión de tu mejor comercial, integrándose directamente en tu CRM.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  {["Respuestas 24/7", "Cualificación IA", "Agendación Citas", "Multi-plataforma"].map((f, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs font-semibold text-slate-600">
+                      <CheckCircle2 size={14} className="text-primary" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className="text-foreground/60 text-sm mb-6 leading-relaxed">
-                {service.desc}
-              </p>
-              
-              <div className="grid grid-cols-2 gap-y-3 mb-8">
-                {service.features.map((feat, j) => (
-                  <div key={j} className="flex items-center gap-2 text-[12px] font-medium text-foreground/70">
-                    <CheckCircle2 size={14} className="text-primary shrink-0" />
-                    {feat}
-                  </div>
-                ))}
+              <div className="order-1 lg:order-2 h-full">
+                <ServiceVisual type="chatbot" className="h-full" />
               </div>
+            </div>
+          </div>
 
-              <button className="mt-auto flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
-                Saber más <ArrowRight size={16} />
-              </button>
+          {/* Agentes de Voz */}
+          <div className="md:col-span-4 bg-white rounded-[2.5rem] p-10 border border-slate-200/60 shadow-sm hover:shadow-xl transition-all group flex flex-col">
+            <div className="mb-8 flex-1">
+              <ServiceVisual type="voice" />
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold tracking-tight flex items-center gap-2">
+                <Bot className="text-primary" size={24} />
+                Agentes de Voz
+              </h3>
+              <p className="text-sm text-slate-500">
+                IA que habla con tus clientes. Ideal para confirmar citas, encuestas de satisfacción y gestión de agenda telefónica sin esperas.
+              </p>
+              <Button variant="ghost" className="p-0 text-primary font-bold hover:bg-transparent group-hover:gap-2 transition-all">
+                Ver demostración <ArrowRight size={16} className="ml-1" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Automatización de Procesos */}
+          <div className="md:col-span-4 bg-slate-950 rounded-[2.5rem] p-10 border border-white/5 shadow-2xl group flex flex-col text-white">
+            <div className="mb-8 flex-1">
+              <ServiceVisual type="automation" />
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold tracking-tight flex items-center gap-2">
+                <Zap className="text-primary" size={24} />
+                Procesos Core
+              </h3>
+              <p className="text-sm text-slate-400">
+                Conectamos tus herramientas (CRM, ERP, Web) para eliminar tareas manuales. Si es repetitivo, AllenMax lo automatiza.
+              </p>
+            </div>
+          </div>
+
+          {/* Webs Inteligentes */}
+          <div className="md:col-span-4 bg-white rounded-[2.5rem] p-10 border border-slate-200/60 shadow-sm hover:shadow-xl transition-all group flex flex-col">
+            <div className="mb-8 flex-1">
+              <ServiceVisual type="web" />
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold tracking-tight flex items-center gap-2">
+                <Globe className="text-primary" size={24} />
+                Webs Smart
+              </h3>
+              <p className="text-sm text-slate-500">
+                Páginas diseñadas para convertir. Incluyen formularios inteligentes y sistemas de seguimiento automático integrados de serie.
+              </p>
+            </div>
+          </div>
+
+          {/* Prompts e Ingeniería */}
+          <div className="md:col-span-4 bg-primary rounded-[2.5rem] p-10 border border-primary/20 shadow-xl group flex flex-col text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+            <div className="flex-1 flex items-center justify-center mb-8">
+              <Sparkles size={64} className="text-white/20 animate-pulse" />
+            </div>
+            <div className="space-y-4 relative z-10">
+              <h3 className="text-2xl font-bold tracking-tight">Prompt Engineering</h3>
+              <p className="text-sm text-white/80">
+                Optimizamos el "cerebro" de la IA para tu negocio. Maximizamos la relevancia y minimizamos errores en cada respuesta.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </Section>
+
+      <Section id="metodologia" title="Nuestra Metodología" subtitle="Por qué no somos una agencia más" className="bg-slate-50">
+        <div className="grid md:grid-cols-3 gap-12">
+          {[
+            { 
+              icon: <Layers className="text-primary" />, 
+              t: "Sistemas, no herramientas", 
+              d: "No instalamos un chatbot y nos vamos. Diseñamos un sistema nervioso completo que conecta todos tus departamentos." 
+            },
+            { 
+              icon: <TrendingUp className="text-primary" />, 
+              t: "Foco en el ROI", 
+              d: "Cada automatización se mide por su capacidad de ahorrar tiempo o generar ingresos directos en tu cuenta de resultados." 
+            },
+            { 
+              icon: <Sparkles className="text-primary" />, 
+              t: "Personalización Total", 
+              d: "Tu negocio es único. Tu IA también debe serlo. Entrenamos modelos con tus datos y el tono de voz de tu marca." 
+            }
+          ].map((item, i) => (
+            <div key={i} className="text-center space-y-4">
+              <div className="w-16 h-16 bg-white rounded-3xl shadow-md border border-slate-100 flex items-center justify-center mx-auto mb-6">
+                {React.cloneElement(item.icon as React.ReactElement, { size: 28 })}
+              </div>
+              <h4 className="text-xl font-bold tracking-tight">{item.t}</h4>
+              <p className="text-slate-500 text-sm leading-relaxed">{item.d}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section id="filosofia-footer" title="Nuestra Metodología" subtitle="Por qué elegir AllenMax" className="bg-primary/5 rounded-t-[4rem]">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="p-8 bg-white rounded-3xl border border-border shadow-sm">
-              <h4 className="font-bold text-xl mb-3">Estrategia sobre Tecnología</h4>
-              <p className="text-foreground/60 text-sm">No usamos IA porque sí. La usamos donde realmente mueve la aguja de tu rentabilidad y ahorra tiempo a tu equipo.</p>
-            </div>
-            <div className="p-8 bg-white rounded-3xl border border-border shadow-sm">
-              <h4 className="font-bold text-xl mb-3">Sistemas Escalables</h4>
-              <p className="text-foreground/60 text-sm">Diseñamos soluciones que crecen contigo, automatizando lo repetitivo para que tú te enfoques en escalar.</p>
-            </div>
-          </div>
-          <div className="bg-primary text-white p-12 rounded-[3rem] shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl transition-transform group-hover:scale-125 duration-700"></div>
-            <h3 className="text-3xl font-bold mb-6 italic leading-tight">"El éxito no viene de una acción aislada, sino de un sistema que trabaja por ti 24/7."</h3>
-            <p className="text-white/80 text-lg">
-              En AllenMax nos enfocamos en el ROI. Si una automatización no te ahorra tiempo o no te genera más ingresos, simplemente no la implementamos.
-            </p>
-          </div>
-        </div>
-      </Section>
-
       <style jsx global>{`
         @keyframes shimmer {
-          100% { transform: translateX(100%); }
+          0% { transform: translateX(-100%) translateY(-50%); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateX(500%) translateY(-50%); opacity: 0; }
         }
       `}</style>
     </div>
