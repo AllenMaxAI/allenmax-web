@@ -4,9 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -17,13 +19,12 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: 'Proceso', href: '#proceso' },
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Beneficios', href: '#beneficios' },
-    { name: 'Nosotros', href: '#nosotros' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Herramientas', href: '#herramientas' },
+    { name: 'Home', href: '/' },
+    { name: 'Proceso', href: '/proceso' },
+    { name: 'Servicios', href: '/servicios' },
+    { name: 'Beneficios', href: '/beneficios' },
+    { name: 'CRM Dental', href: '/crm-dental' },
+    { name: 'FAQ', href: '/faq' },
   ];
 
   return (
@@ -45,12 +46,15 @@ export function Header() {
         </Link>
 
         <nav className="hidden lg:flex items-center bg-gray-50/80 rounded-full px-6 py-2.5">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className="text-sm font-semibold text-gray-500 hover:text-primary transition-colors"
+                  className={cn(
+                    "text-sm font-semibold transition-colors",
+                    pathname === link.href ? "text-primary" : "text-gray-500 hover:text-primary"
+                  )}
                 >
                   {link.name}
                 </Link>
@@ -63,8 +67,11 @@ export function Header() {
           <Button 
             variant="default" 
             className="rounded-full px-8 py-6 font-bold bg-[#007AFF] hover:bg-blue-600 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20"
+            asChild
           >
-            Contactar
+            <a href="https://calendly.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+              Contactar
+            </a>
           </Button>
         </div>
       </div>

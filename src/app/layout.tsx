@@ -1,5 +1,8 @@
 import type {Metadata} from 'next';
 import './globals.css';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { ChatWidget } from '@/components/ChatWidget';
 
 export const metadata: Metadata = {
   title: 'AllenMax - Automatización con IA en Alicante',
@@ -18,7 +21,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased selection:bg-primary/20">{children}</body>
+      <body className="font-body antialiased selection:bg-primary/20 flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+        <ChatWidget />
+      </body>
     </html>
   );
 }
