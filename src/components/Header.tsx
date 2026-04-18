@@ -21,11 +21,10 @@ export function Header() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Proceso', href: '/proceso' },
     { name: 'Servicios', href: '/servicios' },
-    { name: 'Beneficios', href: '/beneficios' },
     { name: 'CRM Dental', href: '/crm-dental' },
     { name: 'FAQ', href: '/faq' },
+    { name: 'Contacto', href: '/contacto' },
   ];
 
   return (
@@ -74,9 +73,9 @@ export function Header() {
               className="rounded-full px-8 py-6 font-bold bg-primary hover:bg-primary/90 transition-all duration-500 transform hover:scale-105 shadow-lg shadow-primary/20"
               asChild
             >
-              <a href="https://calendly.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+              <Link href="/contacto">
                 Contactar
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
