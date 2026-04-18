@@ -3,151 +3,164 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, MessageSquare, Zap, Target, BarChart3, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Zap, Target, BarChart3, ChevronRight, Activity } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Hero() {
-  const handleCalendly = () => {
-    window.open('https://calendly.com/tu-usuario', '_blank');
-  };
-
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-56 px-6 overflow-hidden bg-background">
-      {/* Fondo de Malla Dinámica (Capa 0) */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-400/5 blur-[120px] rounded-full animate-pulse [animation-duration:8s]"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02]"></div>
-      </div>
+    <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-40 px-6 overflow-hidden bg-background">
+      {/* Texture & Grain Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+      
+      {/* Background Blobs */}
+      <div className="absolute top-0 left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full animate-pulse"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[150px] rounded-full"></div>
 
-      <div className="max-w-7xl mx-auto relative">
-        {/* Contenido Central (Capa 2) */}
-        <div className="flex flex-col items-center text-center space-y-10 z-10 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-primary/10 shadow-sm text-primary text-[13px] font-bold tracking-tight animate-in fade-in slide-in-from-top-4 duration-1000">
-            <div className="w-2 h-2 rounded-full bg-primary animate-ping"></div>
-            <span>Ingeniería de Automatización en Alicante</span>
-          </div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           
-          <div className="max-w-4xl space-y-6 animate-in fade-in zoom-in duration-1000 delay-200">
-            <h1 className="text-6xl lg:text-[100px] font-black leading-[0.9] tracking-[-0.05em] text-foreground">
-              Sistemas que <br />
-              <span className="text-primary bg-clip-text text-transparent bg-gradient-to-b from-primary to-blue-600">Trabajan</span> por ti
-            </h1>
-            <p className="text-xl lg:text-2xl text-foreground/50 max-w-2xl mx-auto leading-relaxed font-medium">
-              No implementamos bots aislados. Construimos infraestructuras de IA que atraen, califican y cierran pacientes mientras tú te enfocas en operar.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-            <Button 
-              size="lg" 
-              onClick={handleCalendly}
-              className="rounded-full px-12 py-8 text-xl font-bold bg-primary hover:bg-primary/90 transition-all hover:scale-[1.05] shadow-[0_20px_40px_rgba(59,130,246,0.3)] group"
-            >
-              Iniciar Transformación
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={24} />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              asChild
-              className="rounded-full px-12 py-8 text-xl font-bold border-2 border-foreground/5 bg-white/50 backdrop-blur-sm hover:bg-white transition-all shadow-sm"
-            >
-              <a href="/crm-dental">Explorar CRM Dental</a>
-            </Button>
-          </div>
-
-          {/* Social Proof Refinado */}
-          <div className="flex flex-col items-center gap-4 pt-10 animate-in fade-in duration-1000 delay-700">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-foreground/30">Trusted by market leaders</p>
-            <div className="flex items-center gap-8 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
-              <span className="font-bold text-2xl tracking-tighter">DENTIX</span>
-              <span className="font-bold text-2xl tracking-tighter">ORALIA</span>
-              <span className="font-bold text-2xl tracking-tighter">VITALDENT</span>
-              <span className="font-bold text-2xl tracking-tighter">SMILE</span>
+          {/* Left Side: Content */}
+          <div className="lg:col-span-7 space-y-10">
+            <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white border border-black/[0.03] shadow-[0_2px_10px_rgba(0,0,0,0.02)] text-[11px] font-bold tracking-widest uppercase text-foreground/40 animate-in fade-in slide-in-from-left-4 duration-700">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
+              Engineering the future of Alicante
             </div>
-          </div>
-        </div>
-
-        {/* Elementos de UI Flotantes (Capa 1) - Animados y sin imágenes */}
-        <div className="hidden lg:block">
-          {/* Card: Live Leads */}
-          <div className="absolute top-0 -left-12 w-64 bg-white/80 backdrop-blur-xl border border-white p-6 rounded-[2rem] shadow-2xl animate-float-slow transition-transform hover:scale-110 duration-500">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center text-green-600">
-                <Target size={20} />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-foreground/40 uppercase">Leads Hoy</p>
-                <p className="text-2xl font-black text-foreground">+24</p>
-              </div>
+            
+            <div className="space-y-6">
+              <h1 className="text-6xl md:text-8xl lg:text-[110px] font-black leading-[0.85] tracking-[-0.06em] text-foreground animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
+                Menos <br />
+                <span className="text-primary italic">Gestión,</span> <br />
+                Más <br />
+                <span className="relative">
+                  Crecimiento
+                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary/40 -z-10" viewBox="0 0 300 12" fill="none" preserveAspectRatio="none">
+                    <path d="M1 11C40 3 150 1 299 9" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                  </svg>
+                </span>
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-foreground/40 max-w-xl font-medium leading-tight animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+                Transformamos tu infraestructura comercial con sistemas de IA que no solo hablan, sino que cierran pacientes y optimizan tu retorno.
+              </p>
             </div>
-            <div className="space-y-2">
-              <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-green-500 w-[70%] rounded-full animate-progress"></div>
-              </div>
-              <p className="text-[10px] font-bold text-green-600">Crecimiento del 42% vs ayer</p>
+
+            <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+              <Button 
+                size="lg" 
+                className="h-16 rounded-full px-10 text-lg font-bold bg-primary hover:bg-primary/90 transition-all shadow-[0_15px_30px_rgba(0,110,255,0.25)] group"
+              >
+                Agendar demo gratuita
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="ghost"
+                className="h-16 rounded-full px-10 text-lg font-bold hover:bg-black/5 transition-all text-foreground/60"
+              >
+                Nuestra metodología
+              </Button>
             </div>
           </div>
 
-          {/* Card: IA Status */}
-          <div className="absolute bottom-12 -right-12 w-72 bg-slate-900 text-white p-6 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.2)] animate-float-delayed">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                <span className="text-xs font-bold tracking-widest uppercase opacity-60">Agente Activo</span>
+          {/* Right Side: Operational Visual (The "Not AI-Generated" look) */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative aspect-square w-full max-w-[500px] mx-auto animate-in zoom-in duration-1000 delay-500">
+              {/* Outer Glow Ring */}
+              <div className="absolute inset-0 border-[0.5px] border-black/5 rounded-[4rem] rotate-3 scale-105"></div>
+              
+              {/* Main Console Window */}
+              <div className="w-full h-full bg-white rounded-[3.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.08)] border border-white p-8 flex flex-col overflow-hidden">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/20"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/20"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/20"></div>
+                  </div>
+                  <div className="px-3 py-1 rounded-full bg-primary/5 border border-primary/10 flex items-center gap-2">
+                    <Activity size={12} className="text-primary animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-primary">System Live</span>
+                  </div>
+                </div>
+
+                <div className="flex-1 space-y-6">
+                  {/* Lead Processing Visual */}
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-end">
+                      <span className="text-[11px] font-bold text-foreground/30 uppercase tracking-tighter">Neural Capture</span>
+                      <span className="text-[11px] font-mono text-primary">89.4% Eff.</span>
+                    </div>
+                    <div className="h-24 w-full bg-slate-50 rounded-2xl p-4 flex items-end gap-1">
+                      {[...Array(15)].map((_, i) => (
+                        <div 
+                          key={i} 
+                          className="flex-1 bg-primary/20 rounded-full animate-bar-grow"
+                          style={{ 
+                            height: `${30 + Math.random() * 70}%`,
+                            animationDelay: `${i * 0.05}s`
+                          }}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Operational Logs */}
+                  <div className="space-y-3">
+                    <p className="text-[11px] font-bold text-foreground/30 uppercase tracking-tighter">Live Operations</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-black/[0.02] group hover:border-primary/20 transition-colors">
+                        <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm">
+                          <Target size={14} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-[10px] font-bold leading-none mb-1">Lead ID: #4492 Calificado</p>
+                          <p className="text-[9px] text-foreground/40">Intención de compra detectada: 9.4/10</p>
+                        </div>
+                        <ChevronRight size={14} className="text-foreground/20" />
+                      </div>
+                      <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-black/[0.02]">
+                        <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm">
+                          <Zap size={14} className="text-secondary" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-[10px] font-bold leading-none mb-1">Cita Confirmada: Dental Alicante</p>
+                          <p className="text-[9px] text-foreground/40">Auto-agendado por Voice Agent v4</p>
+                        </div>
+                        <ChevronRight size={14} className="text-foreground/20" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-black/[0.03] flex justify-between items-center">
+                  <div className="flex -space-x-2">
+                    {[1,2,3].map(i => (
+                      <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-100"></div>
+                    ))}
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-primary flex items-center justify-center text-[10px] font-bold text-white">+12</div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[11px] font-black text-foreground">+24.5k</p>
+                    <p className="text-[9px] font-bold text-foreground/30 uppercase tracking-tighter">Operations / mo</p>
+                  </div>
+                </div>
               </div>
-              <Zap size={16} className="text-primary fill-primary" />
-            </div>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 bg-white/5 p-3 rounded-2xl border border-white/10">
-                <MessageSquare size={16} className="text-blue-400" />
-                <p className="text-[11px] font-medium opacity-80">Agendando cita: Dr. García</p>
-              </div>
-              <div className="flex items-center gap-3 bg-white/5 p-3 rounded-2xl border border-white/10">
-                <ShieldCheck size={16} className="text-green-400" />
-                <p className="text-[11px] font-medium opacity-80">Lead calificado: Alta Prioridad</p>
-              </div>
+
+              {/* Decorative Accent */}
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/20 blur-3xl rounded-full -z-10 animate-pulse"></div>
             </div>
           </div>
 
-          {/* Badge: ROI */}
-          <div className="absolute top-1/4 -right-16 bg-white/90 backdrop-blur-xl border border-white p-5 rounded-3xl shadow-xl animate-float transition-all hover:-translate-y-2">
-            <BarChart3 size={24} className="text-primary mb-2" />
-            <p className="text-[10px] font-bold text-foreground/30 uppercase mb-1">Impacto ROI</p>
-            <p className="text-xl font-black text-primary">3.4x</p>
-          </div>
         </div>
       </div>
 
       <style jsx global>{`
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0) rotate(-2deg); }
-          50% { transform: translateY(-20px) rotate(0deg); }
+        @keyframes bar-grow {
+          0%, 100% { transform: scaleY(1); }
+          50% { transform: scaleY(1.4); }
         }
-        @keyframes float-delayed {
-          0%, 100% { transform: translateY(0) rotate(2deg); }
-          50% { transform: translateY(-15px) rotate(4deg); }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-12px); }
-        }
-        @keyframes progress {
-          0% { width: 0; }
-          100% { width: 70%; }
-        }
-        .animate-float-slow {
-          animation: float-slow 6s infinite ease-in-out;
-        }
-        .animate-float-delayed {
-          animation: float-delayed 7s infinite ease-in-out;
-        }
-        .animate-float {
-          animation: float 4s infinite ease-in-out;
-        }
-        .animate-progress {
-          animation: progress 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        .animate-bar-grow {
+          animation: bar-grow 2s ease-in-out infinite;
+          transform-origin: bottom;
         }
       `}</style>
     </section>
