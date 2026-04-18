@@ -21,11 +21,6 @@ export function Hero() {
           
           {/* Left Side: Content */}
           <div className="lg:col-span-7 space-y-10">
-            <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white border border-black/[0.03] shadow-[0_2px_10px_rgba(0,0,0,0.02)] text-[11px] font-bold tracking-widest uppercase text-foreground/40 animate-in fade-in slide-in-from-left-4 duration-700">
-              <span className="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
-              Engineering the future of Alicante
-            </div>
-            
             <div className="space-y-6">
               <h1 className="text-6xl md:text-8xl lg:text-[110px] font-black leading-[0.85] tracking-[-0.06em] text-foreground animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
                 Menos <br />
@@ -62,7 +57,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Side: Operational Visual (The "Not AI-Generated" look) */}
+          {/* Right Side: Operational Visual */}
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-square w-full max-w-[500px] mx-auto animate-in zoom-in duration-1000 delay-500">
               {/* Outer Glow Ring */}
