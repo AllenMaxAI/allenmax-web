@@ -13,7 +13,6 @@ export function Header() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      // Usamos un umbral pequeño para una respuesta rápida pero animada
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -32,16 +31,16 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+        "fixed left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
         scrolled ? "top-0 px-0" : "top-6 px-6"
       )}
     >
       <div 
         className={cn(
-          "mx-auto transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/95 backdrop-blur-md border border-white/50",
+          "mx-auto transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/95 backdrop-blur-md border border-white/50",
           scrolled 
-            ? "w-full max-w-full rounded-none px-12 py-4 shadow-md border-b-gray-100" 
-            : "max-w-7xl rounded-full px-8 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
+            ? "w-full max-w-full rounded-[0px] px-12 py-4 shadow-md border-b-gray-100" 
+            : "max-w-7xl rounded-[48px] px-8 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
         )}
       >
         <div className="flex items-center justify-between">
