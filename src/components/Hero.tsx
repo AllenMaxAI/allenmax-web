@@ -3,38 +3,38 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Activity, Globe, Cpu } from 'lucide-react';
+import { ArrowRight, Cpu, Zap, Activity } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Hero() {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-52 px-6 overflow-hidden bg-background">
-      {/* Texture & Grain Overlay - Adds a "printed" high-end feel */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.05] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+      {/* Texture & Grain Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
       
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-0 left-[-10%] w-[60%] h-[60%] bg-primary/5 blur-[140px] rounded-full animate-pulse"></div>
+      {/* Mesh Gradients */}
+      <div className="absolute top-0 left-[-10%] w-[60%] h-[60%] bg-primary/5 blur-[140px] rounded-full"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[160px] rounded-full"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-center">
           
           {/* Left Side: Editorial Content */}
-          <div className="lg:col-span-8 space-y-12">
+          <div className="lg:col-span-7 space-y-12">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 animate-in fade-in slide-in-from-left-4 duration-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/50">Intelligence as a Service</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/50">Systems Engineering</span>
               </div>
               
               <h1 className="text-7xl md:text-9xl lg:text-[130px] font-black leading-[0.8] tracking-[-0.08em] text-foreground select-none">
                 <span className="block animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-100">MENOS</span>
                 <span className="block text-primary italic relative animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
                   GESTIÓN,
-                  <span className="absolute -right-8 top-0 text-xl font-mono text-foreground/20 hidden lg:block tracking-normal uppercase font-bold">01. Efficiency</span>
+                  <span className="absolute -right-8 top-0 text-xl font-mono text-foreground/20 hidden lg:block tracking-normal uppercase font-bold">01. ROI Focus</span>
                 </span>
                 <span className="block animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
-                  MÁS <span className="text-foreground/10 transition-colors hover:text-primary/20 cursor-default">ROI</span>
+                  MÁS <span className="text-foreground/10 transition-colors hover:text-primary/20 cursor-default">RESULTADOS</span>
                 </span>
               </h1>
             </div>
@@ -62,50 +62,87 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Side: The "Core" Abstract Visual */}
-          <div className="lg:col-span-4 relative flex justify-center items-center">
-            <div className="relative w-full aspect-square max-w-[400px] animate-in zoom-in duration-1000 delay-500">
-              {/* Abstract Core Rings */}
-              <div className="absolute inset-0 border border-foreground/[0.03] rounded-full animate-[spin_20s_linear_infinite]"></div>
-              <div className="absolute inset-4 border border-foreground/[0.05] rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-              <div className="absolute inset-12 border border-primary/20 rounded-full blur-[2px] animate-[pulse_4s_ease-in-out_infinite]"></div>
+          {/* Right Side: The "Automation Matrix" - Unique Visual */}
+          <div className="lg:col-span-5 relative flex justify-center items-center">
+            <div className="relative w-full aspect-square max-w-[500px] animate-in zoom-in duration-1000 delay-500">
               
-              {/* Central Processor Visual */}
+              {/* Background Grid Layer */}
+              <div className="absolute inset-0 opacity-20">
+                <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.2" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+              </div>
+
+              {/* Animated Intelligence Paths */}
+              <div className="absolute inset-0">
+                <svg width="100%" height="100%" viewBox="0 0 400 400" className="overflow-visible">
+                  {/* Path 1 */}
+                  <path d="M 50 100 Q 150 50 200 200 T 350 300" stroke="url(#gradient1)" strokeWidth="2" fill="none" className="animate-path" />
+                  {/* Path 2 */}
+                  <path d="M 350 100 Q 250 150 200 200 T 50 300" stroke="url(#gradient2)" strokeWidth="1.5" fill="none" className="animate-path-slow" />
+                  
+                  {/* Gradients */}
+                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="transparent" />
+                    <stop offset="50%" stopColor="hsl(var(--primary))" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </linearGradient>
+                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="transparent" />
+                    <stop offset="50%" stopColor="hsl(var(--secondary))" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </linearGradient>
+
+                  {/* Nodes */}
+                  <circle cx="200" cy="200" r="4" fill="hsl(var(--primary))" className="animate-pulse" />
+                  <circle cx="50" cy="100" r="3" fill="hsl(var(--foreground))" fillOpacity="0.2" />
+                  <circle cx="350" cy="300" r="3" fill="hsl(var(--foreground))" fillOpacity="0.2" />
+                </svg>
+              </div>
+
+              {/* The "Intelligence Core" */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 bg-white rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.12)] border border-white p-6 flex flex-col justify-between overflow-hidden group hover:scale-105 transition-transform duration-500">
-                  <div className="flex justify-between items-start">
-                    <Cpu size={24} className="text-primary" />
-                    <Activity size={12} className="text-primary animate-pulse" />
-                  </div>
-                  <div>
-                    <div className="w-full h-1 bg-slate-100 rounded-full mb-2 overflow-hidden">
-                      <div className="w-2/3 h-full bg-primary animate-[shimmer_2s_infinite]"></div>
+                <div className="relative group">
+                  {/* Outer Glow */}
+                  <div className="absolute inset-0 bg-primary/20 blur-[60px] rounded-full animate-pulse"></div>
+                  
+                  {/* Central Geometric Core */}
+                  <div className="relative w-40 h-40 bg-white/10 backdrop-blur-3xl rounded-[2.5rem] border border-white/20 shadow-2xl overflow-hidden flex flex-col items-center justify-center p-6 group-hover:scale-105 transition-transform duration-700">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent animate-shimmer"></div>
+                    
+                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
+                      <Cpu className="text-primary w-8 h-8" />
                     </div>
-                    <p className="text-[9px] font-mono font-bold text-foreground/30 uppercase tracking-tighter">System Pulse</p>
+                    
+                    <div className="text-center space-y-1">
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40">Core Processor</p>
+                      <div className="flex items-center gap-2 justify-center">
+                        <Activity className="text-primary w-3 h-3 animate-pulse" />
+                        <span className="text-xs font-mono font-bold">ACTIVE</span>
+                      </div>
+                    </div>
+
+                    {/* Technical details overlay */}
+                    <div className="absolute bottom-2 right-2 opacity-20">
+                      <Zap size={12} />
+                    </div>
+                  </div>
+
+                  {/* Floating Metric Tags (More editorial than generic cards) */}
+                  <div className="absolute -top-12 -left-12 px-4 py-2 bg-foreground text-background rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl animate-float">
+                    Automated Workflow
+                  </div>
+                  <div className="absolute -bottom-8 -right-8 px-4 py-2 bg-white border border-foreground/10 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg animate-float-slow">
+                    Latency: 12ms
                   </div>
                 </div>
               </div>
 
-              {/* Data Floating Elements */}
-              <div className="absolute -top-4 -right-4 p-4 bg-white/80 backdrop-blur-xl border border-white shadow-xl rounded-2xl animate-bounce-slow">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
-                    <Globe size={14} className="text-secondary" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-black text-foreground">Lead Sync</p>
-                    <p className="text-[8px] text-foreground/40">Real-time update</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-8 -left-8 p-5 bg-foreground text-background rounded-2xl shadow-2xl animate-float">
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 opacity-50">Performance</p>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-black">99.8</span>
-                  <span className="text-[10px] font-mono">ms</span>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -115,21 +152,37 @@ export function Hero() {
       <style jsx global>{`
         @keyframes shimmer {
           0% { transform: translateX(-100%); }
-          100% { transform: translateX(200%); }
-        }
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
+          100% { transform: translateX(100%); }
         }
         @keyframes float {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(5px, -15px); }
+          0%, 100% { transform: translateY(0) rotate(0); }
+          50% { transform: translateY(-10px) rotate(2deg); }
         }
-        .animate-bounce-slow {
-          animation: bounce-slow 4s ease-in-out infinite;
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0) rotate(0); }
+          50% { transform: translateY(10px) rotate(-2deg); }
+        }
+        .animate-path {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: draw 10s linear infinite;
+        }
+        .animate-path-slow {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: draw 15s linear infinite reverse;
+        }
+        @keyframes draw {
+          to { stroke-dashoffset: 0; }
+        }
+        .animate-shimmer {
+          animation: shimmer 3s infinite linear;
         }
         .animate-float {
-          animation: float 6s ease-in-out infinite;
+          animation: float 5s ease-in-out infinite;
+        }
+        .animate-float-slow {
+          animation: float-slow 7s ease-in-out infinite;
         }
       `}</style>
     </section>
