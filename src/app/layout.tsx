@@ -1,9 +1,8 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Intelite AI - Automatización con IA en Alicante',
+  title: 'AllenMax - Automatización con IA en Alicante',
   description: 'Impulsa tu negocio con soluciones de automatización de inteligencia artificial líderes en el mercado.',
 };
 

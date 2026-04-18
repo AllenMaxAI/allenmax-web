@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 
 export function Footer() {
@@ -8,9 +7,9 @@ export function Footer() {
         <div className="col-span-2">
           <Link href="/" className="flex items-center gap-2 mb-6">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">I</span>
+              <span className="text-white font-bold">A</span>
             </div>
-            <span className="text-xl font-bold tracking-tight text-foreground">Intelite AI</span>
+            <span className="text-xl font-bold tracking-tight text-foreground">AllenMax</span>
           </Link>
           <p className="text-foreground/60 max-w-xs leading-relaxed">
             Liderando la revolución de la inteligencia artificial en Alicante. Transformamos negocios tradicionales en empresas del futuro.
@@ -38,7 +37,7 @@ export function Footer() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto mt-12 pt-8 border-t text-center text-sm text-foreground/40">
-        © {new Date().getFullYear()} Intelite AI. Todos los derechos reservados.
+        © {new Date().getFullYear()} AllenMax. Todos los derechos reservados.
       </div>
     </footer>
   );

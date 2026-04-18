@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -41,7 +40,7 @@ export function Header() {
       >
         <Link href="/" className="flex items-center">
           <span className="text-2xl font-bold tracking-tight">
-            <span className="text-blue-400">Intelite</span> <span className="text-blue-700">AI</span>
+            <span className="text-blue-600">Allen</span><span className="text-blue-900">Max</span>
           </span>
         </Link>
 

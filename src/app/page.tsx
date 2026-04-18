@@ -100,7 +100,7 @@ export default function Home() {
         <Section id="nosotros" title="Sobre Nosotros" subtitle="Expertos en IA con base en Alicante">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-lg leading-relaxed text-foreground/70 mb-8">
-              En Intelite AI, creemos que la tecnología debe estar al servicio de las personas. Nuestro equipo combina décadas de experiencia en desarrollo de software con las últimas innovaciones en modelos de lenguaje y visión artificial para ofrecer soluciones que realmente impactan en la cuenta de resultados de nuestros clientes.
+              En AllenMax, creemos que la tecnología debe estar al servicio de las personas. Nuestro equipo combina décadas de experiencia en desarrollo de software con las últimas innovaciones en modelos de lenguaje y visión artificial para ofrecer soluciones que realmente impactan en la cuenta de resultados de nuestros clientes.
             </p>
             <div className="flex justify-center gap-8">
               <div className="text-center">
