@@ -14,7 +14,6 @@ import {
   Users,
   Zap,
   Search,
-  MoreVertical,
   Bell
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -62,20 +61,22 @@ export default function CRMDentalPage() {
         </div>
       </section>
 
-      {/* Sección 1: El Cerebro (CRM) */}
+      {/* Sección 1: El Cerebro (CRM) - Rediseñada según captura */}
       <Section id="crm-core" title="" className="!py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-8">
+          <div className="space-y-10">
             <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-              <LayoutDashboard className="text-primary" />
+              <LayoutDashboard className="text-primary" size={24} />
             </div>
-            <h2 className="text-3xl font-black tracking-tight uppercase">
-              Control Total <br /><span className="text-primary">en un solo lugar</span>
-            </h2>
-            <p className="text-lg text-foreground/50 leading-relaxed font-medium">
-              Centraliza toda tu operación. No es solo una base de datos, es el motor que controla cada interacción con el paciente.
-            </p>
-            <div className="grid gap-4">
+            <div className="space-y-4">
+              <h2 className="text-4xl font-black tracking-tight uppercase leading-none">
+                Control Total <br /><span className="text-primary">en un solo lugar</span>
+              </h2>
+              <p className="text-lg text-foreground/50 leading-relaxed font-medium max-w-md">
+                Centraliza toda tu operación. No es solo una base de datos, es el motor que controla cada interacción con el paciente.
+              </p>
+            </div>
+            <div className="grid gap-6">
               {[
                 "Gestión de pacientes centralizada",
                 "Estado de citas en tiempo real",
@@ -86,70 +87,66 @@ export default function CRMDentalPage() {
                   <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <CheckCircle2 size={14} className="text-primary" />
                   </div>
-                  <span className="font-bold text-sm text-foreground/70">{item}</span>
+                  <span className="font-bold text-sm text-foreground/70 uppercase tracking-tight">{item}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="relative">
-            {/* Dashboard Mockup Re-diseñado */}
-            <Card className="relative p-0 rounded-[40px] border-none shadow-2xl bg-white/60 backdrop-blur-xl overflow-hidden ring-1 ring-white/50 aspect-[4/3] flex flex-col">
+            {/* Dashboard Mockup Refinado */}
+            <Card className="relative p-0 rounded-[48px] border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] bg-white overflow-hidden aspect-[4/3] flex flex-col">
               {/* Header del Dashboard */}
-              <div className="px-6 py-4 border-b border-foreground/5 flex items-center justify-between bg-white/40">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                    <LayoutDashboard size={16} className="text-white" />
-                  </div>
-                  <span className="text-xs font-black uppercase tracking-widest opacity-40">Gestión Clínica</span>
-                </div>
+              <div className="px-8 py-6 flex items-center justify-between border-b border-gray-50">
                 <div className="flex items-center gap-4">
-                  <Search size={16} className="text-foreground/20" />
-                  <Bell size={16} className="text-foreground/20" />
-                  <div className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white"></div>
+                  <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+                    <LayoutDashboard size={18} className="text-white" />
+                  </div>
+                  <span className="text-xs font-black uppercase tracking-widest text-foreground/30">Gestión Clínica</span>
+                </div>
+                <div className="flex items-center gap-5">
+                  <Search size={18} className="text-foreground/20" />
+                  <Bell size={18} className="text-foreground/20" />
+                  <div className="w-10 h-10 rounded-full bg-slate-100 border-2 border-white shadow-sm"></div>
                 </div>
               </div>
 
               {/* Contenido Principal */}
-              <div className="flex-1 p-6 space-y-6 overflow-hidden">
+              <div className="flex-1 p-8 space-y-8 bg-slate-50/30">
                 {/* Mini Cards de Resumen */}
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { label: 'Citas Hoy', val: '12', color: 'bg-primary' },
-                    { label: 'Ingresos', val: '€2.4k', color: 'bg-green-500' },
-                    { label: 'Nuevos', val: '4', color: 'bg-blue-400' }
+                    { label: 'Citas Hoy', val: '12' },
+                    { label: 'Ingresos', val: '€2.4k' },
+                    { label: 'Nuevos', val: '4' }
                   ].map((stat, i) => (
-                    <div key={i} className="p-3 bg-white/50 rounded-2xl border border-white/50">
-                      <p className="text-[8px] font-black uppercase text-foreground/30 tracking-widest mb-1">{stat.label}</p>
-                      <p className="text-lg font-black text-foreground/80">{stat.val}</p>
+                    <div key={i} className="p-5 bg-white rounded-[24px] border border-gray-100 shadow-sm">
+                      <p className="text-[10px] font-black uppercase text-foreground/20 tracking-widest mb-1">{stat.label}</p>
+                      <p className="text-2xl font-black text-foreground/80">{stat.val}</p>
                     </div>
                   ))}
                 </div>
 
-                {/* Lista de Pacientes / Citas */}
-                <div className="space-y-3">
-                  <p className="text-[10px] font-black uppercase text-foreground/40 tracking-widest px-2">Próximas Citas</p>
+                {/* Lista de Citas */}
+                <div className="space-y-4">
+                  <p className="text-[10px] font-black uppercase text-foreground/30 tracking-[0.2em] px-2">Próximas Citas</p>
                   {[
-                    { name: 'Ana Martínez', time: '10:30', status: 'Confirmada', type: 'Revisión' },
-                    { name: 'Carlos Ruíz', time: '11:15', status: 'Pendiente', type: 'Implante' },
-                    { name: 'Elena Soler', time: '12:00', status: 'En espera', type: 'Limpieza' }
+                    { name: 'Ana Martínez', time: '10:30', status: 'Confirmada', type: 'Revisión', color: 'text-green-500 bg-green-50' },
+                    { name: 'Carlos Ruíz', time: '11:15', status: 'Pendiente', type: 'Implante', color: 'text-orange-400 bg-orange-50' },
+                    { name: 'Elena Soler', time: '12:00', status: 'En espera', type: 'Limpieza', color: 'text-blue-500 bg-blue-50' }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 bg-white/80 rounded-2xl border border-white shadow-sm group hover:scale-[1.02] transition-transform">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center font-bold text-primary text-xs">
+                    <div key={i} className="flex items-center justify-between p-5 bg-white rounded-[24px] border border-gray-100 shadow-sm hover:translate-x-1 transition-transform cursor-default">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center font-black text-primary text-sm border border-primary/10">
                           {item.name.charAt(0)}
                         </div>
                         <div>
-                          <p className="text-sm font-bold text-foreground/80">{item.name}</p>
-                          <p className="text-[10px] font-medium text-foreground/40">{item.type}</p>
+                          <p className="text-sm font-black text-foreground/80">{item.name}</p>
+                          <p className="text-[10px] font-bold text-foreground/30 uppercase">{item.type}</p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-xs font-black text-primary">{item.time}</p>
-                        <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full ${
-                          item.status === 'Confirmada' ? 'bg-green-100 text-green-600' : 
-                          item.status === 'Pendiente' ? 'bg-yellow-100 text-yellow-600' : 
-                          'bg-blue-100 text-blue-600'
-                        }`}>
+                        <p className="text-sm font-black text-primary mb-1">{item.time}</p>
+                        <span className={`text-[9px] font-black uppercase px-3 py-1 rounded-full ${item.color}`}>
                           {item.status}
                         </span>
                       </div>
@@ -159,13 +156,13 @@ export default function CRMDentalPage() {
               </div>
 
               {/* Footer / Status Bar */}
-              <div className="px-6 py-3 bg-slate-50/50 border-t border-foreground/5 flex justify-between items-center">
+              <div className="px-8 py-5 border-t border-gray-50 flex justify-between items-center bg-white">
                 <div className="flex gap-2 items-center">
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-[8px] font-black uppercase text-foreground/30 tracking-widest">Sincronización Activa</span>
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span className="text-[9px] font-black uppercase text-foreground/30 tracking-widest">Sincronización Activa</span>
                 </div>
-                <div className="h-1 w-20 bg-primary/20 rounded-full overflow-hidden">
-                  <div className="h-full bg-primary w-2/3"></div>
+                <div className="h-1.5 w-32 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-primary w-2/3 rounded-full"></div>
                 </div>
               </div>
             </Card>
