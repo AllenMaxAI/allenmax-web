@@ -67,17 +67,15 @@ export default function ServiciosPage() {
 
   return (
     <div className="pt-24 min-h-screen bg-background relative overflow-hidden">
-      {/* Sistema de Fondos de Home */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
       <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-0 right-[-10%] w-[60%] h-[800px] bg-blue-400/5 blur-[180px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 pt-20">
         
-        {/* Header Refinado - Más pequeño y elegante */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 mb-32 items-start">
           <div className="lg:col-span-7 space-y-8">
-            <h1 className="text-4xl lg:text-6xl font-black leading-tight tracking-tight text-foreground uppercase">
+            <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-foreground uppercase">
               Inteligencia <br />
               <span className="text-primary">Artificial</span>
             </h1>
@@ -86,7 +84,7 @@ export default function ServiciosPage() {
               La integramos en tus procesos para optimizar resultados mediante arquitectura técnica.
             </p>
           </div>
-          <div className="lg:col-span-5 border-l border-primary/20 pl-10 py-2">
+          <div className="lg:col-span-5 pl-10 py-2 border-l border-foreground/10">
             <h2 className="text-xl font-bold text-foreground mb-4 uppercase tracking-tight leading-snug">
               No implementamos <br />acciones aisladas. <br />
               <span className="text-primary italic">Construimos sistemas.</span>
@@ -97,12 +95,9 @@ export default function ServiciosPage() {
           </div>
         </div>
 
-        {/* Listado de Servicios */}
         <div className="space-y-40">
           {servicios.map((s, i) => (
             <div key={i} className="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center">
-              
-              {/* Bloque de Contenido */}
               <div className={`space-y-8 ${s.reversed ? 'lg:order-2' : 'lg:order-1'}`}>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -115,7 +110,6 @@ export default function ServiciosPage() {
                 </p>
               </div>
 
-              {/* Bloque "Incluye" */}
               <div className={`${s.reversed ? 'lg:order-1' : 'lg:order-2'}`}>
                 <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/30 mb-8 px-1">Contenido Técnico</h4>
                 <ul className="grid gap-5">
@@ -131,14 +125,11 @@ export default function ServiciosPage() {
                   ))}
                 </ul>
               </div>
-
             </div>
           ))}
         </div>
 
-        {/* CTA Final */}
         <div className="mt-48 text-center space-y-12 pb-32">
-          <div className="w-px h-32 bg-gradient-to-b from-transparent to-primary mx-auto"></div>
           <div className="space-y-8">
             <h2 className="text-4xl font-black uppercase tracking-tight italic text-foreground">¿Tu próximo sistema?</h2>
             <p className="text-foreground/40 max-w-xl mx-auto font-medium text-lg">
@@ -150,7 +141,6 @@ export default function ServiciosPage() {
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -23,12 +23,10 @@ import Link from 'next/link';
 export default function CRMPage() {
   return (
     <div className="pt-24 min-h-screen bg-background relative overflow-hidden">
-      {/* Sistema de Fondos Unificado con Home */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
       <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-0 right-[-10%] w-[60%] h-[800px] bg-blue-400/5 blur-[180px] rounded-full pointer-events-none"></div>
 
-      {/* Hero Minimalista */}
       <section className="relative z-10 pt-20 pb-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl">
@@ -61,7 +59,6 @@ export default function CRMPage() {
         </div>
       </section>
 
-      {/* Sección 1: El Cerebro (CRM) */}
       <Section id="crm-core" title="" className="!py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-10">
@@ -164,7 +161,6 @@ export default function CRMPage() {
         </div>
       </Section>
 
-      {/* Sección 2: Chatbots */}
       <div className="py-32 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -208,7 +204,6 @@ export default function CRMPage() {
         </div>
       </div>
 
-      {/* Sección 3: Agente de Voz */}
       <Section id="voice" title="" className="!py-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-8">
@@ -218,7 +213,7 @@ export default function CRMPage() {
             <h2 className="text-3xl font-black tracking-tight uppercase">
               Recepcionista <br /><span className="text-primary">Automática</span>
             </h2>
-            <p className="text-lg text-foreground/50 leading-relaxed font-medium italic border-l-4 border-primary/20 pl-8">
+            <p className="text-lg text-foreground/50 leading-relaxed font-medium italic">
               Tu negocio responde llamadas, resuelve dudas y agenda citas automáticamente, eliminando las esperas telefónicas.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -249,7 +244,6 @@ export default function CRMPage() {
         </div>
       </Section>
 
-      {/* Sección 4: Agenda y ROI */}
       <div className="max-w-7xl mx-auto px-6 py-24 border-t border-foreground/5 relative z-10">
         <div className="grid md:grid-cols-2 gap-8">
           <Card className="p-12 rounded-[48px] border-none shadow-xl bg-white/60 backdrop-blur-sm space-y-8">
@@ -289,7 +283,6 @@ export default function CRMPage() {
         </div>
       </div>
 
-      {/* Final CTA */}
       <section className="py-32 px-6 relative z-10">
         <div className="max-w-5xl mx-auto bg-primary rounded-[60px] p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-primary/20">
           <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 blur-3xl rounded-full"></div>
