@@ -2,187 +2,158 @@
 'use client';
 
 import React from 'react';
-import { Section } from '@/components/Section';
 import { 
   CheckCircle2, 
   MessageSquare, 
+  Cpu, 
   Bot, 
   Zap, 
-  Sparkles, 
   Globe, 
-  Share2, 
-  ArrowRight,
-  Phone,
-  Cpu,
-  MousePointer2
+  LayoutDashboard,
+  ArrowRight
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
-
-interface ServiceVisualProps {
-  type: string;
-  className?: string;
-}
-
-const ServiceVisual = ({ type, className }: ServiceVisualProps) => {
-  switch (type) {
-    case 'chatbot':
-      return (
-        <div className={cn("relative w-full h-32 bg-slate-50 rounded-xl border border-slate-200 p-4 flex flex-col gap-2 overflow-hidden", className)}>
-          <div className="self-end bg-primary text-white text-[10px] px-3 py-1.5 rounded-full rounded-tr-none animate-in slide-in-from-right-2">¿Cómo podéis ayudarme?</div>
-          <div className="self-start bg-white text-foreground/60 text-[10px] px-3 py-1.5 rounded-full rounded-tl-none border shadow-sm animate-in slide-in-from-left-2 delay-300">¡Hola! Automatizamos tu clínica 24/7.</div>
-          <div className="mt-auto flex gap-1 items-center">
-            <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
-            <div className="w-2 h-2 bg-primary/40 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-            <div className="w-2 h-2 bg-primary/20 rounded-full animate-bounce [animation-delay:0.4s]"></div>
-          </div>
-        </div>
-      );
-    case 'voice':
-      return (
-        <div className={cn("relative w-full h-32 bg-primary/5 rounded-xl border border-primary/10 flex items-center justify-center overflow-hidden", className)}>
-          <div className="flex items-center gap-1">
-            {[...Array(12)].map((_, i) => (
-              <div 
-                key={i} 
-                className="w-1 bg-primary rounded-full animate-pulse" 
-                style={{ height: `${30 + Math.random() * 60}%`, animationDuration: `${0.5 + Math.random()}s` }}
-              ></div>
-            ))}
-          </div>
-          <div className="absolute top-2 right-2">
-            <Phone size={12} className="text-primary animate-ring" />
-          </div>
-        </div>
-      );
-    case 'automation':
-      return (
-        <div className={cn("relative w-full h-32 bg-slate-900 rounded-xl flex items-center justify-center overflow-hidden", className)}>
-          <div className="flex gap-4 items-center">
-            <div className="p-2 bg-white/10 rounded-lg border border-white/20">
-              <Zap className="text-yellow-400" size={16} />
-            </div>
-            <div className="w-12 h-[1px] bg-gradient-to-r from-primary to-transparent relative">
-              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1.5 h-1.5 bg-primary rounded-full blur-[1px] animate-[shimmer_2s_infinite]"></div>
-            </div>
-            <div className="p-2 bg-white/10 rounded-lg border border-white/20">
-              <Cpu className="text-blue-400" size={16} />
-            </div>
-          </div>
-        </div>
-      );
-    case 'web':
-      return (
-        <div className={cn("relative w-full h-32 bg-slate-50 rounded-xl border border-slate-200 p-3", className)}>
-          <div className="w-full h-full bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col">
-            <div className="h-3 border-b bg-slate-50 flex items-center px-2 gap-1">
-              <div className="w-1 h-1 rounded-full bg-red-400/50"></div>
-              <div className="w-1 h-1 rounded-full bg-yellow-400/50"></div>
-            </div>
-            <div className="p-2 space-y-1.5">
-              <div className="w-1/2 h-1.5 bg-slate-100 rounded-full"></div>
-              <div className="w-full h-3 bg-primary/10 rounded"></div>
-              <div className="flex justify-end pt-1">
-                <MousePointer2 size={10} className="text-primary animate-bounce" />
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    default:
-      return null;
-  }
-};
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function ServiciosPage() {
   const servicios = [
     {
       title: "Chatbots Inteligentes",
-      type: "chatbot",
-      desc: "Automatizamos la atención y gestión de oportunidades, asegurando que ningún cliente quede sin respuesta.",
-      items: ["Respuestas inmediatas", "Calificación de leads", "Agendación de citas", "Integración con CRM"]
+      icon: <MessageSquare size={24} className="text-primary" />,
+      desc: "Automatizamos la atención y gestión de oportunidades, asegurando que ningún cliente quede sin respuesta. Nuestros chatbots se integran con tus sistemas existentes.",
+      items: [
+        "Respuestas inmediatas y personalizadas",
+        "Calificación de leads automáticamente",
+        "Agendación de citas y reuniones",
+        "Integración con CRM y sistemas internos"
+      ],
+      align: "left"
     },
     {
-      title: "Agentes de Voz",
-      type: "voice",
-      desc: "Desarrollamos asistentes virtuales para tareas específicas, liberando tiempo estratégico para tu equipo.",
-      items: ["Soporte interno", "Atención comercial", "Gestión de información", "Flujos de trabajo"]
-    },
-    {
-      title: "Automatización de Procesos",
-      type: "automation",
-      desc: "Eliminamos fricción operativa conectando tus herramientas para que cada tarea se ejecute sin errores.",
-      items: ["Integración de sistemas", "Flujos inteligentes", "Seguimiento automático", "Optimización comercial"]
-    },
-    {
-      title: "Webs Inteligentes",
-      type: "web",
-      desc: "Desarrollamos webs con automatización integrada, conectando captación y conversión desde el día uno.",
-      items: ["Enfoque en conversión", "Formularios dinámicos", "Seguimiento integrado", "SEO optimizado"]
+      title: "Agentes de IA",
+      icon: <Bot size={24} className="text-primary" />,
+      desc: "Desarrollamos asistentes virtuales personalizados que ayudan a tu equipo en tareas específicas, mejorando la eficiencia y liberando tiempo estratégico.",
+      items: [
+        "Soporte interno y atención comercial",
+        "Automatización de consultas frecuentes",
+        "Gestión de información",
+        "Integración con flujos de trabajo internos"
+      ],
+      align: "right"
     },
     {
       title: "Ingeniería de Prompts",
-      type: "automation",
-      desc: "Optimizamos los modelos de IA para que cumplan tareas concretas con la máxima eficiencia posible.",
-      items: ["Prompts estratégicos", "Estandarización", "Optimización ROI", "Modelos personalizados"]
+      icon: <Cpu size={24} className="text-primary" />,
+      desc: "Optimizamos los modelos de IA para que cumplan tareas concretas con la máxima eficiencia. Diseñamos la lógica detrás de cada interacción inteligente.",
+      items: [
+        "Diseño de prompts estratégicos",
+        "Estandarización de procesos",
+        "Optimización de resultados ROI",
+        "Modelos de lenguaje personalizados"
+      ],
+      align: "left"
     },
     {
-      title: "RRSS con IA",
-      type: "voice",
-      desc: "Combinamos creatividad y tecnología para que tu estrategia de redes sea más efectiva y medible.",
-      items: ["Análisis de métricas", "Optimización de copies", "Programación automática", "Mejora con datos"]
+      title: "Automatización de Procesos",
+      icon: <Zap size={24} className="text-primary" />,
+      desc: "Conectamos tus herramientas actuales para eliminar tareas manuales repetitivas y reducir el margen de error humano al mínimo.",
+      items: [
+        "Integración nativa de aplicaciones",
+        "Flujos de trabajo autónomos",
+        "Sincronización de datos en tiempo real",
+        "Escalabilidad operativa inmediata"
+      ],
+      align: "right"
     }
   ];
 
   return (
-    <div className="pt-24 bg-background min-h-screen">
-      <Section 
-        id="servicios-header" 
-        title="Sistemas, no acciones aisladas" 
-        subtitle="Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible."
-      >
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicios.map((s, i) => (
-            <div key={i} className="bg-white p-8 rounded-3xl border shadow-sm hover:shadow-md transition-all group">
-              <div className="mb-6">
-                <ServiceVisual type={s.type} />
+    <div className="pt-32 pb-24 bg-[#020617] min-h-screen text-white relative overflow-hidden">
+      {/* Fondo con textura y mallas sutiles */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+      <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/10 blur-[160px] rounded-full pointer-events-none"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        {/* Header de la página - Según captura */}
+        <div className="mb-32">
+          <div className="relative mb-12">
+            <h1 className="text-8xl md:text-[140px] font-black text-white/5 absolute -top-20 -left-10 select-none">
+              Servicios
+            </h1>
+            <div className="grid lg:grid-cols-2 gap-20 items-start relative z-10">
+              <div className="space-y-6">
+                <p className="text-xl text-white/60 font-medium leading-relaxed max-w-xl">
+                  La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. 
+                  La integramos en tus procesos para optimizar resultados.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4">{s.title}</h3>
-              <p className="text-sm text-foreground/60 mb-6 leading-relaxed">{s.desc}</p>
-              <ul className="space-y-3">
-                {s.items.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-xs font-medium text-foreground/80">
-                    <CheckCircle2 size={14} className="text-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className="border-l border-primary/40 pl-12 py-2">
+                <p className="text-xl text-white/60 font-medium leading-relaxed">
+                  Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Listado de Servicios - Distribución Asimétrica */}
+        <div className="space-y-40">
+          {servicios.map((s, i) => (
+            <div key={i} className={`grid lg:grid-cols-2 gap-12 lg:gap-32 items-center ${s.align === 'right' ? 'lg:direction-rtl' : ''}`}>
+              
+              {/* Bloque de Título y Descripción */}
+              <div className={`space-y-8 ${s.align === 'right' ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    {s.icon}
+                  </div>
+                  <h3 className="text-3xl font-black tracking-tight uppercase">{s.title}</h3>
+                </div>
+                <p className="text-lg text-white/40 leading-relaxed font-medium">
+                  {s.desc}
+                </p>
+              </div>
+
+              {/* Bloque "Incluye" */}
+              <div className={`bg-white/5 border border-white/10 rounded-[40px] p-10 lg:p-12 backdrop-blur-sm ${s.align === 'right' ? 'lg:order-1' : 'lg:order-2'}`}>
+                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-8 px-2">Incluye:</h4>
+                <ul className="grid gap-6">
+                  {s.items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-4 group">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
+                        <CheckCircle2 size={14} className="text-primary" />
+                      </div>
+                      <span className="text-sm font-bold text-white/70 uppercase tracking-tight group-hover:text-white transition-colors">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
           ))}
         </div>
 
-        <div className="mt-20 p-12 bg-primary text-white rounded-3xl text-center">
-          <h3 className="text-2xl font-bold mb-4">¿Por qué AllenMax?</h3>
-          <p className="text-white/70 max-w-2xl mx-auto mb-8">
-            La IA no es una moda: es una herramienta estratégica. La integramos en tus procesos para optimizar resultados y construir un negocio escalable.
-          </p>
+        {/* CTA Final */}
+        <div className="mt-40 text-center space-y-12">
+          <div className="w-px h-24 bg-gradient-to-b from-transparent to-primary mx-auto"></div>
+          <div className="space-y-6">
+            <h2 className="text-4xl font-black uppercase tracking-tight italic">¿Tu próximo sistema?</h2>
+            <p className="text-white/40 max-w-xl mx-auto font-medium">
+              Analicemos qué piezas de IA necesita tu negocio para escalar al siguiente nivel.
+            </p>
+            <Button size="lg" className="h-16 rounded-full px-10 text-lg font-bold bg-primary hover:bg-primary/90 transition-all group" asChild>
+              <Link href="/contacto">
+                Agendar consulta estratégica
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+          </div>
         </div>
-      </Section>
 
-      <style jsx global>{`
-        @keyframes ring {
-          0%, 100% { transform: rotate(0); }
-          25% { transform: rotate(10deg); }
-          75% { transform: rotate(-10deg); }
-        }
-        .animate-ring {
-          animation: ring 0.5s infinite;
-        }
-        @keyframes shimmer {
-          0% { left: 0; opacity: 0; }
-          50% { opacity: 1; }
-          100% { left: 100%; opacity: 0; }
-        }
-      `}</style>
+      </div>
     </div>
   );
 }
