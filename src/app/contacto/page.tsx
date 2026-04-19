@@ -2,127 +2,86 @@
 "use client";
 
 import React from 'react';
-import { Section } from '@/components/Section';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, MapPin, ArrowRight, Calendar } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Check, ArrowRight } from 'lucide-react';
 import Script from 'next/script';
+import { Card } from '@/components/ui/card';
 
 export default function ContactoPage() {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Logic for form submission
-  };
-
   return (
-    <div className="pt-24 bg-background min-h-screen">
-      <Section 
-        id="contacto-hero" 
-        title="Hablemos de ingeniería" 
-        subtitle="Diseñamos el sistema que escalará tu negocio. Cuéntanos tu reto y te daremos la arquitectura técnica para superarlo."
-      >
-        <div className="grid lg:grid-cols-12 gap-12 items-start mt-8">
+    <div className="pt-24 min-h-screen bg-background relative overflow-hidden">
+      {/* Texture & Grain Overlay (Home style) */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+      
+      {/* Mesh Gradients (Home style) */}
+      <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-0 right-[-10%] w-[60%] h-[800px] bg-blue-400/5 blur-[180px] rounded-full pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 pt-20 pb-32">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           
-          {/* Info Side */}
-          <div className="lg:col-span-5 space-y-8">
+          {/* Left Column: Strategic Info */}
+          <div className="lg:col-span-5 space-y-12">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold">Información Directa</h3>
-              <p className="text-foreground/50 font-medium">Estamos en Alicante, pero nuestra tecnología no tiene fronteras.</p>
-            </div>
-
-            <div className="grid gap-4">
-              {[
-                { icon: <Mail className="text-primary" />, title: "Email", value: "hola@allenmax.ai" },
-                { icon: <Phone className="text-primary" />, title: "Teléfono", value: "+34 600 000 000" },
-                { icon: <MapPin className="text-primary" />, title: "Ubicación", value: "Alicante, España" },
-              ].map((item, i) => (
-                <Card key={i} className="border-none shadow-sm bg-white hover:shadow-md transition-all rounded-[32px]">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-foreground/30">{item.title}</p>
-                      <p className="font-bold text-lg">{item.value}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="p-8 bg-primary rounded-[40px] text-white space-y-6 shadow-xl shadow-primary/20 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-              <Calendar className="w-10 h-10 relative z-10" />
-              <div className="space-y-2 relative z-10">
-                <h4 className="text-xl font-bold">¿Prefieres agendar ahora?</h4>
-                <p className="text-white/70 text-sm font-medium">Desliza hacia abajo para elegir un hueco directamente en nuestro calendario oficial.</p>
+              <div className="space-y-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Sesión Estratégica</p>
+                <h1 className="text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-foreground uppercase">
+                  Hablemos de tu <br />
+                  <span className="text-primary italic">crecimiento.</span>
+                </h1>
               </div>
-            </div>
-          </div>
-
-          {/* Form Side */}
-          <div className="lg:col-span-7">
-            <div className="bg-white p-10 rounded-[40px] border shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
               
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-foreground/40 px-1">Nombre Completo</label>
-                    <Input placeholder="Ej. Juan Pérez" className="h-14 rounded-2xl bg-gray-50 border-none focus-visible:ring-primary/20" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-foreground/40 px-1">Email Corporativo</label>
-                    <Input type="email" placeholder="juan@empresa.com" className="h-14 rounded-2xl bg-gray-50 border-none focus-visible:ring-primary/20" />
-                  </div>
-                </div>
+              <div className="w-16 h-1.5 bg-primary rounded-full"></div>
+              
+              <p className="text-lg text-foreground/60 font-medium leading-relaxed max-w-md">
+                Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
+              </p>
+            </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase tracking-widest text-foreground/40 px-1">Tu Negocio / Sector</label>
-                  <Input placeholder="Ej. Clínica Dental, E-commerce, Agencia..." className="h-14 rounded-2xl bg-gray-50 border-none focus-visible:ring-primary/20" />
-                </div>
+            <div className="space-y-8">
+              <h3 className="text-sm font-black uppercase tracking-widest text-foreground">En esta sesión estratégica:</h3>
+              <ul className="space-y-5">
+                {[
+                  "Analizaremos tu situación actual",
+                  "Detectaremos oportunidades de mejora",
+                  "Evaluaremos cómo estructurar tu sistema de crecimiento",
+                  "Resolveremos tus dudas con total claridad"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4 group">
+                    <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <Check size={12} className="text-primary" />
+                    </div>
+                    <span className="text-sm font-bold text-foreground/70 uppercase tracking-tight group-hover:text-foreground transition-colors">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase tracking-widest text-foreground/40 px-1">¿Qué proceso quieres automatizar?</label>
-                  <Textarea placeholder="Cuéntanos brevemente tus cuellos de botella..." className="min-h-[150px] rounded-3xl bg-gray-50 border-none focus-visible:ring-primary/20 resize-none" />
-                </div>
-
-                <Button type="submit" className="w-full h-16 rounded-2xl text-lg font-bold group">
-                  Enviar Mensaje
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                
-                <p className="text-[10px] text-center text-foreground/30 font-medium">
-                  Al enviar este formulario, aceptas nuestra política de privacidad y el tratamiento de tus datos para fines comerciales.
-                </p>
-              </form>
+            <div className="pt-8 border-t border-foreground/5">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/30 leading-relaxed max-w-xs">
+                Construimos algo que tenga sentido a largo plazo para tu negocio mediante ingeniería de automatización.
+              </p>
             </div>
           </div>
 
-        </div>
-      </Section>
+          {/* Right Column: Calendly Widget */}
+          <div className="lg:col-span-7">
+            <Card className="bg-white rounded-[48px] border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden p-2">
+              <div 
+                className="calendly-inline-widget" 
+                data-url="https://calendly.com/agency-allenmax/reunion-allenmax" 
+                style={{ minWidth: '320px', height: '700px' }}
+              ></div>
+              <Script 
+                src="https://assets.calendly.com/assets/external/widget.js" 
+                strategy="lazyOnload"
+              />
+            </Card>
+          </div>
 
-      {/* Calendly Section */}
-      <Section 
-        id="calendly-booking" 
-        title="Agendar consulta estratégica" 
-        subtitle="Selecciona el momento que mejor te venga para analizar la viabilidad de tu proyecto de automatización."
-        className="pt-0 pb-32"
-      >
-        <div className="max-w-5xl mx-auto bg-white rounded-[48px] border shadow-xl overflow-hidden p-4">
-          <div 
-            className="calendly-inline-widget" 
-            data-url="https://calendly.com/agency-allenmax/reunion-allenmax" 
-            style={{ minWidth: '320px', height: '700px' }}
-          ></div>
-          <Script 
-            src="https://assets.calendly.com/assets/external/widget.js" 
-            strategy="lazyOnload"
-          />
         </div>
-      </Section>
+      </div>
     </div>
   );
 }
