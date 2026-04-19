@@ -12,8 +12,10 @@ import {
   TrendingUp, 
   LayoutDashboard, 
   Users,
-  Sparkles,
-  Zap
+  Zap,
+  Search,
+  MoreVertical,
+  Bell
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -90,20 +92,80 @@ export default function CRMDentalPage() {
             </div>
           </div>
           <div className="relative">
-            <Card className="relative p-10 rounded-[40px] border-none shadow-2xl bg-white/40 backdrop-blur-md overflow-hidden ring-1 ring-white/50">
-              <div className="space-y-6">
-                <div className="flex justify-between items-center mb-8">
-                  <div className="h-2 w-24 bg-primary/20 rounded-full"></div>
-                  <Users className="text-primary/30" size={18} />
+            {/* Dashboard Mockup Re-diseñado */}
+            <Card className="relative p-0 rounded-[40px] border-none shadow-2xl bg-white/60 backdrop-blur-xl overflow-hidden ring-1 ring-white/50 aspect-[4/3] flex flex-col">
+              {/* Header del Dashboard */}
+              <div className="px-6 py-4 border-b border-foreground/5 flex items-center justify-between bg-white/40">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+                    <LayoutDashboard size={16} className="text-white" />
+                  </div>
+                  <span className="text-xs font-black uppercase tracking-widest opacity-40">Gestión Clínica</span>
                 </div>
-                <div className="space-y-4">
-                  <div className="h-8 w-full bg-slate-200/50 rounded-xl"></div>
-                  <div className="h-8 w-3/4 bg-slate-200/50 rounded-xl"></div>
-                  <div className="h-8 w-1/2 bg-slate-200/50 rounded-xl"></div>
+                <div className="flex items-center gap-4">
+                  <Search size={16} className="text-foreground/20" />
+                  <Bell size={16} className="text-foreground/20" />
+                  <div className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white"></div>
                 </div>
-                <div className="pt-8 flex gap-4">
-                  <div className="h-12 w-12 rounded-full bg-primary/10 animate-pulse"></div>
-                  <div className="h-12 flex-1 bg-primary/5 rounded-xl"></div>
+              </div>
+
+              {/* Contenido Principal */}
+              <div className="flex-1 p-6 space-y-6 overflow-hidden">
+                {/* Mini Cards de Resumen */}
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { label: 'Citas Hoy', val: '12', color: 'bg-primary' },
+                    { label: 'Ingresos', val: '€2.4k', color: 'bg-green-500' },
+                    { label: 'Nuevos', val: '4', color: 'bg-blue-400' }
+                  ].map((stat, i) => (
+                    <div key={i} className="p-3 bg-white/50 rounded-2xl border border-white/50">
+                      <p className="text-[8px] font-black uppercase text-foreground/30 tracking-widest mb-1">{stat.label}</p>
+                      <p className="text-lg font-black text-foreground/80">{stat.val}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Lista de Pacientes / Citas */}
+                <div className="space-y-3">
+                  <p className="text-[10px] font-black uppercase text-foreground/40 tracking-widest px-2">Próximas Citas</p>
+                  {[
+                    { name: 'Ana Martínez', time: '10:30', status: 'Confirmada', type: 'Revisión' },
+                    { name: 'Carlos Ruíz', time: '11:15', status: 'Pendiente', type: 'Implante' },
+                    { name: 'Elena Soler', time: '12:00', status: 'En espera', type: 'Limpieza' }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between p-4 bg-white/80 rounded-2xl border border-white shadow-sm group hover:scale-[1.02] transition-transform">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center font-bold text-primary text-xs">
+                          {item.name.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-foreground/80">{item.name}</p>
+                          <p className="text-[10px] font-medium text-foreground/40">{item.type}</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xs font-black text-primary">{item.time}</p>
+                        <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full ${
+                          item.status === 'Confirmada' ? 'bg-green-100 text-green-600' : 
+                          item.status === 'Pendiente' ? 'bg-yellow-100 text-yellow-600' : 
+                          'bg-blue-100 text-blue-600'
+                        }`}>
+                          {item.status}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Footer / Status Bar */}
+              <div className="px-6 py-3 bg-slate-50/50 border-t border-foreground/5 flex justify-between items-center">
+                <div className="flex gap-2 items-center">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                  <span className="text-[8px] font-black uppercase text-foreground/30 tracking-widest">Sincronización Activa</span>
+                </div>
+                <div className="h-1 w-20 bg-primary/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-primary w-2/3"></div>
                 </div>
               </div>
             </Card>
