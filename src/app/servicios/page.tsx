@@ -74,25 +74,25 @@ export default function ServiciosPage() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 pt-20">
         
-        {/* Header de Alta Fidelidad - Refinado según captura */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 mb-40 items-start">
-          <div className="lg:col-span-7 space-y-12">
-            <h1 className="text-6xl lg:text-[100px] font-black leading-[0.8] tracking-[-0.06em] text-foreground uppercase">
+        {/* Header Refinado - Más pequeño y elegante */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 mb-32 items-start">
+          <div className="lg:col-span-7 space-y-8">
+            <h1 className="text-4xl lg:text-6xl font-black leading-tight tracking-tight text-foreground uppercase">
               Inteligencia <br />
-              <span className="text-foreground">Artificial</span>
+              <span className="text-primary">Artificial</span>
             </h1>
-            <p className="text-xl text-foreground/40 font-medium max-w-xl leading-relaxed">
+            <p className="text-lg text-foreground/50 font-medium max-w-xl leading-relaxed">
               La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. 
-              La integramos en tus procesos para optimizar resultados.
+              La integramos en tus procesos para optimizar resultados mediante arquitectura técnica.
             </p>
           </div>
-          <div className="lg:col-span-5 border-l-4 border-primary pl-10 py-2">
-            <h2 className="text-2xl font-black text-foreground mb-4 uppercase tracking-tight leading-tight">
+          <div className="lg:col-span-5 border-l border-primary/20 pl-10 py-2">
+            <h2 className="text-xl font-bold text-foreground mb-4 uppercase tracking-tight leading-snug">
               No implementamos <br />acciones aisladas. <br />
               <span className="text-primary italic">Construimos sistemas.</span>
             </h2>
             <p className="text-sm text-foreground/40 font-medium leading-relaxed max-w-sm">
-              Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible mediante arquitectura técnica avanzada.
+              Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible mediante ingeniería de automatización avanzada.
             </p>
           </div>
         </div>
@@ -144,12 +144,10 @@ export default function ServiciosPage() {
             <p className="text-foreground/40 max-w-xl mx-auto font-medium text-lg">
               Analicemos qué piezas de IA necesita tu negocio para escalar al siguiente nivel mediante ingeniería de automatización.
             </p>
-            <Button size="lg" className="h-20 rounded-full px-12 text-xl font-bold shadow-2xl shadow-primary/20 group" asChild>
-              <Link href="/contacto">
-                Agendar consulta estratégica
-                <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" size={24} />
-              </Link>
-            </Button>
+            <button className="h-20 rounded-full px-12 text-xl font-bold bg-primary text-white shadow-2xl shadow-primary/20 group hover:scale-105 transition-transform" onClick={() => window.location.href='/contacto'}>
+              Agendar consulta estratégica
+              <ArrowRight className="inline-block ml-4 group-hover:translate-x-2 transition-transform" size={24} />
+            </button>
           </div>
         </div>
 
