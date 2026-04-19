@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Mail, Instagram, Linkedin, Twitter } from 'lucide-react';
 
@@ -13,7 +14,7 @@ export function Footer() {
             <span className="text-2xl font-bold tracking-tight text-foreground">AllenMax</span>
           </Link>
           <p className="text-foreground/60 max-w-xs leading-relaxed mb-6">
-            Agencia líder en automatización con IA en Alicante. Especialistas en optimización para clínicas dentales y servicios de alto valor.
+            Agencia líder en automatización con IA en Alicante. Especialistas en optimización operativa y servicios de alto valor.
           </p>
           <div className="flex gap-4">
             <a href="#" className="p-2 bg-gray-50 rounded-full hover:text-primary transition-colors"><Instagram size={20} /></a>
@@ -28,7 +29,7 @@ export function Footer() {
           <ul className="space-y-4 text-sm text-foreground/70">
             <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
             <li><Link href="/servicios" className="hover:text-primary transition-colors">Servicios</Link></li>
-            <li><Link href="/crm-dental" className="hover:text-primary transition-colors">CRM Dental</Link></li>
+            <li><Link href="/crm-dental" className="hover:text-primary transition-colors">CRM</Link></li>
             <li><Link href="/contacto" className="hover:text-primary transition-colors">Contacto</Link></li>
           </ul>
         </div>
@@ -39,7 +40,6 @@ export function Footer() {
             <li><Link href="#" className="hover:text-primary transition-colors">Aviso Legal</Link></li>
             <li><Link href="#" className="hover:text-primary transition-colors">Privacidad</Link></li>
             <li><Link href="#" className="hover:text-primary transition-colors">Cookies</Link></li>
-            <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
           </ul>
         </div>
       </div>

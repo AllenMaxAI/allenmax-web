@@ -22,8 +22,7 @@ export function Header() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Servicios', href: '/servicios' },
-    { name: 'CRM Dental', href: '/crm-dental' },
-    { name: 'FAQ', href: '/faq' },
+    { name: 'CRM', href: '/crm-dental' },
     { name: 'Contacto', href: '/contacto' },
   ];
 

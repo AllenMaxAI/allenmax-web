@@ -20,7 +20,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 
-export default function CRMDentalPage() {
+export default function CRMPage() {
   return (
     <div className="pt-24 min-h-screen bg-background relative overflow-hidden">
       {/* Sistema de Fondos Unificado con Home */}
@@ -34,16 +34,16 @@ export default function CRMDentalPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 mb-8">
               <div className="w-1 h-1 rounded-full bg-primary"></div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-primary/70">Arquitectura Dental Premium</span>
+              <span className="text-[10px] font-black uppercase tracking-widest text-primary/70">Arquitectura CRM Premium</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-black leading-tight tracking-tight text-foreground uppercase mb-8">
               El cerebro operativo <br />
-              <span className="text-primary italic">de tu clínica dental</span>
+              <span className="text-primary italic">de tu negocio</span>
             </h1>
             
             <p className="text-lg text-foreground/50 font-medium max-w-xl leading-relaxed mb-12">
-              Convierte tu clínica en un sistema inteligente. Nuestro CRM gestiona pacientes, citas y comunicación de forma 100% automática y centralizada.
+              Convierte tu empresa en un sistema inteligente. Nuestro CRM gestiona clientes, citas y comunicación de forma 100% automática y centralizada.
             </p>
             
             <div className="flex flex-wrap items-center gap-10">
@@ -61,7 +61,7 @@ export default function CRMDentalPage() {
         </div>
       </section>
 
-      {/* Sección 1: El Cerebro (CRM) - Rediseñada según captura */}
+      {/* Sección 1: El Cerebro (CRM) */}
       <Section id="crm-core" title="" className="!py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-10">
@@ -73,13 +73,13 @@ export default function CRMDentalPage() {
                 Control Total <br /><span className="text-primary">en un solo lugar</span>
               </h2>
               <p className="text-lg text-foreground/50 leading-relaxed font-medium max-w-md">
-                Centraliza toda tu operación. No es solo una base de datos, es el motor que controla cada interacción con el paciente.
+                Centraliza toda tu operación. No es solo una base de datos, es el motor que controla cada interacción con el cliente.
               </p>
             </div>
             <div className="grid gap-6">
               {[
-                "Gestión de pacientes centralizada",
-                "Estado de citas en tiempo real",
+                "Gestión de clientes centralizada",
+                "Estado de gestiones en tiempo real",
                 "Control de pagos y seguimientos",
                 "Información organizada y accesible"
               ].map((item, i) => (
@@ -93,15 +93,13 @@ export default function CRMDentalPage() {
             </div>
           </div>
           <div className="relative">
-            {/* Dashboard Mockup Refinado */}
             <Card className="relative p-0 rounded-[48px] border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] bg-white overflow-hidden aspect-[4/3] flex flex-col">
-              {/* Header del Dashboard */}
               <div className="px-8 py-6 flex items-center justify-between border-b border-gray-50">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
                     <LayoutDashboard size={18} className="text-white" />
                   </div>
-                  <span className="text-xs font-black uppercase tracking-widest text-foreground/30">Gestión Clínica</span>
+                  <span className="text-xs font-black uppercase tracking-widest text-foreground/30">Gestión Operativa</span>
                 </div>
                 <div className="flex items-center gap-5">
                   <Search size={18} className="text-foreground/20" />
@@ -110,14 +108,12 @@ export default function CRMDentalPage() {
                 </div>
               </div>
 
-              {/* Contenido Principal */}
               <div className="flex-1 p-8 space-y-8 bg-slate-50/30">
-                {/* Mini Cards de Resumen */}
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { label: 'Citas Hoy', val: '12' },
-                    { label: 'Ingresos', val: '€2.4k' },
-                    { label: 'Nuevos', val: '4' }
+                    { label: 'Gestiones Hoy', val: '24' },
+                    { label: 'Ingresos', val: '€4.8k' },
+                    { label: 'Nuevos', val: '8' }
                   ].map((stat, i) => (
                     <div key={i} className="p-5 bg-white rounded-[24px] border border-gray-100 shadow-sm">
                       <p className="text-[10px] font-black uppercase text-foreground/20 tracking-widest mb-1">{stat.label}</p>
@@ -126,13 +122,12 @@ export default function CRMDentalPage() {
                   ))}
                 </div>
 
-                {/* Lista de Citas */}
                 <div className="space-y-4">
-                  <p className="text-[10px] font-black uppercase text-foreground/30 tracking-[0.2em] px-2">Próximas Citas</p>
+                  <p className="text-[10px] font-black uppercase text-foreground/30 tracking-[0.2em] px-2">Próximas Actividades</p>
                   {[
-                    { name: 'Ana Martínez', time: '10:30', status: 'Confirmada', type: 'Revisión', color: 'text-green-500 bg-green-50' },
-                    { name: 'Carlos Ruíz', time: '11:15', status: 'Pendiente', type: 'Implante', color: 'text-orange-400 bg-orange-50' },
-                    { name: 'Elena Soler', time: '12:00', status: 'En espera', type: 'Limpieza', color: 'text-blue-500 bg-blue-50' }
+                    { name: 'Ana Martínez', time: '10:30', status: 'Confirmada', type: 'Consultoría', color: 'text-green-500 bg-green-50' },
+                    { name: 'Carlos Ruíz', time: '11:15', status: 'Pendiente', type: 'Implementación', color: 'text-orange-400 bg-orange-50' },
+                    { name: 'Elena Soler', time: '12:00', status: 'En espera', type: 'Auditoría', color: 'text-blue-500 bg-blue-50' }
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between p-5 bg-white rounded-[24px] border border-gray-100 shadow-sm hover:translate-x-1 transition-transform cursor-default">
                       <div className="flex items-center gap-4">
@@ -155,7 +150,6 @@ export default function CRMDentalPage() {
                 </div>
               </div>
 
-              {/* Footer / Status Bar */}
               <div className="px-8 py-5 border-t border-gray-50 flex justify-between items-center bg-white">
                 <div className="flex gap-2 items-center">
                   <div className="w-2 h-2 rounded-full bg-green-500"></div>
@@ -197,7 +191,7 @@ export default function CRMDentalPage() {
                 Atención <br /><span className="text-primary">Omnicanal</span>
               </h2>
               <p className="text-lg text-foreground/50 leading-relaxed font-medium">
-                Responde dudas, capta leads y califica pacientes automáticamente desde todos tus canales 24/7 sin intervención humana.
+                Responde dudas, capta leads y califica clientes automáticamente desde todos tus canales 24/7 sin intervención humana.
               </p>
               <div className="pt-4 flex gap-8">
                 <div>
@@ -225,7 +219,7 @@ export default function CRMDentalPage() {
               Recepcionista <br /><span className="text-primary">Automática</span>
             </h2>
             <p className="text-lg text-foreground/50 leading-relaxed font-medium italic border-l-4 border-primary/20 pl-8">
-              Tu clínica responde llamadas, resuelve dudas y agenda citas automáticamente, eliminando las esperas telefónicas.
+              Tu negocio responde llamadas, resuelve dudas y agenda citas automáticamente, eliminando las esperas telefónicas.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
@@ -294,23 +288,6 @@ export default function CRMDentalPage() {
           </Card>
         </div>
       </div>
-
-      {/* Implementación */}
-      <Section id="impl" title="Implementación Simple" subtitle="Configuramos, conectamos y activamos. Sin complicaciones." className="relative z-10">
-        <div className="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto">
-          {[
-            { t: "Configuración", d: "Adaptamos el sistema a tu medida" },
-            { t: "Conexión", d: "Integramos tus canales actuales" },
-            { t: "Activación", d: "Operativa automática inmediata" }
-          ].map((step, i) => (
-            <div key={i} className="text-center space-y-4">
-              <div className="text-5xl font-black text-primary/10">{i + 1}</div>
-              <h4 className="font-bold uppercase tracking-tight text-sm">{step.t}</h4>
-              <p className="text-xs text-foreground/40 leading-relaxed font-medium">{step.d}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
 
       {/* Final CTA */}
       <section className="py-32 px-6 relative z-10">
