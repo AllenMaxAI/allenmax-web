@@ -74,29 +74,30 @@ export default function ServiciosPage() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Header Exacto a Captura */}
+        {/* Header de Alta Fidelidad - Refinado según captura */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 mb-32 items-start">
-          <div className="lg:col-span-7 space-y-6">
-            <h1 className="text-5xl lg:text-7xl font-black tracking-tight text-foreground uppercase">
-              Inteligencia <br />Artificial
+          <div className="lg:col-span-7 space-y-8">
+            <h1 className="text-6xl lg:text-[85px] font-black leading-[0.9] tracking-[-0.05em] text-foreground uppercase animate-in fade-in slide-in-from-bottom-8 duration-700">
+              Inteligencia <br />
+              <span className="text-foreground">Artificial</span>
             </h1>
-            <p className="text-lg text-foreground/50 font-medium max-w-xl leading-relaxed">
+            <p className="text-xl text-foreground/50 font-medium max-w-xl leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
               La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. 
               La integramos en tus procesos para optimizar resultados.
             </p>
           </div>
-          <div className="lg:col-span-5 border-l-4 border-primary pl-8 py-2">
-            <h2 className="text-xl font-black text-foreground mb-4">
-              No implementamos acciones aisladas. <br />
-              <span className="text-primary">Construimos sistemas.</span>
+          <div className="lg:col-span-5 border-l-4 border-primary pl-8 py-2 animate-in fade-in slide-in-from-left-8 duration-700 delay-200">
+            <h2 className="text-2xl font-black text-foreground mb-4 uppercase tracking-tight">
+              No implementamos <br />acciones aisladas. <br />
+              <span className="text-primary italic">Construimos sistemas.</span>
             </h2>
             <p className="text-sm text-foreground/50 font-medium leading-relaxed">
-              Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible.
+              Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible mediante arquitectura técnica avanzada.
             </p>
           </div>
         </div>
 
-        {/* Listado de Servicios con Distribución de Captura */}
+        {/* Listado de Servicios */}
         <div className="space-y-32">
           {servicios.map((s, i) => (
             <div key={i} className="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center">
@@ -116,7 +117,7 @@ export default function ServiciosPage() {
 
               {/* Bloque "Incluye" */}
               <div className={`${s.reversed ? 'lg:order-1' : 'lg:order-2'}`}>
-                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/30 mb-6">Incluye:</h4>
+                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/30 mb-6">Contenido Técnico</h4>
                 <ul className="grid gap-4">
                   {s.items.map((item, idx) => (
                     <li key={idx} className="flex items-center gap-3 group">
@@ -141,12 +142,12 @@ export default function ServiciosPage() {
           <div className="space-y-6">
             <h2 className="text-3xl font-black uppercase tracking-tight italic text-foreground">¿Tu próximo sistema?</h2>
             <p className="text-foreground/40 max-w-xl mx-auto font-medium">
-              Analicemos qué piezas de IA necesita tu negocio para escalar al siguiente nivel.
+              Analicemos qué piezas de IA necesita tu negocio para escalar al siguiente nivel mediante ingeniería de automatización.
             </p>
-            <Button size="lg" className="h-16 rounded-full px-10 text-lg font-bold shadow-xl shadow-primary/10 group" asChild>
+            <Button size="lg" className="h-20 rounded-full px-12 text-xl font-bold shadow-2xl shadow-primary/20 group" asChild>
               <Link href="/contacto">
                 Agendar consulta estratégica
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" size={24} />
               </Link>
             </Button>
           </div>
