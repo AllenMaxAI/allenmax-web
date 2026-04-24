@@ -165,7 +165,7 @@ export function CalendlyPersistent() {
           <div className="lg:col-span-6 xl:col-span-5 w-full relative flex justify-center">
             <div 
               className={cn(
-                "w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500",
+                "w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white min-h-[1050px] relative pointer-events-auto transition-transform duration-500 will-change-transform",
                 isVisible ? "translate-y-0" : "translate-y-10"
               )}
             >

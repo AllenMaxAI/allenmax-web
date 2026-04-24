@@ -29,13 +29,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
+        "fixed left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[top,padding]",
         scrolled ? "top-0 px-0" : "top-6 px-6"
       )}
     >
       <div 
         className={cn(
-          "mx-auto transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/95 backdrop-blur-md border border-white/50",
+          "mx-auto transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] bg-white/95 backdrop-blur-md border border-white/50 will-change-[width,border-radius,padding,box-shadow]",
           scrolled 
             ? "w-full max-w-full rounded-[0px] px-12 py-4 shadow-md border-b-gray-100" 
             : "max-w-7xl rounded-[48px] px-8 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)]"

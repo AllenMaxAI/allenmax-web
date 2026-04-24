@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { 
   CheckCircle2, 
@@ -23,7 +23,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const AnimatedCounter = ({ value, prefix = "", suffix = "", duration = 2.5 }: { value: number, prefix?: string, suffix?: string, duration?: number }) => {
+const AnimatedCounter = memo(({ value, prefix = "", suffix = "", duration = 2.5 }: { value: number, prefix?: string, suffix?: string, duration?: number }) => {
     const [count, setCount] = useState(0);
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, amount: 0.5 });
@@ -38,7 +38,8 @@ const AnimatedCounter = ({ value, prefix = "", suffix = "", duration = 2.5 }: { 
             const animate = () => {
                 frame++;
                 const progress = frame / totalFrames;
-                const currentCount = Math.round(end * (1 - Math.pow(1 - progress, 3))); // easeOutCubic
+                // easeOutCubic
+                const currentCount = Math.round(end * (1 - Math.pow(1 - progress, 3))); 
                 
                 setCount(currentCount);
 
@@ -51,15 +52,17 @@ const AnimatedCounter = ({ value, prefix = "", suffix = "", duration = 2.5 }: { 
     }, [inView, value, duration]);
 
     return (
-        <span ref={ref} className="text-4xl md:text-6xl font-black text-primary leading-none tracking-tighter">
+        <span ref={ref} className="text-4xl md:text-6xl font-black text-primary leading-none tracking-tighter tabular-nums">
             {prefix}{count}{suffix}
         </span>
     );
-};
+});
+
+AnimatedCounter.displayName = 'AnimatedCounter';
 
 // --- Sub-components ---
 
-const ChatMockup = () => {
+const ChatMockup = memo(() => {
     return (
         <div className="relative w-full max-w-lg aspect-square flex items-center justify-center p-8">
             {/* Ambient Glow */}
@@ -68,7 +71,8 @@ const ChatMockup = () => {
             <motion.div 
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="relative w-full bg-white/80 backdrop-blur-xl border border-slate-100 rounded-[32px] shadow-2xl overflow-hidden"
+                transition={{ duration: 0.5 }}
+                className="relative w-full bg-white/80 backdrop-blur-xl border border-slate-100 rounded-[32px] shadow-2xl overflow-hidden will-change-transform"
             >
                 <div className="p-4 border-b border-slate-50 flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -109,10 +113,11 @@ const ChatMockup = () => {
             </motion.div>
         </div>
     );
-};
+});
+ChatMockup.displayName = 'ChatMockup';
 
 
-const VoiceMockup = () => {
+const VoiceMockup = memo(() => {
     return (
         <div className="relative w-full max-w-lg aspect-square flex items-center justify-center p-8">
             {/* Ambient Glow */}
@@ -121,7 +126,8 @@ const VoiceMockup = () => {
             <motion.div 
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="relative w-full bg-white border border-slate-100 rounded-[32px] shadow-2xl overflow-hidden"
+                transition={{ duration: 0.5 }}
+                className="relative w-full bg-white border border-slate-100 rounded-[32px] shadow-2xl overflow-hidden will-change-transform"
             >
                 {/* Header */}
                 <div className="p-6 border-b border-slate-50 flex items-center justify-between">
@@ -158,11 +164,6 @@ const VoiceMockup = () => {
                         <p className="text-sm font-black text-slate-900 leading-snug">Entendido. ¿Le vendría bien el martes a las 12:00?</p>
                         <span className="text-[10px] font-bold text-slate-300">05:32</span>
                     </div>
-                    <div className="grid grid-cols-[80px_1fr_40px] items-start gap-4 opacity-50">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 pt-1">Cliente</span>
-                        <p className="text-sm font-medium text-slate-600 leading-snug">Sí, perfecto. Agéndamelo para esa hora.</p>
-                        <span className="text-[10px] font-bold text-slate-300">06:30</span>
-                    </div>
                 </div>
 
                 {/* Controls */}
@@ -183,10 +184,11 @@ const VoiceMockup = () => {
             </motion.div>
         </div>
     );
-};
+});
+VoiceMockup.displayName = 'VoiceMockup';
 
 
-const CRMMockup = () => {
+const CRMMockup = memo(() => {
     return (
         <div className="relative w-full max-w-lg aspect-square flex items-center justify-center p-8">
             {/* Ambient Glow */}
@@ -195,7 +197,8 @@ const CRMMockup = () => {
             <motion.div 
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="relative w-full bg-white/90 backdrop-blur-md border border-slate-100 rounded-[32px] shadow-2xl overflow-hidden"
+                transition={{ duration: 0.5 }}
+                className="relative w-full bg-white/90 backdrop-blur-md border border-slate-100 rounded-[32px] shadow-2xl overflow-hidden will-change-transform"
             >
                 {/* Window Header */}
                 <div className="p-4 bg-slate-50/50 border-b border-slate-100 flex items-center justify-between">
@@ -210,7 +213,6 @@ const CRMMockup = () => {
 
                 {/* Content Area */}
                 <div className="p-6 space-y-6">
-                    {/* Integrated Command Bar */}
                     <div className="p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center gap-3">
                         <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                             <Zap size={12} />
@@ -220,7 +222,6 @@ const CRMMockup = () => {
                         </p>
                     </div>
 
-                    {/* Table View */}
                     <div className="space-y-4">
                         <div className="flex justify-between items-center">
                             <h4 className="text-[10px] font-black uppercase tracking-tight text-slate-900">Actividad Reciente</h4>
@@ -248,7 +249,8 @@ const CRMMockup = () => {
             </motion.div>
         </div>
     );
-};
+});
+CRMMockup.displayName = 'CRMMockup';
 
 
 // --- Main Page ---
@@ -256,23 +258,22 @@ const CRMMockup = () => {
 export default function Home() {
   return (
     <div className="pt-24 min-h-screen bg-white text-slate-900 selection:bg-primary/10 overflow-x-hidden">
-      {/* Background Decor */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
-      <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
+      {/* Background Decor - Optimized by removing mix-blend-mode */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.015] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+      <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/[0.03] blur-[160px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 pt-20">
         
         {/* Header / Hero Section - Minimalist Spotlight */}
         <div className="relative mb-24 pt-32">
-            {/* Ambient Base Layer */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent pointer-events-none -z-10" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/[0.04] via-transparent to-transparent pointer-events-none -z-10" />
             
             <div className="max-w-4xl mx-auto text-center space-y-10">
                 <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.6 }}
-                    className="space-y-4"
+                    className="space-y-4 will-change-transform"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
                         Agencia de Automatización IA
@@ -287,7 +288,7 @@ export default function Home() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-lg text-slate-400 font-medium max-w-xl mx-auto leading-relaxed"
+                    className="text-lg text-slate-400 font-medium max-w-xl mx-auto leading-relaxed will-change-transform"
                 >
                     Convertimos tu empresa en un sistema automatizado que vende y gestiona clientes 24/7 sin interrupción.
                 </motion.p>
@@ -296,7 +297,7 @@ export default function Home() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex flex-col items-center gap-8"
+                    className="flex flex-col items-center gap-8 will-change-transform"
                 >
                     <div className="flex gap-4 items-center text-[9px] font-black uppercase tracking-widest text-slate-300">
                       <span>Menos tareas</span>
@@ -311,10 +312,10 @@ export default function Home() {
             </div>
         </div>
 
-        {/* Technologies Strip */}
+        {/* Technologies Strip - Optimized with will-change and hardware acceleration */}
         <div className="w-full py-16 mb-24 overflow-hidden flex opacity-100 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
             <motion.div 
-                className="flex items-center gap-20 whitespace-nowrap"
+                className="flex items-center gap-20 whitespace-nowrap will-change-transform"
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{ ease: "linear", duration: 35, repeat: Infinity }}
             >
@@ -361,7 +362,7 @@ export default function Home() {
 
         {/* What we do exactly */}
         <motion.div 
-            className="max-w-4xl mx-auto text-center mb-24 space-y-10"
+            className="max-w-4xl mx-auto text-center mb-24 space-y-10 will-change-transform"
             initial={{ y: 40, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -480,8 +481,6 @@ export default function Home() {
           </div>
         </div>
 
-
-
         {/* Real Results */}
         <div className="py-24">
             <h2 className="text-4xl font-black uppercase tracking-tight text-center mb-24 italic">Resultados Medibles</h2>
@@ -525,10 +524,6 @@ export default function Home() {
           </div>
         </div>
 
-
-
-
-
         {/* Final CTA */}
         <div className="py-24 text-center space-y-16">
           <div className="space-y-8 max-w-4xl mx-auto">
@@ -563,3 +558,4 @@ export default function Home() {
     </div>
   );
 }
+
