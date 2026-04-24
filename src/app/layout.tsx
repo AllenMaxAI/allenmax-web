@@ -12,6 +12,10 @@ import { CookieBanner } from '@/components/CookieBanner';
 export const metadata: Metadata = {
   title: 'AllenMax - Automatización con IA en Alicante',
   description: 'Impulsa tu negocio con soluciones de automatización de inteligencia artificial líderes en el mercado.',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
