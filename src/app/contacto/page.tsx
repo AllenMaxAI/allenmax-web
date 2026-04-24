@@ -1,56 +1,70 @@
+'use client';
 
-"use client";
+import React, { useState, useEffect } from 'react';
+import { Check } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-import React from 'react';
-import { Check, ArrowRight } from 'lucide-react';
-import Script from 'next/script';
-import { Card } from '@/components/ui/card';
+const strategicSessionItems = [
+  "Analizaremos tu situación actual",
+  "Detectaremos oportunidades de mejora",
+  "Evaluaremos cómo estructurar tu sistema de crecimiento",
+  "Resolveremos tus dudas con total claridad",
+];
 
 export default function ContactoPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
-    <div className="pt-24 min-h-screen bg-background relative overflow-hidden">
-      {/* Texture & Grain Overlay (Home style) */}
+    <div className="pt-24 min-h-screen bg-background relative overflow-hidden text-slate-900 selection:bg-primary/10">
+      {/* Background Decor */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
-      
-      {/* Mesh Gradients (Home style) */}
       <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-0 right-[-10%] w-[60%] h-[800px] bg-blue-400/5 blur-[180px] rounded-full pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 pt-20 pb-32">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10 pt-12 md:pt-20 pb-24 md:pb-32">
+        <div className="grid gap-12 lg:gap-24 items-start lg:grid-cols-12">
           
-          {/* Left Column: Strategic Info */}
-          <div className="lg:col-span-5 space-y-12">
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Sesión Estratégica</p>
-                <h1 className="text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-foreground uppercase">
+          {/* Columna Izquierda: Contenido Informativo */}
+          <div className="lg:col-span-6 xl:col-span-7 space-y-2">
+            <div className={cn(
+              "space-y-2 mb-12 transition-all duration-1000 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
+                Sesión Estratégica
+              </span>
+              <div className="space-y-6">
+                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] text-foreground">
                   Hablemos de tu <br />
-                  <span className="text-primary italic">crecimiento.</span>
+                  <span className="text-primary">crecimiento.</span>
                 </h1>
+                <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
-              
-              <div className="w-16 h-1.5 bg-primary rounded-full"></div>
-              
-              <p className="text-lg text-foreground/60 font-medium leading-relaxed max-w-md">
-                Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
-              </p>
             </div>
 
-            <div className="space-y-8">
-              <h3 className="text-sm font-black uppercase tracking-widest text-foreground">En esta sesión estratégica:</h3>
+            <p className={cn(
+              "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed max-w-lg transition-all duration-1000 delay-300 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
+            </p>
+
+            <div className={cn(
+              "space-y-8 pt-4 transition-all duration-1000 delay-500 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              <h2 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
+                En esta sesión estratégica:
+              </h2>
               <ul className="space-y-5">
-                {[
-                  "Analizaremos tu situación actual",
-                  "Detectaremos oportunidades de mejora",
-                  "Evaluaremos cómo estructurar tu sistema de crecimiento",
-                  "Resolveremos tus dudas con total claridad"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-4 group">
-                    <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <Check size={12} className="text-primary" />
-                    </div>
-                    <span className="text-sm font-bold text-foreground/70 uppercase tracking-tight group-hover:text-foreground transition-colors">
+                {strategicSessionItems.map((item, index) => (
+                  <li key={index} className="flex items-start gap-4">
+                    <Check className="h-4 w-4 text-primary flex-shrink-0 mt-1.5" />
+                    <span className="text-base font-medium text-foreground/90">
                       {item}
                     </span>
                   </li>
@@ -58,26 +72,36 @@ export default function ContactoPage() {
               </ul>
             </div>
 
-            <div className="pt-8 border-t border-foreground/5">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/30 leading-relaxed max-w-xs">
-                Construimos algo que tenga sentido a largo plazo para tu negocio mediante ingeniería de automatización.
+            <div className={cn(
+              "h-px w-full bg-border my-10 transition-opacity duration-1000 delay-700",
+              isMounted ? "opacity-100" : "opacity-0"
+            )} />
+
+            <div className={cn(
+              "space-y-6 transition-all duration-1000 delay-800 ease-out",
+              isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}>
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight leading-tight text-foreground">
+                Construyamos algo que tenga sentido a largo plazo
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
+                Las decisiones estratégicas marcan la diferencia entre crecer
+                de forma puntual y consolidar una posición competitiva real.
               </p>
+              <div className="pt-4">
+                <div className="border-l-2 border-primary pl-6 py-1">
+                  <p className="text-base font-medium italic text-foreground/80">
+                    Cuando estés listo para estructurar tu crecimiento con claridad,
+                    el siguiente movimiento es simple.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Calendly Widget */}
-          <div className="lg:col-span-7">
-            <Card className="bg-white rounded-[48px] border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden p-2">
-              <div 
-                className="calendly-inline-widget" 
-                data-url="https://calendly.com/agency-allenmax/reunion-allenmax" 
-                style={{ minWidth: '320px', height: '700px' }}
-              ></div>
-              <Script 
-                src="https://assets.calendly.com/assets/external/widget.js" 
-                strategy="lazyOnload"
-              />
-            </Card>
+          {/* Columna Derecha: Hueco reservado para el widget persistente */}
+          <div className="lg:col-span-6 xl:col-span-5 relative min-h-[1050px] pointer-events-none border-l border-foreground/5 hidden lg:block">
+            {/* Este espacio se mantiene vacío porque el widget global se posiciona aquí mediante absolute en el layout */}
           </div>
 
         </div>

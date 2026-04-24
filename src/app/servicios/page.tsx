@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { 
   CheckCircle2, 
   MessageSquare, 
@@ -73,13 +74,18 @@ export default function ServiciosPage() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 pt-20">
         
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 mb-32 items-start">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="grid lg:grid-cols-12 gap-12 lg:gap-24 mb-32 items-start"
+        >
           <div className="lg:col-span-7 space-y-8">
             <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-foreground uppercase">
               Inteligencia <br />
               <span className="text-primary">Artificial</span>
             </h1>
-            <p className="text-lg text-foreground/50 font-medium max-w-xl leading-relaxed">
+            <p className="text-lg text-foreground/50 font-bold max-w-xl leading-relaxed">
               La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. 
               La integramos en tus procesos para optimizar resultados mediante arquitectura técnica.
             </p>
@@ -89,15 +95,22 @@ export default function ServiciosPage() {
               No implementamos <br />acciones aisladas. <br />
               <span className="text-primary italic">Construimos sistemas.</span>
             </h2>
-            <p className="text-sm text-foreground/40 font-medium leading-relaxed max-w-sm">
+            <p className="text-sm text-foreground/40 font-bold leading-relaxed max-w-sm">
               Cada servicio es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible mediante ingeniería de automatización avanzada.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         <div className="space-y-40">
           {servicios.map((s, i) => (
-            <div key={i} className="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center">
+            <motion.div 
+              key={i} 
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              className="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center"
+            >
               <div className={`space-y-8 ${s.reversed ? 'lg:order-2' : 'lg:order-1'}`}>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -125,7 +138,7 @@ export default function ServiciosPage() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -135,7 +148,7 @@ export default function ServiciosPage() {
             <p className="text-foreground/40 max-w-xl mx-auto font-medium text-lg">
               Analicemos qué piezas de IA necesita tu negocio para escalar al siguiente nivel mediante ingeniería de automatización.
             </p>
-            <button className="h-20 rounded-full px-12 text-xl font-bold bg-primary text-white shadow-2xl shadow-primary/20 group hover:scale-105 transition-transform" onClick={() => window.location.href='/contacto'}>
+            <button className="h-14 rounded-full px-8 text-base font-bold bg-primary text-white shadow-xl shadow-primary/20 group hover:scale-105 transition-transform" onClick={() => window.location.href='/contacto'}>
               Agendar consulta estratégica
               <ArrowRight className="inline-block ml-4 group-hover:translate-x-2 transition-transform" size={24} />
             </button>

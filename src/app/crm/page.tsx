@@ -1,0 +1,156 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { 
+  CheckCircle2, 
+  ArrowRight, 
+  MessageSquare, 
+  Phone, 
+  Calendar, 
+  TrendingUp, 
+  Zap,
+  Sparkles,
+  Layers,
+  ArrowUpRight,
+  LayoutDashboard
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
+export default function CRMPage() {
+  const crmFeatures = [
+    {
+      title: "Centro de Mando",
+      icon: <LayoutDashboard size={20} className="text-primary" />,
+      desc: "No es solo una base de datos. Es un sistema vivo que coordina leads, agenda citas y automatiza tu facturación mientras duermes.",
+      items: [
+        "Dashboard unificado de métricas",
+        "Gestión de contactos centralizada",
+        "Seguimiento de ROI por fuente",
+        "Automatización de flujo de caja"
+      ],
+      reversed: false
+    },
+    {
+      title: "Omnicanalidad Inteligente",
+      icon: <MessageSquare size={20} className="text-primary" />,
+      desc: "Nuestra arquitectura conecta WhatsApp, Instagram y Web en una única interfaz inteligente. Califica prospectos y cierra ventas 24/7.",
+      items: [
+        "Respuesta humana indetectable",
+        "Sincronización de datos multicanal",
+        "Calificación de leads integrada",
+        "Historial de conversación global"
+      ],
+      reversed: true
+    },
+    {
+      title: "Voz Neuronal 4.0",
+      icon: <Phone size={20} className="text-primary" />,
+      desc: "Recepción automática que conversa con tus clientes, resuelve dudas complejas y agenda directamente en tu calendario sin esperas.",
+      items: [
+        "Capacidad de llamadas ilimitadas",
+        "NLP de última generación",
+        "Integración con agenda nativa",
+        "Detección de intención del cliente"
+      ],
+      reversed: false
+    }
+  ];
+
+  return (
+    <div className="pt-24 min-h-screen bg-background relative overflow-hidden text-slate-900 selection:bg-primary/10">
+      {/* Background Decor */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+      <div className="absolute top-0 left-[-10%] w-[70%] h-[1000px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-0 right-[-10%] w-[60%] h-[800px] bg-blue-400/5 blur-[180px] rounded-full pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 pt-20">
+        
+        {/* Header Section - Inspired by the 'Servicios' Screenshot */}
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="grid lg:grid-cols-12 gap-12 lg:gap-24 mb-32 items-start"
+        >
+          <div className="lg:col-span-7 space-y-8">
+            <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-foreground uppercase">
+              AllenMax <br />
+              <span className="text-primary">CRM System</span>
+            </h1>
+            <p className="text-lg text-foreground/50 font-bold max-w-xl leading-relaxed">
+              La automatización no es una moda: es una herramienta técnica cuando se aplica correctamente. La integramos en tus procesos para optimizar ventas mediante arquitectura backend real.
+            </p>
+          </div>
+          <div className="lg:col-span-5 pl-10 py-2 border-l border-foreground/10">
+            <h2 className="text-xl font-bold text-foreground mb-4 uppercase tracking-tight leading-snug">
+              No gestionamos <br />datos aislados. <br />
+              <span className="text-primary italic">Construimos ecosistemas.</span>
+            </h2>
+            <p className="text-sm text-foreground/40 font-bold leading-relaxed max-w-sm">
+              Cada función es una pieza de un sistema mayor, diseñado para atraer, convertir y fidelizar de forma sostenible mediante ingeniería de automatización avanzada.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* CRM Features - Alternating Zigzag (matching Servicios style) */}
+        <div className="space-y-40">
+          {crmFeatures.map((f, i) => (
+            <motion.div 
+              key={i} 
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              className="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center"
+            >
+              <div className={`space-y-8 ${f.reversed ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    {f.icon}
+                  </div>
+                  <h3 className="text-2xl font-black tracking-tight uppercase">{f.title}</h3>
+                </div>
+                <p className="text-lg text-foreground/50 leading-relaxed font-medium">
+                  {f.desc}
+                </p>
+              </div>
+
+              <div className={`${f.reversed ? 'lg:order-1' : 'lg:order-2'}`}>
+                <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/30 mb-8 px-1">Contenido Técnico</h4>
+                <ul className="grid gap-5">
+                  {f.items.map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-4 group">
+                      <div className="w-6 h-6 rounded-full bg-primary/5 flex items-center justify-center shrink-0">
+                        <CheckCircle2 size={14} className="text-primary" />
+                      </div>
+                      <span className="text-sm font-bold text-foreground/60 uppercase tracking-tight group-hover:text-foreground transition-colors">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Final CTA Symmetric */}
+        <div className="mt-48 text-center space-y-12 pb-32">
+          <div className="space-y-8">
+            <h2 className="text-4xl font-black uppercase tracking-tight italic text-foreground">¿Tu próximo sistema?</h2>
+            <p className="text-foreground/40 max-w-xl mx-auto font-medium text-lg">
+              Analicemos qué piezas de IA necesita tu negocio para escalar al siguiente nivel mediante ingeniería de automatización.
+            </p>
+            <button className="h-14 rounded-full px-8 text-base font-bold bg-primary text-white shadow-xl shadow-primary/20 group hover:scale-105 transition-transform" onClick={() => window.location.href='/contacto'}>
+              Agendar consulta estratégica
+              <ArrowRight className="inline-block ml-4 group-hover:translate-x-2 transition-transform" size={24} />
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
