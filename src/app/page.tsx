@@ -312,21 +312,49 @@ export default function Home() {
         </div>
 
         {/* Technologies Strip */}
-        <div className="w-full py-16 mb-24 overflow-hidden flex opacity-30 grayscale saturate-0 pointer-events-none bg-white [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+        <div className="w-full py-16 mb-24 overflow-hidden flex opacity-100 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
             <motion.div 
-                className="flex items-center whitespace-nowrap flex-nowrap"
+                className="flex items-center gap-20 whitespace-nowrap"
                 animate={{ x: ["0%", "-50%"] }}
-                transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+                transition={{ ease: "linear", duration: 35, repeat: Infinity }}
             >
-                {[...Array(4)].map((_, i) => (
-                    <div key={i} className="flex gap-16 items-center px-8">
-                        <span className="text-2xl font-bold tracking-tighter">OpenAI</span>
-                        <span className="text-2xl font-medium tracking-tight">Meta</span>
-                        <span className="text-2xl font-[900] tracking-tighter">Make</span>
-                        <span className="text-2xl font-bold tracking-tight">HubSpot</span>
-                        <span className="text-2xl font-black tracking-tighter font-serif">Zapier</span>
-                        <span className="text-2xl font-bold italic tracking-tight text-slate-900">Stripe</span>
-                    </div>
+                {[...Array(6)].map((_, groupIdx) => (
+                    <React.Fragment key={groupIdx}>
+                        {/* OpenAI */}
+                        <div className="flex items-center gap-4 flex-shrink-0">
+                            <img src="/logos/openai.svg" alt="OpenAI" className="w-8 h-8 object-contain" />
+                            <span className="text-xl font-bold tracking-tight text-slate-800">OpenAI</span>
+                        </div>
+                        {/* n8n */}
+                        <div className="flex items-center flex-shrink-0">
+                            <img src="/logos/n8n.svg" alt="n8n" className="h-8 w-auto object-contain" />
+                            <span className="text-xl font-bold tracking-tight text-slate-800 ml-4">n8n</span>
+                        </div>
+                        {/* Python */}
+                        <div className="flex items-center gap-4 flex-shrink-0">
+                            <img src="/logos/Python-logo-notext.svg.png" alt="Python" className="w-8 h-8 object-contain" />
+                            <span className="text-xl font-bold tracking-tight text-slate-800">Python</span>
+                        </div>
+                        {/* Meta */}
+                        <div className="flex items-center gap-4 flex-shrink-0">
+                            <img src="/logos/meta.png" alt="Meta" className="h-6 w-auto object-contain" />
+                            <span className="text-xl font-bold tracking-tight text-slate-800">Meta</span>
+                        </div>
+                        {/* Airtable */}
+                        <div className="flex items-center gap-4 flex-shrink-0">
+                            <img src="/logos/airtable.png" alt="Airtable" className="w-8 h-8 object-contain" />
+                            <span className="text-xl font-bold tracking-tight text-slate-800">Airtable</span>
+                        </div>
+                        {/* Stripe */}
+                        <div className="flex items-center gap-4 flex-shrink-0">
+                            <img src="/logos/stripe.svg" alt="Stripe" className="w-8 h-8 object-contain" />
+                            <span className="text-xl font-bold tracking-tight text-slate-800">Stripe</span>
+                        </div>
+                        {/* Google Partner */}
+                        <div className="flex items-center flex-shrink-0">
+                            <img src="/logos/google-partner.png" alt="Google Partner" className="h-10 w-auto object-contain" />
+                        </div>
+                    </React.Fragment>
                 ))}
             </motion.div>
         </div>
