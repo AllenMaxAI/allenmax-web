@@ -37,10 +37,10 @@ export default function ContactoPage() {
               <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">
                 Sesión Estratégica
               </span>
-              <div className="space-y-6">
-                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] text-foreground">
-                  Hablemos de tu <br />
-                  <span className="text-primary">crecimiento.</span>
+                <div className="space-y-6">
+                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] text-foreground">
+                    Hablemos de tu <br />
+                  <span className="text-primary">crecimiento en Málaga y España.</span>
                 </h1>
                 <div className="h-1.5 w-20 bg-primary rounded-full" />
               </div>
@@ -50,7 +50,7 @@ export default function ContactoPage() {
               "text-xl md:text-2xl text-primary font-medium mb-16 leading-relaxed max-w-lg transition-all duration-1000 delay-300 ease-out",
               isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}>
-              Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento.
+              Agenda una sesión estratégica para estructurar tu sistema de captación y escalado con un enfoque de alto rendimiento para tu negocio en Málaga o en cualquier punto de España.
             </p>
 
             <div className={cn(

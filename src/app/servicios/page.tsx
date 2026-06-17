@@ -86,8 +86,8 @@ export default function ServiciosPage() {
               <span className="text-primary">Artificial</span>
             </h1>
             <p className="text-lg text-foreground/50 font-bold max-w-xl leading-relaxed">
-              La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente. 
-              La integramos en tus procesos para optimizar resultados mediante arquitectura técnica.
+              La IA no es una moda: es una herramienta estratégica cuando se aplica correctamente.
+              La integramos en tus procesos para optimizar resultados en Málaga y en toda España mediante arquitectura técnica.
             </p>
           </div>
           <div className="lg:col-span-5 pl-10 py-2 border-l border-foreground/10">
@@ -146,7 +146,7 @@ export default function ServiciosPage() {
           <div className="space-y-8">
             <h2 className="text-4xl font-black uppercase tracking-tight italic text-foreground">¿Tu próximo sistema?</h2>
             <p className="text-foreground/40 max-w-xl mx-auto font-medium text-lg">
-              Analicemos qué piezas de IA necesita tu negocio para escalar al siguiente nivel mediante ingeniería de automatización.
+              Analicemos qué piezas de IA necesita tu negocio en Málaga o en cualquier punto de España para escalar al siguiente nivel mediante ingeniería de automatización.
             </p>
             <button className="h-14 rounded-full px-8 text-base font-bold bg-primary text-white shadow-xl shadow-primary/20 group hover:scale-105 transition-transform" onClick={() => window.location.href='/contacto'}>
               Agendar consulta estratégica

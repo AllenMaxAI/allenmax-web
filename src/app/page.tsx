@@ -21,6 +21,7 @@ import {
   Globe
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
 
 const AnimatedCounter = memo(({ value, prefix = "", suffix = "", duration = 2.5 }: { value: number, prefix?: string, suffix?: string, duration?: number }) => {
@@ -252,6 +253,102 @@ const CRMMockup = memo(() => {
 });
 CRMMockup.displayName = 'CRMMockup';
 
+const homeFaqItems = [
+  {
+    question: '¿Qué hace AllenMax?',
+    answer:
+      'Diseñamos sistemas de automatización con IA para captar, responder y gestionar clientes, incluyendo agentes de voz, chatbots, CRM e integraciones con herramientas como n8n.',
+  },
+  {
+    question: '¿Qué negocios pueden automatizarse con IA?',
+    answer:
+      'Trabajamos con negocios de servicios, clínicas, despachos, inmobiliarias, educación y empresas locales que quieran ahorrar tiempo y convertir mejor.',
+  },
+  {
+    question: '¿Trabajáis solo en Málaga?',
+    answer:
+      'No. Estamos orientados a negocios de Málaga, pero servimos a empresas de toda España de forma remota y con despliegues a medida.',
+  },
+  {
+    question: '¿Qué incluye un agente de voz con IA?',
+    answer:
+      'Puede atender llamadas, responder preguntas frecuentes, cualificar oportunidades, agendar citas y derivar incidencias según reglas de negocio.',
+  },
+  {
+    question: '¿Qué incluye un chatbot con IA?',
+    answer:
+      'Responde dudas al instante, califica leads, propone siguientes pasos y conecta con tu CRM o calendarios para no perder oportunidades.',
+  },
+  {
+    question: '¿Podéis integrar n8n, CRM y calendarios?',
+    answer:
+      'Sí. Creamos integraciones con n8n, CRM, Google Calendar y otras herramientas para que todo fluya sin trabajo manual repetitivo.',
+  },
+];
+
+const siteUrl = 'https://allenmax.com';
+
+const homeStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'AllenMax',
+      url: siteUrl,
+      areaServed: 'España',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Málaga',
+        addressCountry: 'ES',
+      },
+      knowsAbout: [
+        'Automatización con IA',
+        'Agentes de voz con IA',
+        'Chatbots con IA',
+        'CRM para negocios',
+        'Automatización con n8n',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'AllenMax',
+      description:
+        'AllenMax automatiza llamadas, citas, captación y gestión de clientes con agentes de voz, chatbots, CRM e integraciones a medida para negocios en Málaga y toda España.',
+      inLanguage: 'es-ES',
+      publisher: {
+        '@id': `${siteUrl}/#organization`,
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${siteUrl}/#service`,
+      name: 'Automatización con IA para negocios',
+      serviceType: 'Automatización con IA',
+      provider: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      areaServed: 'España',
+      description:
+        'AllenMax automatiza llamadas, citas, captación y gestión de clientes con agentes de voz, chatbots, CRM e integraciones a medida para negocios en Málaga y toda España.',
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${siteUrl}/#faq`,
+      mainEntity: homeFaqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    },
+  ],
+};
+
 
 // --- Main Page ---
 
@@ -276,11 +373,11 @@ export default function Home() {
                     className="space-y-4 will-change-transform"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                        Agencia de Automatización IA
+                        Automatización con IA · Málaga, España
                     </div>
                     <h1 className="text-4xl lg:text-6xl font-black leading-[1.1] tracking-tight text-slate-900 uppercase">
                         Automatiza tu negocio <br /> 
-                        con <span className="text-primary italic">Inteligencia Artificial</span>
+                        en <span className="text-primary italic">Málaga</span> con IA
                     </h1>
                 </motion.div>
 
@@ -290,7 +387,7 @@ export default function Home() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-lg text-slate-400 font-medium max-w-xl mx-auto leading-relaxed will-change-transform"
                 >
-                    Convertimos tu empresa en un sistema automatizado que vende y gestiona clientes 24/7 sin interrupción.
+                    Convertimos tu empresa en un sistema automatizado que vende y gestiona clientes 24/7 para negocios de Málaga y toda España.
                 </motion.p>
 
                 <motion.div
@@ -309,6 +406,9 @@ export default function Home() {
                         <Link href="/contacto">Agendar llamada</Link>
                     </Button>
                 </motion.div>
+                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-slate-300">
+                  Soluciones para negocios de Málaga y toda España
+                </p>
             </div>
         </div>
 
@@ -370,7 +470,7 @@ export default function Home() {
         >
             <h2 className="text-4xl font-black uppercase tracking-tight italic">¿Qué hacemos exactamente?</h2>
             <div className="space-y-6 text-xl text-slate-400 font-medium leading-relaxed">
-                <p>Implementamos sistemas de inteligencia artificial que automatizan la comunicación, la gestión de clientes y los procesos clave de tu negocio.</p>
+                <p>Implementamos sistemas de inteligencia artificial que automatizan la comunicación, la gestión de clientes y los procesos clave de tu negocio en Málaga y toda España.</p>
                 <p>Desde el primer contacto hasta el seguimiento, todo funciona de forma automática.</p>
             </div>
         </motion.div>
@@ -387,7 +487,7 @@ export default function Home() {
                   <h3 className="text-3xl font-black tracking-tight uppercase leading-none">Automatización total de la comunicación</h3>
                 </div>
                 <div className="space-y-6">
-                    <p className="text-xl text-slate-400 leading-relaxed font-medium">Tus clientes reciben respuesta inmediata en todos tus canales:</p>
+                    <p className="text-xl text-slate-400 leading-relaxed font-medium">Tus clientes reciben respuesta inmediata en todos tus canales, desde Málaga para toda España:</p>
                     <div className="flex flex-wrap gap-10 pt-4 text-slate-300">
                         <div className="group flex flex-col items-center gap-2">
                             <MessageSquare size={24} className="group-hover:text-primary transition-colors" />
@@ -505,7 +605,7 @@ export default function Home() {
             <div className="lg:col-span-4 space-y-4">
                 <div className="w-12 h-px bg-primary" />
                 <h2 className="text-3xl font-black uppercase tracking-tight text-slate-900">Soluciones adaptadas a tu negocio</h2>
-                <p className="text-slate-400 font-medium leading-relaxed">No usamos sistemas genéricos. Construimos ecosistemas de automatización diseñados a la medida de tu estructura empresarial o negocio.</p>
+                <p className="text-slate-400 font-medium leading-relaxed">No usamos sistemas genéricos. Construimos ecosistemas de automatización diseñados a la medida de tu negocio en Málaga o en cualquier punto de España.</p>
             </div>
             <div className="lg:col-span-8 grid md:grid-cols-2 gap-12">
                 {[
@@ -524,6 +624,32 @@ export default function Home() {
           </div>
         </div>
 
+        {/* FAQ */}
+        <div className="py-24">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12 space-y-4">
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Preguntas frecuentes</p>
+              <h2 className="text-4xl font-black uppercase tracking-tight italic text-slate-950">Respuestas claras antes de empezar</h2>
+              <p className="text-slate-400 font-medium text-lg max-w-2xl mx-auto">
+                Si tienes un negocio en Málaga o en cualquier punto de España, aquí tienes las dudas más habituales sobre cómo trabajamos.
+              </p>
+            </div>
+
+            <div className="bg-white border border-slate-100 rounded-3xl shadow-sm p-6 md:p-8">
+              <Accordion type="single" collapsible className="w-full">
+                {homeFaqItems.map((item, index) => (
+                  <AccordionItem key={item.question} value={`faq-${index}`}>
+                    <AccordionTrigger className="text-left font-bold text-slate-900">{item.question}</AccordionTrigger>
+                    <AccordionContent className="text-slate-500 leading-relaxed">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </div>
+
         {/* Final CTA */}
         <div className="py-24 text-center space-y-16">
           <div className="space-y-8 max-w-4xl mx-auto">
@@ -531,14 +657,19 @@ export default function Home() {
                 Deja de perder clientes <br /><span className="text-primary italic">por falta de tiempo</span>
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto font-medium text-xl">
-                Mientras tú trabajas, tu sistema sigue captando, respondiendo y cerrando oportunidades.
+                Mientras tú trabajas, tu sistema sigue captando, respondiendo y cerrando oportunidades para tu negocio en Málaga y toda España.
             </p>
             <Button size="lg" className="h-14 rounded-full px-10 text-lg font-bold bg-primary text-white shadow-xl shadow-primary/30 group transition-all duration-500 hover:scale-105" asChild>
                 <Link href="/contacto">Agendar llamada</Link>
             </Button>
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300">Impulsa tu negocio mediante ingeniería de automatización</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300">Impulsa tu negocio mediante ingeniería de automatización en Málaga y España</p>
           </div>
         </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData).replace(/</g, '\\u003c') }}
+      />
 
       </div>
 
@@ -558,4 +689,3 @@ export default function Home() {
     </div>
   );
 }
-
