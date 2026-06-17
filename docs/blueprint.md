@@ -3,7 +3,7 @@
 ## Core Features:
 
 - Header Navigation: Replicate the navigation bar with logo, menu links (Proceso, Servicios, Beneficios, Nosotros, FAQ, Blog, Herramientas), and 'Contactar' button.
-- Hero Section Display: Render the main headline 'Automatización con IA en Alicante para tu negocio', sub-headline 'Impulsa tu negocio con IA...', and the primary 'Agendar demo gratuita' call-to-action button, matching the visual layout of the image.
+- Hero Section Display: Render the main headline 'Automatización con IA en Málaga para tu negocio', sub-headline 'Impulsa tu negocio con IA...', and the primary 'Agendar demo gratuita' call-to-action button, matching the visual layout of the image.
 - Demo Scheduling CTA: Implement the 'Agendar demo gratuita' button which, upon click, could potentially link to or embed a demo scheduling tool.
 - Placeholder Content Sections: Include minimal placeholder sections for content referenced in the navigation bar such as 'Proceso', 'Servicios', 'Beneficios', etc., enabling basic page structure and scroll anchors.
 

@@ -10,7 +10,7 @@ import Script from 'next/script';
 import { CookieBanner } from '@/components/CookieBanner';
 
 export const metadata: Metadata = {
-  title: 'AllenMax - Automatización con IA en Alicante',
+  title: 'AllenMax - Automatización con IA en Málaga',
   description: 'Impulsa tu negocio con soluciones de automatización de inteligencia artificial líderes en el mercado.',
   icons: {
     icon: '/favicon.ico',
